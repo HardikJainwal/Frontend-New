@@ -4,6 +4,7 @@ import MidNavbar from "./Component/Header/MidNavbar";
 import Footer from "./Component/Footer/Footer";
 import "./App.css";
 import UnderConstruction from "./Component/Reusable/UnderConstruction";
+import Loader from "./Component/PageLoader/Loader";
 
 // Lazy Load Components
 const HomeBody = lazy(() => import("./Component/Body/Banner"));
@@ -74,7 +75,7 @@ const AdministrationTemp = lazy(() => import('./Component/Administration/page'))
 function App() {
   return (
     <BrowserRouter>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loader/>}>
         <MidNavbar />
         <Routes>
           {/* Home Route */}
