@@ -7,6 +7,7 @@ import {
   getDepartmentName,
   getFacultyByDepartment,
 } from "../../utils/apiservice";
+import { useEffect } from "react";
 
 const DepartmentById = () => {
   const { id } = useParams();
@@ -21,11 +22,11 @@ const DepartmentById = () => {
     queryFn: () => getDepartmentName(id),
   });
 
-  // useEffect(() => {
-  //   //! DELETE LATER
-  //   console.log(departments);
-  //   // console.log(data);
-  // }, [data, departments]);
+  useEffect(() => {
+    //! DELETE LATER
+    // console.log(departments);
+    console.log(data);
+  }, [data]);
 
   if (isLoading) {
     return <div className="text-center text-xl font-semibold">Loading...</div>;
@@ -64,7 +65,8 @@ const DepartmentById = () => {
                 /> */}
 
                 <img
-                  src="https://drive.google.com/file/d/15Qou4NwzsNGoJ9Htl4Q70FOkqAmWVoLB/view"
+                  src="https://imgur.com/muHrE9p.png"
+                  // src={faculty.image}
                   alt="drive image"
                   className="w-full h-full object-cover"
                 />

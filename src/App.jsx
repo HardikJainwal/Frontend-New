@@ -68,7 +68,8 @@ const MayurVihar = lazy(() => import("./Component/AllCampusesPage.jsx/MayurVihar
 const ShakarpurDSEU = lazy(() => import("./Component/AllCampusesPage.jsx/Shakarpur"));
 const VivekVihar = lazy(() => import("./Component/AllCampusesPage.jsx/VivekVihar"));
 
-
+// Administration etc
+const AdministrationTemp = lazy(() => import('./Component/Administration/page'));
 
 function App() {
   return (
@@ -113,7 +114,7 @@ function App() {
           <Route path="/academics/faculty" element={<ListOfFaculties />} />
           <Route path="/faculty/:facultyId" element={<FacultyDesc />} />
           <Route path="/dept/:departmentPath" element={<DepartmentPage />} />
-          <Route path="/Administration/administrative" element={<Administration />} />
+          {/* <Route path="/Administration/administrative" element={<Administration />} /> */}
           <Route path="/administration/Support-Services" element={<UnderConstruction/>} />
           <Route path="/administration/Other-Academic-Units" element={<UnderConstruction/>} />
 
@@ -153,6 +154,10 @@ function App() {
           <Route path="/MayurVihar" element={<MayurVihar />} />
           <Route path="/shakarpur2" element={<ShakarpurDSEU />} />
           <Route path="/vivekvihar" element={<VivekVihar />} />
+
+          {/* Administration test/temp*/}
+          <Route path="/administration/administrative/*" element={<AdministrationTemp />} />
+
         </Routes>
         <Footer />
       </Suspense>
