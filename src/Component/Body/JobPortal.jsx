@@ -77,9 +77,9 @@ const JobListings = () => {
   };
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="flex min-h-screen bg-gray-50 rounded-md">
       {/* Side Panel */}
-      <div className="w-64 bg-white shadow-lg mt-6 ">
+      <div className="w-64 bg-white shadow-lg mt-6 rounded-3xl">
         <div className="p-4 bg-blue-700 text-white font-bold text-lg">
           Job Categories
         </div>
@@ -90,8 +90,8 @@ const JobListings = () => {
               onClick={() => setActiveTab(tab.id)}
               className={`p-4 text-left transition-colors duration-200 ${
                 activeTab === tab.id
-                  ? "bg-blue-500 text-white"
-                  : "hover:bg-blue-100 text-gray-700"
+                  ? "bg-blue-100 text-black"
+                  : "hover:bg-blue-100 text-black"
               }`}
             >
               {tab.label}

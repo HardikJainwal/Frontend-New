@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MidNavbar from "./Component/Header/MidNavbar";
 import Footer from "./Component/Footer/Footer";
 import "./App.css";
+import UnderConstruction from "./Component/Reusable/UnderConstruction";
 
 // Lazy Load Components
 const HomeBody = lazy(() => import("./Component/Body/Banner"));
@@ -113,6 +114,8 @@ function App() {
           <Route path="/faculty/:facultyId" element={<FacultyDesc />} />
           <Route path="/dept/:departmentPath" element={<DepartmentPage />} />
           <Route path="/Administration/administrative" element={<Administration />} />
+          <Route path="/administration/Support-Services" element={<UnderConstruction/>} />
+          <Route path="/administration/Other-Academic-Units" element={<UnderConstruction/>} />
 
           {/* Department related */}
           <Route path="/departments" element={<Department />} />
@@ -137,9 +140,9 @@ function App() {
           <Route path="/research/*" element={<ResearchDev />} />
           <Route path="/about-us/About-the-University" element={<About />} />
           <Route path="/about-us/Vision-and-Mission" element={<VissionMission />} />
-          <Route path="/entrepreneurship" element={<Entrepreneurship />} />
+          <Route path="/UGC-Guidelines" element={<UnderConstruction />} />
           <Route path="/amenities/Facilities" element={<Amenities />} />
-          <Route path="/administration/recruitment" element={<JobPortal />} />
+          <Route path="/recruitment" element={<JobPortal />} />
           <Route path="/Placement" element={<Placement />} />
 
           {/* Alumni */}

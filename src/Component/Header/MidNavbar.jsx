@@ -40,15 +40,12 @@ const navItems = [
       // { name: "Policy", path: "/about-us/Policy" },
       //? removed, as mentioned in the minutes of meeting pdf
 
-      { name: "University Calendar", path: "/about-us/University-Calendar" },
-      // { name: "Academic Calendar", path: "/about-us/academic-Calendar" },
-      // { name: "Holiday Calendar", path: "/about-us/holiday-Calendar" },
+      // { name: "University Calendar", path: "/about-us/University-Calendar" },
+      { name: "Academic Calendar", path: "/about-us/academic-Calendar" },
+      { name: "Holiday Calendar", path: "/about-us/holiday-Calendar" },
       {
         name: "Annual Report",
         path: "/about-us/Annual-Report",
-        dropdownItems: [
-          { name: "Year-wise", path: "/about-us/Annual-Report/Year-wise" },
-        ],
       },
       // { name: "Handbook (Brochure)", path: "/about-us/Handbook" },
       { name: "Information Bulletin", path: "#information-bulletin" },
@@ -98,7 +95,6 @@ const navItems = [
     name: "Administration",
     dropdownItems: [
       { name: "Administrative", path: "/administration/administrative" },
-      { name: "Recruitment", path: "/administration/recruitment" },
       {
         name: "Other Academic Units",
         path: "/administration/Other-Academic-Units",
@@ -107,34 +103,25 @@ const navItems = [
     ],
   },
   {
-    name: "Amenities",
+    name: "Student Services",
     dropdownItems: [
-      { name: "Facilities", path: "/amenities/Facilities" },
+      { name: "Training & Placement", path: "/placement" },
       { name: "Computer Centre", path: "/amenities/Computer-Centre" },
-      { name: "Placement", path: "/Placement" },
-      { name: "Medical Services", path: "/amenities/Medical-Services" },
-      { name: "Hostels", path: "/amenities/Hostels" },
+      { name: "NCC", path: "/ncc" },
+      { name: "Canteen", path: "/amenities/Canteen" },
       { name: "Sports", path: "/amenities/Sports" },
       { name: "Library", path: "/amenities/Library" },
     ],
   },
   {
-    name: "Alumni",
-    path: "/alumni",
+    name: "Recruitment",
+    path: "/recruitment",
   },
   {
-    name: "Entrepreneurship",
-    path: "/entrepreneurship",
+    name: " UGC Guidelines",
+    path: "/UGC-Guidelines",
   },
-  {
-    name: "Research",
-    dropdownItems: [
-      {
-        name: "Research and Development",
-        path: "/research",
-      },
-    ],
-  },
+  
 ];
 
 //? for mobile view

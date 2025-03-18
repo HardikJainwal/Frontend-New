@@ -55,6 +55,12 @@ const TopBar = () => {
       >
         Student Login
       </Link>
+      <Link
+        to="alumni"
+        className=" px-1 md:px-4 hover:underline hover:text-[#1b1b1b] whitespace-nowrap text-sm md:text-[1rem]"
+      >
+        Alumni
+      </Link>
     </div>
   );
 };

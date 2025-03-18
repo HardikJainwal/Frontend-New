@@ -5,7 +5,7 @@ const Amenities = () => {
   const [selectedFacility, setSelectedFacility] = useState('Seminar Halls');
 
   const facilities = [
-    'Sports',
+    'Training & Placemnet',
     'Library',
     'Seminar Halls',
     'Conference Halls',
