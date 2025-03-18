@@ -13,6 +13,7 @@ const About = () => {
             <div className="h-[2px] bg-blue-900 flex-1"></div>
           </div>
           <div className="my-2"></div>
+          
           <p className="my-4 text-gray-600">
             The Delhi Skill and Entrepreneurship University (DSEU) is a forward-thinking educational institution established to equip students with the skills necessary for the modern workforce and to cultivate entrepreneurial capabilities. The university's primary goal is to bridge the existing skill gap in various industries by providing practical, hands-on education that aligns with the latest technological and business trends.
           </p>

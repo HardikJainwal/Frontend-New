@@ -13,7 +13,7 @@ const AlumniSection = () => {
         <h1 className="text-6xl font-bold mb-2 tracking-wide uppercase">Welcome Home!</h1>
         <p className="text-2xl font-bold">Strengthening Our Alumni Legacy</p>
       </div>
-
+  
       <section className="flex flex-col lg:flex-row items-center justify-between p-10 pb-16 bg-gray-50 flex-wrap">
         <div className="flex-1 min-w-[300px] ml-24 mb-8 lg:mb-0">
           <h2 className="text-5xl font-bold text-[#003e70] mb-8">Strengthening Our Alumni Legacy</h2>

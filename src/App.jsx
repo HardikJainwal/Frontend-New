@@ -116,8 +116,8 @@ function App() {
 
           {/* Department related */}
           <Route path="/departments" element={<Department />} />
-          <Route path="/departments/:name" element={<DepartmentById />} />
-          <Route path="/departments/:name/faculty/:facultyId" element={<FacultyByDepartment />} />
+          <Route path="/departments/:id" element={<DepartmentById />} />
+          <Route path="/departments/:id/faculty/:facultyId" element={<FacultyByDepartment />} />
 
           {/* Policies */}
           {/* <Route path="/about-us/Policy" element={<Policy />} />
