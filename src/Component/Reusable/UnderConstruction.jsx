@@ -4,9 +4,9 @@ const UnderConstruction = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col items-center justify-center h-[50vh] md:h-[60vh] text-gray-900">
+    <div className="flex flex-col items-center justify-center h-[40vh] md:h-[60vh] text-gray-900 mb-20 sm:mb-0">
       <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-wide mb-4 md:animate-pulse">
-        Under Construction 🚧
+        Under Construction <span className="hidden md:inline">🚧</span>
       </h1>
       <p className="text-lg text-gray-600 text-center max-w-md mx-5 mt-2">
         This section is currently being built. Stay tuned for updates!

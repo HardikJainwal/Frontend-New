@@ -22,7 +22,7 @@ ChartJS.register(
 
 const Placement = () => {
   return (
-    <div className="max-w-7xl mx-auto bg-white p-10 rounded-lg shadow-lg lg:p-16">
+    <div className="max-w-7xl mx-auto p-10 lg:p-16">
       <h2 className="text-2xl lg:text-3xl font-semibold bg-blue-600 text-white px-6 py-3 rounded-md w-fit">
         Introduction
       </h2>

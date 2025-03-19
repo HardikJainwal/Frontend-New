@@ -3,8 +3,13 @@ import { useEffect } from "react";
 
 import SideBar from "./SideBar";
 import MobileSideBar from "./MobileSideBar";
-import { Temp1, Temp2, Temp3, Temp4, Temp5, Temp6 } from "./";
-import DirectorsOffice from "./DirectorsOffice";
+import {
+  AdvisoryBoard,
+  BoardOfManagement,
+  DirectorsOffice,
+  ImportantForms,
+  EmployeePolicy,
+} from ".";
 
 const AdministrationTemp = () => {
   const location = useLocation();
@@ -12,7 +17,9 @@ const AdministrationTemp = () => {
 
   useEffect(() => {
     if (location.pathname === "/administration/administrative") {
-      navigate("/administration/administrative/directors-office", { replace: true });
+      navigate("/administration/administrative/directors-office", {
+        replace: true,
+      });
     }
   }, [location, navigate]);
 
@@ -23,11 +30,10 @@ const AdministrationTemp = () => {
       <div className="flex-1 px-10">
         <Routes>
           <Route path="directors-office" element={<DirectorsOffice />} />
-          <Route path="vice-chancellor" element={<Temp2 />} />
-          <Route path="statutory-bodies" element={<Temp3 />} />
-          <Route path="advisory-board" element={<Temp4 />} />
-          <Route path="team-dseu" element={<Temp5 />} />
-          <Route path="important-forms" element={<Temp6 />} />
+          <Route path="board-of-management" element={<BoardOfManagement />} />
+          <Route path="important-forms" element={<ImportantForms />} />
+          <Route path="advisory-board" element={<AdvisoryBoard />} />
+          <Route path="employee-policy" element={<EmployeePolicy />} />
         </Routes>
       </div>
     </div>
