@@ -96,6 +96,10 @@ const navItems = [
     dropdownItems: [
       { name: "Administrative", path: "/administration/administrative" },
       {
+        name: "Grievance Form",
+        path: "/Grievance-Form",
+      },
+      {
         name: "Other Academic Units",
         path: "/administration/Other-Academic-Units",
       },
@@ -121,7 +125,6 @@ const navItems = [
     name: " UGC Guidelines",
     path: "/UGC-Guidelines",
   },
-  
 ];
 
 //? for mobile view

@@ -5,6 +5,9 @@ import Footer from "./Component/Footer/Footer";
 import "./App.css";
 import UnderConstruction from "./Component/Reusable/UnderConstruction";
 import Loader from "./Component/PageLoader/Loader";
+import StudyProgramsSection from "./Component/Body/StudentProgram";
+import GrievanceForm from "./Component/NavItems/Grievance";
+import IndustryPartnership from "./Component/News/news1";
 
 // Lazy Load Components
 const HomeBody = lazy(() => import("./Component/Body/Banner"));
@@ -88,10 +91,10 @@ function App() {
                 <Message />
                 <InformationBulletin />
                 <OurCampuses />
+                <StudyProgramsSection/>
                 <OurPartners />
                 <News />
                 <EventsAndActivities />
-                
               </>
             }
           />
@@ -146,6 +149,10 @@ function App() {
           <Route path="/amenities/Facilities" element={<Amenities />} />
           <Route path="/recruitment" element={<JobPortal />} />
           <Route path="/Placement" element={<Placement />} />
+          <Route path="/news/achievement" element={<IndustryPartnership/>} />
+          <Route path="/news/partnership" element={<IndustryPartnership/>} />
+          <Route path="/news/outreach" element={<IndustryPartnership/>} />
+          <Route path="/news/innovation-hub" element={<IndustryPartnership/>} />
 
           {/* Alumni */}
           <Route path="/alumni" element={<AlumniSection />} />
@@ -158,7 +165,7 @@ function App() {
 
           {/* Administration test/temp*/}
           <Route path="/administration/administrative/*" element={<AdministrationTemp />} />
-
+          <Route path="/grievance-form" element={<GrievanceForm/>} />
         </Routes>
         <Footer />
       </Suspense>
