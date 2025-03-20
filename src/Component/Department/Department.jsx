@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { getDeparments } from "../../utils/apiservice";
 import { QUERY_KEYS } from "../../utils/queryKeys";
-// import { useEffect } from "react";
+// import { useEffect } from "react"; 
 
 const Department = () => {
   const { data, isLoading, error } = useQuery({

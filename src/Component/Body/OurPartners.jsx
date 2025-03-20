@@ -3,18 +3,49 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const partners = [
-  { id: 1, image: "infosys.png", name: "Infosys" },
-  { id: 2, image: "HDFC-BANK-LOGO.png", name: "HDFC Bank" },
-  { id: 3, image: "mercedes-benz-logo.jpg", name: "Mercedes-Benz" },
-  { id: 4, image: "Starbucks_Corporation.png", name: "Starbucks" },
-  { id: 5, image: "Tech-Mahindra-Logo.png", name: "Tech Mahindra" },
-  { id: 6, image: "NBCC.png", name: "NBCC" },
+  {
+    id: 1,
+    image: "infosys.png",
+    name: "Infosys",
+    link: "https://www.infosys.com",
+  },
+  {
+    id: 2,
+    image: "HDFC-BANK-LOGO.png",
+    name: "HDFC Bank",
+    link: "https://www.hdfcbank.com",
+  },
+  {
+    id: 3,
+    image: "mercedes-benz-logo.jpg",
+    name: "Mercedes-Benz",
+    link: "https://www.mercedes-benz.com",
+  },
+  {
+    id: 4,
+    image: "Starbucks_Corporation.png",
+    name: "Starbucks",
+    link: "https://www.starbucks.com",
+  },
+  {
+    id: 5,
+    image: "Tech-Mahindra-Logo.png",
+    name: "Tech Mahindra",
+    link: "https://www.techmahindra.com",
+  },
+  { id: 6, image: "NBCC.png", name: "NBCC", link: "https://www.nbccindia.com" },
   {
     id: 7,
     image: "Aditya_Birla_Fashion_and_Retail.svg_-min.png",
     name: "Aditya-Birla",
+    link: "https://www.abfrl.com",
   },
-  { id: 8, image: "Apollo-MedSkills-High-Res-min.jpg", name: "Apollo" },
+  {
+    id: 8,
+    image: "Apollo-MedSkills-High-Res-min.jpg",
+    name: "Apollo",
+    link: "https://www.apollohospitals.com",
+  },
 ];
 
 const Partners = () => {

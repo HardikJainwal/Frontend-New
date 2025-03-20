@@ -39,7 +39,7 @@ const CourseStructure = lazy(() => import("./Component/Courses/CourseStructure")
 const ListOfFaculties = lazy(() => import("./Component/Body/ListOfFaculties"));
 const DepartmentPage = lazy(() => import("./Component/Body/DepartmentPage"));
 const FacultyDesc = lazy(() => import("./Component/Body/FacultyDesc"));
-const Administration = lazy(() => import("./Component/Body/Administration"));
+const Administration = lazy(() => import('./Component/Administration/page'));
 
 // Department related
 const Department = lazy(() => import("./Component/Department/Department"));
@@ -72,13 +72,17 @@ const MayurVihar = lazy(() => import("./Component/AllCampusesPage.jsx/MayurVihar
 const ShakarpurDSEU = lazy(() => import("./Component/AllCampusesPage.jsx/Shakarpur"));
 const VivekVihar = lazy(() => import("./Component/AllCampusesPage.jsx/VivekVihar"));
 
-// Administration etc
-const AdministrationTemp = lazy(() => import('./Component/Administration/page'));
+// Student services
+const Ncc = lazy(() => import('./Component/Student Services/Ncc'));
+const Canteen = lazy(() => import('./Component/Student Services/Canteen'));
+const Library = lazy(() => import('./Component/Student Services/Library'));
+const Sports = lazy(() => import('./Component/Student Services/Sports'));
+const ComputerCentre = lazy(() => import('./Component/Student Services/ComputerCentre'));
 
 function App() {
   return (
     <BrowserRouter>
-      <Suspense fallback={<Loader/>}>
+      <Suspense fallback={<Loader />}>
         <MidNavbar />
         <Routes>
           {/* Home Route */}
@@ -91,7 +95,7 @@ function App() {
                 <Message />
                 <InformationBulletin />
                 <OurCampuses />
-                <StudyProgramsSection/>
+                <StudyProgramsSection />
                 <OurPartners />
                 <News />
                 <EventsAndActivities />
@@ -111,21 +115,41 @@ function App() {
           <Route path="/courses/ug" element={<UGPrograms />} />
           <Route path="/courses/pg" element={<PGPrograms />} />
           <Route path="/courses/diploma" element={<DiplomaPrograms />} />
-          <Route path="/courses/certificate-courses" element={<CertificateCourses />} />
-          <Route path="/course-structure/:programCode" element={<CourseStructure />} />
+          <Route
+            path="/courses/certificate-courses"
+            element={<CertificateCourses />}
+          />
+          <Route
+            path="/course-structure/:programCode"
+            element={<CourseStructure />}
+          />
 
           {/* Academics & Faculty */}
           <Route path="/academics/faculty" element={<ListOfFaculties />} />
           <Route path="/faculty/:facultyId" element={<FacultyDesc />} />
           <Route path="/dept/:departmentPath" element={<DepartmentPage />} />
-          {/* <Route path="/Administration/administrative" element={<Administration />} /> */}
-          <Route path="/administration/Support-Services" element={<UnderConstruction/>} />
-          <Route path="/administration/Other-Academic-Units" element={<UnderConstruction/>} />
+
+          {/* Administration */}
+          <Route
+            path="/administration/administrative/*"
+            element={<Administration />}
+          />
+          <Route
+            path="/administration/Support-Services"
+            element={<UnderConstruction />}
+          />
+          <Route
+            path="/administration/Other-Academic-Units"
+            element={<UnderConstruction />}
+          />
 
           {/* Department related */}
           <Route path="/departments" element={<Department />} />
           <Route path="/departments/:id" element={<DepartmentById />} />
-          <Route path="/departments/:id/faculty/:facultyId" element={<FacultyByDepartment />} />
+          <Route
+            path="/departments/:id/faculty/:facultyId"
+            element={<FacultyByDepartment />}
+          />
 
           {/* Policies */}
           {/* <Route path="/about-us/Policy" element={<Policy />} />
@@ -144,15 +168,21 @@ function App() {
           <Route path="/vice-chancellor" element={<ViceChancellorMessage />} />
           <Route path="/research/*" element={<ResearchDev />} />
           <Route path="/about-us/About-the-University" element={<About />} />
-          <Route path="/about-us/Vision-and-Mission" element={<VissionMission />} />
+          <Route
+            path="/about-us/Vision-and-Mission"
+            element={<VissionMission />}
+          />
           <Route path="/UGC-Guidelines" element={<UnderConstruction />} />
           <Route path="/amenities/Facilities" element={<Amenities />} />
           <Route path="/recruitment" element={<JobPortal />} />
           <Route path="/Placement" element={<Placement />} />
-          <Route path="/news/achievement" element={<IndustryPartnership/>} />
-          <Route path="/news/partnership" element={<IndustryPartnership/>} />
-          <Route path="/news/outreach" element={<IndustryPartnership/>} />
-          <Route path="/news/innovation-hub" element={<IndustryPartnership/>} />
+          <Route path="/news/achievement" element={<IndustryPartnership />} />
+          <Route path="/news/partnership" element={<IndustryPartnership />} />
+          <Route path="/news/outreach" element={<IndustryPartnership />} />
+          <Route
+            path="/news/innovation-hub"
+            element={<IndustryPartnership />}
+          />
 
           {/* Alumni */}
           <Route path="/alumni" element={<AlumniSection />} />
@@ -163,9 +193,14 @@ function App() {
           <Route path="/shakarpur2" element={<ShakarpurDSEU />} />
           <Route path="/vivekvihar" element={<VivekVihar />} />
 
-          {/* Administration test/temp*/}
-          <Route path="/administration/administrative/*" element={<AdministrationTemp />} />
-          <Route path="/grievance-form" element={<GrievanceForm/>} />
+          <Route path="/grievance-form" element={<GrievanceForm />} />
+
+          {/* Student Services */}
+          <Route path="/amenities/Computer-Centre" element={<ComputerCentre />} />
+          <Route path="/ncc" element={<Ncc />} />
+          <Route path="/amenities/Canteen" element={<Canteen />} />
+          <Route path="/amenities/Sports" element={<Sports />} />
+          <Route path="/amenities/Library" element={<Library />} />
         </Routes>
         <Footer />
       </Suspense>

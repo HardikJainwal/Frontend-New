@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-const UnderConstruction = () => {
+const UnderConstruction = ({ section = "This section" }) => {
   const navigate = useNavigate();
 
   return (
@@ -9,7 +9,7 @@ const UnderConstruction = () => {
         Under Construction <span className="hidden md:inline">🚧</span>
       </h1>
       <p className="text-lg text-gray-600 text-center max-w-md mx-5 mt-2">
-        This section is currently being built. Stay tuned for updates!
+        <span className={`${section !== "This section" && 'font-semibold'}`}>{section}</span> is currently being built. Stay tuned for updates!
       </p>
       <div className="mt-6 flex space-x-2">
         <div className="w-4 h-4 bg-gray-900 rounded-full animate-bounce delay-100"></div>
