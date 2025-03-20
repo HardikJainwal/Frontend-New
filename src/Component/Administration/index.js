@@ -1,8 +1,7 @@
-import Temp1 from "./DirectorsOffice";
-import Temp2 from "./Temp2";
-import Temp3 from "./Temp3";
-import Temp4 from "./Temp4";
-import Temp5 from "./Temp5";
-import Temp6 from "./Temp6";
+import DirectorsOffice from "./DirectorsOffice";
+import BoardOfManagement from "./BoardOfManagement";
+import AdvisoryBoard from "./AdvisoryBoard";
+import ImportantForms from "./ImportantForms";
+import EmployeePolicy from "./EmployeePolicy";
 
-export { Temp1, Temp2, Temp3, Temp4, Temp5, Temp6 };
+export { DirectorsOffice, BoardOfManagement, EmployeePolicy, AdvisoryBoard, ImportantForms };
