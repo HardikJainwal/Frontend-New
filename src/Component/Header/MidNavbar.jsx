@@ -57,7 +57,7 @@ const navItems = [
     dropdownItems: [
       { name: "Programs", path: "/academics/programs" },
       // { name: "Departments", path: "/dept/arabics" },
-      { name: "Departments", path: "/departments" },
+     
       { name: "Faculty", path: "/academics/faculty" },
       { name: "Director's Office", path: "/academics/directors-office" },
       {
