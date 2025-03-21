@@ -1,11 +1,36 @@
+import { useEffect, useState } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { products } from "../../constants/LISTOFFACULTIES.JS";
+import { faUniversity } from "@fortawesome/free-solid-svg-icons";
 
 export default function ListOfFaculties() {
-  const handleClick = (path) => {
-    window.scrollTo(0, 0);
-  };
+  const [departments, setDepartments] = useState([]); 
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/api/v1/departmentSchools")
+      .then((response) => {
+       
+
+       
+        if (response.data?.data?.departmentSchools) {
+          setDepartments(response.data.data.departmentSchools);
+        } else {
+          console.error("Unexpected API response format:", response.data);
+          setError("Unexpected data format");
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setError("Failed to fetch data");
+      })
+      .finally(() => setLoading(false));
+  }, []);
+
+  const handleClick = () => window.scrollTo(0, 0);
 
   return (
     <div className="bg-white px-4 sm:px-8 md:px-16 lg:px-24 py-12">
@@ -14,40 +39,39 @@ export default function ListOfFaculties() {
           List of Faculties
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {products.map((product) => (
-            <div
-              key={product.id}
-              className="group relative bg-slate-100 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-6 flex flex-col justify-between h-full"
-            >
-              {/* Dynamic FontAwesome Icon */}
-              <div className="flex justify-center mb-4">
-                <FontAwesomeIcon
-                  icon={product.icon}
-                  className="h-16 w-16 text-blue-500"
-                />
-              </div>
+        {loading && <p className="text-center text-gray-600">Loading...</p>}
+        {error && <p className="text-center text-red-500">{error}</p>}
 
-              {/* Product Details */}
-              <div className="text-center">
-                <h3 className="text-lg font-semibold text-gray-700 mb-2">
-                  <a href={product.href}>{product.name}</a>
-                </h3>
-                <p className="text-sm text-gray-500">{product.imageAlt}</p>
-              </div>
+        {!loading && !error && Array.isArray(departments) && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {departments.map((department) => (
+              <div
+                key={department._id}
+                className="group relative bg-slate-100 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-6 flex flex-col justify-between h-full"
+              >
+                
+                <div className="flex justify-center mb-4">
+                  <FontAwesomeIcon icon={faUniversity} className="h-16 w-16 text-blue-500" />
+                </div>
 
-              {/* Action Button */}
-              <Link to={`/dept${product.path}`}>
-                <button
-                  onClick={() => handleClick(product.path)}
-                  className="mt-6 w-full bg-blue-600 text-white py-2 rounded-md text-sm font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
-                >
-                  View Faculty
-                </button>
-              </Link>
-            </div>
-          ))}
-        </div>
+                
+                <div className="text-center">
+                  <h3 className="text-lg font-semibold text-gray-700 mb-2">{department.name}</h3>
+                </div>
+
+                
+                <Link to={`/dept/${department._id}`}>
+                  <button
+                    onClick={handleClick}
+                    className="mt-6 w-full bg-blue-600 text-white py-2 rounded-md text-sm font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
+                  >
+                    View Department
+                  </button>
+                </Link>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
