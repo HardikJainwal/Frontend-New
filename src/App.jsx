@@ -38,7 +38,7 @@ const CourseStructure = lazy(() => import("./Component/Courses/CourseStructure")
 // Academic & Faculty
 const ListOfFaculties = lazy(() => import("./Component/Body/ListOfFaculties"));
 // const DepartmentPage = lazy(() => import("./Component/Body/DepartmentPage"));
-const FacultyDesc = lazy(() => import("./Component/Body/FacultyDesc"));
+
 const Administration = lazy(() => import('./Component/Administration/page'));
 
 // Department related
@@ -126,7 +126,6 @@ function App() {
 
           {/* Academics & Faculty */}
           <Route path="/academics/faculty" element={<ListOfFaculties />} />
-          <Route path="/faculty/:facultyId" element={<FacultyDesc />} />
           {/* <Route path="/dept/:departmentPath" element={<DepartmentPage />} /> */}
 
           {/* Administration */}

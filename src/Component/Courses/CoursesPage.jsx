@@ -11,7 +11,7 @@ const CoursesPage = () => {
   return (
     <div className="w-4/5 p-6 mx-auto my-8 rounded-lg text-gray-800">
       {/* Heading */}
-      <h2 className="text-4xl font-bold text-center mb-4">Explore Our Courses</h2>
+      <h2 className="text-4xl font-bold text-center mb-4">Explore Our Programs</h2>
       <div className="flex items-center justify-center w-[160px] mx-auto">
         <div className="h-[2px] bg-blue-900 flex-1"></div>
         <div className="h-[5px] w-[60px] bg-blue-900 rounded-lg"></div>
