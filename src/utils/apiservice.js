@@ -7,7 +7,7 @@ export const getDeparments = async () => {
 
 export const getFaculties = async () => {
   const response = await api.get("/faculty?limit=432");
-  console.log(response);
+  // console.log(response);
   return response.data.data.faculty;
 }
 
