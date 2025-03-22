@@ -1,6 +1,8 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import api from "../../utils/api";
+import { useEffect, useState } from "react";
+import { getFaculties } from "../../utils/apiservice";
 
 const getDepartmentsBySchool = async (id) => {
   const response = await api.get(`/departmentSchools`);
@@ -9,137 +11,115 @@ const getDepartmentsBySchool = async (id) => {
   );
 };
 
-
 const getFacultyByDepartment = async (id) => {
-  try {
-    const response = await api.get(`/faculty`);
-    return response.data.data.faculty.filter(faculty => faculty.department === id);
-  } catch (error) {
-    console.error("Error fetching faculty:", error);
-    return [];
-  }
+  const response = await getFaculties();
+  return response.filter((faculty) => faculty.dept_id._id === id);
 };
 
 const DepartmentById = () => {
+  const [deptId, setDeptId] = useState(null);  
   const { departmentPath: id } = useParams();
-  const navigate = useNavigate();
 
-  const { data: departmentData, isLoading: isDepartmentLoading, error: departmentError } = useQuery({
+  const { data, isLoading, error } = useQuery({
     queryKey: ["getDepartmentById", id],
     queryFn: () => getDepartmentsBySchool(id),
   });
 
-  const { data: facultyData, isLoading: isFacultyLoading, error: facultyError } = useQuery({
-    queryKey: ["getFacultyByDepartment", id],
-    queryFn: () => getFacultyByDepartment(id),
-    enabled: !!id, 
+  const { data: faculty = [] } = useQuery({
+    queryKey: ["GETFACULTY", deptId],
+    queryFn: () => getFacultyByDepartment(deptId),
+    enabled: !!deptId,
   });
 
-  if (isDepartmentLoading || isFacultyLoading) {
+  useEffect(() => {
+    console.log(faculty);
+  }, [faculty]);
+
+  if (isLoading) {
     return (
       <div className="text-center text-xl font-semibold my-10">Loading...</div>
     );
   }
 
-  if (departmentError || facultyError) {
+  if (error) {
     return (
       <div className="text-center text-red-500 font-semibold">
-        Error: {departmentError?.message || facultyError?.message}
+        Error: {error.message}
       </div>
     );
   }
 
-  if (!departmentData) {
+  if (!data) {
     return (
       <div className="text-center text-gray-600">No department found.</div>
     );
   }
 
   return (
-    <div className="flex w-4/5 mx-10 my-10 text-gray-800">
+    <div className="flex w-fit mx-10 my-10 text-gray-800">
       {/* Sidebar for Departments */}
-      <div className="w-1/4 min-w-[250px] h-fit sticky top-0 bg-gray-100 p-5 rounded-lg shadow-md my-10">
+      <div className="w-[22%] min-w-[250px] h-fit sticky top-0 bg-gray-100 p-5 rounded-lg shadow-md my-10">
         <h3 className="text-lg font-bold mb-4">Departments</h3>
-        <ul className="space-y-3">
-          {departmentData.dept_id.map((dept) => (
-            <li
+        <div className="grid grid-cols-1 gap-3">
+          {data.dept_id && data.dept_id.map((dept) => (
+            <button
               key={dept._id}
-              className={`cursor-pointer p-1 rounded-md transition-colors h-fit ${
-                dept._id === id
+              className={` flex items-center justify-center p-2 rounded-md transition-colors ${
+                deptId === dept._id
                   ? "bg-blue-500 text-white"
-                  : "hover:bg-blue-100 text-gray-700"
-              }`}
-              onClick={() => navigate(`/departments/${dept._id}`)}
+                  : "bg-white hover:bg-blue-100 text-gray-700"
+              } shadow`}
+              onClick={() => setDeptId(dept._id)}
             >
-              {dept.name}
-            </li>
+              <span className="text-center p-1">{dept.name}</span>
+            </button>
           ))}
-        </ul>
-      </div>
-      
-      <div className="w-3/4 px-8 flex flex-col h-fit">
-        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-6">
-          {departmentData.name} Department
-        </h2>
-        {departmentData.hod && (
-          <p className="text-lg mb-6">
-            <span className="font-semibold">HOD:</span>{" "}
-            <a
-              href={`mailto:${departmentData.hod}`}
-              className="text-blue-600 hover:underline"
-            >
-              {departmentData.hod}
-            </a>
-          </p>
-        )}
-
-        {/* Faculty Section */}
-        <div className="mt-8">
-          <h3 className="text-xl font-bold mb-4 pb-2 border-b-2 border-gray-200">
-            Faculty Members
-          </h3>
-          
-          {!facultyData || facultyData.length === 0 ? (
-            <p className="text-gray-500 italic">No faculty members found for this department.</p>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {facultyData.map((faculty) => (
-                <div key={faculty._id} className="bg-white p-4 rounded-lg shadow-md flex">
-                  <div className="w-16 h-16 bg-gray-200 rounded-full flex-shrink-0 overflow-hidden mr-4">
-                    {faculty.profileImage ? (
-                      <img 
-                        src={faculty.profileImage} 
-                        alt={`${faculty.name}`}
-                        className="w-full h-full object-cover" 
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center bg-blue-100 text-blue-500 font-bold text-xl">
-                        {faculty.name?.charAt(0) || 'F'}
-                      </div>
-                    )}
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-lg">{faculty.name}</h4>
-                    <p className="text-gray-600">{faculty.designation || 'Faculty Member'}</p>
-                    {faculty.email && (
-                      <a 
-                        href={`mailto:${faculty.email}`}
-                        className="text-blue-600 hover:underline text-sm"
-                      >
-                        {faculty.email}
-                      </a>
-                    )}
-                    {faculty.specialization && (
-                      <p className="text-gray-700 text-sm mt-1">
-                        <span className="font-medium">Specialization:</span> {faculty.specialization}
-                      </p>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
         </div>
+      </div>
+
+      <div className="ml-20 w-full">
+        <h3 className="text-lg font-semibold mb-3">Faculty Members:</h3>
+        {faculty && faculty.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-center">
+            {faculty.map((member) => (
+              <div
+                key={member._id}
+                className="w-72 h-76 bg-gray-100 rounded-lg shadow-md flex flex-col items-center justify-between p-4"
+              >
+                <div className="w-40 h-40 overflow-hidden rounded-full bg-gray-200 flex items-center justify-center">
+                  {member.photo ? (
+                    <img
+                      src={member.photo}
+                      alt={`${member.firstname} ${member.surname}`}
+                      className="w-full h-full "
+                    />
+                  ) : (
+                    <span className="text-gray-500 text-2xl font-bold">
+                      {member.firstname ? member.firstname[0] : ""}
+                      {member.surname ? member.surname[0] : ""}
+                    </span>
+                  )}
+                </div>
+                
+                <div className="text-center mt-2">
+                  <p className="font-semibold text-lg truncate max-w-full">
+                    {member.salutation} {member.firstname} {member.surname}
+                  </p>
+                  <a
+                    href={`mailto:${member.email}`}
+                    className="text-blue-500 hover:underline mt-1 block truncate max-w-full"
+                  >
+                    {member.email}
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center p-10 bg-gray-50 rounded-lg">
+            {deptId ? "No faculty members found for this department." : "Please select a department to view faculty members."}
+          </div>
+        )}
       </div>
     </div>
   );
