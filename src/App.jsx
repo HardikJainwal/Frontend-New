@@ -44,16 +44,8 @@ const Administration = lazy(() => import('./Component/Administration/page'));
 // Department related
 const Department = lazy(() => import("./Component/Department/Department"));
 const DepartmentById = lazy(() => import('./Component/Department/DepartmentById'));
-const FacultyByDepartment = lazy(() => import('./Component/Department/FacultyByDepartment'));
+const FacultyInfo = lazy(() => import('./Component/Department/FacultyInfo'));
 
-// Policies
-// const Policy = lazy(() => import("./Component/Policy/Policy"));
-// const AcademicGuidelines = lazy(() => import("./Component/Policy/AcademicGuidelines"));
-// const AdmissionsPolicy = lazy(() => import("./Component/Policy/AdmissionsPolicy"));
-// const AntiRaggingPolicy = lazy(() => import("./Component/Policy/AntiRaggingPolicy"));
-// const CodeOfConduct = lazy(() => import("./Component/Policy/CodeOfConduct"));
-// const Facilities = lazy(() => import("./Component/Policy/Facilities"));
-// const SupportServices = lazy(() => import("./Component/Policy/SupportServices"));
 
 // Other Sections
 const About = lazy(() => import("./Component/NavItems/About"));
@@ -145,10 +137,7 @@ function App() {
           {/* Department related */}
           <Route path="/departments" element={<Department />} />
           <Route path="/dept/:departmentPath" element={<DepartmentById />} />
-          <Route
-            path="/departments/:id/faculty/:facultyId"
-            element={<FacultyByDepartment />}
-          />
+          <Route path="/faculty/:id" element={<FacultyInfo />} />
 
           {/* Policies */}
           {/* <Route path="/about-us/Policy" element={<Policy />} />

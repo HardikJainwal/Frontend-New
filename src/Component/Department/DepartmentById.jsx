@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import api from "../../utils/api";
 import { useEffect, useState } from "react";
@@ -20,6 +20,8 @@ const DepartmentById = () => {
   const [deptId, setDeptId] = useState(null);  
   const { departmentPath: id } = useParams();
 
+  const navigate = useNavigate();
+
   const { data, isLoading, error } = useQuery({
     queryKey: ["getDepartmentById", id],
     queryFn: () => getDepartmentsBySchool(id),
@@ -33,7 +35,7 @@ const DepartmentById = () => {
 
   useEffect(() => {
     console.log(faculty);
-  }, [faculty]);
+  }, [faculty]);  
 
   if (isLoading) {
     return (
@@ -84,7 +86,8 @@ const DepartmentById = () => {
             {faculty.map((member) => (
               <div
                 key={member._id}
-                className="w-72 h-76 bg-gray-100 rounded-lg shadow-md flex flex-col items-center justify-between p-4"
+                className="w-72 h-76 bg-gray-100 rounded-lg shadow-md flex flex-col items-center justify-between p-4 cursor-pointer"
+                onClick={() => navigate(`/faculty/${member._id}`)}
               >
                 <div className="w-40 h-40 overflow-hidden rounded-full bg-gray-200 flex items-center justify-center">
                   {member.photo ? (
