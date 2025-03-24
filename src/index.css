@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -22,4 +23,25 @@
 * {
   scrollbar-width: thin;
   scrollbar-color: #ea580c #333;
+}
+
+
+/* DSEU color themed loading animation */
+@keyframes colorCycle {
+  0%, 100% {
+    color: #3b82f6; 
+  }
+  50% {
+    color: #f97316; 
+  }
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-color {
+  animation: spin 1s linear infinite, colorCycle 1.5s infinite ease-in-out;
 }

@@ -3,9 +3,10 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUniversity } from "@fortawesome/free-solid-svg-icons";
+import ListOfFacultiesLoading from "../ShimmerUI/ListOfFacultiesLoading";
 
 export default function ListOfFaculties() {
-  const [departments, setDepartments] = useState([]); 
+  const [departments, setDepartments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -13,9 +14,6 @@ export default function ListOfFaculties() {
     axios
       .get("http://localhost:5000/api/v1/departmentSchools")
       .then((response) => {
-       
-
-       
         if (response.data?.data?.departmentSchools) {
           setDepartments(response.data.data.departmentSchools);
         } else {
@@ -32,6 +30,12 @@ export default function ListOfFaculties() {
 
   const handleClick = () => window.scrollTo(0, 0);
 
+  if(loading) {
+    return (
+      <ListOfFacultiesLoading />
+    )
+  }
+
   return (
     <div className="bg-white px-4 sm:px-8 md:px-16 lg:px-24 py-12">
       <div className="mx-auto max-w-7xl">
@@ -39,7 +43,6 @@ export default function ListOfFaculties() {
           List of Faculties
         </h2>
 
-        {loading && <p className="text-center text-gray-600">Loading...</p>}
         {error && <p className="text-center text-red-500">{error}</p>}
 
         {!loading && !error && Array.isArray(departments) && (
@@ -49,17 +52,19 @@ export default function ListOfFaculties() {
                 key={department._id}
                 className="group relative bg-slate-100 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-6 flex flex-col justify-between h-full"
               >
-                
                 <div className="flex justify-center mb-4">
-                  <FontAwesomeIcon icon={faUniversity} className="h-16 w-16 text-blue-500" />
+                  <FontAwesomeIcon
+                    icon={faUniversity}
+                    className="h-16 w-16 text-blue-500"
+                  />
                 </div>
 
-                
                 <div className="text-center">
-                  <h3 className="text-lg font-semibold text-gray-700 mb-2">{department.name}</h3>
+                  <h3 className="text-lg font-semibold text-gray-700 mb-2">
+                    {department.name}
+                  </h3>
                 </div>
 
-                
                 <Link to={`/dept/${department._id}`}>
                   <button
                     onClick={handleClick}
