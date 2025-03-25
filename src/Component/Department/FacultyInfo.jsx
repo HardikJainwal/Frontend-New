@@ -6,7 +6,7 @@ import { getFacultyById } from "../../utils/apiservice";
 
 const FacultyInfo = () => {
   const { id } = useParams();
-  const [activeTab, setActiveTab] = useState("bio"); // Default to bio tab
+  const [activeTab, setActiveTab] = useState("bio");  
 
   const {
     data: faculty,
