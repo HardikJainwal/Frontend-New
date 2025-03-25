@@ -8,6 +8,9 @@ import Loader from "./Component/PageLoader/Loader";
 import StudyProgramsSection from "./Component/Body/StudentProgram";
 import GrievanceForm from "./Component/NavItems/Grievance";
 import IndustryPartnership from "./Component/News/news1";
+import LoginPage from "./Component/Login/LoginPage";
+import { Toaster } from "react-hot-toast";
+
 
 // Lazy Load Components
 const HomeBody = lazy(() => import("./Component/Body/Banner"));
@@ -74,6 +77,7 @@ const ComputerCentre = lazy(() => import('./Component/Student Services/ComputerC
 function App() {
   return (
     <BrowserRouter>
+     <Toaster position="top-right" />
       <Suspense fallback={<Loader />}>
         <MidNavbar />
         <Routes>
@@ -91,6 +95,8 @@ function App() {
                 <OurPartners />
                 <News />
                 <EventsAndActivities />
+               
+                
               </>
             }
           />
@@ -118,7 +124,7 @@ function App() {
 
           {/* Academics & Faculty */}
           <Route path="/academics/faculty" element={<ListOfFaculties />} />
-          {/* <Route path="/dept/:departmentPath" element={<DepartmentPage />} /> */}
+          <Route path="/logindseu" element={<LoginPage/>} />
 
           {/* Administration */}
           <Route
