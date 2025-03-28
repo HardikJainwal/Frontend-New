@@ -51,13 +51,13 @@ export const getFacultyById = async (id) => {
   }
 };
 
-export const getDepartmentName = async (id) => {
+export const getDepartmentById = async (id) => {
   try {
     const response = await api.get("/departments", {
       headers: getAuthHeaders(),
     });
     const departments = response.data.data.departments;
-    return departments.find((d) => d._id === id)?.name || "";
+    return departments.find((d) => d._id === id);
   } catch (error) {
     console.error("Error fetching department name:", error.response?.data || error.message);
     throw error;
@@ -113,4 +113,14 @@ export const updateFacultyResearch = async (id, data) => {
     console.error("Error updating faculty research:", error.response?.data || error.message);
     throw error;
   }
+};
+
+// get department by school
+export const getDepartmentsBySchool = async (id) => {
+  const response = await api.get(`/departmentSchools`);
+  const data = response.data.data.departmentSchools.find(
+    (school) => school._id === id
+  );
+
+  return { departments: data.dept_id, name : data.name };
 };

@@ -1,45 +1,49 @@
+import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
-import { getDeparments } from "../../utils/apiservice";
+import { getDepartmentsBySchool } from "../../utils/apiservice";
+import ListOfDepartmentsLoading from "../ShimmerUI/ListOfDepartmentsLoading";
 import { QUERY_KEYS } from "../../utils/queryKeys";
 
 const Department = () => {
+  const { id } = useParams();
+
   const { data, isLoading, error } = useQuery({
-    queryKey: [QUERY_KEYS.GET_DEPARTMENTS],
-    queryFn: getDeparments,
+    queryKey: [QUERY_KEYS.GET_DEPARTMENTS_BY_SCHOOL, id],  
+    queryFn: () => getDepartmentsBySchool(id),
   });
 
-  const departments = Array.isArray(data) ? data : [];
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <ListOfDepartmentsLoading />;
+
   if (error)
     return (
-      <div>
-        Error: <span className="text-red-400">{error.message}</span>
+      <div className="text-center text-red-500 text-lg">
+        Error: {error.message}
       </div>
     );
 
   return (
-    <div className="w-4/5 p-4 mx-auto my-8 rounded-lg text-gray-800">
-      <h2 className="text-3xl mb-2 font-bold">Departments</h2>
-      <div className="flex items-center mt-[-5px] w-[120px]">
-        <div className="h-[2px] bg-blue-900 flex-1"></div>
-        <div className="h-[5px] w-[50px] bg-blue-900 rounded-[10px]"></div>
-        <div className="h-[2px] bg-blue-900 flex-1"></div>
-      </div>
-      <div className="my-2"></div>
+    <div className="p-6 md:mx-16 mx-4 flex flex-col gap-6">
+      <h2 className="text-2xl md:text-3xl font-semibold text-[#333] md:whitespace-nowrap text-center">
+        {data.name}
+      </h2>
 
-      <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {departments.map((d) => (
-          <Link
-            key={d._id}
-            to={`/departments/${d._id}`}
-            className="p-4 bg-gray-100 dark:bg-blue-800 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 hover:bg-blue-500 dark:hover:bg-orange-600 group text-center"
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 px-4 mt-6 md:mt-1 mb-7 md:mb-3">
+        {data.departments.map((department) => (
+          <Link 
+            to={`/department/${department._id}`}
+            key={department._id}
           >
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-white transition-colors duration-300">
-              {d.name}
-            </h3>
+            <p
+              className="py-4 px-6 bg-blue-500 text-white text-center rounded-lg shadow-md hover:bg-blue-600 transition-colors text-lg cursor-pointer"
+            >
+              {department.name}
+            </p>
           </Link>
         ))}
       </div>

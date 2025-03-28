@@ -46,14 +46,14 @@ const Administration = lazy(() => import('./Component/Administration/page'));
 
 // Department related
 const Department = lazy(() => import("./Component/Department/Department"));
-const DepartmentById = lazy(() => import('./Component/Department/DepartmentById'));
+// const DepartmentById = lazy(() => import('./Component/Department/DepartmentById'));
 const FacultyInfo = lazy(() => import('./Component/Department/FacultyInfo'));
+const DepartmentInfo = lazy(() => import('./Component/Department/DepartmentInfo'));
 
 
 // Other Sections
 const About = lazy(() => import("./Component/NavItems/About"));
 const VissionMission = lazy(() => import("./Component/NavItems/Vission&Mission"));
-const Entrepreneurship = lazy(() => import("./Component/NavItems/Entrepreneurship"));
 const Amenities = lazy(() => import("./Component/NavItems/Amenities"));
 const ViceChancellorMessage = lazy(() => import("./Component/Body/ViceChancellorMessage"));
 const ResearchDev = lazy(() => import("./Component/Body/ResearchDev"));
@@ -141,22 +141,13 @@ function App() {
           />
 
           {/* Department related */}
-          <Route path="/departments" element={<Department />} />
-          <Route path="/dept/:departmentPath" element={<DepartmentById />} />
+          {/* <Route path="/department/:id" element={<Department />} /> */}
+          {/* new departments pages */}
+          <Route path="/dept/:id" element={<Department />} />
           <Route path="/faculty/:id" element={<FacultyInfo />} />
+          {/* single department page niche aala */}
+          <Route path="/department/:departmentId" element={<DepartmentInfo />} />
 
-          {/* Policies */}
-          {/* <Route path="/about-us/Policy" element={<Policy />} />
-          {[
-            { path: "academic-policy", component: AcademicGuidelines },
-            { path: "admission-policy", component: AdmissionsPolicy },
-            { path: "anti-ragging-policy", component: AntiRaggingPolicy },
-            { path: "facilities", component: Facilities },
-            { path: "support-services", component: SupportServices },
-            { path: "code-of-conduct", component: CodeOfConduct },
-          ].map(({ path, component }) => (
-            <Route key={path} path={`/about-us/policy/${path}`} element={React.createElement(component)} />
-          ))} */}
 
           {/* Other Pages */}
           <Route path="/vice-chancellor" element={<ViceChancellorMessage />} />

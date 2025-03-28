@@ -39,12 +39,12 @@ const leaders = [
 
 
 const sideNavItems = [
-    {
-        id: 1,
-        name: "Director's Office",
-        href: "/administration/administrative/directors-office",
-        active: true,
-    },
+    // {
+    //     id: 1,
+    //     name: "Director's Office",
+    //     href: "/administration/administrative/directors-office",
+    //     active: true,
+    // },
     {
         id: 2,
         name: "Board of Management",
