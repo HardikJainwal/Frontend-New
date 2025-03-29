@@ -45,3 +45,8 @@
 .animate-spin-color {
   animation: spin 1s linear infinite, colorCycle 1.5s infinite ease-in-out;
 }
+
+.slick-list {
+  max-height: 220px; 
+  overflow: hidden;
+}

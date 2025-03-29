@@ -1,7 +1,11 @@
-import { invitationData, contacts } from "../../constants/PLACEMENT.JS";
 import { FaPhoneAlt, FaEnvelope } from "react-icons/fa";
+
+import PlacementCarousel from "./PlacementCarousel";
 import HeadingText from "../Reusable/HeadingText";
+
 import { placementStats } from "../../constants/PLACEMENT.JS";
+import { carouselImages } from "../../constants/PLACEMENT.JS";
+import { invitationData, contacts } from "../../constants/PLACEMENT.JS";
 
 const Placement = () => {
   return (
@@ -73,6 +77,11 @@ const Placement = () => {
               </div>
             ))}
           </div>
+
+          <PlacementCarousel
+            images={carouselImages}
+            // heading="Company Highlights"
+          />
         </div>
       </div>
     </div>

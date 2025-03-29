@@ -33,7 +33,7 @@ const VissionMission = () => {
           <div className="mt-4 space-y-3">
             {section.content.map((paragraph, index) => (
               <p key={index} className="text-gray-600 flex items-center gap-2">
-                <ArrowRightCircle className="text-blue-500 w-5 h-5" />
+                <ArrowRightCircle className="text-blue-500 min-w-5 min-h-5 max-w-5 max-h-5" />
                 {paragraph}
               </p>
             ))}
