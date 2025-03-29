@@ -1,6 +1,10 @@
 import { motion } from "framer-motion";
 import { ArrowRightCircle } from "lucide-react";
-import { mission, vision, keyPrincipals } from "../../constants/VISION&MISSION.JS";
+import {
+  mission,
+  vision,
+  keyPrincipals,
+} from "../../constants/VISION&MISSION.JS";
 
 const VissionMission = () => {
   const sections = [vision, mission, keyPrincipals];
@@ -15,7 +19,6 @@ const VissionMission = () => {
           transition={{ duration: 0.5 }}
           className="text-left mb-10"
         >
-          
           <h2 className="text-3xl font-bold mb-3">{section.name}</h2>
           <div className="flex items-center w-[100px]">
             <div className="h-[2px] bg-blue-900 flex-1"></div>
@@ -23,7 +26,8 @@ const VissionMission = () => {
             <div className="h-[2px] bg-blue-900 flex-1"></div>
           </div>
 
-          
+          {section.desc && <div className="mt-4 space-y-3">{section.desc}</div>}
+
           <div className="mt-4 space-y-3">
             {section.content.map((paragraph, index) => (
               <p key={index} className="text-gray-600 flex items-center gap-2">

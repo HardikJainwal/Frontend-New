@@ -3,7 +3,7 @@ const vision = {
     name: "Vision",
     content: [
         "To set the standards for skilling and entrepreneurship education.",
-
+        "To lead the students at DSEU to experience personal transformation, who in turn become agents of bringing changes in the community.",
         "To become a leading partner in the sustainable growth of the industry and the country.",
     ],
 };
