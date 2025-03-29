@@ -61,8 +61,8 @@ const navItems = [
       { name: "Faculty", path: "/academics/faculty" },
       // { name: "Director's Office", path: "/academics/directors-office" },
       {
-        name: "Student Login",
-        path: "https://dseu.samarth.edu.in/index.php/site/login",
+        name: "Curriculum",
+        path: "/",
       },
       { name: "Programs", path: "/Courses" },
     ],

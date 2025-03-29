@@ -12,7 +12,7 @@ const boardOfManagement = [
     {
         id: 2,
         name: "Prof. (Dr.) Gagan Dhawan",
-        designation: "Registrar",
+        designation: "Controller of Finance",
         category: "Board of Management",
         src: registarar,
     },
@@ -33,7 +33,7 @@ const boardOfManagement = [
     {
         id: 5,
         name: "Prof. Girish Kumar",
-        designation: "Bhai Parmanand DSEU Shakarpur Campus - II",
+        designation: "Dean Research",
         category: "Board of Management",
         src: girishKumar,
     },

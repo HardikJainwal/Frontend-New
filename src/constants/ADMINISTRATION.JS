@@ -39,12 +39,6 @@ const leaders = [
 
 
 const sideNavItems = [
-    // {
-    //     id: 1,
-    //     name: "Director's Office",
-    //     href: "/administration/administrative/directors-office",
-    //     active: true,
-    // },
     {
         id: 2,
         name: "Board of Management",
@@ -100,7 +94,7 @@ const advisoryBoard = [
     {
         id: 2,
         name: "Prof. Gagan Dhawan",
-        designation: "Registrar, Dean - Allied Medical Sciences, Dean - International Affairs",
+        designation: "Controller of Finance",
         src: registarar,
     },
     {
