@@ -3,14 +3,17 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-
 import { getDepartmentById } from "../../utils/apiservice";
 import { QUERY_KEYS } from "../../utils/queryKeys";
 
+const CurriculumContent = () => <div>Curriculum Content</div>;
+const FacultyContent = () => <div>Faculty Information</div>;
+const ProgramsContent = () => <div>Programs Details</div>;
+
 const TABS = [
-  { id: "curriculum", label: "Curriculum" },
-  { id: "faculty", label: "Faculty" },
-  { id: "programs", label: "Programs" },
+  { id: "curriculum", label: "Curriculum", component: CurriculumContent },
+  { id: "faculty", label: "Faculty", component: FacultyContent },
+  { id: "programs", label: "Programs", component: ProgramsContent },
 ];
 
 const DepartmentInfo = () => {
@@ -26,9 +29,9 @@ const DepartmentInfo = () => {
     console.log(department);
   }, [department]);
 
-  if (isDepartmentLoading) {
-    return <div>Loading department..</div>;
-  }
+  if (isDepartmentLoading) return <div>Loading department..</div>;
+
+  const ActiveComponent = TABS.find((tab) => tab.id === activeTab)?.component;
 
   return (
     <div className="p-6 px-2 lg:px-6 md:px-3 md:mx-16 mx-4 flex flex-col gap-6">
@@ -50,11 +53,7 @@ const DepartmentInfo = () => {
         ))}
       </div>
 
-      <div className="p-4">
-        {activeTab === "curriculum" && <p>Curriculum content</p>}
-        {activeTab === "faculty" && <p>Faculty information</p>}
-        {activeTab === "programs" && <p>Programs details</p>}
-      </div>
+      <div className="p-4">{ActiveComponent && <ActiveComponent />}</div>
     </div>
   );
 };
