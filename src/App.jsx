@@ -16,7 +16,6 @@ import { Toaster } from "react-hot-toast";
 const HomeBody = lazy(() => import("./Component/Body/Banner"));
 const Announcements = lazy(() => import("./Component/Body/Announcements"));
 const Message = lazy(() => import("./Component/Body/Message"));
-// const Card = lazy(() => import("./Component/Body/Card"));
 const InformationBulletin = lazy(() => import("./Component/Body/InformationBulletin"));
 const OurCampuses = lazy(() => import("./Component/Body/OurCampuses"));
 const OurPartners = lazy(() => import("./Component/Body/OurPartners"));
@@ -59,7 +58,6 @@ const ViceChancellorMessage = lazy(() => import("./Component/Body/ViceChancellor
 const ResearchDev = lazy(() => import("./Component/Body/ResearchDev"));
 const AlumniSection = lazy(() => import("./Component/Alumni Page/AlumniSection"));
 const JobPortal = lazy(() => import("./Component/Body/JobPortal"));
-const Placement = lazy(() => import("./Component/NavItems/Placement"));
 
 // Campuses Page
 const BPIBS = lazy(() => import("./Component/AllCampusesPage.jsx/BPIBS"));
@@ -69,10 +67,12 @@ const VivekVihar = lazy(() => import("./Component/AllCampusesPage.jsx/VivekVihar
 
 // Student services
 const Ncc = lazy(() => import('./Component/Student Services/Ncc'));
+const Placement = lazy(() => import("./Component/Student Services/Placement"));
 const Canteen = lazy(() => import('./Component/Student Services/Canteen'));
 const Library = lazy(() => import('./Component/Student Services/Library'));
 const Sports = lazy(() => import('./Component/Student Services/Sports'));
 const ComputerCentre = lazy(() => import('./Component/Student Services/ComputerCentre'));
+import PlacementOld from './Component/NavItems/PlacementOld';
 
 function App() {
   return (
@@ -95,8 +95,6 @@ function App() {
                 <OurPartners />
                 <News />
                 <EventsAndActivities />
-               
-                
               </>
             }
           />
@@ -160,7 +158,6 @@ function App() {
           <Route path="/UGC-Guidelines" element={<UnderConstruction />} />
           <Route path="/amenities/Facilities" element={<Amenities />} />
           <Route path="/recruitment" element={<JobPortal />} />
-          <Route path="/Placement" element={<Placement />} />
           <Route path="/news/achievement" element={<IndustryPartnership />} />
           <Route path="/news/partnership" element={<IndustryPartnership />} />
           <Route path="/news/outreach" element={<IndustryPartnership />} />
@@ -181,6 +178,8 @@ function App() {
           <Route path="/grievance-form" element={<GrievanceForm />} />
 
           {/* Student Services */}
+          <Route path="/placement" element={<Placement />} />
+          <Route path="/oldplacement" element={<PlacementOld />} />
           <Route path="/amenities/Computer-Centre" element={<ComputerCentre />} />
           <Route path="/ncc" element={<Ncc />} />
           <Route path="/amenities/Canteen" element={<Canteen />} />

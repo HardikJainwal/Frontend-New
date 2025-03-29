@@ -1,5 +1,8 @@
 import { motion } from "framer-motion";
 import { ArrowRightCircle } from "lucide-react";
+
+import HeadingText from "../Reusable/HeadingText";
+
 import {
   mission,
   vision,
@@ -19,12 +22,11 @@ const VissionMission = () => {
           transition={{ duration: 0.5 }}
           className="text-left mb-10"
         >
-          <h2 className="text-3xl font-bold mb-3">{section.name}</h2>
-          <div className="flex items-center w-[100px]">
-            <div className="h-[2px] bg-blue-900 flex-1"></div>
-            <div className="h-[5px] w-[40px] bg-blue-900 rounded-[10px]"></div>
-            <div className="h-[2px] bg-blue-900 flex-1"></div>
-          </div>
+
+          <HeadingText
+            heading={section.name}
+            headingCN="text-3xl font-bold mb-3"
+          />
 
           {section.desc && <div className="mt-4 space-y-3">{section.desc}</div>}
 

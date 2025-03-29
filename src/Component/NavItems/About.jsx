@@ -1,5 +1,6 @@
 import { ArrowBigRight } from "lucide-react";
 import { aboutTheUniversity } from "../../constants/INTRODUCTION.JS";
+import HeadingText from "../Reusable/HeadingText";
 
 const About = () => {
   console.log(aboutTheUniversity);
@@ -8,13 +9,7 @@ const About = () => {
     <>
       <div className="w-4/5 p-1 sm:p-3 md:p-4 mx-auto my-8 rounded-lg text-gray-800">
         <div className="text-left mb-10">
-          <h2 className="text-3xl mb-2 font-bold">About DSEU</h2>
-          <div className="flex items-center mt-[-5px] w-[120px]">
-            <div className="h-[2px] bg-blue-900 flex-1"></div>
-            <div className="h-[5px] w-[50px] bg-blue-900 rounded-[10px]"></div>
-            <div className="h-[2px] bg-blue-900 flex-1"></div>
-          </div>
-          <div className="my-2"></div>
+          <HeadingText heading={"About DSEU"} />
 
           {aboutTheUniversity.info1.map((info, index) => (
             <p key={index} className="my-4 text-gray-600">
