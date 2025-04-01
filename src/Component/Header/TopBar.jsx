@@ -3,15 +3,15 @@ import { X, UserCheck } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 
 const facultyLoginSamarth = "https://dseu.samarth.ac.in/index.php/site/login";
+const studentLoginSamarth = "https://dseu.samarth.edu.in/index.php/site/login";
 
 const TopBar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const navigate = useNavigate(); // React Router Navigation
+  const navigate = useNavigate();
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-  // Prevent background scrolling when modal is open
   useEffect(() => {
     document.body.style.overflow = isModalOpen ? "hidden" : "auto";
     return () => {
@@ -31,19 +31,22 @@ const TopBar = () => {
 
         <div
           onClick={openModal}
-          className="relative group border-blue-500 border-l-2 border-r-2 px-1 md:px-4 hover:underline hover:text-[#1b1b1b] cursor-pointer whitespace-nowrap mr-2 md:mr-0"
+          className="relative group border-blue-500 border-l-2 border-r-2 px-1 md:px-4 hover:underline hover:text-[#1b1b1b] cursor-pointer whitespace-nowrap"
         >
           <div className="flex items-center whitespace-nowrap text-sm md:text-[1rem]">
             Faculty Login
           </div>
         </div>
 
-        <Link
-          to="#"
-          className="border-blue-500 border-r-2 px-2 md:px-4 hover:underline hover:text-[#1b1b1b] whitespace-nowrap text-sm md:text-[1rem]"
+        <a
+          href={studentLoginSamarth}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="border-blue-500 border-r-2 px-1 md:px-4 hover:underline hover:text-[#1b1b1b] whitespace-nowrap text-sm md:text-[1rem]"
         >
           Student Login
-        </Link>
+        </a>
+
         <Link
           to="alumni"
           className="px-1 md:px-4 hover:underline hover:text-[#1b1b1b] whitespace-nowrap text-sm md:text-[1rem]"
@@ -52,7 +55,6 @@ const TopBar = () => {
         </Link>
       </div>
 
-      {/* Modal Popup */}
       {isModalOpen && (
         <div
           className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[9999] transition-opacity duration-300"
@@ -62,7 +64,6 @@ const TopBar = () => {
             className="relative bg-white/90 backdrop-blur-md shadow-xl w-[420px] rounded-2xl p-6 animate-fadeIn flex flex-col items-center"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Close Button */}
             <button
               onClick={closeModal}
               className="absolute top-3 right-3 text-gray-600 hover:text-gray-900"
@@ -70,7 +71,6 @@ const TopBar = () => {
               <X size={24} />
             </button>
 
-            {/* Header with Icon */}
             <div className="flex flex-col items-center mt-2">
               <UserCheck size={50} className="text-blue-600 mb-2" />
               <h2 className="text-2xl font-bold text-[#0073e6]">
@@ -81,9 +81,7 @@ const TopBar = () => {
               </p>
             </div>
 
-            {/* Login Buttons */}
             <div className="w-full mt-6 space-y-3">
-              {/* DSEU Login (Redirects to /logindseu) */}
               <button
                 onClick={() => {
                   closeModal();
@@ -94,7 +92,6 @@ const TopBar = () => {
                 DSEU Login
               </button>
 
-              {/* Samarth Login (Opens in a New Tab) */}
               <a
                 href={facultyLoginSamarth}
                 target="_blank"

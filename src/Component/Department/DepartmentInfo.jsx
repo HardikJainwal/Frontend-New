@@ -6,9 +6,9 @@ import { useQuery } from "@tanstack/react-query";
 import { getDepartmentById } from "../../utils/apiservice";
 import { QUERY_KEYS } from "../../utils/queryKeys";
 
-const CurriculumContent = () => <div>Curriculum Content</div>;
+const CurriculumContent = () => <div>Curriculum to be provided.</div>;
 const FacultyContent = () => <div>Faculty Information</div>;
-const ProgramsContent = () => <div>Programs Details</div>;
+const ProgramsContent = () => <div>Programs to be provided.</div>;
 
 const TABS = [
   { id: "curriculum", label: "Curriculum", component: CurriculumContent },

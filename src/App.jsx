@@ -1,15 +1,16 @@
 import React, { Suspense, lazy } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
+
+import "./App.css";
 import MidNavbar from "./Component/Header/MidNavbar";
 import Footer from "./Component/Footer/Footer";
-import "./App.css";
-import UnderConstruction from "./Component/Reusable/UnderConstruction";
 import Loader from "./Component/PageLoader/Loader";
+import UnderConstruction from "./Component/Reusable/UnderConstruction";
 import StudyProgramsSection from "./Component/Body/StudentProgram";
 import GrievanceForm from "./Component/NavItems/Grievance";
 import IndustryPartnership from "./Component/News/news1";
 import LoginPage from "./Component/Login/LoginPage";
-import { Toaster } from "react-hot-toast";
 
 
 // Lazy Load Components
@@ -36,6 +37,8 @@ const PGPrograms = lazy(() => import("./Component/Courses/PGProgram"));
 const DiplomaPrograms = lazy(() => import("./Component/Courses/Diploma"));
 const CertificateCourses = lazy(() => import("./Component/Courses/CertificateCourses"));
 const CourseStructure = lazy(() => import("./Component/Courses/CourseStructure"));
+const Curriculum = lazy(() => import('./Component/Courses/Curriculum'));
+const Program = lazy(() => import('./Component/Courses/Program'));
 
 // Academic & Faculty
 const ListOfFaculties = lazy(() => import("./Component/Body/ListOfFaculties"));
@@ -58,6 +61,7 @@ const ViceChancellorMessage = lazy(() => import("./Component/Body/ViceChancellor
 const ResearchDev = lazy(() => import("./Component/Body/ResearchDev"));
 const AlumniSection = lazy(() => import("./Component/Alumni Page/AlumniSection"));
 const JobPortal = lazy(() => import("./Component/Body/JobPortal"));
+const Calendar = lazy(() => import("./Component/Calendar/Calendar"));
 
 // Campuses Page
 const BPIBS = lazy(() => import("./Component/AllCampusesPage.jsx/BPIBS"));
@@ -108,6 +112,8 @@ function App() {
 
           {/* Courses */}
           <Route path="/courses" element={<CoursesPage />} />
+          <Route path="/courses/UG/:id" element={<Program />} />
+          <Route path="/curriculum" element={<Curriculum />} />
           <Route path="/courses/ug" element={<UGPrograms />} />
           <Route path="/courses/pg" element={<PGPrograms />} />
           <Route path="/courses/diploma" element={<DiplomaPrograms />} />
@@ -122,6 +128,8 @@ function App() {
 
           {/* Academics & Faculty */}
           <Route path="/academics/faculty" element={<ListOfFaculties />} />
+          <Route path="/dept/:id" element={<Department />} />
+          <Route path="/department/:departmentId" element={<DepartmentInfo />} />
           <Route path="/logindseu" element={<LoginPage/>} />
 
           {/* Administration */}
@@ -140,11 +148,7 @@ function App() {
 
           {/* Department related */}
           {/* <Route path="/department/:id" element={<Department />} /> */}
-          {/* new departments pages */}
-          <Route path="/dept/:id" element={<Department />} />
-          <Route path="/faculty/:id" element={<FacultyInfo />} />
-          {/* single department page niche aala */}
-          <Route path="/department/:departmentId" element={<DepartmentInfo />} />
+          {/* <Route path="/faculty/:id" element={<FacultyInfo />} /> */}
 
 
           {/* Other Pages */}
@@ -155,9 +159,11 @@ function App() {
             path="/about-us/Vision-and-Mission"
             element={<VissionMission />}
           />
+          <Route path="/information-bulletin" element={<InformationBulletin seperatePage={true} />} />
           <Route path="/UGC-Guidelines" element={<UnderConstruction />} />
           <Route path="/amenities/Facilities" element={<Amenities />} />
           <Route path="/recruitment" element={<JobPortal />} />
+
           <Route path="/news/achievement" element={<IndustryPartnership />} />
           <Route path="/news/partnership" element={<IndustryPartnership />} />
           <Route path="/news/outreach" element={<IndustryPartnership />} />
@@ -165,6 +171,9 @@ function App() {
             path="/news/innovation-hub"
             element={<IndustryPartnership />}
           />
+
+          {/* Calendar */}
+          <Route path="/about-us/calendar" element={<Calendar />} />
 
           {/* Alumni */}
           <Route path="/alumni" element={<AlumniSection />} />
@@ -185,6 +194,7 @@ function App() {
           <Route path="/amenities/Canteen" element={<Canteen />} />
           <Route path="/amenities/Sports" element={<Sports />} />
           <Route path="/amenities/Library" element={<Library />} />
+
         </Routes>
         <Footer />
       </Suspense>

@@ -41,14 +41,14 @@ const navItems = [
       //? removed, as mentioned in the minutes of meeting pdf
 
       // { name: "University Calendar", path: "/about-us/University-Calendar" },
-      { name: "Academic Calendar", path: "/about-us/academic-Calendar" },
-      { name: "Holiday Calendar", path: "/about-us/holiday-Calendar" },
+      { name: "Academic Calendar", path: "/about-us/calendar?tab=academic"},
+      { name: "Holiday Calendar", path: "/about-us/calendar?tab=holiday" },
       {
         name: "Annual Report",
         path: "/about-us/Annual-Report",
       },
       // { name: "Handbook (Brochure)", path: "/about-us/Handbook" },
-      { name: "Information Bulletin", path: "#information-bulletin" },
+      { name: "Information Bulletin", path: "/information-bulletin" },
       // change from, handbook -> information bulletin
     ],
   },
@@ -62,7 +62,7 @@ const navItems = [
       // { name: "Director's Office", path: "/academics/directors-office" },
       {
         name: "Curriculum",
-        path: "/",
+        path: "/curriculum",
       },
       { name: "Programs", path: "/Courses" },
     ],
