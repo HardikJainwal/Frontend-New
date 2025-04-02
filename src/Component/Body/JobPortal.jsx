@@ -168,7 +168,7 @@ const JobListings = () => {
 
 const MobileBar = ({ activeTab, setActiveTab }) => {
   return (
-    <div className="flex gap-2 overflow-x-auto my-4 mx-2 md:hidden">
+    <div className="flex gap-2 overflow-x-auto my-4 mx-2 md:hidden py-2">
       {tabs.map((tab) => (
         <button
           key={tab.id}
