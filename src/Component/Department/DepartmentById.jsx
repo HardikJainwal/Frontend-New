@@ -1,53 +1,27 @@
 import { useEffect, useState } from "react";
 import { Loader2Icon } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-import FacultyLoading from '../ShimmerUI/FacultyLoading'
+import { getDepartmentsBySchool } from "../../utils/apiservice";
+import { ChevronDown } from "lucide-react";
 
-import api from "../../utils/api";
-import { getFaculties } from "../../utils/apiservice";
-
-const getDepartmentsBySchool = async (id) => {
-  const response = await api.get(`/departmentSchools`);
-  return response.data.data.departmentSchools.find(
-    (school) => school._id === id
-  );
-};
-
-const getFacultyByDepartment = async (id) => {
-  const response = await getFaculties();
-  // console.log(response);
-  const data = response.filter(
-    (faculty) => faculty.dept_id?._id === id.toString()
-  );
-
-  return data;
-};
+import ProgramsByDepartment from "./ProgramsByDepartment";
 
 const DepartmentById = () => {
   const [deptId, setDeptId] = useState(null);
-  const { departmentPath: id } = useParams();
+  const [activeTab, setActiveTab] = useState("faculty");
+  const { id } = useParams();
 
-  const navigate = useNavigate();
-
-  // Fetch department names acc to schools
   const { data, isLoading, error } = useQuery({
     queryKey: ["getDepartmentById", id],
     queryFn: () => getDepartmentsBySchool(id),
   });
 
-  // Fetch faculties belonging to a certain department
-  const { data: faculty = [], isLoading: isFacultyLoading } = useQuery({
-    queryKey: ["GETFACULTY", deptId],
-    queryFn: () => getFacultyByDepartment(deptId),
-    enabled: !!deptId,
-  });
-
   useEffect(() => {
     if (!deptId) {
-      if (data?.dept_id) {
-        setDeptId(data.dept_id[0]._id);
+      if (data?.departments) {
+        setDeptId(data.departments[0]._id);
       }
     }
   }, [deptId, data]);
@@ -76,13 +50,15 @@ const DepartmentById = () => {
   }
 
   return (
-    <div className="flex w-fit mx-10 my-10 text-gray-800 flex-col md:flex-row">
+    <div className="flex w-full my-10 text-gray-800 flex-col md:flex-row px-10 gap-5 lg:gap-10 md:gap-3">
       {/* Desktop departments sidebar */}
-      <div className="w-[22%] min-w-[250px] h-fit md:sticky top-0 bg-gray-100 p-5 rounded-lg shadow-md my-10 hidden md:block">
-        <h3 className="text-lg font-bold mb-4">Departments</h3>
+      <div className="w-1/5 h-fit md:sticky top-0 bg-gray-100 p-5 rounded-lg shadow-md my-10 hidden md:block">
+        <h3 className="text-lg md:text-xl lg:text-2xl font-bold mb-4 text-[#333]">
+          Departments
+        </h3>
         <div className="grid grid-cols-1 gap-3">
-          {data.dept_id &&
-            data.dept_id.map((dept) => (
+          {data.departments &&
+            data.departments.map((dept) => (
               <button
                 key={dept._id}
                 className={` flex items-center justify-center p-2 rounded-md transition-colors ${
@@ -99,78 +75,74 @@ const DepartmentById = () => {
       </div>
 
       {/* Mobile departments bar */}
-      <div className="md:hidden w-full mb-4">
-        <select
-          className="w-full p-3 border border-gray-300 rounded-md bg-white text-gray-700"
-          onChange={(e) => setDeptId(e.target.value)}
-          value={deptId || ""}
-        >
-          <option value="" disabled>
-            Select a department
-          </option>
-          {data.dept_id.map((dept) => (
-            <option key={dept._id} value={dept._id}>
+      <MobileSelectBar deptId={deptId} setDeptId={setDeptId} data={data} />
+
+      {/*  main content, either faculty or program  */}
+      <div className="flex-1 flex flex-col">
+        <div className="flex border-b border-gray-300">
+          <button
+            className={`flex-1 py-2 text-center ${
+              activeTab === "faculty"
+                ? "border-b-2 border-blue-500 text-blue-500"
+                : "text-gray-600"
+            }`}
+            onClick={() => setActiveTab("faculty")}
+          >
+            Faculty
+          </button>
+          <button
+            className={`flex-1 py-2 text-center ${
+              activeTab === "program"
+                ? "border-b-2 border-blue-500 text-blue-500"
+                : "text-gray-600"
+            }`}
+            onClick={() => setActiveTab("program")}
+          >
+            Program
+          </button>
+        </div>
+
+        <div className="md:p-4 py-3 px-1">
+          {activeTab === "program" && <ProgramsByDepartment />}
+          {activeTab === "faculty" && "Programs are going to be here"}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const MobileSelectBar = ({ deptId, setDeptId, data }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const selectedDept = data.departments.find((dept) => dept._id === deptId);
+
+  return (
+    <div className="md:hidden w-full flex justify-center items-center mb-4 relative">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-[90%] max-w-md flex items-center justify-between px-4 py-3 border border-blue-500 rounded-md bg-white text-blue-500 font-medium shadow-md"
+      >
+        {selectedDept ? selectedDept.name : "Select a department"}
+        <ChevronDown className="w-5 h-5" />
+      </button>
+
+      {isOpen && (
+        <div className="absolute top-12 w-[90%] max-w-md bg-white border border-gray-300 shadow-md rounded-md overflow-hidden z-10">
+          {data.departments.map((dept) => (
+            <button
+              key={dept._id}
+              className={`w-full text-left px-4 py-2 text-gray-700 hover:bg-blue-100 hover:text-blue-500 transition-colors ${
+                deptId === dept._id ? "bg-blue-500 text-white" : ""
+              }`}
+              onClick={() => {
+                setDeptId(dept._id);
+                setIsOpen(false);
+              }}
+            >
               {dept.name}
-            </option>
+            </button>
           ))}
-        </select>
-      </div>
-
-      <div className="md:ml-20 w-full">
-        <h3 className="text-lg font-semibold mb-3 mt-5">Faculty Members:</h3>
-        {isFacultyLoading ? (
-          <FacultyLoading />
-        ) : faculty.length > 0 ? (
-          <div className="grid grid-cols sm:grid-cols-2 gap-8 sm:gap-10 
-          md:grid-cols-1 lg:grid-cols-3 md:gap-4 justify-center">
-            {faculty.map((member) => (
-              <div
-                key={member._id}
-                className="w-72 h-auto bg-gray-100 rounded-lg shadow-md flex flex-col items-center justify-between p-4"
-              >
-                <div className="w-40 h-40 overflow-hidden rounded-full bg-gray-200 flex items-center justify-center">
-                  {member.photo ? (
-                    <img
-                      src={member.photo}
-                      alt={`${member.firstname} ${member.surname}`}
-                      className="w-full h-full"
-                    />
-                  ) : (
-                    <span className="text-gray-500 text-2xl font-bold">
-                      {member.firstname ? member.firstname[0] : ""}
-                      {member.surname ? member.surname[0] : ""}
-                    </span>
-                  )}
-                </div>
-
-                <div className="text-center mt-2">
-                  <p className="font-semibold text-lg truncate max-w-full">
-                    {member.salutation} {member.firstname} {member.surname}
-                  </p>
-                  <a
-                    href={`mailto:${member.email}`}
-                    className="text-blue-500 hover:underline mt-1 block truncate max-w-full"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    {member.email}
-                  </a>
-                </div>
-
-                <button
-                  onClick={() => navigate(`/faculty/${member._id}`)}
-                  className="mt-4 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md transition-colors w-full"
-                >
-                  View Faculty
-                </button>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className="text-center p-10 rounded-xl border border-gray-300 text-lg font-medium text-gray-700 mt-6">
-            No faculty members found for this department.
-          </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };

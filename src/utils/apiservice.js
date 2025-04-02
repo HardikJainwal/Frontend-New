@@ -124,4 +124,3 @@ export const getDepartmentsBySchool = async (id) => {
 
   return { departments: data.dept_id, name : data.name };
 };
-
