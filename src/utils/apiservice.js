@@ -122,5 +122,14 @@ export const getDepartmentsBySchool = async (id) => {
     (school) => school._id === id
   );
 
-  return { departments: data.dept_id, name : data.name };
+  return { departments: data.dept_id, name: data.name };
+};
+
+// get hod info
+export const getHodInfo = async (deptId) => {
+  const departmentOfHod = await getDepartmentById(deptId);
+  if (!departmentOfHod?.hod) return false; // HOD doesn't exist
+
+  const allFaculties = await getFaculties();
+  return allFaculties.find((faculty) => faculty.email === departmentOfHod.hod) || false;
 };

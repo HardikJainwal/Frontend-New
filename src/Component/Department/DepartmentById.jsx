@@ -7,6 +7,7 @@ import { getDepartmentsBySchool } from "../../utils/apiservice";
 import { ChevronDown } from "lucide-react";
 
 import ProgramsByDepartment from "./ProgramsByDepartment";
+import FacultyByDepartment from "./FacultyByDepartment";
 
 const DepartmentById = () => {
   const [deptId, setDeptId] = useState(null);
@@ -50,7 +51,7 @@ const DepartmentById = () => {
   }
 
   return (
-    <div className="flex w-full my-10 text-gray-800 flex-col md:flex-row px-10 gap-5 lg:gap-10 md:gap-3">
+    <div className="flex w-full my-10 text-gray-800 flex-col md:flex-row md:px-10 px-6 gap-5 lg:gap-10 md:gap-3">
       {/* Desktop departments sidebar */}
       <div className="w-1/5 h-fit md:sticky top-0 bg-gray-100 p-5 rounded-lg shadow-md my-10 hidden md:block">
         <h3 className="text-lg md:text-xl lg:text-2xl font-bold mb-4 text-[#333]">
@@ -102,9 +103,9 @@ const DepartmentById = () => {
           </button>
         </div>
 
-        <div className="md:p-4 py-3 px-1">
+        <div className="md:p-4 py-3">
           {activeTab === "program" && <ProgramsByDepartment />}
-          {activeTab === "faculty" && "Programs are going to be here"}
+          {activeTab === "faculty" && <FacultyByDepartment deptId={deptId} />}
         </div>
       </div>
     </div>

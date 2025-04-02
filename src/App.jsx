@@ -42,14 +42,12 @@ const Program = lazy(() => import('./Component/Courses/Program'));
 
 // Academic & Faculty
 const ListOfFaculties = lazy(() => import("./Component/Body/ListOfFaculties"));
-// const DepartmentPage = lazy(() => import("./Component/Body/DepartmentPage"));
+const DepartmentById = lazy(() => import('./Component/Department/DepartmentById'));
 
 const Administration = lazy(() => import('./Component/Administration/page'));
 
 // Department related
-const DepartmentById = lazy(() => import('./Component/Department/DepartmentById'));
 const FacultyInfo = lazy(() => import('./Component/Department/FacultyInfo'));
-const DepartmentInfo = lazy(() => import('./Component/Department/DepartmentInfo'));
 
 
 // Other Sections
@@ -130,7 +128,6 @@ function App() {
           {/* Academics & Faculty */}
           <Route path="/academics/faculty" element={<ListOfFaculties />} />
           <Route path="/dept/:id" element={<DepartmentById />} />
-          <Route path="/department/:departmentId" element={<DepartmentInfo />} />
           <Route path="/logindseu" element={<LoginPage/>} />
 
           {/* Administration */}

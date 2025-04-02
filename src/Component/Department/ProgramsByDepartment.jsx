@@ -30,7 +30,7 @@ const ProgramsByDepartment = () => {
           {categories.map((category) => (
             <button
               key={category}
-              className={`px-6 py-2 text-sm font-medium rounded-full transition-all duration-300 ${
+              className={`px-7 py-2 text-sm font-medium rounded-full transition-all duration-300 ${
                 activeCategory === category
                   ? "bg-blue-500 text-white shadow-md scale-105"
                   : "bg-transparent text-gray-700 hover:bg-gray-200"
