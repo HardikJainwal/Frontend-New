@@ -61,7 +61,9 @@ const ViceChancellorMessage = lazy(() => import("./Component/Body/ViceChancellor
 const ResearchDev = lazy(() => import("./Component/Body/ResearchDev"));
 const AlumniSection = lazy(() => import("./Component/Alumni Page/AlumniSection"));
 const JobPortal = lazy(() => import("./Component/Body/JobPortal"));
-const Calendar = lazy(() => import("./Component/Calendar/Calendar"));
+
+const AcademicCalendar = lazy(() => import('./Component/Calendar/AcademicCalendar'));
+const HolidayCalendar = lazy(() => import('./Component/Calendar/HolidayCalendar'));
 
 // Campuses Page
 const BPIBS = lazy(() => import("./Component/AllCampusesPage.jsx/BPIBS"));
@@ -173,7 +175,8 @@ function App() {
           />
 
           {/* Calendar */}
-          <Route path="/about-us/calendar" element={<Calendar />} />
+          <Route path="/academics/academic-calendar" element={<AcademicCalendar />} />
+          <Route path="/holiday-calendar" element={<HolidayCalendar />} />
 
           {/* Alumni */}
           <Route path="/alumni" element={<AlumniSection />} />

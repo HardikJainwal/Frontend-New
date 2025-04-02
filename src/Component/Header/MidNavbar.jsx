@@ -37,12 +37,6 @@ const navItems = [
     dropdownItems: [
       { name: "About the University", path: "/about-us/About-the-University" },
       { name: "Vision and Mission", path: "/about-us/Vision-and-Mission" },
-      // { name: "Policy", path: "/about-us/Policy" },
-      //? removed, as mentioned in the minutes of meeting pdf
-
-      // { name: "University Calendar", path: "/about-us/University-Calendar" },
-      { name: "Academic Calendar", path: "/about-us/calendar?tab=academic"},
-      { name: "Holiday Calendar", path: "/about-us/calendar?tab=holiday" },
       {
         name: "Annual Report",
         path: "/about-us/Annual-Report",
@@ -55,16 +49,10 @@ const navItems = [
   {
     name: "Academics",
     dropdownItems: [
-      // { name: "Programs", path: "/academics/programs" },
-      // { name: "Departments", path: "/dept/arabics" },
-     
-      { name: "Faculty", path: "/academics/faculty" },
-      // { name: "Director's Office", path: "/academics/directors-office" },
-      {
-        name: "Curriculum",
-        path: "/curriculum",
-      },
-      { name: "Programs", path: "/Courses" },
+      { name: "Faculties & Department", path: "/academics/faculty" },
+      { name: "Academic Regulations", path: "/academics/regulations"},
+      { name: "Academic Calendar", path: "/academics/academic-calendar" }
+      // { name: "Programs", path: "/Courses" },
     ],
   },
   {
