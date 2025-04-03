@@ -112,7 +112,7 @@ function App() {
 
           {/* Courses */}
           <Route path="/courses" element={<CoursesPage />} />
-          <Route path="/courses/UG/:id" element={<Program />} />
+          <Route path="/courses/:system/:id" element={<Program />} />
           <Route path="/curriculum" element={<Curriculum />} />
           <Route path="/courses/ug" element={<UGPrograms />} />
           <Route path="/courses/pg" element={<PGPrograms />} />

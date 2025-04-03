@@ -67,6 +67,7 @@ const AcademicRegulations = () => {
               </a>
             </div>
 
+            {/* For mobile */}
             <div className="block md:hidden">
               <a
                 href={reg.link}

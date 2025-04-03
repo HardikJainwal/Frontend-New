@@ -52,7 +52,6 @@ const DepartmentById = () => {
 
   return (
     <div className="flex w-full my-10 text-gray-800 flex-col md:flex-row md:px-10 px-6 gap-5 lg:gap-10 md:gap-3">
-      
       {/* desktop view of navbar */}
       <div className="w-1/5 h-fit md:sticky top-0 bg-gray-100 p-5 rounded-lg shadow-md my-10 hidden md:block">
         <h3 className="text-lg md:text-xl lg:text-2xl font-bold mb-4 text-[#333]">
@@ -106,7 +105,7 @@ const DepartmentById = () => {
 
         <div className="md:p-4 py-3">
           {activeTab === "faculty" && <FacultyByDepartment deptId={deptId} />}
-          {activeTab === "program" && <ProgramsByDepartment />}
+          {activeTab === "program" && <ProgramsByDepartment deptId={deptId} />}
         </div>
       </div>
     </div>
