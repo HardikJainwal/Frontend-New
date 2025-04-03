@@ -43,6 +43,7 @@ const Program = lazy(() => import('./Component/Courses/Program'));
 // Academic & Faculty
 const ListOfFaculties = lazy(() => import("./Component/Body/ListOfFaculties"));
 const DepartmentById = lazy(() => import('./Component/Department/DepartmentById'));
+const AcademicRegulations = lazy(() => import('./Component/AcademicRegulation/page'));
 
 const Administration = lazy(() => import('./Component/Administration/page'));
 
@@ -127,6 +128,7 @@ function App() {
 
           {/* Academics & Faculty */}
           <Route path="/academics/faculty" element={<ListOfFaculties />} />
+          <Route path="/academics/regulations" element={<AcademicRegulations />} />
           <Route path="/dept/:id" element={<DepartmentById />} />
           <Route path="/logindseu" element={<LoginPage/>} />
 
