@@ -45,7 +45,7 @@ const LoginPage = () => {
   // Determine redirect path based on user role
   const getRedirectPath = () => {
     const userData = JSON.parse(localStorage.getItem('user'));
-    const userRole = userData?.user?.designation;
+    const userRole = userData?.user?.designation; 
 
     switch(userRole) {
       case 'Faculty':

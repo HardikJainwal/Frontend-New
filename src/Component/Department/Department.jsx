@@ -1,13 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 
-import { getDeparments } from "../../utils/apiservice";
+import { getDepartments } from "../../utils/apiservice";
 import { QUERY_KEYS } from "../../utils/queryKeys";
 
 const Department = () => {
   const { data, isLoading, error } = useQuery({
     queryKey: [QUERY_KEYS.GET_DEPARTMENTS],
-    queryFn: getDeparments,
+    queryFn: getDepartments,
   });
 
   const departments = Array.isArray(data) ? data : [];
