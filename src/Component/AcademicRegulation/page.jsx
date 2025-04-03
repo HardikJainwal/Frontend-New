@@ -27,7 +27,7 @@ const AcademicRegulations = () => {
   const [randomColors] = useState(regulations.map(() => getRandomColor()));
 
   return (
-    <main className="flex flex-col mt-8 md:mt-12 md:mb-10 mb-16 justify-center items-center w-full max-w-3xl gap-8 mx-auto">
+    <main className="flex flex-col mt-8 md:mt-12 md:mb-10 mb-16 justify-center items-center w-full max-w-3xl gap-4 sm:gap-6 md:gap-8 mx-auto">
       <div className="text-center">
         <h2 className="text-3xl md:text-[2.4rem] font-bold text-[#222] tracking-wide">
           Academic Regulations
