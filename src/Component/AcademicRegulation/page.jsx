@@ -1,32 +1,35 @@
-const regulations = [
-  {
-    id: "2B",
-    name: "Regulation 2B",
-    link: "/regulations/Regulation_2B.pdf",
-  },
-  {
-    id: "3C",
-    name: "Regulation 3C",
-    link: "/regulations/Regulation_3C.pdf",
-  },
-  {
-    id: "3A",
-    name: "Regulation 3A",
-    link: "/regulations/Regulation_3A.pdf",
-  },
-  {
-    id: "3B",
-    name: "Regulation 3B",
-    link: "/regulations/Regulation_3B.pdf",
-  },
+import { useState } from "react";
+import { regulations } from "../../constants/ACADEMICREGULATIONS.JS";
+
+const colors = [
+  "border-green-900",
+  "border-blue-500",
+  "border-red-500",
+  "border-yellow-400",
+  "border-purple-500",
+  "border-pink-400",
+  "border-indigo-500",
+  "border-teal-400",
+  "border-cyan-500",
+  "border-orange-500",
+  "border-lime-400",
+  "border-amber-500",
+  "border-fuchsia-500",
+  "border-violet-400",
+  "border-rose-500",
+  "border-emerald-500",
+  "border-sky-400",
 ];
 
+const getRandomColor = () => colors[Math.floor(Math.random() * colors.length)];
+
 const AcademicRegulations = () => {
+  const [randomColors] = useState(regulations.map(() => getRandomColor()));
+
   return (
-    <main className="flex flex-col mx-auto mt-8 md:mt-12 md:mb-10 mb-16 justify-center items-center w-full max-w-3xl gap-8">
-      {/* Heading */}
+    <main className="flex flex-col mt-8 md:mt-12 md:mb-10 mb-16 justify-center items-center w-full max-w-3xl gap-8 mx-auto">
       <div className="text-center">
-        <h2 className="text-3xl md:text-[2.4rem] font-bold text-[#222] tracking-wide ">
+        <h2 className="text-3xl md:text-[2.4rem] font-bold text-[#222] tracking-wide">
           Academic Regulations
         </h2>
         <div className="flex items-center justify-center mt-4 w-[150px] mx-auto">
@@ -36,20 +39,36 @@ const AcademicRegulations = () => {
         </div>
       </div>
 
-      <ul>
-        {regulations.map((regulation) => (
-          <li key={regulation.id}>
-            <a
-              href={regulation.link}
-              target="_blank"
-              // rel="noopener noreferrer"
-              className="px-4 py-2 bg-orange-600 text-white rounded-lg transition-colors hover:bg-blue-500"
-            >
-              {regulation.name}
-            </a>
-          </li>
+      <div className="w-full p-5 space-y-4">
+        {regulations.map((reg, index) => (
+          <div
+            key={reg.id}
+            className={`border-l-4 ${randomColors[index]} bg-white p-4 shadow-md rounded-md cursor-pointer hover:shadow-lg hover:scale-[1.04] transition-all duration-300 flex justify-between items-center gap-10`}
+          >
+            <div>
+              <p className="text-lg font-semibold text-gray-800">{reg.name}</p>
+              <p className="text-sm text-gray-600">{reg.desc}</p>
+            </div>
+
+            <div className="flex md:gap-3 gap-2">
+              <a
+                href={reg.link}
+                target="_blank"
+                className="px-3 py-2 bg-orange-600 text-white text-sm rounded-lg transition-colors hover:bg-orange-500"
+              >
+                View
+              </a>
+              <a
+                href={reg.link}
+                download
+                className="px-3 py-2 bg-blue-600 text-white text-sm rounded-lg transition-colors hover:bg-blue-500"
+              >
+                Download
+              </a>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
     </main>
   );
 };
