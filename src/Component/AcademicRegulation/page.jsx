@@ -50,7 +50,7 @@ const AcademicRegulations = () => {
               <p className="text-sm text-gray-600">{reg.desc}</p>
             </div>
 
-            <div className="flex md:gap-3 gap-2">
+            <div className="md:flex md:gap-3 gap-2 hidden">
               <a
                 href={reg.link}
                 target="_blank"
@@ -64,6 +64,16 @@ const AcademicRegulations = () => {
                 className="px-3 py-2 bg-blue-600 text-white text-sm rounded-lg transition-colors hover:bg-blue-500"
               >
                 Download
+              </a>
+            </div>
+
+            <div className="block md:hidden">
+              <a
+                href={reg.link}
+                target="_blank"
+                className="px-3 py-2 bg-orange-600 text-white text-sm rounded-lg transition-colors hover:bg-orange-500"
+              >
+                Open
               </a>
             </div>
           </div>
