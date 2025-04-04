@@ -4,18 +4,26 @@ const TeamDseu = () => {
   const categories = [...new Set(members.map((member) => member.category))];
 
   return (
-    <div className="p-6">
-      <div className="flex flex-col gap-20 md:gap-16">
+    <div className="px-4 md:px-12 py-10 bg-gray-50">
+      <div className="flex flex-col gap-24">
         {categories.map((category) => {
           const filteredMembers = members.filter(
             (member) => member.category === category
           );
 
+          // Convert "Registrar" heading to uppercase
+          const isRegistrar = category.toLowerCase() === "registrar";
+
           return (
-            <div key={category} className="space-y-8">
-              <h3 className="text-2xl font-semibold text-gray-800 border-b-2 border-gray-300 pb-3 mb-6 text-center shadow-sm">
+            <div key={category} className="space-y-10">
+              <h3
+                className={`text-3xl md:text-4xl font-bold text-center text-gray-800 border-b-4 border-orange-400 pb-4 shadow-sm w-fit mx-auto ${
+                  isRegistrar ? "uppercase" : ""
+                }`}
+              >
                 {category}
               </h3>
+
               <div
                 className={`gap-8 ${
                   filteredMembers.length === 1
@@ -26,16 +34,19 @@ const TeamDseu = () => {
                 {filteredMembers.map((member) => (
                   <div
                     key={member.id}
-                    className="p-6 border rounded-lg shadow-sm bg-white flex flex-col items-center text-center space-y-4"
+                    className="w-full max-w-xs bg-white border border-gray-200 rounded-2xl shadow-md p-6 flex flex-col items-center text-center transition-transform hover:scale-105 duration-300"
                   >
                     <img
                       src={member.src || "/placeholder.jpg"}
                       alt={member.name}
-                      className="w-36 h-36 object-cover rounded-full border-2 border-gray-300"
+                      className="w-32 h-32 object-cover rounded-full shadow-sm mb-4"
                     />
-                    <h4 className="text-xl font-semibold text-orange-500">
+                    <h4 className="text-lg md:text-xl font-semibold text-gray-800">
                       {member.name}
                     </h4>
+                    <div className="text-blue-500 text-[14px]">
+                      {member.designation}
+                    </div>
                   </div>
                 ))}
               </div>

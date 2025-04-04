@@ -13,7 +13,7 @@ import kamnaSachdeva from './kamnaSachdeva.png'
 import kaushalSachdeva from './kaushalendarVarma.jpg';
 import kavitaKhanna from './kavitaKhanna.png';
 import kieraatSrivastava from './kieraatSrivastava.jpg';
-import kkChandan from './kkChandan.png';
+import shivamGupta from './shivamGupta.jpg';
 import kmCleetus from './kmCleetus.jpg';
 import makarandDevidasJoshi from './makarandDevidasJoshi.png';
 import manjuJain from './manjuJain.png';
@@ -21,7 +21,7 @@ import monicaChopra from './monicaChopra.jpg';
 import mukeshKumarGupta from './mukeshKumarGupta.png';
 import niharikaPandey from './niharikaPandey.jpg';
 import omPrakashSingh from './omPrakashSingh.jpg';
-import pankajLathar from './pankajLathar.jpg';
+import pankajLathar from './pankajLathar.jpeg';
 import pankarKumarSigh from './pankarKumarSigh.png';
 import panvirChitre from './panvirChitre.jpg';
 import parvathyUnnikrishan from './parvathyUnnikrishan.jpg';
@@ -41,6 +41,7 @@ import svVageesha from './svVageesha.jpg';
 import veenaUpadhay from './veenaUpadhay.jpg';
 import vibhakarShrimali from './vibhakarShrimali.jpg';
 import vicechancellor from './vicechancellor.jpg';
+import vivekAggarwal from './vivekAggrawal.jpg'
 
 
 export {
@@ -59,7 +60,7 @@ export {
     kaushalSachdeva,
     kavitaKhanna,
     kieraatSrivastava,
-    kkChandan,
+    shivamGupta,
     kmCleetus,
     makarandDevidasJoshi,
     manjuJain,
@@ -87,4 +88,5 @@ export {
     veenaUpadhay,
     vibhakarShrimali,
     vicechancellor,
+    vivekAggarwal
 };

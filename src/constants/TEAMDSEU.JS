@@ -14,7 +14,7 @@ import {
   kaushalSachdeva,
   kavitaKhanna,
   kieraatSrivastava,
-  kkChandan,
+  shivamGupta,
   kmCleetus,
   makarandDevidasJoshi,
   manjuJain,
@@ -42,6 +42,7 @@ import {
   veenaUpadhay,
   vibhakarShrimali,
   vicechancellor,
+  vivekAggarwal
 } from '../assets/team-dseu'
 
 export const members = [
@@ -61,9 +62,17 @@ export const members = [
   },
   {
     id: 3,
+    name: "Vivek Aggrawal",
+    src: vivekAggarwal,
+    designation: "Registrar",
+    category: "registrar"
+
+  },
+  {
+    id: 3,
     name: "Prof. (Dr.) Gagan Dhawan",
     src: gagandhawan,
-    designation: "Registrar, Dean - Allied Medical Sciences, Dean - International Affairs",
+    designation: "Controller of Finance",
     category: "University Officers"
   },
   {
@@ -74,45 +83,24 @@ export const members = [
     category: "University Officers"
   },
   {
-    id: 5,
-    name: "Col. Sanjay Dahiya",
-    src: sanjayDahiya,
-    designation: "Controller of Finance",
-    category: "University Officers"
-  },
-  {
     id: 6,
     name: "Dr. Pankaj Lathar",
     src: pankajLathar,
-    designation: "Controller of Examination",
-    category: "University Officers"
-  },
-  {
-    id: 7,
-    name: "Pravir Chitre",
-    src: panvirChitre,
-    designation: "Joint Director (IT)",
+    designation: "Controller of Examination, Joint Director(public relation) & Chief Vigilence Officer",
     category: "University Officers"
   },
   {
     id: 8,
     name: "Bindu Nair",
     src: binduNair,
-    designation: "Deputy Registrar (Human Resources)",
-    category: "University Officers"
-  },
-  {
-    id: 9,
-    name: "K.M. Cleetus",
-    src: kmCleetus,
-    designation: "Deputy Controller of Accounts",
+    designation: "Deputy Registrar",
     category: "University Officers"
   },
   {
     id: 10,
     name: "Prof. (Dr.) Kamna Sachdeva",
     src: kamnaSachdeva,
-    designation: "Joint Director (Academics), DSEU, HQs",
+    designation: "Director Academics",
     category: "University Officers"
   },
   {
@@ -131,8 +119,8 @@ export const members = [
   },
   {
     id: 13,
-    name: "Dr. Pramod Kumar Goyal",
-    src: pramodKumarGoyal,
+    name: "Dr. Arun Dabas",
+    src: "",
     designation: "Campus Director - Ranhola Campus",
     category: "Campus Directors"
   },
@@ -208,8 +196,8 @@ export const members = [
   },
   {
     id: 24,
-    name: "Dr. Kavita Khanna",
-    src: kavitaKhanna,
+    name: "Dr. Pankaj Lathar",
+    src:pankajLathar,
     designation: "Campus Director - DSEU Dwarka Campus",
     category: "Campus Directors"
   },
@@ -243,9 +231,9 @@ export const members = [
   },
   {
     id: 29,
-    name: "K K Chandan",
-    src: kkChandan,
-    designation: "OSD (Recruitment)",
+    name: "Shivam Gupta",
+    src: shivamGupta,
+    designation: "OSD IT and Process Automation & Model officer Samarth ERP",
     category: "Officers"
   },
   {
@@ -253,20 +241,6 @@ export const members = [
     name: "Mukesh Kumar Gupta",
     src: mukeshKumarGupta,
     designation: "OSD (Legal/RTI)",
-    category: "Officers"
-  },
-  {
-    id: 31,
-    name: "Makarand Devidas Joshi",
-    src: makarandDevidasJoshi,
-    designation: "OSD (Purchase)",
-    category: "Officers"
-  },
-  {
-    id: 32,
-    name: "Dr. Amit Kharpade",
-    src: drAmitKharapade,
-    designation: "Liaison officer (SC/ST/PwD)",
     category: "Officers"
   },
   {
@@ -280,14 +254,14 @@ export const members = [
     id: 34,
     name: "Dr. Surender Kumar Sharma",
     src: surrendarKumarSharma,
-    designation: "Assistant Registrar (Store and Purchase)",
+    designation: "Assistant Registrar",
     category: "Officers"
   },
   {
     id: 35,
     name: "Dr. Ruchika Singh",
     src: ruchikaSingh,
-    designation: "Assistant Registrar (Exams and Admission)",
+    designation: "Assistant Registrar",
     category: "Officers"
   },
   {
@@ -309,13 +283,6 @@ export const members = [
     name: "Kireet Kant Srivastava",
     src: kieraatSrivastava,
     designation: "Executive Engineer (Civil)",
-    category: "Officers"
-  },
-  {
-    id: 39,
-    name: "Jatin Verma",
-    src: janitVerma,
-    designation: "PIO-RTI & In-Charge PGMS/CPGRAMS/LGLP",
     category: "Officers"
   },
   {
