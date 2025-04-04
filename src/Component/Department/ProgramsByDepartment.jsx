@@ -13,6 +13,8 @@ const ProgramsByDepartment = ({ deptId }) => {
   const [activeCategory, setActiveCategory] = useState("UG");
   const navigate = useNavigate();
 
+  console.log(deptId);
+
   // programs by department
   const {
     data: programData,
@@ -58,7 +60,9 @@ const ProgramsByDepartment = ({ deptId }) => {
             <div
               key={index}
               className="border-l-4 border-blue-500 bg-white p-4 shadow-md rounded-md cursor-pointer hover:shadow-lg hover:scale-105 hover:bg-blue-50 transition-all duration-300"
-              onClick={() => navigate(`/courses/${activeCategory}/${program.department._id}`)}
+              onClick={() =>
+                navigate(`/courses/${activeCategory}/${program._id}`)
+              }
             >
               <p className="text-lg font-semibold text-gray-800">
                 {program.name}

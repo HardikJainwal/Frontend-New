@@ -7,4 +7,5 @@ export const QUERY_KEYS = Object.freeze({
     GET_DEPARTMENTS_BY_SCHOOL: "getDepartmentsBySchool",
     GET_HOD_INFO: "getHodInfo",
     GET_PROGRAM_BY_DEPARTMENT: "getProgramByDepartment",
+    GET_PROGRAM_BY_ID: "getProgram",
 });
