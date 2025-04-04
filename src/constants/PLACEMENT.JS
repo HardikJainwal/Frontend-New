@@ -1,4 +1,4 @@
-import { abb, concentrix, daikin, hero, infosys, marutisuzuki, nokia, pl1, pl2, pl3, pl4, pl5, samsung, thoughtswork } from "../assets/placement";
+import { abb, concentrix, daikin, hero, infosys, marutisuzuki, nokia, pl1, pl2, pl3, pl4, pl5, samsung, thoughtswork, acres, decathlon, fluor, indigo, max, shneider, sony, tata } from "../assets/placement";
 
 const invitationData = {
     id: "invitation",
@@ -97,7 +97,48 @@ const carouselImages = [
         id: "concentrix",
         src: concentrix,
         data: "19 students selected at 3 LPA"
+    },
+    {
+        id: "acres",
+        src: acres,
+        data: "20 students selected for 1.8 + PPO"
+    },
+    {
+        id: "decathlon",
+        src: decathlon,
+        data: "3 students selected at 3.3 LPA"
+    },
+    {
+        id: "fluor",
+        src: fluor,
+        data: "13 students selected at 4.5 LPA"
+    },
+    {
+        id: "tata",
+        src: tata,
+        data: "44 students selected at 3.25 LPA"
+    },
+    {
+        id: "indigo",
+        src: indigo,
+        data: "64 students selected at 3.0  LPA"
+    },
+    {
+        id: "max",
+        src: max,
+        data: "5 students selected at 3.36 LPA"
+    },
+    {
+        id: "shneider",
+        src: shneider,
+        data: "5 students selected at 3.75  LPA"
+    },
+    {
+        id: "sony",
+        src: sony,
+        data: "32 students selected at 2.9  LPA"
     }
+
 ]
 
 const placementImages = [
