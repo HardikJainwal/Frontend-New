@@ -1,6 +1,4 @@
-import { useState } from "react";
-import { ugPrograms as programs } from "../../constants/UGPROGRAM.JS";
-import { useNavigate } from "react-router-dom";
+import { regulations } from "../../constants/REGULATIONS.JS"; // Assuming regulations are stored here
 
 const UGPrograms = () => {
   const [selectedProgram, setSelectedProgram] = useState(null);

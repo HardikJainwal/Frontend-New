@@ -11,6 +11,7 @@ import StudyProgramsSection from "./Component/Body/StudentProgram";
 import GrievanceForm from "./Component/NavItems/Grievance";
 import IndustryPartnership from "./Component/News/news1";
 import LoginPage from "./Component/Login/LoginPage";
+import AcademicRegulation from "./Component/AcademicRegulation/page";
 
 // Lazy Load Components
 const HomeBody = lazy(() => import("./Component/Body/Banner"));
@@ -137,7 +138,7 @@ function App() {
 
           {/* Courses */}
           <Route path="/courses" element={<CoursesPage />} />
-          <Route path="/courses/UG/:id" element={<Program />} />
+          <Route path="/courses/:system/:id" element={<Program />} />
           <Route path="/curriculum" element={<Curriculum />} />
           <Route path="/courses/undergraduate" element={<UGPrograms />} />
           <Route path="/courses/postgraduate" element={<PGPrograms />} />
@@ -153,6 +154,10 @@ function App() {
 
           {/* Academics & Faculty */}
           <Route path="/academics/faculty" element={<ListOfFaculties />} />
+          <Route
+            path="/academics/regulations"
+            element={<AcademicRegulation />}
+          />
           <Route path="/dept/:id" element={<DepartmentById />} />
           <Route path="/logindseu" element={<LoginPage />} />
 

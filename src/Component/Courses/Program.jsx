@@ -1,127 +1,140 @@
 import { useParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { Loader2Icon } from "lucide-react";
+import { getProgramData } from "../../utils/apiservice";
+import { QUERY_KEYS } from "../../utils/queryKeys";
 
 const Program = () => {
   const { id } = useParams();
 
+  const { data, isLoading, error } = useQuery({
+    queryFn: () => getProgramData(id),
+    queryKey: [QUERY_KEYS.GET_PROGRAM_BY_ID, id],
+    enabled: !!id,
+  });
+
+  const years = data?.years ? Object.values(data.years) : [];
+
+  if (isLoading) {
+    return (
+      <div className="flex flex-col items-center justify-center md:h-96 h-screen space-y-4 text-gray-700 animate-pulse">
+        <Loader2Icon className="animate-spin h-16 w-16 animate-spin-color" />
+        <p className="text-lg font-medium">Loading, please wait...</p>
+      </div>
+    );
+  }
+
   return (
-    <main className="flex flex-col mx-auto mt-8 md:mt-12 md:mb-10 mb-16 justify-center items-center gap-8 w-full max-w-3xl">
-      <div className="text-center">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-[#333]">
-          B.Tech Artificial Intelligence
+    <main className="flex flex-col mx-auto px-4 sm:px-6 mt-10 mb-20 justify-center items-center gap-8 sm:gap-10 w-full max-w-4xl">
+      <section className="text-center w-full">
+        <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-800 max-w-3xl mx-auto break-words">
+          {data?.name || "Program Name"}
         </h2>
-        <div className="flex items-center justify-center mt-4 w-[120px] mx-auto">
-          <div className="h-[2px] bg-blue-900 flex-1"></div>
-          <div className="h-[5px] w-[50px] bg-blue-900 rounded-[10px] mx-2"></div>
-          <div className="h-[2px] bg-blue-900 flex-1"></div>
+        <div className="mt-3 sm:mt-4 flex justify-center items-center">
+          <div className="h-1 w-12 sm:w-16 bg-blue-700 rounded-full"></div>
+          <div className="h-2 w-8 sm:w-10 bg-blue-900 mx-2 rounded-full"></div>
+          <div className="h-1 w-12 sm:w-16 bg-blue-700 rounded-full"></div>
         </div>
-      </div>
+      </section>
 
-      <div className="w-full p-5">
-        <div className="flex justify-between items-center border-b pb-2 mb-4">
-          <div className="md:text-lg text-md font-medium text-blue-500">
+      <section className="w-full bg-white p-6 sm:p-8 rounded-2xl sm:rounded-3xl shadow-md">
+        <div className="flex flex-col sm:flex-row justify-between py-3 sm:py-4 border-b">
+          <span className="text-base sm:text-lg font-semibold text-blue-600">
             Duration
-          </div>
-          <div className="md:text-lg text-md text-[#777]">4 Years</div>
+          </span>
+          <span className="text-gray-700 text-base sm:text-lg">{data?.duration || "-"}</span>
         </div>
-
-        <div className="flex justify-between items-center border-b pb-2 mb-4">
-          <div className="md:text-lg text-md font-medium text-blue-500">
+        <div className="flex flex-col sm:flex-row justify-between py-3 sm:py-4 border-b">
+          <span className="text-base sm:text-lg font-semibold text-blue-600">
             Mode
-          </div>
-          <div className="md:text-lg text-md text-[#777]">Offline</div>
+          </span>
+          <span className="text-gray-700 text-base sm:text-lg">{data?.mode || "-"}</span>
         </div>
-
-        <div className="flex justify-between items-start border-b pb-2 mb-4">
-          <div className="md:text-lg text-md font-medium text-blue-500">
+        <div className="flex flex-col sm:flex-row justify-between py-3 sm:py-4">
+          <span className="text-base sm:text-lg font-semibold text-blue-600">
             Exit Options
-          </div>
-          <div className="md:text-lg text-md text-[#777]">
-            <div className="grid grid-cols-2 gap-2">
-              <div>After 1 year</div>
-              <div>After 2 years</div>
-              <div>After 3 years</div>
-              <div>After 4 years</div>
-            </div>
+          </span>
+          <div className="text-gray-700 text-base sm:text-lg sm:text-right">
+            {data?.exit_options?.map((option, idx) => (
+              <p key={idx}>{option}</p>
+            )) || "-"}
           </div>
         </div>
+      </section>
 
-        <div className="flex justify-between items-center border-b pb-2 mb-4">
-          <div className="md:text-lg text-md font-medium text-blue-500">
-            Eligibility
-          </div>
-          <div className="md:text-lg text-md text-[#777]">
-            Multidisciplinary, Research, Industry, etc.
-          </div>
-        </div>
-      </div>
-
-      <hr className="w-[90%] mt-6 border-t-2 border-blue-900 mx-auto" />
-
-      <div className="w-full mt-4">
-        <div className="text-center">
-          <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-[#333]">
-            NAP Table
-          </h3>
+      <section className="w-full flex flex-col items-center text-center">
+        <h3 className="text-xl sm:text-3xl md:text-[2rem] font-bold text-gray-800">
+          NEP Based Structure
+        </h3>
+        <div className="mt-3 sm:mt-4 flex justify-center items-center w-full max-w-xs">
+          <div className="h-1 flex-1 bg-blue-700 rounded-full"></div>
+          <div className="h-2 w-10 sm:w-12 bg-blue-900 mx-2 rounded-full"></div>
+          <div className="h-1 flex-1 bg-blue-700 rounded-full"></div>
         </div>
 
-        <div className="overflow-x-auto mt-6">
-          <table className="min-w-full table-auto border-separate border-spacing-2">
+        <div className="mt-6 sm:mt-8 overflow-x-auto w-full">
+          <table className="w-full border-collapse shadow-md text-sm sm:text-base">
             <thead>
-              <tr>
-                <th className="px-4 py-2 text-blue-500 text-lg font-semibold text-center border-b">
-                  Year 1
-                </th>
-                <th className="px-4 py-2 text-blue-500 text-lg font-semibold text-center border-b">
-                  Year 2
-                </th>
-                <th className="px-4 py-2 text-blue-500 text-lg font-semibold text-center border-b">
-                  Year 3
-                </th>
-                <th className="px-4 py-2 text-blue-500 text-lg font-semibold text-center border-b">
-                  Year 4
-                </th>
+              <tr className="bg-blue-100">
+                {years.map((_, idx) => (
+                  <th
+                    key={idx}
+                    className={`px-4 sm:px-6 py-3 sm:py-4 text-blue-600 font-semibold ${
+                      idx !== years.length - 1 ? "border-r" : ""
+                    }`}
+                  >
+                    Year {idx + 1}
+                  </th>
+                ))}
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td className="px-4 py-2 text-center border-b md:text-[1rem] sm:text-md text-sm">
-                  40 credits of level 4.5
-                </td>
-                <td className="px-4 py-2 text-center border-b md:text-[1rem] sm:text-md text-sm">
-                  40 credits for levels 4.5 and 5
-                </td>
-                <td className="px-4 py-2 text-center border-b md:text-[1rem] sm:text-md text-sm">
-                  40 credits for 4.5, 5
-                </td>
-                <td className="px-4 py-2 text-center border-b md:text-[1rem] sm:text-md text-sm">
-                  Same
-                </td>
+              <tr className="border-b">
+                {years.map((year, idx) => (
+                  <td
+                    key={idx}
+                    className={`px-4 sm:px-6 py-3 sm:py-4 text-center text-gray-700 ${
+                      idx !== years.length - 1 ? "border-r" : ""
+                    }`}
+                  >
+                    {year.year_credit_text || "-"}
+                  </td>
+                ))}
+              </tr>
+              <tr className="border-b">
+                {years.map((year, idx) => (
+                  <td
+                    key={idx}
+                    className={`px-4 sm:px-6 py-3 sm:py-4 text-center text-gray-700 ${
+                      idx !== years.length - 1 ? "border-r" : ""
+                    }`}
+                  >
+                    {year.year_exit_text || "-"}
+                  </td>
+                ))}
               </tr>
               <tr>
-                <td className="px-4 py-2 text-center border-b md:text-[1rem] sm:text-md text-sm">
-                  UG Certificate
-                </td>
-                <td className="px-4 py-2 text-center border-b md:text-[1rem] sm:text-md text-sm">
-                  UG Diploma
-                </td>
-                <td className="px-4 py-2 text-center border-b md:text-[1rem] sm:text-md text-sm">
-                  3 years Bachelors Degree
-                </td>
-                <td className="px-4 py-2 text-center border-b md:text-[1rem] sm:text-md text-sm">
-                  UG Degree (Hons)/ PG Diploma
-                </td>
+                {years.map((year, idx) => (
+                  <td
+                    key={idx}
+                    className={`px-4 sm:px-6 py-3 sm:py-4 text-center text-blue-500 cursor-pointer hover:text-blue-400 hover:underline ${
+                      idx !== years.length - 1 ? "border-r" : ""
+                    }`}
+                  >
+                    {year.year_syllabus_link ? (
+                      <a href={year.year_syllabus_link} target="_blank" rel="noopener noreferrer">
+                        Curriculum link
+                      </a>
+                    ) : (
+                      "Curriculum link"
+                    )}
+                  </td>
+                ))}
               </tr>
             </tbody>
           </table>
-          
-          <div className="flex justify-between mt-6 md:px-10 sm:px-8 px-3">
-            <div className="text-blue-500 cursor-pointer hover:text-blue-400 hover:underline">Syllabus Link</div>
-            <div className="text-blue-500 cursor-pointer hover:text-blue-400 hover:underline">Syllabus Link</div>
-            <div className="text-blue-500 cursor-pointer hover:text-blue-400 hover:underline">Syllabus Link</div>
-            <div className="text-blue-500 cursor-pointer hover:text-blue-400 hover:underline">Syllabus Link</div>
-          </div>
         </div>
-      </div>
+      </section>
     </main>
   );
 };

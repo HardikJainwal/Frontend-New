@@ -1,27 +1,38 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 
-const demoPrograms = {
-  UG: [
-    { title: "B.Tech in Computer Science", code: "UG101" },
-    { title: "BBA in Business Administration", code: "UG102" },
-    { title: "B.Sc in Data Science", code: "UG103" },
-  ],
-  Diploma: [
-    { title: "Diploma in Web Development", code: "D101" },
-    { title: "Diploma in AI & ML", code: "D102" },
-    { title: "Diploma in Cybersecurity", code: "D103" },
-  ],
-  PG: [
-    { title: "M.Tech in Software Engineering", code: "PG101" },
-    { title: "MBA in Finance", code: "PG102" },
-    { title: "M.Sc in AI & Robotics", code: "PG103" },
-  ],
-};
+import ProgramsByDepartmentLoading from "../ShimmerUI/ProgramsByDepartmentLoading";
+import { getProgramByDepartment } from "../../utils/apiservice";
 
-const ProgramsByDepartment = () => {
+import { QUERY_KEYS } from "../../utils/queryKeys";
+
+const categories = ["UG", "Diploma", "PG"];
+
+const ProgramsByDepartment = ({ deptId }) => {
   const [activeCategory, setActiveCategory] = useState("UG");
+  const navigate = useNavigate();
 
-  const categories = ["UG", "Diploma", "PG"];
+  console.log(deptId);
+
+  // programs by department
+  const {
+    data: programData,
+    isLoading: isProgramLoading,
+    error,
+  } = useQuery({
+    queryFn: () => getProgramByDepartment(deptId, activeCategory),
+    queryKey: [QUERY_KEYS.GET_PROGRAM_BY_DEPARTMENT, deptId, activeCategory],
+    enabled: !!deptId && !!activeCategory,
+  });
+
+  useEffect(() => {
+    console.log(programData);
+  }, [programData]);
+
+  if (isProgramLoading) {
+    return <ProgramsByDepartmentLoading />;
+  }
 
   return (
     <div className="md:px-6 py-4 w-full flex flex-col">
@@ -43,18 +54,21 @@ const ProgramsByDepartment = () => {
         </div>
       </div>
 
-      <div className="space-y-3 flex flex-col gap-2">
-        {demoPrograms[activeCategory]?.length ? (
-          demoPrograms[activeCategory].map((program, index) => (
+      <div className="space-y-3 flex flex-col gap-2 mt-4 md:mt-2">
+        {programData && programData.length > 0 ? (
+          programData.map((program, index) => (
             <div
               key={index}
               className="border-l-4 border-blue-500 bg-white p-4 shadow-md rounded-md cursor-pointer hover:shadow-lg hover:scale-105 hover:bg-blue-50 transition-all duration-300"
+              onClick={() =>
+                navigate(`/courses/${activeCategory}/${program._id}`)
+              }
             >
               <p className="text-lg font-semibold text-gray-800">
-                {program.title}
+                {program.name}
               </p>
               <p className="text-sm text-gray-500">
-                Program Code: {program.code}
+                Duration: {program.duration}
               </p>
             </div>
           ))

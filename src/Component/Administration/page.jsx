@@ -1,5 +1,7 @@
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import StatutoryBodies from "./StatutoryBodies";
+import TeamDseu from "./TeamDseu";
 
 import SideBar from "./SideBar";
 import MobileSideBar from "./MobileSideBar";
@@ -34,6 +36,8 @@ const AdministrationTemp = () => {
           <Route path="important-forms" element={<ImportantForms />} />
           <Route path="advisory-board" element={<AdvisoryBoard />} />
           <Route path="employee-policy" element={<EmployeePolicy />} />
+          <Route path="statutory-bodies" element={<StatutoryBodies />} />
+          <Route path="team-dseu" element={<TeamDseu />} />
         </Routes>
       </div>
     </div>

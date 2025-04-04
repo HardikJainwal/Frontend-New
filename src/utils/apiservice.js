@@ -133,3 +133,23 @@ export const getHodInfo = async (deptId) => {
   const allFaculties = await getFaculties();
   return allFaculties.find((faculty) => faculty.email === departmentOfHod.hod) || false;
 };
+
+
+// programs related to the departments
+export const getProgramByDepartment = async (id, system) => {
+  const response = await api.get(`/program/${id}`);
+  const programs = response.data.data.programs;
+
+  if (!programs) return [];
+
+  return programs.filter(program => program.programLevel === system);
+};
+
+
+// get information of a single program
+export const getProgramData = async (id) => {
+  const response = await api.get('/program');
+
+  const allPrograms = response.data.data.programs;
+  return allPrograms.find((program) => program._id === id);
+}
