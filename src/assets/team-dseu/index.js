@@ -1,0 +1,90 @@
+import agrimTomar from './agrimTomar.jpg';
+import ahmadOmair from './ahmadOmair.jpg';
+import binduNair from './binduNair.jpg';
+import chancellor from './chancellor.jpg';
+import dipaloBansal from './dipaloBansal.jpg';
+import dnJena from './dnJena.jpg';
+import drAmitKharapade from './drAmitKharapade.jpg';
+import drGhanshyam from './drGhanshyam.jpg';
+import gagandhawan from './gagandhawan.jpg';
+import girishKumar from './girishKumar.jpg';
+import janitVerma from './janitVerma.png';
+import kamnaSachdeva from './kamnaSachdeva.png'
+import kaushalSachdeva from './kaushalendarVarma.jpg';
+import kavitaKhanna from './kavitaKhanna.png';
+import kieraatSrivastava from './kieraatSrivastava.jpg';
+import kkChandan from './kkChandan.png';
+import kmCleetus from './kmCleetus.jpg';
+import makarandDevidasJoshi from './makarandDevidasJoshi.png';
+import manjuJain from './manjuJain.png';
+import monicaChopra from './monicaChopra.jpg';
+import mukeshKumarGupta from './mukeshKumarGupta.png';
+import niharikaPandey from './niharikaPandey.jpg';
+import omPrakashSingh from './omPrakashSingh.jpg';
+import pankajLathar from './pankajLathar.jpg';
+import pankarKumarSigh from './pankarKumarSigh.png';
+import panvirChitre from './panvirChitre.jpg';
+import parvathyUnnikrishan from './parvathyUnnikrishan.jpg';
+import porusuRamananiah from './porusuRamananiah.jpg';
+import pramodKumarGoyal from './pramodKumarGoyal.jpg';
+import punitaDuhan from './punitaDuhan.jpg';
+import ravinderJohar from './ravinderJohar.jpg';
+import ravinderSingh from './ravinderSingh.jpg';
+import rkReddy from './rkReddy.jpg';
+import ruchikaSingh from './ruchikaSingh.jpg';
+import sampuranandaMishra from './sampuranandaMishra.jpg';
+import sangeetaJain from './sangeetaJain.jpg';
+import sanjayDahiya from './sanjayDahiya.jpg';
+import shrutiTripathi from './shrutiTripathi.png';
+import surrendarKumarSharma from './surrendarKumarSharma.jpg';
+import svVageesha from './svVageesha.jpg';
+import veenaUpadhay from './veenaUpadhay.jpg';
+import vibhakarShrimali from './vibhakarShrimali.jpg';
+import vicechancellor from './vicechancellor.jpg';
+
+
+export {
+    agrimTomar,
+    ahmadOmair,
+    binduNair,
+    chancellor,
+    dipaloBansal,
+    dnJena,
+    drAmitKharapade,
+    drGhanshyam,
+    gagandhawan,
+    girishKumar,
+    janitVerma,
+    kamnaSachdeva,
+    kaushalSachdeva,
+    kavitaKhanna,
+    kieraatSrivastava,
+    kkChandan,
+    kmCleetus,
+    makarandDevidasJoshi,
+    manjuJain,
+    monicaChopra,
+    mukeshKumarGupta,
+    niharikaPandey,
+    omPrakashSingh,
+    pankajLathar,
+    pankarKumarSigh,
+    panvirChitre,
+    parvathyUnnikrishan,
+    porusuRamananiah,
+    pramodKumarGoyal,
+    punitaDuhan,
+    ravinderJohar,
+    ravinderSingh,
+    rkReddy,
+    ruchikaSingh,
+    sampuranandaMishra,
+    sangeetaJain,
+    sanjayDahiya,
+    shrutiTripathi,
+    surrendarKumarSharma,
+    svVageesha,
+    veenaUpadhay,
+    vibhakarShrimali,
+    vicechancellor,
+};

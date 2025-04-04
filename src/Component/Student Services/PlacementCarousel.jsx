@@ -7,7 +7,7 @@ const PlacementCarousel = ({ images = [] }) => {
   const CustomPrevArrow = ({ onClick }) => (
     <button
       onClick={onClick}
-      className="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-2 bg-white rounded-full shadow-lg hover:bg-gray-100"
+      className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 p-2 bg-white rounded-full shadow-lg hover:bg-gray-100"
     >
       <ChevronLeft className="h-6 w-6 text-blue-600" />
     </button>
@@ -16,7 +16,7 @@ const PlacementCarousel = ({ images = [] }) => {
   const CustomNextArrow = ({ onClick }) => (
     <button
       onClick={onClick}
-      className="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-2 bg-white rounded-full shadow-lg hover:bg-gray-100"
+      className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 p-2 bg-white rounded-full shadow-lg hover:bg-gray-100"
     >
       <ChevronRight className="h-6 w-6 text-blue-600" />
     </button>
