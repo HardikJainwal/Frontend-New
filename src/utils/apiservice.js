@@ -144,3 +144,12 @@ export const getProgramByDepartment = async (id, system) => {
 
   return programs.filter(program => program.programLevel === system);
 };
+
+
+// get information of a single program
+export const getProgramData = async (id) => {
+  const response = await api.get('/program');
+
+  const allPrograms = response.data.data.programs;
+  return allPrograms.find((program) => program._id === id);
+}
