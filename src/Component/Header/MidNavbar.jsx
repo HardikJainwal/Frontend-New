@@ -37,34 +37,22 @@ const navItems = [
     dropdownItems: [
       { name: "About the University", path: "/about-us/About-the-University" },
       { name: "Vision and Mission", path: "/about-us/Vision-and-Mission" },
-      // { name: "Policy", path: "/about-us/Policy" },
-      //? removed, as mentioned in the minutes of meeting pdf
-
-      // { name: "University Calendar", path: "/about-us/University-Calendar" },
-      { name: "Academic Calendar", path: "/about-us/academic-Calendar" },
-      { name: "Holiday Calendar", path: "/about-us/holiday-Calendar" },
       {
         name: "Annual Report",
         path: "/about-us/Annual-Report",
       },
       // { name: "Handbook (Brochure)", path: "/about-us/Handbook" },
-      { name: "Information Bulletin", path: "#information-bulletin" },
+      { name: "Information Bulletin", path: "/information-bulletin" },
       // change from, handbook -> information bulletin
     ],
   },
   {
     name: "Academics",
     dropdownItems: [
-      // { name: "Programs", path: "/academics/programs" },
-      // { name: "Departments", path: "/dept/arabics" },
-     
-      { name: "Faculty", path: "/academics/faculty" },
-      // { name: "Director's Office", path: "/academics/directors-office" },
-      {
-        name: "Student Login",
-        path: "https://dseu.samarth.edu.in/index.php/site/login",
-      },
-      { name: "Programs", path: "/Courses" },
+      { name: "Faculties & Department", path: "/academics/faculty" },
+      { name: "Academic Regulations", path: "/academics/regulations"},
+      { name: "Academic Calendar", path: "/academics/academic-calendar" }
+      // { name: "Programs", path: "/Courses" },
     ],
   },
   {

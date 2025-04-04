@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import study from "/src/assets/achievements/study.jpg";
 import { carouselItems, programs } from "../../constants/STUDENTPROGRAM";
+import { Link } from "react-router-dom";
 
 const StudyProgramsSection = () => {
   const [selectedProgram, setSelectedProgram] = useState("DIPLOMA");
   const [currentCarouselIndex, setCurrentCarouselIndex] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -14,6 +17,17 @@ const StudyProgramsSection = () => {
     }, 3000);
     return () => clearInterval(timer);
   }, []);
+
+  // Normalize program type for URL
+  const normalizeProgramType = (programType) => {
+    return programType.toLowerCase().replace(/\s+/g, ""); // Remove all spaces
+  };
+
+  // Add click handler for program boxes
+  const handleProgramClick = (programType) => {
+    const normalizedType = normalizeProgramType(programType);
+    navigate(`/courses/${normalizedType}`);
+  };
 
   return (
     <div className="w-full bg-blue-50 p-8 mt-10">
@@ -47,9 +61,11 @@ const StudyProgramsSection = () => {
               <h2 className="text-2xl font-bold text-gray-800 border-l-4 border-blue-600 pl-4">
                 Study@DSEU
               </h2>
-              <button className="mt-4 sm:mt-0 text-sm text-white bg-blue-600 px-4 py-2 rounded hover:bg-blue-700 transition-colors duration-300">
-                VIEW ALL PROGRAMMES
-              </button>
+              <Link to="/Courses">
+  <button className="mt-4 sm:mt-0 text-sm text-white bg-blue-600 px-4 py-2 rounded hover:bg-blue-700 transition-colors duration-300">
+    VIEW ALL PROGRAMMES
+  </button>
+</Link>
             </div>
 
             <div className="space-y-6">
@@ -81,10 +97,10 @@ const StudyProgramsSection = () => {
                     style={{
                       backgroundImage: `url(${study})`,
                     }}
+                    onClick={() => handleProgramClick(selectedProgram)}
                   >
-                    <div className="absolute inset-0 bg-black opacity-50 rounded-lg "></div>
-
-                    <div className="relative z-10 h-full flex flex-col justify-center items-center ">
+                    <div className="absolute inset-0 bg-black opacity-50 rounded-lg"></div>
+                    <div className="relative z-10 h-full flex flex-col justify-center items-center">
                       <h3 className="text-lg font-bold text-white text-center">
                         {program.code}
                       </h3>

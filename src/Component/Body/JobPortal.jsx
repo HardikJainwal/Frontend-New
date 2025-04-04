@@ -1,85 +1,77 @@
 import React, { useState } from "react";
 import { FileText } from "lucide-react";
 
+const tabs = [
+  { id: "academic", label: "Academic Positions" },
+  { id: "nonAcademic", label: "Non Academic Positions" },
+  { id: "shortTerm", label: "Short-Term Positions" },
+  { id: "results", label: "Results" },
+  { id: "notice", label: "Notice" },
+];
+
+const mockData = {
+  academic: [
+    {
+      id: 2,
+      title: "Advertisement For Engagement Of Emeritus Professor",
+      notification: "Notice",
+      startDate: "15/03/2024",
+      lastDate: "30/04/2024",
+      hasPdf: true,
+    },
+    {
+      id: 3,
+      title: "Advertisement For The Post Of Distinguished Professor",
+      notification: "Notice",
+      startDate: "15/03/2024",
+      lastDate: "30/04/2024",
+      hasPdf: true,
+    },
+    {
+      id: 4,
+      title:
+        "Advertisement For Engagement Of Professor of Practice/Associate Professor of Practice/Assistant Professor of Practice",
+      notification: "Notice",
+      startDate: "15/03/2024",
+      lastDate: "30/04/2024",
+      hasPdf: true,
+    },
+    {
+      id: 5,
+      title: "Advertisement For Teaching Posts on Deputation",
+      notification: "Notice",
+      startDate: "15/03/2024",
+      lastDate: "30/04/2024",
+      hasPdf: true,
+    },
+  ],
+  nonAcademic: [
+    {
+      id: 1,
+      title: "Advertisement For Engagement Of Non-Teaching on Deputation",
+      notification: "Notice",
+      startDate: "15/03/2024",
+      lastDate: "30/04/2024",
+      hasPdf: true,
+    },
+  ],
+  shortTerm: [],
+  results: [],
+  notice: [],
+};
+
 const JobListings = () => {
   const [activeTab, setActiveTab] = useState("academic");
   const [entriesCount, setEntriesCount] = useState(10);
-
-  const tabs = [
-    { id: "academic", label: "Academic Positions" },
-    { id: "nonAcademic", label: "Non Academic Positions" },
-    { id: "shortTerm", label: "Short-Term Positions" },
-    { id: "results", label: "Results" },
-    { id: "notice", label: "Notice" },
-  ];
-
-  const mockData = {
-    academic: [
-      {
-        id: 2,
-        title: "Advertisement For Engagement Of Emeritus Professor",
-        notification: "Notice",
-        startDate: "15/03/2024",
-        lastDate: "30/04/2024",
-        hasPdf: true,
-      },
-      {
-        id: 3,
-        title: "Advertisement For The Post Of Distinguished Professor",
-        notification: "Notice",
-        startDate: "15/03/2024",
-        lastDate: "30/04/2024",
-        hasPdf: true,
-      },
-      {
-        id: 4,
-        title:
-          "Practice/Associate Professor of Practice/Assistant Professor of Practice",
-        notification: "Notice",
-        startDate: "15/03/2024",
-        lastDate: "30/04/2024",
-        hasPdf: true,
-      },
-      {
-        id: 5,
-        title: "	Advertisement For Teaching Posts on Deputation",
-        notification: "Notice",
-        startDate: "15/03/2024",
-        lastDate: "30/04/2024",
-        hasPdf: true,
-      },
-    ],
-    nonAcademic: [
-      {
-        id: 1,
-        title: "Advertisement For Engagement Of Non-Teaching on Deputation",
-        notification: "Notice",
-        startDate: "10/02/2025",
-        lastDate: "10/03/2025",
-        hasPdf: true,
-      },
-      {
-        id: 1,
-        title: "Advertisement For Non-Teaching Posts Advt. No.-01/2025",
-        notification: "Notice",
-        startDate: "06/01/2025",
-        lastDate: "17/02/2025",
-        hasPdf: true,
-      },
-    ],
-    shortTerm: [],
-    results: [],
-    notice: [],
-  };
 
   const getActiveData = () => {
     return mockData[activeTab] || [];
   };
 
   return (
-    <div className="flex min-h-screen bg-gray-50 rounded-md">
-      {/* Side Panel */}
-      <div className="w-64 bg-white shadow-lg mt-6 rounded-3xl">
+    <div className="flex pb bg-gray-50 rounded-md flex-col md:flex-row">
+      {/* Side Panel for desktop */}
+      <div className="xl:w-64 w-48 bg-white shadow-lg mt-6 rounded-3xl hidden lg:block text-sm xl:text-[1rem] whitespace-nowrap max-h-fit pb-10">
         <div className="p-4 bg-blue-700 text-white font-bold text-lg">
           Job Categories
         </div>
@@ -100,8 +92,10 @@ const JobListings = () => {
         </div>
       </div>
 
+      <MobileBar activeTab={activeTab} setActiveTab={setActiveTab} />
+
       {/* Main Content */}
-      <div className="flex-1 p-6">
+      <div className="flex-1 p-3 md:p-4 lg:p-6 overflow-scroll md:overflow-hidden">
         <div className="bg-white rounded-lg shadow p-6">
           <div className="flex justify-between items-center mb-6">
             <div className="flex items-center gap-2">
@@ -117,57 +111,77 @@ const JobListings = () => {
               </select>
               <span>entries</span>
             </div>
-            <div className="flex items-center gap-2">
-              <span>Search:</span>
-              <input type="text" className="border rounded p-1" />
-            </div>
           </div>
 
           <div className="overflow-x-auto">
-            <table className="w-full border-collapse">
-              <thead>
-                <tr className="bg-blue-700 text-white">
-                  <th className="p-2 text-left border">S. No.</th>
-                  <th className="p-2 text-left border">Title</th>
-                  <th className="p-2 text-left border">Notification</th>
-                  <th className="p-2 text-left border">No of Vacancies</th>
-                  <th className="p-2 text-left border">
-                    Starting Date of Application
-                  </th>
-                  <th className="p-2 text-left border">
-                    Last Date of Application
-                  </th>
-                  <th className="p-2 text-left border">Apply Now</th>
-                </tr>
-              </thead>
-              <tbody>
-                {getActiveData().map((item, index) => (
-                  <tr key={item.id} className="hover:bg-gray-50">
-                    <td className="p-2 border">{index + 1}</td>
-                    <td className="p-2 border">{item.title}</td>
-                    <td className="p-2 border">
-                      <div className="flex items-center gap-1">
-                        {item.notification}
-                        {item.hasPdf && (
-                          <FileText className="text-red-500" size={16} />
-                        )}
-                      </div>
-                    </td>
-                    <td className="p-2 border"></td>
-                    <td className="p-2 border">{item.startDate}</td>
-                    <td className="p-2 border">{item.lastDate}</td>
-                    <td className="p-2 border">
-                      <button className="text-blue-600 hover:text-blue-800">
-                        Apply Now
-                      </button>
-                    </td>
+            {getActiveData().length > 0 ? (
+              <table className="w-full border-collapse">
+                <thead>
+                  <tr className="bg-blue-700 text-white text-sm md:text-md">
+                    <th className="p-2 text-left border whitespace-nowrap">S. No.</th>
+                    <th className="p-2 text-left border">Title</th>
+                    <th className="p-2 text-left border">Notification</th>
+                    <th className="p-2 text-left border">No of Vacancies</th>
+                    <th className="p-2 text-left border whitespace-nowrap">
+                      Starting Date
+                    </th>
+                    <th className="p-2 text-left border">
+                      Last Date
+                    </th>
+                    <th className="p-2 text-left border">Apply</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody className="text-[0.8rem] md:text-sm">
+                  {getActiveData().map((item, index) => (
+                    <tr key={item.id} className="hover:bg-gray-50">
+                      <td className="p-2 border">{index + 1}</td>
+                      <td className="p-2 border">{item.title}</td>
+                      <td className="p-2 border">
+                        <div className="flex items-center gap-1">
+                          {item.notification}
+                          {item.hasPdf && (
+                            <FileText className="text-red-500" size={16} />
+                          )}
+                        </div>
+                      </td>
+                      <td className="p-2 border">-</td>
+                      <td className="p-2 border">{item.startDate}</td>
+                      <td className="p-2 border">{item.lastDate}</td>
+                      <td className="p-2 border">
+                        <button className="text-blue-600 hover:text-blue-800">
+                          Apply Now
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            ) : (
+              <div className="text-center p-4">No records found</div>
+            )}
           </div>
         </div>
       </div>
+    </div>
+  );
+};
+
+const MobileBar = ({ activeTab, setActiveTab }) => {
+  return (
+    <div className="flex gap-2 overflow-x-auto my-4 mx-2 md:hidden py-2">
+      {tabs.map((tab) => (
+        <button
+          key={tab.id}
+          onClick={() => setActiveTab(tab.id)}
+          className={`p-1 flex-1 text-center text-sm font-medium transition-colors duration-200 rounded-lg shadow-sm ${
+            activeTab === tab.id
+              ? "bg-blue-600 text-white"
+              : "bg-gray-200 text-black hover:bg-gray-300"
+          }`}
+        >
+          {tab.label}
+        </button>
+      ))}
     </div>
   );
 };

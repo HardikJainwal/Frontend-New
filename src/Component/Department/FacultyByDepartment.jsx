@@ -1,52 +1,60 @@
-import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 
 import { QUERY_KEYS } from "../../utils/queryKeys";
-import { getFacultyById } from "../../utils/apiservice";
+import { getDepartmentById, getHodInfo } from "../../utils/apiservice";
 
-const FacultyByDepartment = () => {
-  const { facultyId: id } = useParams();
-  const { data, isLoading, error } = useQuery({
-    queryKey: [QUERY_KEYS.GET_FACULTY_BY_ID, id],
-    queryFn: () => getFacultyById(id),
+const categories = [
+  "HOD",
+  "Professor",
+  "Associate Professor",
+  "Assistant Professor",
+];
+
+const FacultyByDepartment = ({ deptId }) => {
+  const [activeCategory, setActiveCategory] = useState("HOD");
+
+  const { data: hod, isLoading: hodLoading } = useQuery({
+    queryFn: () => getHodInfo(deptId),
+    queryKey: [QUERY_KEYS.GET_HOD_INFO, deptId],
+    enabled: !!deptId,
   });
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
-
-  if (isLoading) {
-    return <div className="text-center my-10">Loading...</div>;
-  }
-
-  if (error) {
-    return (
-      <div className="text-center text-red-500 my-10">
-        Error: {error.message}
-      </div>
-    );
+  if (hodLoading) {
+    return <div>Loading the information of HOD.</div>;
   }
 
   return (
-    <div className="flex items-center flex-col md:flex-row gap-10 text-gray-900 dark:text-gray-100 mx-10 lg:mx-32 my-10">
-      <img
-        src={data.photo}
-        alt={data.name}
-        className="rounded-xl object-cover border-2 border-gray-300 min-h-[200px] min-w-[200px]"
-      />
-      <div className="flex flex-col">
-        <h2 className="md:text-3xl text-2xl font-bold text-black">{data?.name}</h2>
-        <p className="text-base text-gray-800 ">{data?.email}</p>
-        <p className="text-base font-medium mt-1">
-          {data?.department?.name}
-        </p>
-        <p className="mt-2 text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
-          {data?.overview}
-        </p>
+    <div className="md:px-6 py-4 w-full flex flex-col">
+      <div className="flex justify-center mb-6">
+        <div className="bg-gray-100 p-0 md:p-1 rounded-full flex space-x-2 shadow-md">
+          {categories.map((category) => (
+            <button
+              key={category}
+              className={`px-7 py-2 md:text-sm font-medium rounded-full transition-all duration-300 text-xs ${
+                activeCategory === category
+                  ? "bg-orange-500 text-white shadow-md scale-105"
+                  : "bg-transparent text-gray-700 hover:bg-gray-200"
+              }`}
+              onClick={() => setActiveCategory(category)}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="space-y-3 flex flex-col gap-2">
+        {activeCategory === "HOD" && hod
+          ? JSON.stringify(hod)
+          : "Data not found."}
       </div>
     </div>
   );
+};
+
+const FacultyStructure = () => {
+  return <div>data.</div>;
 };
 
 export default FacultyByDepartment;

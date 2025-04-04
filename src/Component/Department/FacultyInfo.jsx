@@ -126,7 +126,7 @@ const FacultyInfo = () => {
   if (!faculty) return (
     <div className="text-center text-xl font-semibold my-10">
       Faculty not found
-    </div>
+  </div>
   );
 
   const TabButtons = () => (

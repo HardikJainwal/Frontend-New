@@ -1,5 +1,5 @@
 import { registarar, VC } from '../assets/advisory-board';
-import { jpSaini, deshmukh, girishKumar, principalSecratory, secratory } from '../assets/board-of-management/boardOfManagement';
+import { jpSaini, deshmukh, girishKumar, principalSecratory, secratory, drpankajlathar, dttesecratory } from '../assets/board-of-management/boardOfManagement';
 
 const boardOfManagement = [
     {
@@ -12,7 +12,7 @@ const boardOfManagement = [
     {
         id: 2,
         name: "Prof. (Dr.) Gagan Dhawan",
-        designation: "Registrar",
+        designation: "Controller of Finance",
         category: "Board of Management",
         src: registarar,
     },
@@ -33,7 +33,7 @@ const boardOfManagement = [
     {
         id: 5,
         name: "Prof. Girish Kumar",
-        designation: "Bhai Parmanand DSEU Shakarpur Campus - II",
+        designation: "Dean Research",
         category: "Board of Management",
         src: girishKumar,
     },
@@ -45,12 +45,12 @@ const boardOfManagement = [
         src: principalSecratory,
     },
     {
-        id: 7,
-        name: "Principal Secretary",
-        designation: "Dept. of Finance, GNCT Delhi",
+        id: 8,
+        name: "Ms. Nandini Paliwal IAS",
+        designation: "Secretary DTTE",
         category: "Ex-Officio Members",
-        src: secratory,
-    },
+        src: dttesecratory,
+    }
 ];
 
 

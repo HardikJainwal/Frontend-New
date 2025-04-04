@@ -1,27 +1,30 @@
 import React, { Suspense, lazy } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
+
+import "./App.css";
 import MidNavbar from "./Component/Header/MidNavbar";
 import Footer from "./Component/Footer/Footer";
-import "./App.css";
-import UnderConstruction from "./Component/Reusable/UnderConstruction";
 import Loader from "./Component/PageLoader/Loader";
+import UnderConstruction from "./Component/Reusable/UnderConstruction";
 import StudyProgramsSection from "./Component/Body/StudentProgram";
 import GrievanceForm from "./Component/NavItems/Grievance";
 import IndustryPartnership from "./Component/News/news1";
 import LoginPage from "./Component/Login/LoginPage";
-import { Toaster } from "react-hot-toast";
-
 
 // Lazy Load Components
 const HomeBody = lazy(() => import("./Component/Body/Banner"));
 const Announcements = lazy(() => import("./Component/Body/Announcements"));
 const Message = lazy(() => import("./Component/Body/Message"));
-// const Card = lazy(() => import("./Component/Body/Card"));
-const InformationBulletin = lazy(() => import("./Component/Body/InformationBulletin"));
+const InformationBulletin = lazy(() =>
+  import("./Component/Body/InformationBulletin")
+);
 const OurCampuses = lazy(() => import("./Component/Body/OurCampuses"));
 const OurPartners = lazy(() => import("./Component/Body/OurPartners"));
 const News = lazy(() => import("./Component/Body/News"));
-const EventsAndActivities = lazy(() => import("./Component/Body/StudentEvents"));
+const EventsAndActivities = lazy(() =>
+  import("./Component/Body/StudentEvents")
+);
 
 // Campuses
 const North = lazy(() => import("./Component/Campuses/North"));
@@ -35,49 +38,75 @@ const CoursesPage = lazy(() => import("./Component/Courses/CoursesPage"));
 const UGPrograms = lazy(() => import("./Component/Courses/UGPrograms"));
 const PGPrograms = lazy(() => import("./Component/Courses/PGProgram"));
 const DiplomaPrograms = lazy(() => import("./Component/Courses/Diploma"));
-const CertificateCourses = lazy(() => import("./Component/Courses/CertificateCourses"));
-const CourseStructure = lazy(() => import("./Component/Courses/CourseStructure"));
+const CertificateCourses = lazy(() =>
+  import("./Component/Courses/CertificateCourses")
+);
+const CourseStructure = lazy(() =>
+  import("./Component/Courses/CourseStructure")
+);
+const Curriculum = lazy(() => import("./Component/Courses/Curriculum"));
+const Program = lazy(() => import("./Component/Courses/Program"));
 
 // Academic & Faculty
 const ListOfFaculties = lazy(() => import("./Component/Body/ListOfFaculties"));
-// const DepartmentPage = lazy(() => import("./Component/Body/DepartmentPage"));
+const DepartmentById = lazy(() =>
+  import("./Component/Department/DepartmentById")
+);
 
-const Administration = lazy(() => import('./Component/Administration/page'));
+const Administration = lazy(() => import("./Component/Administration/page"));
 
 // Department related
-const Department = lazy(() => import("./Component/Department/Department"));
-const DepartmentById = lazy(() => import('./Component/Department/DepartmentById'));
-const FacultyInfo = lazy(() => import('./Component/Department/FacultyInfo'));
-
+const FacultyInfo = lazy(() => import("./Component/Department/FacultyInfo"));
 
 // Other Sections
 const About = lazy(() => import("./Component/NavItems/About"));
-const VissionMission = lazy(() => import("./Component/NavItems/Vission&Mission"));
-const Entrepreneurship = lazy(() => import("./Component/NavItems/Entrepreneurship"));
+const VissionMission = lazy(() =>
+  import("./Component/NavItems/Vission&Mission")
+);
 const Amenities = lazy(() => import("./Component/NavItems/Amenities"));
-const ViceChancellorMessage = lazy(() => import("./Component/Body/ViceChancellorMessage"));
+const ViceChancellorMessage = lazy(() =>
+  import("./Component/Body/ViceChancellorMessage")
+);
 const ResearchDev = lazy(() => import("./Component/Body/ResearchDev"));
-const AlumniSection = lazy(() => import("./Component/Alumni Page/AlumniSection"));
+const AlumniSection = lazy(() =>
+  import("./Component/Alumni Page/AlumniSection")
+);
 const JobPortal = lazy(() => import("./Component/Body/JobPortal"));
-const Placement = lazy(() => import("./Component/NavItems/Placement"));
+
+const AcademicCalendar = lazy(() =>
+  import("./Component/Calendar/AcademicCalendar")
+);
+const HolidayCalendar = lazy(() =>
+  import("./Component/Calendar/HolidayCalendar")
+);
 
 // Campuses Page
 const BPIBS = lazy(() => import("./Component/AllCampusesPage.jsx/BPIBS"));
-const MayurVihar = lazy(() => import("./Component/AllCampusesPage.jsx/MayurVihar"));
-const ShakarpurDSEU = lazy(() => import("./Component/AllCampusesPage.jsx/Shakarpur"));
-const VivekVihar = lazy(() => import("./Component/AllCampusesPage.jsx/VivekVihar"));
+const MayurVihar = lazy(() =>
+  import("./Component/AllCampusesPage.jsx/MayurVihar")
+);
+const ShakarpurDSEU = lazy(() =>
+  import("./Component/AllCampusesPage.jsx/Shakarpur")
+);
+const VivekVihar = lazy(() =>
+  import("./Component/AllCampusesPage.jsx/VivekVihar")
+);
 
 // Student services
-const Ncc = lazy(() => import('./Component/Student Services/Ncc'));
-const Canteen = lazy(() => import('./Component/Student Services/Canteen'));
-const Library = lazy(() => import('./Component/Student Services/Library'));
-const Sports = lazy(() => import('./Component/Student Services/Sports'));
-const ComputerCentre = lazy(() => import('./Component/Student Services/ComputerCentre'));
+const Ncc = lazy(() => import("./Component/Student Services/Ncc"));
+const Placement = lazy(() => import("./Component/Student Services/Placement"));
+const Canteen = lazy(() => import("./Component/Student Services/Canteen"));
+const Library = lazy(() => import("./Component/Student Services/Library"));
+const Sports = lazy(() => import("./Component/Student Services/Sports"));
+const ComputerCentre = lazy(() =>
+  import("./Component/Student Services/ComputerCentre")
+);
+import PlacementOld from "./Component/NavItems/PlacementOld";
 
 function App() {
   return (
     <BrowserRouter>
-     <Toaster position="top-right" />
+      <Toaster position="top-right" />
       <Suspense fallback={<Loader />}>
         <MidNavbar />
         <Routes>
@@ -95,8 +124,6 @@ function App() {
                 <OurPartners />
                 <News />
                 <EventsAndActivities />
-               
-                
               </>
             }
           />
@@ -110,8 +137,10 @@ function App() {
 
           {/* Courses */}
           <Route path="/courses" element={<CoursesPage />} />
-          <Route path="/courses/ug" element={<UGPrograms />} />
-          <Route path="/courses/pg" element={<PGPrograms />} />
+          <Route path="/courses/UG/:id" element={<Program />} />
+          <Route path="/curriculum" element={<Curriculum />} />
+          <Route path="/courses/undergraduate" element={<UGPrograms />} />
+          <Route path="/courses/postgraduate" element={<PGPrograms />} />
           <Route path="/courses/diploma" element={<DiplomaPrograms />} />
           <Route
             path="/courses/certificate-courses"
@@ -124,7 +153,8 @@ function App() {
 
           {/* Academics & Faculty */}
           <Route path="/academics/faculty" element={<ListOfFaculties />} />
-          <Route path="/logindseu" element={<LoginPage/>} />
+          <Route path="/dept/:id" element={<DepartmentById />} />
+          <Route path="/logindseu" element={<LoginPage />} />
 
           {/* Administration */}
           <Route
@@ -141,22 +171,8 @@ function App() {
           />
 
           {/* Department related */}
-          <Route path="/departments" element={<Department />} />
-          <Route path="/dept/:departmentPath" element={<DepartmentById />} />
-          <Route path="/faculty/:id" element={<FacultyInfo />} />
-
-          {/* Policies */}
-          {/* <Route path="/about-us/Policy" element={<Policy />} />
-          {[
-            { path: "academic-policy", component: AcademicGuidelines },
-            { path: "admission-policy", component: AdmissionsPolicy },
-            { path: "anti-ragging-policy", component: AntiRaggingPolicy },
-            { path: "facilities", component: Facilities },
-            { path: "support-services", component: SupportServices },
-            { path: "code-of-conduct", component: CodeOfConduct },
-          ].map(({ path, component }) => (
-            <Route key={path} path={`/about-us/policy/${path}`} element={React.createElement(component)} />
-          ))} */}
+          {/* <Route path="/department/:id" element={<Department />} /> */}
+          {/* <Route path="/faculty/:id" element={<FacultyInfo />} /> */}
 
           {/* Other Pages */}
           <Route path="/vice-chancellor" element={<ViceChancellorMessage />} />
@@ -166,10 +182,14 @@ function App() {
             path="/about-us/Vision-and-Mission"
             element={<VissionMission />}
           />
+          <Route
+            path="/information-bulletin"
+            element={<InformationBulletin seperatePage={true} />}
+          />
           <Route path="/UGC-Guidelines" element={<UnderConstruction />} />
           <Route path="/amenities/Facilities" element={<Amenities />} />
           <Route path="/recruitment" element={<JobPortal />} />
-          <Route path="/Placement" element={<Placement />} />
+
           <Route path="/news/achievement" element={<IndustryPartnership />} />
           <Route path="/news/partnership" element={<IndustryPartnership />} />
           <Route path="/news/outreach" element={<IndustryPartnership />} />
@@ -177,6 +197,13 @@ function App() {
             path="/news/innovation-hub"
             element={<IndustryPartnership />}
           />
+
+          {/* Calendar */}
+          <Route
+            path="/academics/academic-calendar"
+            element={<AcademicCalendar />}
+          />
+          <Route path="/holiday-calendar" element={<HolidayCalendar />} />
 
           {/* Alumni */}
           <Route path="/alumni" element={<AlumniSection />} />
@@ -190,7 +217,12 @@ function App() {
           <Route path="/grievance-form" element={<GrievanceForm />} />
 
           {/* Student Services */}
-          <Route path="/amenities/Computer-Centre" element={<ComputerCentre />} />
+          <Route path="/placement" element={<Placement />} />
+          <Route path="/oldplacement" element={<PlacementOld />} />
+          <Route
+            path="/amenities/Computer-Centre"
+            element={<ComputerCentre />}
+          />
           <Route path="/ncc" element={<Ncc />} />
           <Route path="/amenities/Canteen" element={<Canteen />} />
           <Route path="/amenities/Sports" element={<Sports />} />

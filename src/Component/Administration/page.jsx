@@ -17,7 +17,7 @@ const AdministrationTemp = () => {
 
   useEffect(() => {
     if (location.pathname === "/administration/administrative") {
-      navigate("/administration/administrative/directors-office", {
+      navigate("/administration/administrative/board-of-management", {
         replace: true,
       });
     }
