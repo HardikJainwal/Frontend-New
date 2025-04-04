@@ -5,7 +5,7 @@ import chancellor from './chancellor.jpg';
 import dipaloBansal from './dipaloBansal.jpg';
 import dnJena from './dnJena.jpg';
 import drAmitKharapade from './drAmitKharapade.jpg';
-import drGhanshyam from './drGhanshyam.jpg';
+import drGhanshyam from './drGhanysham.jpg';
 import gagandhawan from './gagandhawan.jpg';
 import girishKumar from './girishKumar.jpg';
 import janitVerma from './janitVerma.png';

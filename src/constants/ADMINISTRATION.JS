@@ -40,6 +40,12 @@ const leaders = [
 
 const sideNavItems = [
     {
+        id: 1,
+        name: "Team DSEU",
+        href: "/administration/administrative/team-dseu",
+        active: false,
+    },
+    {
         id: 2,
         name: "Board of Management",
         href: "/administration/administrative/board-of-management",
@@ -61,6 +67,12 @@ const sideNavItems = [
         id: 5,
         name: "Important Forms",
         href: "/administration/administrative/important-forms",
+        active: false,
+    },
+    {
+        id: 6,
+        name: "Statutory Bodies",
+        href: "/administration/administrative/statutory-bodies",
         active: false,
     },
 ];
