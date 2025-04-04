@@ -1,71 +1,17 @@
 import React, { useState } from "react";
 import { FileText } from "lucide-react";
 
-const tabs = [
-  { id: "academic", label: "Academic Positions" },
-  { id: "nonAcademic", label: "Non Academic Positions" },
-  { id: "shortTerm", label: "Short-Term Positions" },
-  { id: "results", label: "Results" },
-  { id: "notice", label: "Notice" },
-];
-
-const mockData = {
-  academic: [
-    {
-      id: 2,
-      title: "Advertisement For Engagement Of Emeritus Professor",
-      notification: "Notice",
-      startDate: "15/03/2024",
-      lastDate: "30/04/2024",
-      hasPdf: true,
-    },
-    {
-      id: 3,
-      title: "Advertisement For The Post Of Distinguished Professor",
-      notification: "Notice",
-      startDate: "15/03/2024",
-      lastDate: "30/04/2024",
-      hasPdf: true,
-    },
-    {
-      id: 4,
-      title:
-        "Advertisement For Engagement Of Professor of Practice/Associate Professor of Practice/Assistant Professor of Practice",
-      notification: "Notice",
-      startDate: "15/03/2024",
-      lastDate: "30/04/2024",
-      hasPdf: true,
-    },
-    {
-      id: 5,
-      title: "Advertisement For Teaching Posts on Deputation",
-      notification: "Notice",
-      startDate: "15/03/2024",
-      lastDate: "30/04/2024",
-      hasPdf: true,
-    },
-  ],
-  nonAcademic: [
-    {
-      id: 1,
-      title: "Advertisement For Engagement Of Non-Teaching on Deputation",
-      notification: "Notice",
-      startDate: "15/03/2024",
-      lastDate: "30/04/2024",
-      hasPdf: true,
-    },
-  ],
-  shortTerm: [],
-  results: [],
-  notice: [],
-};
+import {
+  jobPortalData as data,
+  jobPortalTabs as tabs,
+} from "../../constants/JOBPORTAL.JS";
 
 const JobListings = () => {
   const [activeTab, setActiveTab] = useState("academic");
   const [entriesCount, setEntriesCount] = useState(10);
 
   const getActiveData = () => {
-    return mockData[activeTab] || [];
+    return data[activeTab] || [];
   };
 
   return (
@@ -118,16 +64,16 @@ const JobListings = () => {
               <table className="w-full border-collapse">
                 <thead>
                   <tr className="bg-blue-700 text-white text-sm md:text-md">
-                    <th className="p-2 text-left border whitespace-nowrap">S. No.</th>
+                    <th className="p-2 text-left border whitespace-nowrap">
+                      S. No.
+                    </th>
                     <th className="p-2 text-left border">Title</th>
                     <th className="p-2 text-left border">Notification</th>
                     <th className="p-2 text-left border">No of Vacancies</th>
                     <th className="p-2 text-left border whitespace-nowrap">
                       Starting Date
                     </th>
-                    <th className="p-2 text-left border">
-                      Last Date
-                    </th>
+                    <th className="p-2 text-left border">Last Date</th>
                     <th className="p-2 text-left border">Apply</th>
                   </tr>
                 </thead>
@@ -137,27 +83,41 @@ const JobListings = () => {
                       <td className="p-2 border">{index + 1}</td>
                       <td className="p-2 border">{item.title}</td>
                       <td className="p-2 border">
-                        <div className="flex items-center gap-1">
-                          {item.notification}
+                        <a
+                          href={item.notification}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-600 hover:text-blue-800 flex items-center gap-1"
+                        >
+                          Notice{" "}
                           {item.hasPdf && (
                             <FileText className="text-red-500" size={16} />
                           )}
-                        </div>
+                        </a>
                       </td>
+
                       <td className="p-2 border">-</td>
                       <td className="p-2 border">{item.startDate}</td>
                       <td className="p-2 border">{item.lastDate}</td>
                       <td className="p-2 border">
-                        <button className="text-blue-600 hover:text-blue-800">
-                          Apply Now
-                        </button>
+                        <a
+                          href={item.apply}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-600 hover:text-blue-800"
+                        >
+                          Apply
+                        </a>
                       </td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             ) : (
-              <div className="text-center p-4">No records found</div>
+              <div className="text-center p-4">
+                {tabs.find((tab) => tab.id === activeTab)?.empty ||
+                  "No data available."}
+              </div>
             )}
           </div>
         </div>
