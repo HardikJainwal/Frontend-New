@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+import { Loader2Icon } from "lucide-react";
 import { getProgramData } from "../../utils/apiservice";
 import { QUERY_KEYS } from "../../utils/queryKeys";
-import { Loader2Icon } from "lucide-react";
 
 const Program = () => {
   const { id } = useParams();
@@ -27,7 +27,7 @@ const Program = () => {
   return (
     <main className="flex flex-col mx-auto px-4 sm:px-6 mt-10 mb-20 justify-center items-center gap-8 sm:gap-10 w-full max-w-4xl">
       <section className="text-center w-full">
-        <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-800">
+        <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-800 max-w-3xl mx-auto break-words">
           {data?.name || "Program Name"}
         </h2>
         <div className="mt-3 sm:mt-4 flex justify-center items-center">
@@ -54,14 +54,16 @@ const Program = () => {
           <span className="text-base sm:text-lg font-semibold text-blue-600">
             Exit Options
           </span>
-          <span className="text-gray-700 text-base sm:text-lg">
-            {data?.exit_options?.join(", ") || "-"}
-          </span>
+          <div className="text-gray-700 text-base sm:text-lg sm:text-right">
+            {data?.exit_options?.map((option, idx) => (
+              <p key={idx}>{option}</p>
+            )) || "-"}
+          </div>
         </div>
       </section>
 
       <section className="w-full flex flex-col items-center text-center">
-        <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800">
+        <h3 className="text-xl sm:text-3xl md:text-[2rem] font-bold text-gray-800">
           NEP Based Structure
         </h3>
         <div className="mt-3 sm:mt-4 flex justify-center items-center w-full max-w-xs">
