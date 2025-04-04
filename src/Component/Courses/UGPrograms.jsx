@@ -1,4 +1,4 @@
-import { regulations } from "../../constants/REGULATIONS.JS"; // Assuming regulations are stored here
+import { regulations } from "../../constants/ACADEMICREGULATIONS.JS"; // Assuming regulations are stored here
 
 const AcademicRegulations = () => {
   return (

@@ -4,124 +4,72 @@ const Program = () => {
   const { id } = useParams();
 
   return (
-    <main className="flex flex-col mx-auto mt-8 md:mt-12 md:mb-10 mb-16 justify-center items-center gap-8 w-full max-w-3xl">
-      <div className="text-center">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-[#333]">
-          B.Tech Artificial Intelligence
-        </h2>
-        <div className="flex items-center justify-center mt-4 w-[120px] mx-auto">
-          <div className="h-[2px] bg-blue-900 flex-1"></div>
-          <div className="h-[5px] w-[50px] bg-blue-900 rounded-[10px] mx-2"></div>
-          <div className="h-[2px] bg-blue-900 flex-1"></div>
+    <main className="flex flex-col mx-auto px-4 sm:px-6 mt-10 mb-20 justify-center items-center gap-8 sm:gap-10 w-full max-w-4xl">
+      <section className="text-center w-full">
+        <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-800">B.Tech Artificial Intelligence</h2>
+        <div className="mt-3 sm:mt-4 flex justify-center items-center">
+          <div className="h-1 w-12 sm:w-16 bg-blue-700 rounded-full"></div>
+          <div className="h-2 w-8 sm:w-10 bg-blue-900 mx-2 rounded-full"></div>
+          <div className="h-1 w-12 sm:w-16 bg-blue-700 rounded-full"></div>
         </div>
-      </div>
+      </section>
 
-      <div className="w-full p-5">
-        <div className="flex justify-between items-center border-b pb-2 mb-4">
-          <div className="md:text-lg text-md font-medium text-blue-500">
-            Duration
-          </div>
-          <div className="md:text-lg text-md text-[#777]">4 Years</div>
+      <section className="w-full bg-white p-6 sm:p-8 rounded-2xl sm:rounded-3xl shadow-md">
+        <div className="flex flex-col sm:flex-row justify-between py-3 sm:py-4 border-b">
+          <span className="text-base sm:text-lg font-semibold text-blue-600">Duration</span>
+          <span className="text-gray-700 text-base sm:text-lg">4 years</span>
         </div>
-
-        <div className="flex justify-between items-center border-b pb-2 mb-4">
-          <div className="md:text-lg text-md font-medium text-blue-500">
-            Mode
-          </div>
-          <div className="md:text-lg text-md text-[#777]">Offline</div>
+        <div className="flex flex-col sm:flex-row justify-between py-3 sm:py-4 border-b">
+          <span className="text-base sm:text-lg font-semibold text-blue-600">Mode</span>
+          <span className="text-gray-700 text-base sm:text-lg">Offline</span>
         </div>
+        <div className="flex flex-col sm:flex-row justify-between py-3 sm:py-4">
+          <span className="text-base sm:text-lg font-semibold text-blue-600">Exit Options</span>
+          <span className="text-gray-700 text-base sm:text-lg">After 1, 2, 3, or 4 years</span>
+        </div>
+      </section>
 
-        <div className="flex justify-between items-start border-b pb-2 mb-4">
-          <div className="md:text-lg text-md font-medium text-blue-500">
-            Exit Options
-          </div>
-          <div className="md:text-lg text-md text-[#777]">
-            <div className="grid grid-cols-2 gap-2">
-              <div>After 1 year</div>
-              <div>After 2 years</div>
-              <div>After 3 years</div>
-              <div>After 4 years</div>
-            </div>
-          </div>
+      <section className="w-full flex flex-col items-center text-center">
+        <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800">NEP Based Structure</h3>
+        <div className="mt-3 sm:mt-4 flex justify-center items-center w-full max-w-xs">
+          <div className="h-1 flex-1 bg-blue-700 rounded-full"></div>
+          <div className="h-2 w-10 sm:w-12 bg-blue-900 mx-2 rounded-full"></div>
+          <div className="h-1 flex-1 bg-blue-700 rounded-full"></div>
         </div>
 
-        <div className="flex justify-between items-center border-b pb-2 mb-4">
-          <div className="md:text-lg text-md font-medium text-blue-500">
-            Eligibility
-          </div>
-          <div className="md:text-lg text-md text-[#777]">
-            Multidisciplinary, Research, Industry, etc.
-          </div>
-        </div>
-      </div>
-
-      <hr className="w-[90%] mt-6 border-t-2 border-blue-900 mx-auto" />
-
-      <div className="w-full mt-4">
-        <div className="text-center">
-          <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-[#333]">
-            NAP Table
-          </h3>
-        </div>
-
-        <div className="overflow-x-auto mt-6">
-          <table className="min-w-full table-auto border-separate border-spacing-2">
+        <div className="mt-6 sm:mt-8 overflow-x-auto w-full">
+          <table className="w-full border-collapse shadow-md text-sm sm:text-base">
             <thead>
-              <tr>
-                <th className="px-4 py-2 text-blue-500 text-lg font-semibold text-center border-b">
-                  Year 1
-                </th>
-                <th className="px-4 py-2 text-blue-500 text-lg font-semibold text-center border-b">
-                  Year 2
-                </th>
-                <th className="px-4 py-2 text-blue-500 text-lg font-semibold text-center border-b">
-                  Year 3
-                </th>
-                <th className="px-4 py-2 text-blue-500 text-lg font-semibold text-center border-b">
-                  Year 4
-                </th>
+              <tr className="bg-blue-100">
+                <th className="px-4 sm:px-6 py-3 sm:py-4 text-blue-600 font-semibold border-r">Year 1</th>
+                <th className="px-4 sm:px-6 py-3 sm:py-4 text-blue-600 font-semibold border-r">Year 2</th>
+                <th className="px-4 sm:px-6 py-3 sm:py-4 text-blue-600 font-semibold border-r">Year 3</th>
+                <th className="px-4 sm:px-6 py-3 sm:py-4 text-blue-600 font-semibold">Year 4</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td className="px-4 py-2 text-center border-b md:text-[1rem] sm:text-md text-sm">
-                  40 credits of level 4.5
-                </td>
-                <td className="px-4 py-2 text-center border-b md:text-[1rem] sm:text-md text-sm">
-                  40 credits for levels 4.5 and 5
-                </td>
-                <td className="px-4 py-2 text-center border-b md:text-[1rem] sm:text-md text-sm">
-                  40 credits for 4.5, 5
-                </td>
-                <td className="px-4 py-2 text-center border-b md:text-[1rem] sm:text-md text-sm">
-                  Same
-                </td>
+              <tr className="border-b">
+                <td className="px-4 sm:px-6 py-3 sm:py-4 text-center text-gray-700 border-r">40 credits of level 1.5</td>
+                <td className="px-4 sm:px-6 py-3 sm:py-4 text-center text-gray-700 border-r">40 credits of level 1.5</td>
+                <td className="px-4 sm:px-6 py-3 sm:py-4 text-center text-gray-700 border-r">40 credits of level 1.5</td>
+                <td className="px-4 sm:px-6 py-3 sm:py-4 text-center text-gray-700">40 credits of level 1.5</td>
+              </tr>
+              <tr className="border-b">
+                <td className="px-4 sm:px-6 py-3 sm:py-4 text-center text-gray-700 border-r">UG Certificate</td>
+                <td className="px-4 sm:px-6 py-3 sm:py-4 text-center text-gray-700 border-r">UG Diploma</td>
+                <td className="px-4 sm:px-6 py-3 sm:py-4 text-center text-gray-700 border-r">3 years Bachelors Degree</td>
+                <td className="px-4 sm:px-6 py-3 sm:py-4 text-center text-gray-700">PG Diploma</td>
               </tr>
               <tr>
-                <td className="px-4 py-2 text-center border-b md:text-[1rem] sm:text-md text-sm">
-                  UG Certificate
-                </td>
-                <td className="px-4 py-2 text-center border-b md:text-[1rem] sm:text-md text-sm">
-                  UG Diploma
-                </td>
-                <td className="px-4 py-2 text-center border-b md:text-[1rem] sm:text-md text-sm">
-                  3 years Bachelors Degree
-                </td>
-                <td className="px-4 py-2 text-center border-b md:text-[1rem] sm:text-md text-sm">
-                  UG Degree (Hons)/ PG Diploma
-                </td>
+                <td className="px-4 sm:px-6 py-3 sm:py-4 text-center text-blue-500 cursor-pointer hover:text-blue-400 hover:underline border-r">Curriculum link</td>
+                <td className="px-4 sm:px-6 py-3 sm:py-4 text-center text-blue-500 cursor-pointer hover:text-blue-400 hover:underline border-r">Curriculum link</td>
+                <td className="px-4 sm:px-6 py-3 sm:py-4 text-center text-blue-500 cursor-pointer hover:text-blue-400 hover:underline border-r">Curriculum link</td>
+                <td className="px-4 sm:px-6 py-3 sm:py-4 text-center text-blue-500 cursor-pointer hover:text-blue-400 hover:underline">Curriculum link</td>
               </tr>
             </tbody>
           </table>
-          
-          <div className="flex justify-between mt-6 md:px-10 sm:px-8 px-3">
-            <div className="text-blue-500 cursor-pointer hover:text-blue-400 hover:underline">Syllabus Link</div>
-            <div className="text-blue-500 cursor-pointer hover:text-blue-400 hover:underline">Syllabus Link</div>
-            <div className="text-blue-500 cursor-pointer hover:text-blue-400 hover:underline">Syllabus Link</div>
-            <div className="text-blue-500 cursor-pointer hover:text-blue-400 hover:underline">Syllabus Link</div>
-          </div>
         </div>
-      </div>
+      </section>
     </main>
   );
 };
