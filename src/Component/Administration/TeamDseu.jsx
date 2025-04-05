@@ -1,4 +1,4 @@
-import { members } from "../../constants/TEAMDSEU.js";
+import { members } from "../../constants/TEAMDSEU.JS";
 
 const TeamDseu = () => {
   const categories = [...new Set(members.map((member) => member.category))];

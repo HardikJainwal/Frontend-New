@@ -42,296 +42,299 @@ import {
   veenaUpadhay,
   vibhakarShrimali,
   vicechancellor,
-  vivekAggarwal
-} from '../assets/team-dseu'
+  vivekAggarwal,
+} from "../assets/team-dseu";
 
-export const members = [
+const members = [
   {
     id: 1,
     name: "Sh. Vinai Kumar Saxena",
     src: chancellor,
     designation: "Hon'ble Chancellor & Lt. Governor",
-    category: "Chancellor"
+    category: "Chancellor",
   },
   {
     id: 2,
     name: "Prof. (Dr.) Ashok Kumar Nagawat",
     src: vicechancellor,
     designation: "Vice-Chancellor",
-    category: "Vice Chancellor"
+    category: "Vice Chancellor",
   },
   {
     id: 3,
     name: "Vivek Aggrawal",
     src: vivekAggarwal,
     designation: "Registrar",
-    category: "registrar"
-
+    category: "registrar",
   },
   {
     id: "gagandhawan",
     name: "Prof. (Dr.) Gagan Dhawan",
     src: gagandhawan,
     designation: "Controller of Finance",
-    category: "University Officers"
+    category: "University Officers",
   },
   {
     id: 4,
     name: "Prof. (Dr.) Girish Kumar Sharma",
     src: girishKumar,
     designation: "Dean (Research)",
-    category: "University Officers"
+    category: "University Officers",
   },
   {
     id: 6,
     name: "Dr. Pankaj Lathar",
     src: pankajLathar,
-    designation: "Controller of Examination, Joint Director(public relation) & Chief Vigilence Officer",
-    category: "University Officers"
+    designation:
+      "Controller of Examination, Joint Director(public relation) & Chief Vigilence Officer",
+    category: "University Officers",
   },
   {
     id: 8,
     name: "Bindu Nair",
     src: binduNair,
     designation: "Deputy Registrar",
-    category: "University Officers"
+    category: "University Officers",
   },
   {
     id: 10,
     name: "Prof. (Dr.) Kamna Sachdeva",
     src: kamnaSachdeva,
     designation: "Director Academics",
-    category: "University Officers"
+    category: "University Officers",
   },
   {
     id: 11,
     name: "Ms. Sangeeta Jain",
     src: sangeetaJain,
     designation: "Campus Director - DSEU Siri Fort Campus",
-    category: "Campus Directors"
+    category: "Campus Directors",
   },
   {
     id: 12,
     name: "Prof. Dr. N. Jena",
     src: dnJena,
     designation: "Campus Director (DSEU PUSA-II CAMPUS)",
-    category: "Campus Directors"
+    category: "Campus Directors",
   },
   {
     id: 13,
     name: "Dr. Arun Dabas",
     src: "",
     designation: "Campus Director - Ranhola Campus",
-    category: "Campus Directors"
+    category: "Campus Directors",
   },
   {
     id: 14,
     name: "Prof. Vibhakar Shrimali",
     src: vibhakarShrimali,
     designation: "Campus Director - G.B Pant DSEU Okhla III & Okhla I",
-    category: "Campus Directors"
+    category: "Campus Directors",
   },
   {
     id: 15,
     name: "Prof. (Dr.) Shruti Tripathi",
     src: shrutiTripathi,
     designation: "Campus Director - Kasturba DSEU Pitampura Campus",
-    category: "Campus Directors"
+    category: "Campus Directors",
   },
   {
     id: 16,
     name: "Dr. Ghanshyam",
     src: drGhanshyam,
     designation: "Campus Director - Ambedkar DSEU Shakarpur - I Campus",
-    category: "Campus Directors"
+    category: "Campus Directors",
   },
   {
     id: 17,
     name: "Dr. Pankaj Kumar Singh",
     src: pankarKumarSigh,
     designation: "Campus Director - DSEU Wazirpur - I Campus",
-    category: "Campus Directors"
+    category: "Campus Directors",
   },
   {
     id: 18,
     name: "Dr. Sampurnananda Mishra",
     src: sampuranandaMishra,
     designation: "Campus Head - Dr. H.J. Bhabha DSEU Mayur Vihar Campus",
-    category: "Campus Directors"
+    category: "Campus Directors",
   },
   {
     id: 19,
     name: "Mr. Porusu Ramanaiah",
     src: porusuRamananiah,
     designation: "Campus Director - DSEU Rajokri Campus",
-    category: "Campus Directors"
+    category: "Campus Directors",
   },
   {
     id: 20,
     name: "Mr. Ravinder Singh",
     src: ravinderSingh,
     designation: "Campus Director - Guru Nanak Dev DSEU Rohini Campus",
-    category: "Campus Directors"
+    category: "Campus Directors",
   },
   {
     id: 21,
     name: "Prof. (Dr.) Girish Kumar Sharma",
     src: girishKumar,
-    designation: "Campus Director - Bhai Parmanand DSEU Shakarpur Campus - II & Dean (Research)",
-    category: "Campus Directors"
+    designation:
+      "Campus Director - Bhai Parmanand DSEU Shakarpur Campus - II & Dean (Research)",
+    category: "Campus Directors",
   },
   {
     id: 22,
     name: "Dr. Punita Duhan",
     src: punitaDuhan,
     designation: "Campus Director - DSEU Vivek Vihar Campus",
-    category: "Campus Directors"
+    category: "Campus Directors",
   },
   {
     id: 23,
     name: "Ms. Manju Jain",
     src: manjuJain,
     designation: "Campus Director - Meerabai DSEU Maharani Bagh Campus",
-    category: "Campus Directors"
+    category: "Campus Directors",
   },
   {
     id: 24,
     name: "Dr. Pankaj Lathar",
-    src:pankajLathar,
+    src: pankajLathar,
     designation: "Campus Director - DSEU Dwarka Campus",
-    category: "Campus Directors"
+    category: "Campus Directors",
   },
   {
     id: 25,
     name: "Dr. Monica Chopra",
     src: monicaChopra,
     designation: "Campus Director - DSEU Dheerpur Campus",
-    category: "Campus Directors"
+    category: "Campus Directors",
   },
   {
     id: 26,
     name: "Dr. S V Vageesha",
     src: svVageesha,
     designation: "Campus Director - Aryabhatt DSEU Ashok Vihar Campus",
-    category: "Campus Directors"
+    category: "Campus Directors",
   },
   {
     id: 27,
     name: "Prof. Dipali Bansal",
     src: dipaloBansal,
     designation: "Campus Director - DSEU Champs Okhla-II Campus",
-    category: "Campus Directors"
+    category: "Campus Directors",
   },
   {
     id: 28,
     name: "Dr. Pramod Kumar Goyal",
     src: pramodKumarGoyal,
     designation: "Campus Director - DSEU Pusa Campus I",
-    category: "Campus Directors"
+    category: "Campus Directors",
   },
   {
     id: 29,
     name: "Shivam Gupta",
     src: shivamGupta,
     designation: "OSD IT and Process Automation & Model officer Samarth ERP",
-    category: "Officers"
+    category: "Officers",
   },
   {
     id: 30,
     name: "Mukesh Kumar Gupta",
     src: mukeshKumarGupta,
     designation: "OSD (Legal/RTI)",
-    category: "Officers"
+    category: "Officers",
   },
   {
     id: 33,
     name: "Parvathy Unnikrishnan",
     src: parvathyUnnikrishan,
     designation: "Assistant Registrar",
-    category: "Officers"
+    category: "Officers",
   },
   {
     id: 34,
     name: "Dr. Surender Kumar Sharma",
     src: surrendarKumarSharma,
     designation: "Assistant Registrar",
-    category: "Officers"
+    category: "Officers",
   },
   {
     id: 35,
     name: "Dr. Ruchika Singh",
     src: ruchikaSingh,
     designation: "Assistant Registrar",
-    category: "Officers"
+    category: "Officers",
   },
   {
     id: 36,
     name: "R.K. Reddy",
     src: rkReddy,
     designation: "Senior Accounts Officer",
-    category: "Officers"
+    category: "Officers",
   },
   {
     id: 37,
     name: "Veena Upadhyay",
     src: veenaUpadhay,
     designation: "Accounts Officer",
-    category: "Officers"
+    category: "Officers",
   },
   {
     id: 38,
     name: "Kireet Kant Srivastava",
     src: kieraatSrivastava,
     designation: "Executive Engineer (Civil)",
-    category: "Officers"
+    category: "Officers",
   },
   {
     id: 40,
     name: "Ahmad Omair",
     src: ahmadOmair,
     designation: "Placement and Partnership Manager",
-    category: "Training and Placement Officers"
+    category: "Training and Placement Officers",
   },
   {
     id: 41,
     name: "Niharika Pandey",
     src: niharikaPandey,
     designation: "Placement and Partnership Manager",
-    category: "Training and Placement Officers"
+    category: "Training and Placement Officers",
   },
   {
     id: 42,
     name: "Kaushalender Varma",
     src: kaushalSachdeva,
     designation: "Placement and Partnership Manager",
-    category: "Training and Placement Officers"
+    category: "Training and Placement Officers",
   },
   {
     id: 43,
     name: "Dr. Ravinder Jhorar",
     src: ravinderJohar,
     designation: "Placement and Partnership Manager",
-    category: "Training and Placement Officers"
+    category: "Training and Placement Officers",
   },
   {
     id: 44,
     name: "Agrim Tomar",
     src: agrimTomar,
     designation: "Placement and Partnership Manager",
-    category: "Training and Placement Officers"
+    category: "Training and Placement Officers",
   },
   {
     id: 45,
     name: "Dr Dipti Mal",
     src: "",
     designation: "Placement and Partnership Manager",
-    category: "Training and Placement Officers"
+    category: "Training and Placement Officers",
   },
   {
     id: 46,
     name: "Mr Amreek Singh",
     src: "",
     designation: "Placement and Partnership Manager",
-    category: "Training and Placement Officers"
-  }
+    category: "Training and Placement Officers",
+  },
 ];
+
+export { members };

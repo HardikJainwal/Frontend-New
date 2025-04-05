@@ -1,10 +1,9 @@
 /* Inter Font for general text */
 .font-inter {
-    font-family: 'Inter', sans-serif;
-  }
-  
-  /* Pacifico Font for "Crafting Excellence" */
-  .font-pacifico {
-    font-family: 'Pacifico', cursive;
-  }
-  
+  font-family: "Inter", sans-serif;
+}
+
+/* Pacifico Font for "Crafting Excellence" */
+.font-pacifico {
+  font-family: "Pacifico", cursive;
+}
