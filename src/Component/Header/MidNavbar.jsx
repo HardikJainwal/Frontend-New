@@ -41,8 +41,12 @@ const navItems = [
         name: "Annual Report",
         path: "/about-us/Annual-Report",
       },
+      {
+        name: " UGC Guidelines",
+        path: "/UGC-Guidelines",
+      },
       // { name: "Handbook (Brochure)", path: "/about-us/Handbook" },
-      { name: "Information Bulletin", path: "/information-bulletin" },
+     
       // change from, handbook -> information bulletin
     ],
   },
@@ -69,24 +73,23 @@ const navItems = [
     name: "Admission",
     dropdownItems: [
       {
-        name: "UG Admission",
-        path: "https://dseuadm.samarth.edu.in/ug/index.php/",
+        name: "Admission Main Page",
+        path: "/",
       },
       {
-        name: "PG Admission",
-        path: "https://dseuadm.samarth.edu.in/pg/index.php",
+        name: "Information Bulletin",
+        path: "",
       },
-      { name: "Diploma Admission", path: "https://dseuadm.samarth.edu.in/" },
     ],
   },
   {
     name: "Administration",
     dropdownItems: [
       { name: "Administrative", path: "/administration/administrative" },
-      {
-        name: "Grievance Form",
-        path: "/Grievance-Form",
-      },
+      { name: "Vice Chancellor", path: "/vice-chancellor" },
+      { name: "Registrar", path: "" },
+      
+
       {
         name: "Other Academic Units",
         path: "/administration/Other-Academic-Units",
@@ -97,7 +100,7 @@ const navItems = [
   {
     name: "Student Services",
     dropdownItems: [
-      { name: "Training & Placement", path: "/placement" },
+      
       { name: "Computer Centre", path: "/amenities/Computer-Centre" },
       { name: "NCC", path: "/ncc" },
       { name: "Canteen", path: "/amenities/Canteen" },
@@ -110,9 +113,8 @@ const navItems = [
     path: "/recruitment",
   },
   {
-    name: " UGC Guidelines",
-    path: "/UGC-Guidelines",
-  },
+    name: "T & Placement Cell", path:"/placement"
+  }
 ];
 
 //? for mobile view
