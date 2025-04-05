@@ -103,6 +103,8 @@ const ComputerCentre = lazy(() =>
   import("./Component/Student Services/ComputerCentre")
 );
 import PlacementOld from "./Component/NavItems/PlacementOld";
+import Registrar from "./Component/Administration/Registrar";
+import CoursesByLevel from "./Component/Courses/CoursesByLevel";
 
 function App() {
   return (
@@ -138,11 +140,13 @@ function App() {
 
           {/* Courses */}
           <Route path="/courses" element={<CoursesPage />} />
-          <Route path="/courses/:id" element={<Program />} />
+          <Route path="/programs/:id" element={<Program />} />
           <Route path="/curriculum" element={<Curriculum />} />
-          <Route path="/courses/undergraduate" element={<UGPrograms />} />
+          {/* <Route path="/courses/undergraduate" element={<UGPrograms />} />
           <Route path="/courses/postgraduate" element={<PGPrograms />} />
-          <Route path="/courses/diploma" element={<DiplomaPrograms />} />
+          <Route path="/courses/diploma" element={<DiplomaPrograms />} /> */}
+
+          <Route path="/courses/:programLevel" element={<CoursesByLevel />} />
           <Route
             path="/courses/certificate-courses"
             element={<CertificateCourses />}
@@ -181,6 +185,7 @@ function App() {
 
           {/* Other Pages */}
           <Route path="/vice-chancellor" element={<ViceChancellorMessage />} />
+          <Route path="/registrar" element={<Registrar />} />
           <Route path="/research/*" element={<ResearchDev />} />
           <Route path="/about-us/About-the-University" element={<About />} />
           <Route

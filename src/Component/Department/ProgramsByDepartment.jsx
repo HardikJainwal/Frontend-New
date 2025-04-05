@@ -61,7 +61,7 @@ const ProgramsByDepartment = ({ deptId }) => {
               key={index}
               className="border-l-4 border-blue-500 bg-white p-4 shadow-md rounded-md cursor-pointer hover:shadow-lg hover:scale-105 hover:bg-blue-50 transition-all duration-300"
               onClick={() =>
-                navigate(`/courses/${program._id}`)
+                navigate(`/programs/${program._id}`)
               }
             >
               <p className="text-lg font-semibold text-gray-800">

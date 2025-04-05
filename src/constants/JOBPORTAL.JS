@@ -51,14 +51,23 @@ const jobPortalData = {
         {
             id: 5,
             title: "Advertisement For Teaching Posts on Deputation",
-            notification: "/job-portal/Advt-Teaching_Deputation_ pdf.pdf",
+            notification: "/job_portal/Advt-Teaching_Deputation_ pdf.pdf",
             startDate: "15/03/2024",
             lastDate: "30/04/2024",
-            apply: '/job-portal/Application_Form-Teaching_Deputation.pdf',
+            apply: "/job-portal/Application_Form-Teaching_Deputation.pdf",
             hasPdf: true,
         },
     ],
     nonAcademic: [
+        {
+            id: 6,
+            title: "Advertisement For Non-Teaching Posts. Advt.",
+            notification: "/job_portal/Advt.01-2025.pdf",
+            startDate: "---",
+            lastDate: "---",
+            apply: "https://dseunt.samarth.edu.in/index.php/site/login",
+            hasPdf: true,
+        },
         {
             id: 1,
             title: "Advertisement For Engagement Of Non-Teaching on Deputation",
@@ -68,9 +77,20 @@ const jobPortalData = {
             hasPdf: true,
         },
     ],
-    shortTerm: [],
+    shortTerm: [
+        {
+            id: 1,
+            title:
+                "Notice for Internship program for students to gain practical work experience under qualified mentors.",
+            notification: "/job_portal/Dseu_Internship.pdf",
+            startDate: "---",
+            lastDate: "---",
+            apply: "https://forms.gle/ZdYZBcYKCNkDM6aM7",
+            hasPdf: true,
+        },
+    ],
     results: [],
     notice: [],
 };
 
-export { jobPortalTabs, jobPortalData }
+export { jobPortalTabs, jobPortalData };

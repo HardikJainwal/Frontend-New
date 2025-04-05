@@ -1,3 +1,7 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { ugPrograms as programs } from "../../constants/UGPROGRAM.JS";
+
 const UGPrograms = () => {
   const [selectedProgram, setSelectedProgram] = useState(null);
   const navigate = useNavigate();
@@ -21,7 +25,6 @@ const UGPrograms = () => {
           ))}
         </div>
       </div>
-
     </div>
   );
 };
