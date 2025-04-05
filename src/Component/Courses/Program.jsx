@@ -16,6 +16,12 @@ const Program = () => {
     enabled: !!id,
   });
 
+  const years = data?.years ? Object.values(data.years) : [];
+
+  if (isLoading) {
+    return <OrangeLoader />;
+  }
+
   if (!data || data === "data not found") {
     return (
       <main className="flex flex-col items-center justify-center h-[70vh] md:h-[50vh] px-1 text-center">
@@ -27,12 +33,6 @@ const Program = () => {
         </p>
       </main>
     );
-  }
-
-  const years = data?.years ? Object.values(data.years) : [];
-
-  if (isLoading) {
-    return <OrangeLoader />;
   }
 
   return (
@@ -145,7 +145,12 @@ const Program = () => {
                         Curriculum link
                       </a>
                     ) : (
-                      "Curriculum link"
+                      <div className="relative group inline-block text-gray-400 cursor-not-allowed">
+                        Curriculum link
+                        <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 px-2 py-1 text-xs bg-orange-500 text-white rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-10">
+                          Curriculum not available
+                        </div>
+                      </div>
                     )}
                   </td>
                 ))}
