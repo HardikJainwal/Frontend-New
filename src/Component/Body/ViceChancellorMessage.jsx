@@ -8,17 +8,14 @@ import activity7 from "/src/assets/Activities/Activities7.jpeg";
 const carouselItems = [
   {
     id: 1,
-    title: "Celebrate this",
     image: activity5,
   },
   {
     id: 2,
-    title: "Celebrate this",
     image: activity6,
   },
   {
     id: 3,
-    title: "Celebrate this",
     image: activity7,
   },
 ];
@@ -39,7 +36,7 @@ const ViceChancellorMessage = () => {
   };
 
   return (
-    <div className="max-w-5xl mx-auto p-8 bg-white shadow-lg rounded-lg">
+    <div className="max-w-5xl mx-auto p-8 my-6">
       {/* Header Section */}
       <div className="border-b pb-6 mb-12">
         <h2 className="text-3xl font-bold mb-4 text-gray-800">
@@ -97,42 +94,64 @@ const ViceChancellorMessage = () => {
         </p>
       </div>
 
-      <div className="relative mt-12">
-        <div className="grid grid-cols-3 gap-6 mb-6">
-          {carouselItems.map((item) => (
-            <div key={item.id} className="flex flex-col items-center">
-              <img
-                src={item.image}
-                alt={`Slide ${item.id}`}
-                className="w-full h-64 object-cover rounded-lg mb-4"
-              />
-              <h3 className="text-lg font-medium text-gray-800">
-                {item.title}
-              </h3>
-            </div>
-          ))}
+      {/* Desktop Grid View */}
+      <div className="hidden md:grid grid-cols-3 gap-6 mb-6">
+        {carouselItems.map((item) => (
+          <div key={item.id} className="flex flex-col items-center">
+            <img
+              src={item.image}
+              alt={`Slide ${item.id}`}
+              className="w-full h-64 object-cover rounded-lg mb-4"
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* Mobile Carousel View */}
+      <div className="relative md:hidden">
+        <div className="overflow-hidden mb-6">
+          <div
+            className="flex transition-transform duration-500"
+            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+          >
+            {carouselItems.map((item) => (
+              <div
+                key={item.id}
+                className="flex-shrink-0 w-full flex flex-col items-center"
+              >
+                <img
+                  src={item.image}
+                  alt={`Slide ${item.id}`}
+                  className="w-full h-64 object-cover rounded-lg mb-4"
+                />
+                <h3 className="text-lg font-medium text-gray-800">
+                  {item.title}
+                </h3>
+              </div>
+            ))}
+          </div>
         </div>
 
         <button
           onClick={prevSlide}
-          className="absolute -left-6 top-1/2 transform -translate-y-1/2 bg-white p-3 rounded-full shadow-md z-10 hover:bg-gray-100"
+          className="absolute left-3 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md z-10 hover:bg-gray-100"
         >
-          <ChevronLeft className="w-6 h-6 text-gray-600" />
+          <ChevronLeft className="w-5 h-5 text-gray-600" />
         </button>
 
         <button
           onClick={nextSlide}
-          className="absolute -right-6 top-1/2 transform -translate-y-1/2 bg-white p-3 rounded-full shadow-md z-10 hover:bg-gray-100"
+          className="absolute right-3 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md z-10 hover:bg-gray-100"
         >
-          <ChevronRight className="w-6 h-6 text-gray-600" />
+          <ChevronRight className="w-5 h-5 text-gray-600" />
         </button>
 
-        <div className="flex justify-center gap-2 mt-6">
+        <div className="flex justify-center gap-2 mt-4">
           {carouselItems.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
                 index === currentSlide ? "bg-blue-600" : "bg-gray-300"
               }`}
             />

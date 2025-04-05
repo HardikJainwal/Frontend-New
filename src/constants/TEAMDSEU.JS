@@ -43,6 +43,9 @@ import {
   vibhakarShrimali,
   vicechancellor,
   vivekAggarwal,
+  harvinderKaur,
+  hrMeena,
+  placeholder
 } from "../assets/team-dseu";
 
 const members = [
@@ -120,7 +123,7 @@ const members = [
   {
     id: 13,
     name: "Dr. Arun Dabas",
-    src: "",
+    src: placeholder,
     designation: "Campus Director - Ranhola Campus",
     category: "Campus Directors",
   },
@@ -163,22 +166,22 @@ const members = [
     id: 19,
     name: "Mr. Porusu Ramanaiah",
     src: porusuRamananiah,
-    designation: "Campus Director - DSEU Rajokri Campus",
+    designation: "Campus Director - DSEU Jaffarpur Campus", //fixed
     category: "Campus Directors",
   },
   {
     id: 20,
-    name: "Mr. Ravinder Singh",
-    src: ravinderSingh,
-    designation: "Campus Director - Guru Nanak Dev DSEU Rohini Campus",
+    name: "Mr. H. R. Meena",
+    src: hrMeena,
+    designation: "Campus Director - Guru Nanak Dev DSEU Rohini Campus",//fixed
     category: "Campus Directors",
   },
   {
     id: 21,
-    name: "Prof. (Dr.) Girish Kumar Sharma",
-    src: girishKumar,
+    name: "Dr. Harvinder Kaur",
+    src: harvinderKaur,
     designation:
-      "Campus Director - Bhai Parmanand DSEU Shakarpur Campus - II & Dean (Research)",
+      "Campus Director - Bhai Parmanand DSEU Shakarpur Campus - II & Dean (Research)", //fixed
     category: "Campus Directors",
   },
   {
@@ -234,7 +237,7 @@ const members = [
     id: 29,
     name: "Shivam Gupta",
     src: shivamGupta,
-    designation: "OSD IT and Process Automation & Model officer Samarth ERP",
+    designation: "OSD (IT and Process Automation) & Nodal officer Samarth ERP",
     category: "Officers",
   },
   {
@@ -324,14 +327,14 @@ const members = [
   {
     id: 45,
     name: "Dr Dipti Mal",
-    src: "",
+    src: placeholder,
     designation: "Placement and Partnership Manager",
     category: "Training and Placement Officers",
   },
   {
     id: 46,
     name: "Mr Amreek Singh",
-    src: "",
+    src: placeholder,
     designation: "Placement and Partnership Manager",
     category: "Training and Placement Officers",
   },

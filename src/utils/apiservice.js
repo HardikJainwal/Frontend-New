@@ -145,11 +145,22 @@ export const getProgramByDepartment = async (id, system) => {
   return programs.filter(program => program.programLevel === system);
 };
 
+// get all programs
+export const getAllPrograms = async () => {
+  const response = await api.get('/program');
+  return response.data.data.programs;
+};
 
 // get information of a single program
 export const getProgramData = async (id) => {
-  const response = await api.get('/program');
-
-  const allPrograms = response.data.data.programs;
+  const allPrograms = await getAllPrograms();
   return allPrograms.find((program) => program._id === id) ?? "data not found";
-}
+};
+
+// programs by level such as pg ug diploma
+export const getProgramsByLevel = async (level) => {
+  const allPrograms = await getAllPrograms();
+  return allPrograms.filter(
+    (program) => program.programLevel?.toLowerCase() === level.toLowerCase()
+  );
+};
