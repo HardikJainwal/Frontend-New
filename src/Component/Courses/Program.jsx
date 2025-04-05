@@ -1,8 +1,11 @@
+//? Individual page for each program, includes the NEP table.
+
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { Loader2Icon } from "lucide-react";
+
 import { getProgramData } from "../../utils/apiservice";
 import { QUERY_KEYS } from "../../utils/queryKeys";
+import OrangeLoader from "../PageLoader/OrangeLoader";
 
 const Program = () => {
   const { id } = useParams();
@@ -13,15 +16,23 @@ const Program = () => {
     enabled: !!id,
   });
 
+  if (!data || data === "data not found") {
+    return (
+      <main className="flex flex-col items-center justify-center h-[70vh] md:h-[50vh] px-1 text-center">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+          Program Not Found
+        </h2>
+        <p className="text-gray-600 text-base sm:text-lg max-w-md">
+          The program doesn't exists or the ID you entered is wrong.
+        </p>
+      </main>
+    );
+  }
+
   const years = data?.years ? Object.values(data.years) : [];
 
   if (isLoading) {
-    return (
-      <div className="flex flex-col items-center justify-center md:h-96 h-screen space-y-4 text-gray-700 animate-pulse">
-        <Loader2Icon className="animate-spin h-16 w-16 animate-spin-color" />
-        <p className="text-lg font-medium">Loading, please wait...</p>
-      </div>
-    );
+    return <OrangeLoader />;
   }
 
   return (
@@ -42,13 +53,17 @@ const Program = () => {
           <span className="text-base sm:text-lg font-semibold text-blue-600">
             Duration
           </span>
-          <span className="text-gray-700 text-base sm:text-lg">{data?.duration || "-"}</span>
+          <span className="text-gray-700 text-base sm:text-lg">
+            {data?.duration || "-"}
+          </span>
         </div>
         <div className="flex flex-col sm:flex-row justify-between py-3 sm:py-4 border-b">
           <span className="text-base sm:text-lg font-semibold text-blue-600">
             Mode
           </span>
-          <span className="text-gray-700 text-base sm:text-lg">{data?.mode || "-"}</span>
+          <span className="text-gray-700 text-base sm:text-lg">
+            {data?.mode || "-"}
+          </span>
         </div>
         <div className="flex flex-col sm:flex-row justify-between py-3 sm:py-4">
           <span className="text-base sm:text-lg font-semibold text-blue-600">
@@ -122,7 +137,11 @@ const Program = () => {
                     }`}
                   >
                     {year.year_syllabus_link ? (
-                      <a href={year.year_syllabus_link} target="_blank" rel="noopener noreferrer">
+                      <a
+                        href={year.year_syllabus_link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         Curriculum link
                       </a>
                     ) : (

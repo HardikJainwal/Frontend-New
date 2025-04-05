@@ -138,7 +138,7 @@ function App() {
 
           {/* Courses */}
           <Route path="/courses" element={<CoursesPage />} />
-          <Route path="/courses/:system/:id" element={<Program />} />
+          <Route path="/courses/:id" element={<Program />} />
           <Route path="/curriculum" element={<Curriculum />} />
           <Route path="/courses/undergraduate" element={<UGPrograms />} />
           <Route path="/courses/postgraduate" element={<PGPrograms />} />

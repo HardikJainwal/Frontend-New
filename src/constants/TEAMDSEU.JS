@@ -69,7 +69,7 @@ export const members = [
 
   },
   {
-    id: 3,
+    id: "gagandhawan",
     name: "Prof. (Dr.) Gagan Dhawan",
     src: gagandhawan,
     designation: "Controller of Finance",
@@ -224,8 +224,8 @@ export const members = [
   },
   {
     id: 28,
-    name: "Dr. Om Prakash Singh",
-    src: omPrakashSingh,
+    name: "Dr. Pramod Kumar Goyal",
+    src: pramodKumarGoyal,
     designation: "Campus Director - DSEU Pusa Campus I",
     category: "Campus Directors"
   },

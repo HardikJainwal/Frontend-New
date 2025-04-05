@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { QUERY_KEYS } from "../../utils/queryKeys";
 import { getHodInfo } from "../../utils/apiservice";
 
-const primaryCategories = ["DSEU", "Deen Deputy"];
+const primaryCategories = ["DSEU", "Deen Deputation"];
 const subCategories = [
   "HOD",
   "Professor",
