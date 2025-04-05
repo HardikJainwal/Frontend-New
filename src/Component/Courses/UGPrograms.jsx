@@ -1,5 +1,3 @@
-import { regulations } from "../../constants/REGULATIONS.JS"; // Assuming regulations are stored here
-
 const UGPrograms = () => {
   const [selectedProgram, setSelectedProgram] = useState(null);
   const navigate = useNavigate();
