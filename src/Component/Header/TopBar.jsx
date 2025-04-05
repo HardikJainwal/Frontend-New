@@ -48,8 +48,15 @@ const TopBar = () => {
         </a>
 
         <Link
+          to="/grievance-form"
+          className=" border-l-2 px-1 md:px-4 hover:underline hover:text-[#1b1b1b] whitespace-nowrap text-sm md:text-[1rem]"
+        >
+          Grievance form & RTI
+        </Link>
+
+        <Link
           to="alumni"
-          className="px-1 md:px-4 hover:underline hover:text-[#1b1b1b] whitespace-nowrap text-sm md:text-[1rem]"
+          className="px-1 border-blue-500 border-l-2 md:px-4 hover:underline hover:text-[#1b1b1b] whitespace-nowrap text-sm md:text-[1rem]"
         >
           Alumni
         </Link>
