@@ -59,7 +59,7 @@ const sideNavItems = [
     },
     {
         id: 4,
-        name: "Advisory Board",
+        name: "Statutory committees",
         href: "/administration/administrative/advisory-board",
         active: false,
     },
