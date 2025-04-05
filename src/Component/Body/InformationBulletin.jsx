@@ -2,7 +2,7 @@ import { informationBulletin as cards } from "../../constants/NOTICES.JS";
 
 const InformationBulletin = (seperatePage) => {
   return (
-    <div id="information-bulletin" className={`container mx-auto px-4 py-4 ${seperatePage ? 'py-0 mt-10 md:mb-16 mb-20' : ""}`}>
+    <div id="information-bulletin" className={`container mx-auto px-4 py-4`}>
       <h2 className="text-4xl font-extrabold text-center text-blue-900 mb-8 mt-10 font-sans">
         Information Bulletin
         <div className="mt-2 mx-auto w-20 h-1 bg-blue-600 rounded"></div>
