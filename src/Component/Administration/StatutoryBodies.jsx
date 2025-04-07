@@ -9,7 +9,7 @@ const StatutoryBodiesComponent = () => {
   
   const boardMembers = [
     { title: 'University Court', id: 'court' },
-    { title: 'Board of Management', id: 'management' },
+    { title: 'Board of Management',file: "/BOM.pdf" },
     { title: 'Academic Council', id: 'academic' },
     { title: 'Finance Committee', id: 'finance' }
   ];
