@@ -17,6 +17,7 @@ const CampusActivities = ({ activity_photos }) => {
             <img
               src={url}
               alt={`Activity ${idx + 1}`}
+              loading="lazy"
               className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
             />
           </div>

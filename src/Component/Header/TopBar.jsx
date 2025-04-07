@@ -24,7 +24,7 @@ const TopBar = () => {
       <div className="flex flex-row justify-end my-4 md:mr-16 items-center">
         <Link
           to="#"
-          className="border-blue-500 border-l-2 px-1 md:px-4 hover:underline hover:text-[#1b1b1b] whitespace-nowrap text-sm md:text-[1rem]"
+          className="border-blue-500 border-l-2 px-1 md:px-4 hover:underline hover:text-[#1b1b1b] whitespace-nowrap text-xs md:text-[1rem]"
         >
           Admin Login
         </Link>
@@ -33,7 +33,7 @@ const TopBar = () => {
           onClick={openModal}
           className="relative group border-blue-500 border-l-2 border-r-2 px-1 md:px-4 hover:underline hover:text-[#1b1b1b] cursor-pointer whitespace-nowrap"
         >
-          <div className="flex items-center whitespace-nowrap text-sm md:text-[1rem]">
+          <div className="flex items-center whitespace-nowrap text-xs md:text-[1rem]">
             Faculty Login
           </div>
         </div>
@@ -42,7 +42,7 @@ const TopBar = () => {
           href={studentLoginSamarth}
           target="_blank"
           rel="noopener noreferrer"
-          className="border-blue-500 border-r-2 px-1 md:px-4 hover:underline hover:text-[#1b1b1b] whitespace-nowrap text-sm md:text-[1rem]"
+          className="border-blue-500 border-r-2 px-1 md:px-4 hover:underline hover:text-[#1b1b1b] whitespace-nowrap text-xs md:text-[1rem]"
         >
           Student Login
         </a>
@@ -56,7 +56,7 @@ const TopBar = () => {
 
         <Link
           to="alumni"
-          className="px-1 border-blue-500 border-l-2 md:px-4 hover:underline hover:text-[#1b1b1b] whitespace-nowrap text-sm md:text-[1rem]"
+          className="px-1 border-blue-500 border-l-2 md:px-4 hover:underline hover:text-[#1b1b1b] whitespace-nowrap text-xs md:text-[1rem]"
         >
           Alumni
         </Link>
