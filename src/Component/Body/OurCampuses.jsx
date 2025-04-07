@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import Slider from "react-slick";
-
-import { images } from "../../constants/CAMPUSIMAGES.JS";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+import { generateSlug } from "../../utils/helper";
+import { getAllCampus } from "../../utils/apiservice";
+import { QUERY_KEYS } from "../../utils/queryKeys";
 
 const CustomArrow = ({ onClick, direction }) => (
   <div
@@ -20,6 +22,19 @@ const CustomArrow = ({ onClick, direction }) => (
 
 const CarouselSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+
+  const { data: campuses, isLoading: isCampusLoading } = useQuery({
+    queryFn: getAllCampus,
+    queryKey: [QUERY_KEYS.GET_CAMPUS],
+  });
+
+  useEffect(() => {
+    console.log(campuses);
+  }, [campuses]);
+
+  if (isCampusLoading) {
+    return <div>Loading...</div>; /* To be changed  */
+  }
 
   const settings = {
     centerMode: true,
@@ -43,16 +58,16 @@ const CarouselSection = () => {
   };
 
   return (
-    <section className="py-12 bg-gray-100">
+    <section className="pb-12 pt-3 bg-gray-100 mt-10">
       <h2 className="text-4xl font-extrabold text-center text-blue-900 mb-8 mt-10 font-sans">
         Our Campuses
         <div className="mt-2 mx-auto w-20 h-1 bg-blue-600 rounded"></div>
       </h2>
       <div className="max-w-7xl mx-7 lg:mx-auto relative">
         <Slider {...settings}>
-          {images.map((image, index) => (
-            <div key={index} className="px-6">
-              <a href={image.link}>
+          {campuses.map((campus, index) => (
+            <div key={campus._id} className="px-6">
+              <a href={`/campus/${generateSlug(campus.name)}`}>
                 <div
                   className={`relative overflow-hidden shadow-lg transition-transform duration-500 ${
                     index === activeIndex
@@ -62,25 +77,30 @@ const CarouselSection = () => {
                 >
                   <div className="relative group h-64">
                     <img
-                      src={image.src}
-                      alt={image.alt}
-                      className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 group-hover:brightness-50 ${
-                        index === activeIndex
-                          ? "rounded-t-lg"
-                          : "rounded-t-lg"
-                      }`}
+                      src={campus.campus_photo}
+                      alt={campus.name}
+                      className={`h-full min-w-full object-cover transition-transform duration-500 group-hover:scale-105 group-hover:brightness-50 rounded-t-lg`}
                     />
-                    <div className="absolute bottom-0 left-0 right-0 flex flex-col items-start justify-start opacity-0 group-hover:opacity-100 transition-opacity duration-500 px-4 py-2">
-                      <p className="text-white text-lg font-bold">{image.text}</p>
-                      <p className="text-white text-xs">{image.address}</p>
+                    <div
+                      className={`absolute inset-0 bg-black bg-opacity-10 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 ${
+                        activeIndex === index ? "translate-y-4" : ""
+                      }`}
+                    >
+                      <p className="text-white text-xl font-bold text-center px-4">
+                        {campus.name}
+                      </p>
+                      <p className="text-white/80 text-xs px-4 text-center capitalize">
+                        {campus.location}
+                      </p>
                     </div>
                   </div>
+
                   <div
                     className={`flex justify-center font-bold bg-white text-black text-sm px-3 py-2 transition-opacity duration-300 ${
                       index === activeIndex ? "opacity-100" : "opacity-75"
                     }`}
                   >
-                    <p>{image.text}</p>
+                    <p>{campus.name}</p>
                   </div>
                 </div>
               </a>
