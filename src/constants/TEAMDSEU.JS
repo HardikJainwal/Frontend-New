@@ -1,3 +1,55 @@
+import {
+  agrimTomar,
+  ahmadOmair,
+  binduNair,
+  chancellor,
+  dipaloBansal,
+  dnJena,
+  drAmitKharapade,
+  drGhanshyam,
+  gagandhawan,
+  girishKumar,
+  janitVerma,
+  kamnaSachdeva,
+  kaushalSachdeva,
+  kavitaKhanna,
+  kieraatSrivastava,
+  shivamGupta,
+  kmCleetus,
+  makarandDevidasJoshi,
+  manjuJain,
+  monicaChopra,
+  mukeshKumarGupta,
+  niharikaPandey,
+  omPrakashSingh,
+  pankajLathar,
+  pankarKumarSigh,
+  panvirChitre,
+  parvathyUnnikrishan,
+  porusuRamananiah,
+  pramodKumarGoyal,
+  punitaDuhan,
+  ravinderJohar,
+  ravinderSingh,
+  rkReddy,
+  ruchikaSingh,
+  sampuranandaMishra,
+  sangeetaJain,
+  sanjayDahiya,
+  shrutiTripathi,
+  surrendarKumarSharma,
+  svVageesha,
+  veenaUpadhay,
+  vibhakarShrimali,
+  vicechancellor,
+  vivekAggarwal,
+  harvinderKaur,
+  hrMeena,
+  placeholder,
+  shubhaGV,
+  rituSareen
+} from "../assets/team-dseu";
+
 const members = [
   {
     id: 1,
@@ -130,8 +182,7 @@ const members = [
     id: 19,
     name: "Dr. Harvinder Kaur",
     src: harvinderKaur,
-    designation:
-      "Campus Director - Bhai Parmanand DSEU Shakarpur Campus - II & Dean (Research)",
+    designation: "Campus Director - Bhai Parmanand DSEU Shakarpur Campus - II & Dean (Research)",
     category: "Campus Directors",
   },
   {
@@ -187,7 +238,7 @@ const members = [
     id: 27,
     name: "Shivam Gupta",
     src: shivamGupta,
-    designation: "OSD (IT and Process Automation) & Nodal officer Samarth ERP",
+    designation: "OSD IT and Process Automation & Nodal officer Samarth ERP",
     category: "Officers",
   },
   {
@@ -296,3 +347,5 @@ const members = [
     category: "Training and Placement Officers",
   },
 ];
+
+export { members };
