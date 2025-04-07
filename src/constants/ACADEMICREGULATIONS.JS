@@ -1,9 +1,15 @@
 const regulations = [
     {
-        id: "2B",
-        name: "Regulation 2B",
-        link: "/regulations/Regulation_2B.pdf",
-        desc: "This regulation pertains to Composition and functions of Board of Studies and Committee of Courses.",
+        id: "1",
+        name: "Regulation 1 (I)",
+        link: "/regulations/Regulation_1.pdf",
+        desc: "This regulation contains the names of faculties and departments.",
+    },
+    {
+        id: "2A",
+        name: "Regulation 2A",
+        link: "/regulations/Regulation_2A.pdf",
+        desc: "This regulation Covers CBCS, semester system, entry/exit options, and grading as per NEP 2020 at DSEU from 2024–25.",
     },
     {
         id: "3C",

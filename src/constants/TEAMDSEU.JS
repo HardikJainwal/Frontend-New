@@ -187,7 +187,7 @@ const members = [
     id: 27,
     name: "Shivam Gupta",
     src: shivamGupta,
-    designation: "OSD IT and Process Automation & Nodal officer Samarth ERP",
+    designation: "OSD (IT and Process Automation) & Nodal officer Samarth ERP",
     category: "Officers",
   },
   {

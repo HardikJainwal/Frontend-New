@@ -13,6 +13,15 @@ import IndustryPartnership from "./Component/News/news1";
 import LoginPage from "./Component/Login/LoginPage";
 import AcademicRegulation from "./Component/AcademicRegulation/page";
 
+// admission
+import AdmissionGuidelines from "./Component/Admission/AdmissionGuidelines";
+import FeeRefundPolicy from './Component/Admission/FeeRefundPolicy';
+
+// Academics
+import AcademicCollabration from './Component/Academics/AcademicCollaboration';
+import IQAC from './Component/Academics/IQAC';
+
+
 // Lazy Load Components
 const HomeBody = lazy(() => import("./Component/Body/Banner"));
 const Announcements = lazy(() => import("./Component/Body/Announcements"));
@@ -36,9 +45,7 @@ const Central = lazy(() => import("./Component/Campuses/Central"));
 
 // Courses
 const CoursesPage = lazy(() => import("./Component/Courses/CoursesPage"));
-const UGPrograms = lazy(() => import("./Component/Courses/UGPrograms"));
-const PGPrograms = lazy(() => import("./Component/Courses/PGProgram"));
-const DiplomaPrograms = lazy(() => import("./Component/Courses/Diploma"));
+
 const CertificateCourses = lazy(() =>
   import("./Component/Courses/CertificateCourses")
 );
@@ -103,6 +110,8 @@ const ComputerCentre = lazy(() =>
   import("./Component/Student Services/ComputerCentre")
 );
 import PlacementOld from "./Component/NavItems/PlacementOld";
+import Registrar from "./Component/Administration/Registrar";
+import CoursesByLevel from "./Component/Courses/CoursesByLevel";
 
 function App() {
   return (
@@ -138,11 +147,13 @@ function App() {
 
           {/* Courses */}
           <Route path="/courses" element={<CoursesPage />} />
-          <Route path="/courses/:id" element={<Program />} />
+          <Route path="/programs/:id" element={<Program />} />
           <Route path="/curriculum" element={<Curriculum />} />
-          <Route path="/courses/undergraduate" element={<UGPrograms />} />
+          {/* <Route path="/courses/undergraduate" element={<UGPrograms />} />
           <Route path="/courses/postgraduate" element={<PGPrograms />} />
-          <Route path="/courses/diploma" element={<DiplomaPrograms />} />
+          <Route path="/courses/diploma" element={<DiplomaPrograms />} /> */}
+
+          <Route path="/courses/:programLevel" element={<CoursesByLevel />} />
           <Route
             path="/courses/certificate-courses"
             element={<CertificateCourses />}
@@ -161,6 +172,9 @@ function App() {
           <Route path="/dept/:id" element={<DepartmentById />} />
           <Route path="/logindseu" element={<LoginPage />} />
 
+          <Route path="/academics/collaboration" element={<AcademicCollabration />} />
+          <Route path="/academics/IQAC" element={<IQAC />} />
+
           {/* Administration */}
           <Route
             path="/administration/administrative/*"
@@ -175,12 +189,9 @@ function App() {
             element={<UnderConstruction />}
           />
 
-          {/* Department related */}
-          {/* <Route path="/department/:id" element={<Department />} /> */}
-          {/* <Route path="/faculty/:id" element={<FacultyInfo />} /> */}
-
           {/* Other Pages */}
           <Route path="/vice-chancellor" element={<ViceChancellorMessage />} />
+          <Route path="/registrar" element={<Registrar />} />
           <Route path="/research/*" element={<ResearchDev />} />
           <Route path="/about-us/About-the-University" element={<About />} />
           <Route
@@ -220,6 +231,11 @@ function App() {
           <Route path="/vivekvihar" element={<VivekVihar />} />
 
           <Route path="/grievance-form" element={<GrievanceForm />} />
+
+
+          {/* Admission */}
+          <Route path="/admission/guidelines" element={<AdmissionGuidelines />} />
+          <Route path="/admission/refund-policy" element={<FeeRefundPolicy />} />
 
           {/* Student Services */}
           <Route path="/placement" element={<Placement />} />

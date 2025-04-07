@@ -1,33 +1,39 @@
-import { advisoryBoard } from "../../constants/ADMINISTRATION.JS";
+import { FaArrowRight } from "react-icons/fa";
 
-const AdvisoryBoard = () => {
+const StatutoryCommittees = () => {
+  const committees = [
+    { name: "Board of Management (BOM)", file: "/BOM.pdf" },
+    { name: "Internal Complaints Committee (ICC)", file: "/ICC.pdf" },
+    { name: "Student Redressal Committee", file: "/Student Greivence.pdf" },
+    { name: "Equal Opportunity Cell", file: "/Equal Oppurtunity Cell.pdf" },
+  ];
+
   return (
-    <div className="p-6">
-      <h2 className="md:text-4xl text-3xl text-[#333] font-bold mb-6 text-center lg:text-left">
-        Advisory Board
+    <div className="p-6 max-w-4xl mx-auto">
+      <h2 className="text-3xl md:text-4xl font-bold text-[#333] mb-6 text-center">
+        Statutory Committees
       </h2>
-      <div className="flex flex-wrap justify-center lg:justify-start gap-6">
-        {advisoryBoard.map((board) => (
-          <div
-            key={board.id}
-            className="flex flex-col items-center p-4 rounded-xl shadow-md hover:shadow-lg transition-shadow w-[220px] text-center cursor-pointer"
+      <ul className="space-y-4">
+        {committees.map((committee, index) => (
+          <li
+            key={index}
+            className="flex items-center justify-between bg-white shadow-md rounded-lg px-5 py-3 hover:shadow-lg transition-shadow"
           >
-            <img
-              src={board.src || "https://via.placeholder.com/160"}
-              className="w-40 h-40 rounded-3xl border-2 object-cover"
-              alt={board.name}
-            />
-            <h2 className="text-lg font-semibold text-[#333] mt-3">{board.name}</h2>
-            {board.designation && (
-              <h3 className="text-sm text-gray-600 mt-1 max-w-[180px]">
-                {board.designation}
-              </h3>
-            )}
-          </div>
+            <span className="text-lg font-medium text-[#333]">{committee.name}</span>
+            <a
+              href={committee.file}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#c4933f] hover:text-[#8f5206] flex items-center"
+            >
+              <span className="mr-1">View</span>
+              <FaArrowRight />
+            </a>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 };
 
-export default AdvisoryBoard;
+export default StatutoryCommittees;

@@ -51,7 +51,7 @@ const TopBar = () => {
           to="/grievance-form"
           className=" border-l-2 px-1 md:px-4 hover:underline hover:text-[#1b1b1b] whitespace-nowrap text-sm md:text-[1rem]"
         >
-          Grievance form & RTI
+          Grievance form <span className="hidden md:inline">& RTI</span>
         </Link>
 
         <Link

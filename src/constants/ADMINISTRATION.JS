@@ -40,15 +40,27 @@ const leaders = [
 
 const sideNavItems = [
     {
+        id: 2,
+        name: "Board of Management",
+        href: "/administration/administrative/board-of-management",
+        active: false,
+    },
+    {
+        id: 6,
+        name: "Statutory Bodies",
+        href: "/administration/administrative/statutory-bodies",
+        active: false,
+    },
+    {
         id: 1,
         name: "Team DSEU",
         href: "/administration/administrative/team-dseu",
         active: false,
     },
     {
-        id: 2,
-        name: "Board of Management",
-        href: "/administration/administrative/board-of-management",
+        id: 4,
+        name: "Statutory committees",
+        href: "/administration/administrative/advisory-board",
         active: false,
     },
     {
@@ -58,21 +70,9 @@ const sideNavItems = [
         active: false,
     },
     {
-        id: 4,
-        name: "Advisory Board",
-        href: "/administration/administrative/advisory-board",
-        active: false,
-    },
-    {
         id: 5,
         name: "Important Forms",
         href: "/administration/administrative/important-forms",
-        active: false,
-    },
-    {
-        id: 6,
-        name: "Statutory Bodies",
-        href: "/administration/administrative/statutory-bodies",
         active: false,
     },
 ];

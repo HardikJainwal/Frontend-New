@@ -46,7 +46,7 @@ const navItems = [
         path: "/UGC-Guidelines",
       },
       // { name: "Handbook (Brochure)", path: "/about-us/Handbook" },
-     
+
       // change from, handbook -> information bulletin
     ],
   },
@@ -54,8 +54,10 @@ const navItems = [
     name: "Academics",
     dropdownItems: [
       { name: "Faculties & Department", path: "/academics/faculty" },
-      { name: "Academic Regulations", path: "/academics/regulations"},
-      { name: "Academic Calendar", path: "/academics/academic-calendar" }
+      { name: "Academic Regulations", path: "/academics/regulations" },
+      { name: "Academic Calendar", path: "/academics/academic-calendar" },
+      { name: "Academic Collaboration", path: "/academics/collaboration" },
+      { name: "Internal Quality Assurance Cell (IQAC)", path: "/academics/IQAC" },
       // { name: "Programs", path: "/Courses" },
     ],
   },
@@ -80,6 +82,14 @@ const navItems = [
         name: "Information Bulletin",
         path: "",
       },
+      {
+        name: "Process and guidelines",
+        path: "/admission/guidelines",
+      },
+      {
+        name: "Fee Refund Policy",
+        path: "/admission/refund-policy",
+      },
     ],
   },
   {
@@ -87,9 +97,7 @@ const navItems = [
     dropdownItems: [
       { name: "Administrative", path: "/administration/administrative" },
       { name: "Vice Chancellor", path: "/vice-chancellor" },
-      { name: "Registrar", path: "" },
-      
-
+      { name: "Registrar", path: "/registrar" },
       {
         name: "Other Academic Units",
         path: "/administration/Other-Academic-Units",
@@ -98,9 +106,8 @@ const navItems = [
     ],
   },
   {
-    name: "Student Services",
+    name: "Student Life",
     dropdownItems: [
-      
       { name: "Computer Centre", path: "/amenities/Computer-Centre" },
       { name: "NCC", path: "/ncc" },
       { name: "Canteen", path: "/amenities/Canteen" },
@@ -113,8 +120,9 @@ const navItems = [
     path: "/recruitment",
   },
   {
-    name: "T & Placement Cell", path:"/placement"
-  }
+    name: "T & Placement Cell",
+    path: "/placement",
+  },
 ];
 
 //? for mobile view
