@@ -56,6 +56,8 @@ const navItems = [
       { name: "Faculties & Department", path: "/academics/faculty" },
       { name: "Academic Regulations", path: "/academics/regulations" },
       { name: "Academic Calendar", path: "/academics/academic-calendar" },
+      { name: "Academic Collaboration", path: "/academics/collaboration" },
+      { name: "Internal Quality Assurance Cell (IQAC)", path: "/academics/IQAC" },
       // { name: "Programs", path: "/Courses" },
     ],
   },
@@ -80,6 +82,14 @@ const navItems = [
         name: "Information Bulletin",
         path: "",
       },
+      {
+        name: "Process and guidelines",
+        path: "/admission/guidelines",
+      },
+      {
+        name: "Fee Refund Policy",
+        path: "/admission/refund-policy",
+      },
     ],
   },
   {
@@ -96,7 +106,7 @@ const navItems = [
     ],
   },
   {
-    name: "Student Services",
+    name: "Student Life",
     dropdownItems: [
       { name: "Computer Centre", path: "/amenities/Computer-Centre" },
       { name: "NCC", path: "/ncc" },
