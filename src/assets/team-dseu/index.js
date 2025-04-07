@@ -44,7 +44,9 @@ import vicechancellor from './vicechancellor.jpg';
 import vivekAggarwal from './vivekAggrawal.jpg';
 import harvinderKaur from './harvinderKaur.jpg';
 import hrMeena from './hrMeena.png'
-import placeholder from './placeholder.jpg'
+import placeholder from './placeholder.jpg';
+import shubhaGV from './shubhaGV.jpg';
+import rituSareen from './rituSareen.jpeg'
 
 
 export {
@@ -94,5 +96,7 @@ export {
     vivekAggarwal,
     harvinderKaur,
     hrMeena,
-    placeholder
+    placeholder,
+    shubhaGV,
+    rituSareen
 };
