@@ -49,7 +49,7 @@ const TopBar = () => {
 
         <Link
           to="/grievance-form"
-          className=" border-l-2 px-1 md:px-4 hover:underline hover:text-[#1b1b1b] whitespace-nowrap text-sm md:text-[1rem]"
+          className=" border-l-2 px-1 md:px-4 hover:underline hover:text-[#1b1b1b] whitespace-nowrap text-xs md:text-[1rem]"
         >
           Grievance form <span className="hidden md:inline">& RTI</span>
         </Link>
