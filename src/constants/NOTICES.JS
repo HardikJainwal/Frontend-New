@@ -1,7 +1,7 @@
 // this is placeholder/temporary data
 export const informationBulletin = [
     {
-        title: "Admissions 24-25",
+        title: "Admissions 25-26",
         content: [
             "Students of State Universities of Delhi",
             "Financial Assistance to the students Under EWS Scheme",
