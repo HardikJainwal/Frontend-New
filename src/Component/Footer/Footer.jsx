@@ -109,8 +109,8 @@ const Footer = () => {
               </a>
             </li>
             <li>
-              <a href="#" className="hover:text-blue-600">
-                Schools
+              <a href="/academics/faculty" className="hover:text-blue-600">
+                Faculties
               </a>
             </li>
             <li>
@@ -128,11 +128,7 @@ const Footer = () => {
                 Office of Career Services
               </a>
             </li>
-            <li>
-              {/* <a href="#" className="hover:text-blue-800">
-                Switch to Dark Mode
-              </a> */}
-            </li>
+            <li></li>
           </ul>
         </div>
 
@@ -151,11 +147,7 @@ const Footer = () => {
                 Campus Life
               </a>
             </li>
-            <li>
-              {/* <a href="#" className="hover:text-blue-600">
-                Institute Newsletter
-              </a> */}
-            </li>
+
             <li>
               <a href="#" className="hover:text-blue-600">
                 Educational Programmes
