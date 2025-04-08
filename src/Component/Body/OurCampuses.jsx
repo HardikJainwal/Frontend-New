@@ -35,7 +35,7 @@ const CarouselSection = () => {
     return <div>Loading...</div>;
   }
 
-  const settings = {
+  const desktopSettings = {
     centerMode: true,
     infinite: true,
     centerPadding: "0",
@@ -46,14 +46,14 @@ const CarouselSection = () => {
     beforeChange: (_, next) => setActiveIndex(next),
     nextArrow: <CustomArrow direction="next" />,
     prevArrow: <CustomArrow direction="prev" />,
-    responsive: [
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-        },
-      },
-    ],
+  };
+
+  const mobileSettings = {
+    dots: true,
+    infinite: true,
+    slidesToShow: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
   };
 
   return (
@@ -63,9 +63,9 @@ const CarouselSection = () => {
         <div className="mt-2 mx-auto w-20 h-1 bg-blue-600 rounded"></div>
       </h2>
 
-      {/* Desktop Slider */}
+      {/* Desktop Carousel */}
       <div className="max-w-7xl mx-7 lg:mx-auto relative hidden md:block">
-        <Slider {...settings}>
+        <Slider {...desktopSettings}>
           {campuses.map((campus, index) => (
             <div key={campus._id} className="px-6">
               <a href={`/campus/${generateSlug(campus.name)}`}>
@@ -104,24 +104,26 @@ const CarouselSection = () => {
         </Slider>
       </div>
 
-      {/* Mobile View (Simple List) */}
-      <div className="block md:hidden px-6">
-        <div className="flex flex-col space-y-6">
+      {/* Mobile Carousel */}
+      <div className="block md:hidden px-4">
+        <Slider {...mobileSettings}>
           {campuses.map((campus) => (
-            <a key={campus._id} href={`/campus/${generateSlug(campus.name)}`}>
-              <div className="rounded-lg overflow-hidden shadow-md">
-                <img
-                  src={campus.campus_photo}
-                  alt={campus.name}
-                  className="w-full h-48 object-cover"
-                />
-                <p className="text-center text-base font-semibold mt-2 text-black pb-3">
-                  {campus.name}
-                </p>
-              </div>
-            </a>
+            <div key={campus._id} className="px-2">
+              <a href={`/campus/${generateSlug(campus.name)}`}>
+                <div className="rounded-lg overflow-hidden shadow-md">
+                  <img
+                    src={campus.campus_photo}
+                    alt={campus.name}
+                    className="w-full h-48 object-cover"
+                  />
+                  <p className="text-center text-base font-semibold mt-2 text-black pb-3">
+                    {campus.name}
+                  </p>
+                </div>
+              </a>
+            </div>
           ))}
-        </div>
+        </Slider>
       </div>
     </section>
   );
