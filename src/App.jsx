@@ -259,7 +259,7 @@ function App() {
           <Route path="/amenities/Sports" element={<Sports />} />
           <Route path="/amenities/Library" element={<Library />} />
         </Routes>
-        <ChatWidget/>
+        {/* <ChatWidget/> */}
         <Footer />
       </Suspense>
     </BrowserRouter>

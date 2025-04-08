@@ -1,162 +1,90 @@
-import { useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import VCsir from "../../assets/VCsir.jpg";
-import activity5 from "/src/assets/Activities/Activities5.jpeg";
-import activity6 from "/src/assets/Activities/Activities6.jpeg";
-import activity7 from "/src/assets/Activities/Activities7.jpeg";
-
-const carouselItems = [
-  {
-    id: 1,
-    image: activity5,
-  },
-  {
-    id: 2,
-    image: activity6,
-  },
-  {
-    id: 3,
-    image: activity7,
-  },
-];
 
 const ViceChancellorMessage = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) =>
-      prev === carouselItems.length - 1 ? 0 : prev + 1
-    );
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) =>
-      prev === 0 ? carouselItems.length - 1 : prev - 1
-    );
-  };
-
   return (
-    <div className="max-w-5xl mx-auto p-8 my-6">
-      {/* Header Section */}
-      <div className="border-b pb-6 mb-12">
-        <h2 className="text-3xl font-bold mb-4 text-gray-800">
-          Message of The Vice-Chancellor
-        </h2>
-        <div className="text-orange-500 text-lg mb-6">
-          — Vice Chancellor's Desk
+    <div className="max-w-4xl mx-auto px-6 py-12">
+      <h2 className="text-4xl font-bold text-blue-500 mb-2 text-center md:text-left">
+        Welcome to DSEU
+      </h2>
+      <p className="text-orange-400 text-lg md:text-xl font-medium mb-10 text-center md:text-left">
+        — A Hub of Possibility, Purpose, and Progress
+      </p>
+
+      <div className="flex md:flex-row md:items-center md:gap-10 mb-10 flex-col gap-5 mx-auto">
+        <div className="w-40 h-40 rounded-3xl overflow-hidden mx-auto md:mx-0">
+          <img
+            src={VCsir}
+            alt="Vice Chancellor"
+            className="w-full h-full object-cover"
+          />
         </div>
-
-        <div className="flex items-center gap-8">
-          <div className="w-40 h-40 bg-gray-200 flex-shrink-0 rounded-full overflow-hidden">
-            <img
-              src={VCsir}
-              alt="Vice Chancellor"
-              className="w-full h-full object-cover"
-            />
-          </div>
-
-          <div>
-            <h3 className="text-xl font-semibold mb-2 text-gray-800">
-              Prof. Ashok Nagawat
-            </h3>
-            <p className="text-base text-gray-700">
-              Delhi Skill and Entrepreneurship University (DSEU) is a pioneering
-              institution dedicated to bridging the gap between education,
-              skills, and industry demands.
-            </p>
-          </div>
+        <div>
+          <h3 className="text-2xl font-semibold text-gray-900 mb-1 text-center md:text-left">
+            Professor Ashok Kumar Nagawat
+          </h3>
+          <p className="text-blue-600 font-medium text-center">
+            Vice Chancellor, Delhi Skill and Entrepreneurship University
+          </p>
         </div>
       </div>
 
-      {/* Main Content */}
-      <div className="mb-12">
-        <div className="bg-blue-50 p-4 mb-6 inline-block rounded-md">
-          <span className="text-blue-800 font-semibold">
-            PROFESSOR ASHOK NAGAWAT BIO-NOTE
-          </span>
-        </div>
+      <h4 className="text-[1.5rem] md:text-2xl font-semibold text-gray-700 mb-2 text-center md:text-left">
+        Message from the Vice Chancellor
+      </h4>
+      <div className="w-full h-1 bg-blue-400 rounded-full mb-8 md:mb-4 animate-pulse" />
 
-        <p className="text-lg text-gray-700 leading-relaxed mb-6">
-          At DSEU, we offer skill-oriented programs, entrepreneurship
-          opportunities, industry collaborations, and state-of-the-art
-          infrastructure to ensure a holistic learning experience. Our
-          educational approach integrates theoretical knowledge with practical
-          applications, preparing students for the challenges of a dynamic
-          world.
+      <div className="space-y-5 text-[16px] md:text-[17px] text-gray-800 leading-relaxed">
+        <p>
+          Congratulations and a warm welcome to the Delhi Skill and
+          Entrepreneurship University (DSEU) – a pioneering institution built on
+          the principles of innovation, inclusivity, and impact.
         </p>
-
-        <p className="text-lg text-gray-700 leading-relaxed">
-          Whether it's through hands-on learning, research, or real-world
-          exposure, DSEU is committed to providing excellence and shaping a
-          brighter future for our students. Join us as we build a thriving
-          community that redefines education and prepares individuals to lead
-          with skills, knowledge, and purpose.
+        <p>
+          It gives me immense pleasure to extend my heartfelt greetings to all
+          our new and returning students. As you step into our vibrant ecosystem
+          of learning, I am excited for the transformative journey that lies
+          ahead of you.
         </p>
-      </div>
-
-      {/* Desktop Grid View */}
-      <div className="hidden md:grid grid-cols-3 gap-6 mb-6">
-        {carouselItems.map((item) => (
-          <div key={item.id} className="flex flex-col items-center">
-            <img
-              src={item.image}
-              alt={`Slide ${item.id}`}
-              className="w-full h-64 object-cover rounded-lg mb-4"
-            />
-          </div>
-        ))}
-      </div>
-
-      {/* Mobile Carousel View */}
-      <div className="relative md:hidden">
-        <div className="overflow-hidden mb-6">
-          <div
-            className="flex transition-transform duration-500"
-            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-          >
-            {carouselItems.map((item) => (
-              <div
-                key={item.id}
-                className="flex-shrink-0 w-full flex flex-col items-center"
-              >
-                <img
-                  src={item.image}
-                  alt={`Slide ${item.id}`}
-                  className="w-full h-64 object-cover rounded-lg mb-4"
-                />
-                <h3 className="text-lg font-medium text-gray-800">
-                  {item.title}
-                </h3>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <button
-          onClick={prevSlide}
-          className="absolute left-3 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md z-10 hover:bg-gray-100"
-        >
-          <ChevronLeft className="w-5 h-5 text-gray-600" />
-        </button>
-
-        <button
-          onClick={nextSlide}
-          className="absolute right-3 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md z-10 hover:bg-gray-100"
-        >
-          <ChevronRight className="w-5 h-5 text-gray-600" />
-        </button>
-
-        <div className="flex justify-center gap-2 mt-4">
-          {carouselItems.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentSlide(index)}
-              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                index === currentSlide ? "bg-blue-600" : "bg-gray-300"
-              }`}
-            />
-          ))}
-        </div>
+        <p>
+          At DSEU, we are committed to redefining higher education through a
+          skill-integrated, industry-responsive, and learner-centric approach.
+          Guided by the vision of the National Education Policy (NEP) 2020, our
+          academic programs blend flexibility, multidisciplinary learning, and
+          hands-on experience to empower you with not just knowledge, but
+          real-world competence.
+        </p>
+        <p>
+          We understand the evolving needs of today’s world and aim to equip you
+          with the tools to succeed in a dynamic, tech-driven, and
+          interconnected global economy. Our NEP-aligned curriculum is
+          thoughtfully designed to foster critical thinking, creativity,
+          entrepreneurship, and social responsibility, ensuring you graduate as
+          confident professionals and compassionate citizens.
+        </p>
+        <p>
+          DSEU is more than a university – it is a thriving community of
+          learners, thinkers, builders, and leaders. Our campuses offer a
+          supportive, inclusive, and engaging environment where your ideas are
+          valued, your voice is heard, and your dreams are nurtured. Here,
+          you’ll collaborate with passionate faculty, industry mentors, and
+          fellow students in meaningful ways—solving real challenges, building
+          sustainable solutions, and exploring your potential to the fullest.
+        </p>
+        <p>
+          Whether you’re pursuing a diploma, undergraduate, or postgraduate
+          program, DSEU offers you a platform to learn, grow, and lead with
+          purpose.
+        </p>
+        <p>
+          As we begin this new academic chapter, I encourage you to embrace
+          every opportunity, stay curious, and remain open to the boundless
+          possibilities ahead. We are here to support you at every step as you
+          carve your unique path.
+        </p>
+        <p>
+          I look forward to witnessing your growth, your achievements, and the
+          positive impact you will create in the world.
+        </p>
       </div>
     </div>
   );
