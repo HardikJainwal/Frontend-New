@@ -33,22 +33,22 @@ const StatutoryBodiesComponent = () => {
 
   const minutes = {
     court: {
-      title: "University Court Meeting",
+      title: "University Court",
       date: "23-Apr-2024",
       id: "min-court",
     },
     management: {
-      title: "Board of Management Meeting",
+      title: "Board of Management",
       date: "15-Mar-2024",
       id: "min-management",
     },
     academic: {
-      title: "Academic Council Meeting",
+      title: "Academic Council",
       date: "10-Feb-2024",
       id: "min-academic",
     },
     finance: {
-      title: "Finance Committee Meeting",
+      title: "Finance Committee",
       date: "05-Jan-2024",
       id: "min-finance",
     },
@@ -130,21 +130,23 @@ const StatutoryBodiesComponent = () => {
           </div>
         ) : (
           <>
-            {/* Minutes Tabs */}
-            <div className="flex justify-between bg-gray-100 p-2 rounded-lg mb-4 flex-wrap gap-2">
-              {Object.keys(minutes).map((key) => (
-                <button
-                  key={key}
-                  className={`px-4 py-2 rounded-lg transition-all duration-200 text-lg ${
-                    activeMinutesTab === key
-                      ? "bg-blue-600 text-white"
-                      : "text-gray-700 hover:bg-gray-200"
-                  }`}
-                  onClick={() => setActiveMinutesTab(key)}
-                >
-                  {minutes[key].title}
-                </button>
-              ))}
+            {/* Minutes Tabs - Horizontal Scrollable */}
+            <div className="overflow-x-auto">
+              <div className="flex flex-nowrap bg-gray-100 p-2 rounded-lg mb-4 gap-2 min-w-max">
+                {Object.keys(minutes).map((key) => (
+                  <button
+                    key={key}
+                    className={`px-4 py-2 rounded-lg whitespace-nowrap text-lg transition-all duration-200 ${
+                      activeMinutesTab === key
+                        ? "bg-blue-600 text-white"
+                        : "text-gray-700 hover:bg-gray-200"
+                    }`}
+                    onClick={() => setActiveMinutesTab(key)}
+                  >
+                    {minutes[key].title}
+                  </button>
+                ))}
+              </div>
             </div>
 
             {/* Selected Minutes Section */}
