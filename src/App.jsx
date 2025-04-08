@@ -113,6 +113,7 @@ const ComputerCentre = lazy(() =>
 import PlacementOld from "./Component/NavItems/PlacementOld";
 import Registrar from "./Component/Administration/Registrar";
 import CoursesByLevel from "./Component/Courses/CoursesByLevel";
+import ChatWidget from "./Component/chatbot";
 
 function App() {
   return (
@@ -251,6 +252,7 @@ function App() {
           <Route path="/amenities/Sports" element={<Sports />} />
           <Route path="/amenities/Library" element={<Library />} />
         </Routes>
+        <ChatWidget/>
         <Footer />
       </Suspense>
     </BrowserRouter>
