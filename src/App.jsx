@@ -28,7 +28,7 @@ const Message = lazy(() => import("./Component/Body/Message"));
 const InformationBulletin = lazy(() =>
   import("./Component/Body/InformationBulletin")
 );
-const OurCampuses = lazy(() => import("./Component/Body/OurCampuses"));
+const CarouselSection = lazy(() => import("./Component/Body/OurCampuses")); // updated
 const OurPartners = lazy(() => import("./Component/Body/OurPartners"));
 const News = lazy(() => import("./Component/Body/News"));
 const EventsAndActivities = lazy(() =>
@@ -45,7 +45,6 @@ const CampusPage = lazy(() => import("./Component/Campuses/CampusPage"));
 
 // Courses
 const CoursesPage = lazy(() => import("./Component/Courses/CoursesPage"));
-
 const CertificateCourses = lazy(() =>
   import("./Component/Courses/CertificateCourses")
 );
@@ -129,7 +128,7 @@ function App() {
                 <Announcements />
                 <Message />
                 <InformationBulletin />
-                <OurCampuses />
+                <CarouselSection /> {/* Updated */}
                 <StudyProgramsSection />
                 <OurPartners />
                 <News />
@@ -150,10 +149,6 @@ function App() {
           <Route path="/courses" element={<CoursesPage />} />
           <Route path="/programs/:id" element={<Program />} />
           <Route path="/curriculum" element={<Curriculum />} />
-          {/* <Route path="/courses/undergraduate" element={<UGPrograms />} />
-          <Route path="/courses/postgraduate" element={<PGPrograms />} />
-          <Route path="/courses/diploma" element={<DiplomaPrograms />} /> */}
-
           <Route path="/courses/:programLevel" element={<CoursesByLevel />} />
           <Route
             path="/courses/certificate-courses"

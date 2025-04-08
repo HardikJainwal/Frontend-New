@@ -33,7 +33,7 @@ const CarouselSection = () => {
   }, [campuses]);
 
   if (isCampusLoading) {
-    return <div>Loading...</div>; /* To be changed  */
+    return <div>Loading...</div>;
   }
 
   const settings = {
@@ -94,10 +94,8 @@ const CarouselSection = () => {
                       </p>
                     </div>
                   </div>
+
                 </div>
-                <p className="text-center text-base font-semibold mt-2 text-black absolute">
-                  {campus.name}
-                </p>
               </a>
             </div>
           ))}
