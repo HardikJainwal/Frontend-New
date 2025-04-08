@@ -82,7 +82,7 @@ const ViceChancellorPage = () => {
           </section>
 
           <section className="border-l-4 border-blue-500 pl-4">
-            <p className="text-base italic text-blue-600 font-medium">
+            <p className="text-base italic text-orange-400 font-medium">
               “{messageToStudents}”
             </p>
           </section>
