@@ -11,4 +11,5 @@ export const QUERY_KEYS = Object.freeze({
     GET_PROGRAMS_BY_LEVEL: "getProgramsByLevel",
     GET_CAMPUS: "getCampus",
     GET_CAMPUS_BY_NAME: "getCampusByName",
+    GET_ALL_PDF: "getAllPDFs",
 });
