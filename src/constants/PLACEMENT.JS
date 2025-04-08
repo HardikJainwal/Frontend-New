@@ -48,7 +48,7 @@ const placementStats = [
     { title: "Highest Internship Stipend", value: "80K", color: "text-yellow-500" },
     { title: "Highest UG Package Offered", value: "9 LPA", color: "text-red-500" },
     { title: "Highest PG Package Offered", value: "11.5 LPA", color: "text-green-600" },
-    { title: "No. of Offers Rolled", value: "2000+", color: "text-blue-400" },
+    // { title: "No. of Offers Rolled", value: "2000+", color: "text-blue-400" },
     { title: "No. of Companies Participated", value: "165+", color: "text-gray-500" }
 ];
 

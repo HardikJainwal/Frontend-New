@@ -119,7 +119,7 @@ const members = [
     id: 10,
     name: "Prof. Dr. N. Jena",
     src: dnJena,
-    designation: "Campus Director (DSEU PUSA-II CAMPUS)",
+    designation: "Campus Director - DSEU PUSA-II CAMPUS",
     category: "Campus Directors",
   },
   {
@@ -161,7 +161,7 @@ const members = [
     id: 16,
     name: "Dr. Sampurnananda Mishra",
     src: sampuranandaMishra,
-    designation: "Campus Head - Dr. H.J. Bhabha DSEU Mayur Vihar Campus",
+    designation: "Campus Director -  DSEU Mayur Vihar Campus",
     category: "Campus Directors",
   },
   {
@@ -182,7 +182,7 @@ const members = [
     id: 19,
     name: "Dr. Harvinder Kaur",
     src: harvinderKaur,
-    designation: "Campus Director - Bhai Parmanand DSEU Shakarpur Campus - II & Dean (Research)",
+    designation: "Campus Director - Bhai Parmanand DSEU Shakarpur Campus - II",
     category: "Campus Directors",
   },
   {
@@ -213,18 +213,18 @@ const members = [
     designation: "Campus Director - DSEU Dheerpur Campus",
     category: "Campus Directors",
   },
-  {
-    id: 24,
-    name: "Dr. S V Vageesha",
-    src: svVageesha,
-    designation: "Campus Director - Aryabhatt DSEU Ashok Vihar Campus",
-    category: "Campus Directors",
-  },
+  // {
+  //   id: 24,
+  //   name: "Dr. S V Vageesha",
+  //   src: svVageesha,
+  //   designation: "Campus Director - Aryabhatt DSEU Ashok Vihar Campus",
+  //   category: "Campus Directors",
+  // },
   {
     id: 25,
     name: "Prof. Dipali Bansal",
     src: dipaloBansal,
-    designation: "Campus Director - DSEU Champs Okhla-II Campus",
+    designation: "Campus Director",
     category: "Campus Directors",
   },
   {
