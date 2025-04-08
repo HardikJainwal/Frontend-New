@@ -19,28 +19,23 @@ const ChatWidget = () => {
   const modalRef = useRef(null);
 
   useEffect(() => {
-    const tooltipTimer = setTimeout(() => setShowTooltip(true), 2000);
-    const chatbotTimer = setTimeout(() => {
-      setShowTooltip(false);
-      setOpen(true);
-    }, 7000);
-
-    const handleClickOutside = (event) => {
-      if (modalRef.current && !modalRef.current.contains(event.target)) {
-        setOpen(false);
-      }
-    };
-
-    if (open) {
-      document.addEventListener('mousedown', handleClickOutside);
+    const hasOpenedChatbot = localStorage.getItem('chatbotOpened');
+  
+    if (!hasOpenedChatbot) {
+      const tooltipTimer = setTimeout(() => setShowTooltip(true), 2000);
+      const chatbotTimer = setTimeout(() => {
+        setShowTooltip(false);
+        setOpen(true);
+        localStorage.setItem('chatbotOpened', 'true');
+      }, 7000);
+  
+      return () => {
+        clearTimeout(tooltipTimer);
+        clearTimeout(chatbotTimer);
+      };
     }
-
-    return () => {
-      clearTimeout(tooltipTimer);
-      clearTimeout(chatbotTimer);
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [open]);
+  }, []);
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();

@@ -197,6 +197,7 @@ function App() {
 
           {/* Other Pages */}
           <Route path="/administration/vice-chancellor" element={<ViceChancellorPage />} />
+          <Route path="/vice-chancellor" element={<ViceChancellorMessage />} />
           <Route path="/registrar" element={<RegistararPage />} />
           <Route path="/research/*" element={<ResearchDev />} />
           <Route path="/about-us/About-the-University" element={<About />} />
