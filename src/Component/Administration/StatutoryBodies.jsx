@@ -132,7 +132,7 @@ const StatutoryBodiesComponent = () => {
           <>
             {/* Minutes Tabs - Horizontal Scrollable */}
             <div className="overflow-x-auto">
-              <div className="flex flex-nowrap bg-gray-100 p-2 rounded-lg mb-4 gap-2 min-w-max">
+              <div className="flex flex-col md:flex-row flex-nowrap bg-gray-100 p-2 rounded-lg mb-4 gap-2 min-w-max">
                 {Object.keys(minutes).map((key) => (
                   <button
                     key={key}
@@ -155,7 +155,9 @@ const StatutoryBodiesComponent = () => {
                 {data
                   ?.filter(
                     (item) =>
-                      item.fileName.toLowerCase().includes("academic council") ||
+                      item.fileName
+                        .toLowerCase()
+                        .includes("academic council") ||
                       item.fileName.toLowerCase().includes("ac")
                   )
                   .map((file) => (
@@ -173,7 +175,8 @@ const StatutoryBodiesComponent = () => {
                         {file.fileName}
                       </a>
                       <p className="text-sm text-gray-500 mt-1">
-                        Uploaded on {new Date(file.uploadedAt).toLocaleDateString()}
+                        Uploaded on{" "}
+                        {new Date(file.uploadedAt).toLocaleDateString()}
                       </p>
                     </div>
                   ))}
