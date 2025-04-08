@@ -180,3 +180,10 @@ export const getCampusByName = async (name) => {
   
   return data || null;
 }
+
+
+// get all pdf
+export const getAllPdf = async () => {
+  const response = await api.get('/pdf');
+  return response.data.data.nonAlertPDF;
+}
