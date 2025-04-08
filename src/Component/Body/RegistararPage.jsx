@@ -51,20 +51,16 @@ const RegistararPage = () => {
 
           <section>
             <h3 className="text-lg font-semibold text-blue-600 mb-2 uppercase tracking-wide">
-              Core Strengths
+              Message
             </h3>
-            <ul className="list-disc list-inside space-y-1">
-              {coreStrengths.map((item, idx) => (
-                <li key={idx}>{item}</li>
-              ))}
-            </ul>
-          </section>
-
-          <section className="border-l-4 border-orange-400 pl-4">
-            <p className="text-base italic text-blue-600 font-medium">
+        
+            <p className="text-base italic font-medium text-orange-400">
               “{message}”
             </p>
           </section>
+
+          {/* <section className="border-l-4 border-orange-400 pl-4">
+          </section> */}
         </div>
       </div>
     </div>
