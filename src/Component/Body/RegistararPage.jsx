@@ -19,7 +19,7 @@ const RegistararPage = () => {
           <img
             src={vivekAggarwal}
             alt={name}
-            className="w-full max-w-sm rounded-xl"
+            className="w-full max-w-sm rounded-xl max-h-[600px]"
           />
           <div className="mt-4">
             <h1 className="text-3xl font-bold text-blue-600">{name}</h1>
