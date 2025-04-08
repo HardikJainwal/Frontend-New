@@ -259,7 +259,7 @@ const members = [
     id: 30,
     name: "Ritu Sareen",
     src: rituSareen,
-    designation: "Assistant Registrar",
+    designation: "Assistant Registrar(Academics)",
     category: "Officers",
   },
   {
@@ -332,20 +332,20 @@ const members = [
     designation: "Placement and Partnership Manager",
     category: "Training and Placement Officers",
   },
-  {
-    id: 41,
-    name: "Dr Dipti Mal",
-    src: placeholder,
-    designation: "Placement and Partnership Manager",
-    category: "Training and Placement Officers",
-  },
-  {
-    id: 42,
-    name: "Mr Amreek Singh",
-    src: placeholder,
-    designation: "Placement and Partnership Manager",
-    category: "Training and Placement Officers",
-  },
+  // {
+  //   id: 41,
+  //   name: "Dr Dipti Mal",
+  //   src: placeholder,
+  //   designation: "Placement and Partnership Manager",
+  //   category: "Training and Placement Officers",
+  // },
+  // {
+  //   id: 42,
+  //   name: "Mr Amreek Singh",
+  //   src: placeholder,
+  //   designation: "Placement and Partnership Manager",
+  //   category: "Training and Placement Officers",
+  // },
 ];
 
 export { members };

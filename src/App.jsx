@@ -112,6 +112,7 @@ const ComputerCentre = lazy(() =>
 import PlacementOld from "./Component/NavItems/PlacementOld";
 import CoursesByLevel from "./Component/Courses/CoursesByLevel";
 import RegistararPage from "./Component/Body/RegistararPage";
+import ViceChancellorPage from './Component/Body/ViceChancellorPage';
 import ChatWidget from "./Component/chatbot";
 
 function App() {
@@ -195,7 +196,7 @@ function App() {
           />
 
           {/* Other Pages */}
-          <Route path="/vice-chancellor" element={<ViceChancellorMessage />} />
+          <Route path="/administration/vice-chancellor" element={<ViceChancellorPage />} />
           <Route path="/registrar" element={<RegistararPage />} />
           <Route path="/research/*" element={<ResearchDev />} />
           <Route path="/about-us/About-the-University" element={<About />} />
@@ -259,7 +260,7 @@ function App() {
           <Route path="/amenities/Sports" element={<Sports />} />
           <Route path="/amenities/Library" element={<Library />} />
         </Routes>
-        <ChatWidget/>
+        {/* <ChatWidget/> */}
         <Footer />
       </Suspense>
     </BrowserRouter>

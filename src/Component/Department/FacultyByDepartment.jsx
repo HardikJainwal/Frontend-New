@@ -11,6 +11,7 @@ const subCategories = [
   "Associate Professor",
   "Assistant Professor",
   "Lecturer",
+  "Dean",
 ];
 
 const FacultyByDepartment = ({ deptId }) => {

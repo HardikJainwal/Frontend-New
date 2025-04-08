@@ -11,9 +11,8 @@ import { QUERY_KEYS } from "../../utils/queryKeys";
 
 const CustomArrow = ({ onClick, direction }) => (
   <div
-    className={`absolute top-1/2 transform -translate-y-1/2 ${
-      direction === "prev" ? "-left-2 lg:left-1" : "-right-2 lg:right-1"
-    } z-10 bg-white text-black rounded-full w-10 h-10 flex items-center justify-center cursor-pointer opacity-65`}
+    className={`absolute top-1/2 transform -translate-y-1/2 ${direction === "prev" ? "-left-2 lg:left-1" : "-right-2 lg:right-1"
+      } z-10 bg-white text-black rounded-full w-10 h-10 flex items-center justify-center cursor-pointer opacity-65`}
     onClick={onClick}
   >
     {direction === "prev" ? "<" : ">"}
@@ -33,10 +32,10 @@ const CarouselSection = () => {
   }, [campuses]);
 
   if (isCampusLoading) {
-    return <div>Loading...</div>; /* To be changed  */
+    return <div>Loading...</div>;
   }
 
-  const settings = {
+  const desktopSettings = {
     centerMode: true,
     infinite: true,
     centerPadding: "0",
@@ -47,14 +46,14 @@ const CarouselSection = () => {
     beforeChange: (_, next) => setActiveIndex(next),
     nextArrow: <CustomArrow direction="next" />,
     prevArrow: <CustomArrow direction="prev" />,
-    responsive: [
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-        },
-      },
-    ],
+  };
+
+  const mobileSettings = {
+    dots: true,
+    infinite: true,
+    slidesToShow: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
   };
 
   return (
@@ -63,28 +62,28 @@ const CarouselSection = () => {
         Our Campuses
         <div className="mt-2 mx-auto w-20 h-1 bg-blue-600 rounded"></div>
       </h2>
-      <div className="max-w-7xl mx-7 lg:mx-auto relative">
-        <Slider {...settings}>
+
+      {/* Desktop Carousel */}
+      <div className="max-w-7xl mx-7 lg:mx-auto relative hidden md:block">
+        <Slider {...desktopSettings}>
           {campuses.map((campus, index) => (
             <div key={campus._id} className="px-6">
               <a href={`/campus/${generateSlug(campus.name)}`}>
                 <div
-                  className={`relative overflow-hidden shadow-lg transition-transform duration-500 ${
-                    index === activeIndex
+                  className={`relative overflow-hidden shadow-lg transition-transform duration-500 ${index === activeIndex
                       ? "transform scale-125 -translate-y-10 z-20 rounded-lg"
                       : "transform scale-90 rounded-t-lg"
-                  }`}
+                    }`}
                 >
-                  <div className="relative group h-64">
+                  <div className="group h-64">
                     <img
                       src={campus.campus_photo}
                       alt={campus.name}
-                      className={`h-full min-w-full object-cover transition-transform duration-500 group-hover:scale-105 group-hover:brightness-50 rounded-t-lg`}
+                      className="h-full min-w-full object-cover transition-transform duration-500 group-hover:scale-105 group-hover:brightness-50 rounded-t-lg"
                     />
                     <div
-                      className={`absolute inset-0 bg-black bg-opacity-10 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 ${
-                        activeIndex === index ? "translate-y-4" : ""
-                      }`}
+                      className={`absolute inset-0 bg-black bg-opacity-10 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 ${activeIndex === index ? "translate-y-4" : ""
+                        }`}
                     >
                       <p className="text-white text-xl font-bold text-center px-4">
                         {campus.name}
@@ -95,13 +94,31 @@ const CarouselSection = () => {
                     </div>
                   </div>
 
-                  <div
-                    className={`flex justify-center font-bold bg-white text-black text-sm px-3 py-2 transition-opacity duration-300 ${
-                      index === activeIndex ? "opacity-100" : "opacity-75"
-                    }`}
-                  >
-                    <p>{campus.name}</p>
-                  </div>
+                  <p className="text-center text-base font-semibold mt-2 text-black absolute">
+                    {campus.name}
+                  </p>
+                </div>
+              </a>
+            </div>
+          ))}
+        </Slider>
+      </div>
+
+      {/* Mobile Carousel */}
+      <div className="block md:hidden px-4">
+        <Slider {...mobileSettings}>
+          {campuses.map((campus) => (
+            <div key={campus._id} className="px-2">
+              <a href={`/campus/${generateSlug(campus.name)}`}>
+                <div className="rounded-lg overflow-hidden shadow-md">
+                  <img
+                    src={campus.campus_photo}
+                    alt={campus.name}
+                    className="w-full h-48 object-cover"
+                  />
+                  <p className="text-center text-base font-semibold mt-2 text-black pb-3">
+                    {campus.name}
+                  </p>
                 </div>
               </a>
             </div>
