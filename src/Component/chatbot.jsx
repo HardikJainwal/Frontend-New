@@ -91,23 +91,23 @@ const ChatWidget = () => {
 
       {/* Chat Modal */}
       {open && (
-        <div
-          ref={modalRef}
-          className="fixed bottom-28 right-10 w-[380px] h-[500px] bg-white rounded-xl shadow-xl z-50 flex flex-col overflow-hidden border border-gray-200"
-        >
-          {/* Header */}
-          <div className="bg-gradient-to-r from-blue-200 to-blue-400 text-white px-4 py-3 flex justify-between items-center">
-            <div className="flex items-center gap-2">
-              <img src={vector} alt='logo' className='h-8 w-6' />
-              <h3 className="font-semibold text-lg text-blue-700">Lakshay</h3>
-            </div>
-            <button
-              onClick={() => setOpen(false)}
-              className="text-lg font-semibold hover:text-gray-300 transition"
-            >
-              ✖
-            </button>
-          </div>
+  <div
+    ref={modalRef}
+    className="fixed bottom-28 right-10 md:right-10 md:left-auto md:translate-x-0 left-1/2 -translate-x-1/2 w-[95%] sm:w-[380px] h-[500px] bg-white rounded-xl shadow-xl z-50 flex flex-col overflow-hidden border border-gray-200"
+  >
+    {/* Header */}
+    <div className="bg-gradient-to-r from-blue-200 to-blue-400 text-white px-4 py-3 flex justify-between items-center">
+      <div className="flex items-center gap-2">
+        <img src={vector} alt='logo' className='h-8 w-6' />
+        <h3 className="font-semibold text-lg text-blue-700">Lakshay</h3>
+      </div>
+      <button
+        onClick={() => setOpen(false)}
+        className="text-lg font-semibold hover:text-gray-300 transition"
+      >
+        ✖
+      </button>
+    </div>
 
           {/* Chat Area */}
           <div className="flex-1 px-4 py-3 bg-gray-50 text-sm overflow-y-auto custom-scroll space-y-3">

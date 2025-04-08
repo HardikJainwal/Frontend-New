@@ -41,7 +41,7 @@ import svVageesha from './svVageesha.jpg';
 import veenaUpadhay from './veenaUpadhay.jpg';
 import vibhakarShrimali from './vibhakarShrimali.jpg';
 import vicechancellor from './vicechancellor.jpg';
-import vivekAggarwal from './vivekAggrawal.jpg';
+import vivekAggarwal from './vivekAggrawal.jpeg';
 import harvinderKaur from './harvinderKaur.jpg';
 import hrMeena from './hrMeena.png'
 import placeholder from './placeholder.jpg';
