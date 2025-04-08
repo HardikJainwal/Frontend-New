@@ -111,11 +111,8 @@ const ComputerCentre = lazy(() =>
 );
 import PlacementOld from "./Component/NavItems/PlacementOld";
 import CoursesByLevel from "./Component/Courses/CoursesByLevel";
-<<<<<<< HEAD
 import RegistararPage from "./Component/Body/RegistararPage";
-=======
 import ChatWidget from "./Component/chatbot";
->>>>>>> 47d0001a9ab839117dc7adcfa273cfc1b636c212
 
 function App() {
   return (
