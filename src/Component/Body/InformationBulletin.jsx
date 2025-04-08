@@ -9,9 +9,14 @@ const cards = [
     ],
     buttonText: "Apply Online",
   },
-  { title: "Circulars", content: [], buttonText: "Online Fee Services" },
-  { title: "Examination", content: [], buttonText: "Online Portal" },
-  { title: "Events", content: [], buttonText: "View Notices" },
+  { title: "Students", content: [], buttonText: "Online Fee Services" },
+  { title: "Important Links", content: [
+    {
+      name: "Invitation For Expression of Interest",
+      link: "/EOI.pdf"
+    }
+  ], buttonText: "Online Portal" },
+  { title: "Alerts & Circulars", content: [], buttonText: "View Notices" },
 ];
 
 const InformationBulletin = () => {
