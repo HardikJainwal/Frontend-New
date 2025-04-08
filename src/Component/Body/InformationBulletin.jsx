@@ -1,8 +1,22 @@
-import { informationBulletin as cards } from "../../constants/NOTICES.JS";
+const cards = [
+  {
+    title: "Admission",
+    content: [
+      {
+        name: "Pre Admission Announcement 2025",
+        link: "/PreAdmissionAnnoucement2025.pdf",
+      },
+    ],
+    buttonText: "Apply Online",
+  },
+  { title: "Circulars", content: [], buttonText: "Online Fee Services" },
+  { title: "Examination", content: [], buttonText: "Online Portal" },
+  { title: "Events", content: [], buttonText: "View Notices" },
+];
 
-const InformationBulletin = (seperatePage) => {
+const InformationBulletin = () => {
   return (
-    <div id="information-bulletin" className={`container mx-auto px-4 py-4`}>
+    <div id="information-bulletin" className="container mx-auto px-4 py-4">
       <h2 className="text-4xl font-extrabold text-center text-blue-900 mb-8 mt-10 font-sans">
         Information Bulletin
         <div className="mt-2 mx-auto w-20 h-1 bg-blue-600 rounded"></div>
@@ -20,22 +34,34 @@ const InformationBulletin = (seperatePage) => {
             </h3>
             <div className="relative flex-grow overflow-hidden group">
               <div className="absolute inset-0 flex flex-col-reverse">
-                <div className="p-2 animate-scroll">
+                <div
+                  className={`${
+                    card.content.length === 0 ? "my-auto" : "animate-scroll p-2"
+                  }`}
+                >
                   <ul className="space-y-2">
-                    {[...card.content, ...card.content].map((item, idx) => (
-                      <li
-                        key={idx}
-                        className="hover:bg-blue-100 rounded py-1 px-2 transition-colors duration-200"
-                      >
-                        <a
-                          href="#"
-                          className="text-gray-700 hover:text-blue-900 flex items-center w-full"
-                        >
-                          {item}
-                          <span className="ml-2 animated-label">NEW</span>
-                        </a>
+                    {card.content.length === 0 ? (
+                      <li className="text-center text-gray-500 italic">
+                        No {card.title.toLowerCase()} for now.
                       </li>
-                    ))}
+                    ) : (
+                      card.content.map((item, idx) => (
+                        <li
+                          key={idx}
+                          className="hover:bg-blue-100 rounded py-1 px-2 transition-colors duration-200"
+                        >
+                          <a
+                            href={item.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-700 hover:text-blue-900 flex items-center w-full"
+                          >
+                            {item.name}
+                            <span className="ml-2 animated-label">NEW</span>
+                          </a>
+                        </li>
+                      ))
+                    )}
                   </ul>
                 </div>
               </div>
@@ -57,10 +83,10 @@ const InformationBulletin = (seperatePage) => {
 const style = `
   @keyframes scroll {
     0% {
-      transform: translateY(100%); /* Start at the bottom */
+      transform: translateY(100%);
     }
     100% {
-      transform: translateY(-100%); /* Move to the top */
+      transform: translateY(-100%);
     }
   }
 

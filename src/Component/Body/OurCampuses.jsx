@@ -79,7 +79,7 @@ const CarouselSection = () => {
                     <img
                       src={campus.campus_photo}
                       alt={campus.name}
-                      className="h-full min-w-full object-cover transition-transform duration-500 group-hover:scale-105 group-hover:brightness-50 rounded-t-lg"
+                      className={`h-full min-w-full object-cover transition-transform duration-500 group-hover:scale-105 group-hover:brightness-50 rounded-t-lg`}
                     />
                     <div
                       className={`absolute inset-0 bg-black bg-opacity-10 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 ${
@@ -94,10 +94,15 @@ const CarouselSection = () => {
                       </p>
                     </div>
                   </div>
+
+                  <div
+                    className={`flex justify-center font-bold bg-white text-black text-sm px-3 py-2 transition-opacity duration-300 ${
+                      index === activeIndex ? "opacity-100" : "opacity-75"
+                    }`}
+                  >
+                    <p>{campus.name}</p>
+                  </div>
                 </div>
-                <p className="text-center text-base font-semibold mt-2 text-black absolute">
-                  {campus.name}
-                </p>
               </a>
             </div>
           ))}
