@@ -58,6 +58,7 @@ const navItems = [
       { name: "Academic Calendar", path: "/academics/academic-calendar" },
       { name: "Academic Collaboration", path: "/academics/collaboration" },
       { name: "Internal Quality Assurance Cell (IQAC)", path: "/academics/IQAC" },
+      { name: "Library" ,path: "" },
       // { name: "Programs", path: "/Courses" },
     ],
   },
@@ -108,11 +109,14 @@ const navItems = [
   {
     name: "Student Life",
     dropdownItems: [
-      { name: "Computer Centre", path: "/amenities/Computer-Centre" },
-      { name: "NCC", path: "/ncc" },
-      { name: "Canteen", path: "/amenities/Canteen" },
-      { name: "Sports", path: "/amenities/Sports" },
-      { name: "Library", path: "/amenities/Library" },
+      
+      { name: "NCC/NSS", path: "/ncc" },
+      { name: "Sports facilities", path: "/amenities/Sports" },
+      { name: "Hostel" ,path: "" },
+      { name: "Health Facilitis" ,path: "" },
+      { name: "Internal Complaint Committee" ,path: "" },
+      { name: "Anti-Ragging Cell" ,path: "" },
+      { name: "Equal Oppurtunity Cell" ,path: "" },
     ],
   },
   {

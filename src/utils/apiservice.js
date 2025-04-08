@@ -164,3 +164,19 @@ export const getProgramsByLevel = async (level) => {
     (program) => program.programLevel?.toLowerCase() === level.toLowerCase()
   );
 };
+
+
+// get campus data
+export const getAllCampus = async () => {
+  const response = await api.get('/campus');
+  return response.data.data.campuses;
+}
+
+
+// get campus by name
+export const getCampusByName = async (name) => {
+  const allCampuses = await getAllCampus();
+  const data = allCampuses.find((campus) => campus.name.toLowerCase() === name);
+  
+  return data || null;
+}

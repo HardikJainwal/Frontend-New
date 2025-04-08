@@ -2,7 +2,7 @@ import { FaArrowRight } from "react-icons/fa";
 
 const StatutoryCommittees = () => {
   const committees = [
-    { name: "Board of Management (BOM)", file: "/BOM.pdf" },
+    
     { name: "Internal Complaints Committee (ICC)", file: "/ICC.pdf" },
     { name: "Student Redressal Committee", file: "/Student Greivence.pdf" },
     { name: "Equal Opportunity Cell", file: "/Equal Oppurtunity Cell.pdf" },
