@@ -178,5 +178,5 @@ export const getCampusByName = async (name) => {
   const allCampuses = await getAllCampus();
   const data = allCampuses.find((campus) => campus.name.toLowerCase() === name);
   
-  return data;
+  return data || null;
 }

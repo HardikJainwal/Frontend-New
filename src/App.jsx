@@ -15,12 +15,11 @@ import AcademicRegulation from "./Component/AcademicRegulation/page";
 
 // admission
 import AdmissionGuidelines from "./Component/Admission/AdmissionGuidelines";
-import FeeRefundPolicy from './Component/Admission/FeeRefundPolicy';
+import FeeRefundPolicy from "./Component/Admission/FeeRefundPolicy";
 
 // Academics
-import AcademicCollabration from './Component/Academics/AcademicCollaboration';
-import IQAC from './Component/Academics/IQAC';
-
+import AcademicCollabration from "./Component/Academics/AcademicCollaboration";
+import IQAC from "./Component/Academics/IQAC";
 
 // Lazy Load Components
 const HomeBody = lazy(() => import("./Component/Body/Banner"));
@@ -42,7 +41,7 @@ const South = lazy(() => import("./Component/Campuses/South"));
 const East = lazy(() => import("./Component/Campuses/East"));
 const West = lazy(() => import("./Component/Campuses/West"));
 const Central = lazy(() => import("./Component/Campuses/Central"));
-const CampusPage = lazy(() => import('./Component/Campuses/CampusPage'));
+const CampusPage = lazy(() => import("./Component/Campuses/CampusPage"));
 
 // Courses
 const CoursesPage = lazy(() => import("./Component/Courses/CoursesPage"));
@@ -111,8 +110,8 @@ const ComputerCentre = lazy(() =>
   import("./Component/Student Services/ComputerCentre")
 );
 import PlacementOld from "./Component/NavItems/PlacementOld";
-import Registrar from "./Component/Administration/Registrar";
 import CoursesByLevel from "./Component/Courses/CoursesByLevel";
+import RegistararPage from "./Component/Body/RegistararPage";
 
 function App() {
   return (
@@ -174,7 +173,10 @@ function App() {
           <Route path="/dept/:id" element={<DepartmentById />} />
           <Route path="/logindseu" element={<LoginPage />} />
 
-          <Route path="/academics/collaboration" element={<AcademicCollabration />} />
+          <Route
+            path="/academics/collaboration"
+            element={<AcademicCollabration />}
+          />
           <Route path="/academics/IQAC" element={<IQAC />} />
 
           {/* Administration */}
@@ -193,7 +195,7 @@ function App() {
 
           {/* Other Pages */}
           <Route path="/vice-chancellor" element={<ViceChancellorMessage />} />
-          <Route path="/registrar" element={<Registrar />} />
+          <Route path="/registrar" element={<RegistararPage />} />
           <Route path="/research/*" element={<ResearchDev />} />
           <Route path="/about-us/About-the-University" element={<About />} />
           <Route
@@ -202,7 +204,7 @@ function App() {
           />
           <Route
             path="/information-bulletin"
-            element={<InformationBulletin seperatePage={true} />}
+            element={<InformationBulletin />}
           />
           <Route path="/UGC-Guidelines" element={<UnderConstruction />} />
           <Route path="/amenities/Facilities" element={<Amenities />} />
@@ -234,10 +236,15 @@ function App() {
 
           <Route path="/grievance-form" element={<GrievanceForm />} />
 
-
           {/* Admission */}
-          <Route path="/admission/guidelines" element={<AdmissionGuidelines />} />
-          <Route path="/admission/refund-policy" element={<FeeRefundPolicy />} />
+          <Route
+            path="/admission/guidelines"
+            element={<AdmissionGuidelines />}
+          />
+          <Route
+            path="/admission/refund-policy"
+            element={<FeeRefundPolicy />}
+          />
 
           {/* Student Services */}
           <Route path="/placement" element={<Placement />} />

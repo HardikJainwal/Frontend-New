@@ -1,12 +1,12 @@
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
-import OrangeLoader from "../PageLoader/OrangeLoader";
 import { unslugify } from "../../utils/helper";
 import { getCampusByName } from "../../utils/apiservice";
 import { QUERY_KEYS } from "../../utils/queryKeys";
-import { useState } from "react";
 
+import OrangeLoader from "../PageLoader/OrangeLoader";
 import CampusDescription from "./CampusDescription";
 import CampusCourses from "./CampusCourses";
 import CampusLabs from "./CampusLabs";
@@ -20,9 +20,28 @@ const CampusPage = () => {
   const { data, isLoading } = useQuery({
     queryFn: () => getCampusByName(lowercasedName),
     queryKey: [QUERY_KEYS.GET_CAMPUS_BY_NAME, lowercasedName],
+    enabled: !!lowercasedName,
   });
 
   if (isLoading) return <OrangeLoader />;
+  
+  // if someone entered wrong campus name or zone which doesnt exists 
+  if (!data) {
+    return (
+      <div className="w-full h-[60vh] md:h-[40vh] flex flex-col items-center justify-center text-center px-4">
+        <h2 className="text-3xl font-bold text-red-500 mb-4">
+          Campus Not Found
+        </h2>
+        <p className="text-gray-600 text-base md:text-lg mb-2">
+          We couldn’t find any campus by that name. Please check the spelling or
+          try searching for a different zone.
+        </p>
+        <p className="text-sm text-gray-400">
+          If you think this is a mistake, contact support or the admin team.
+        </p>
+      </div>
+    );
+  }
 
   const content = {
     about: {
@@ -56,7 +75,7 @@ const CampusPage = () => {
 
   return (
     <div className="w-full max-w-6xl mx-auto p-4">
-      {/* Banner */}
+      {/* top image */}
       <div
         className="w-full h-56 sm:h-64 rounded-lg mb-6 relative overflow-hidden shadow-lg md:pb-10 pb-3"
         style={{
