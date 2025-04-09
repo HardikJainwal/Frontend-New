@@ -71,7 +71,7 @@ const Footer = () => {
               www.dseu.ac.in
             </a>
           </p>
-          <div className="mt-4 flex justify-center md:justify-start space-x-4">
+         {/*  <div className="mt-4 flex justify-center md:justify-start space-x-4">
             <a href="https://x.com/dseu_official?lang=en" aria-label="Twitter" target="_blank">
               <FontAwesomeIcon
                 icon={faTwitter}
@@ -90,7 +90,7 @@ const Footer = () => {
                 style={{ color: "#4267B2", fontSize: "20px" }}
               />
             </a>
-          </div>
+          </div> */}
         </div>
 
         <div className="w-full md:w-1/3 mb-6 md:mb-0 md:pl-4">

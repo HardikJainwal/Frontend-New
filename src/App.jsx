@@ -114,6 +114,7 @@ import CoursesByLevel from "./Component/Courses/CoursesByLevel";
 import RegistararPage from "./Component/Body/RegistararPage";
 import ViceChancellorPage from './Component/Body/ViceChancellorPage';
 import ChatWidget from "./Component/chatbot";
+import Socials from "./Component/Footer/Socials";
 
 function App() {
   return (
@@ -130,6 +131,7 @@ function App() {
                 <HomeBody />
                 <Announcements />
                 <Message />
+                <Socials />
                 <InformationBulletin />
                 <OurCampuses />
                 <StudyProgramsSection />
