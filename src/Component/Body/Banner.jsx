@@ -2,14 +2,26 @@ import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import dseuPic1 from "../../assets/BannerImg/dseuPic1.jpg";
-import banner from "../../assets/DSEULogo/Banner.jpg"
-import Image6 from "../../assets/DSEULogo/BANNER-DESIGN-1.jpg"
+import banner from "../../assets/DSEULogo/Banner.jpg";
+import Image6 from "../../assets/DSEULogo/BANNER-DESIGN-1.jpg";
+import Banner3 from "../../assets/DSEULogo/BANNER-DESIGN-3.jpg";
+import Banner4 from "../../assets/DSEULogo/BANNER-DESIGN-4.jpg";
+import Banner5 from "../../assets/DSEULogo/BANNER-DESIGN-5.jpg";
+
 import Image7 from "../../assets/7.png";
 
 const HomeBody = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const slides = [{ image: dseuPic1 } , {image:banner}, {image: Image6} , {image: Image7}, ];
+  const slides = [
+    { image: dseuPic1 },
+    { image: banner },
+    { image: Image6 },
+    { image: Image7 },
+    { image: Banner3 },
+    { image: Banner4 },
+    { image: Banner5 },
+  ];
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -27,7 +39,7 @@ const HomeBody = () => {
   };
 
   return (
-    <div className="relative w-full h-[20vh] sm:h-[40vh] md:h-[60vh] lg:h-[80vh]">
+    <div className="relative w-full h-[30vh] sm:h-[40vh] md:h-[60vh] lg:h-[80vh]">
       <div className="relative w-full h-full overflow-hidden">
         {slides.map((slide, index) => (
           <div
