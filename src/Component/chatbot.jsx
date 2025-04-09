@@ -19,23 +19,38 @@ const ChatWidget = () => {
   const modalRef = useRef(null);
 
   useEffect(() => {
-    const hasOpenedChatbot = localStorage.getItem('chatbotOpened');
-  
-    if (!hasOpenedChatbot) {
+    const hasOpened = sessionStorage.getItem('chatbotOpened');
+    const hasClosed = sessionStorage.getItem('chatbotClosed');
+
+    if (!hasOpened && !hasClosed) {
       const tooltipTimer = setTimeout(() => setShowTooltip(true), 2000);
       const chatbotTimer = setTimeout(() => {
         setShowTooltip(false);
         setOpen(true);
-        localStorage.setItem('chatbotOpened', 'true');
+        sessionStorage.setItem('chatbotOpened', 'true');
       }, 7000);
-  
+
       return () => {
         clearTimeout(tooltipTimer);
         clearTimeout(chatbotTimer);
       };
     }
   }, []);
-  
+
+  // Close chatbot when clicking outside modal
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (open && modalRef.current && !modalRef.current.contains(event.target)) {
+        setOpen(false);
+        sessionStorage.setItem('chatbotClosed', 'true');
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [open]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -70,7 +85,10 @@ const ChatWidget = () => {
           </div>
         )}
         <button
-          onClick={() => setOpen(true)}
+          onClick={() => {
+            setOpen(true);
+            sessionStorage.setItem('chatbotOpened', 'true');
+          }}
           className="text-white text-2xl w-24 h-24 rounded-full shadow-lg flex items-center justify-center transition bg-white"
           title="Chat with Lakshay"
         >
@@ -86,23 +104,26 @@ const ChatWidget = () => {
 
       {/* Chat Modal */}
       {open && (
-  <div
-    ref={modalRef}
-    className="fixed bottom-28 right-10 md:right-10 md:left-auto md:translate-x-0 left-1/2 -translate-x-1/2 w-[95%] sm:w-[380px] h-[500px] bg-white rounded-xl shadow-xl z-50 flex flex-col overflow-hidden border border-gray-200"
-  >
-    {/* Header */}
-    <div className="bg-gradient-to-r from-blue-200 to-blue-400 text-white px-4 py-3 flex justify-between items-center">
-      <div className="flex items-center gap-2">
-        <img src={vector} alt='logo' className='h-8 w-6' />
-        <h3 className="font-semibold text-lg text-blue-700">Lakshay</h3>
-      </div>
-      <button
-        onClick={() => setOpen(false)}
-        className="text-lg font-semibold hover:text-gray-300 transition"
-      >
-        ✖
-      </button>
-    </div>
+        <div
+          ref={modalRef}
+          className="fixed bottom-28 right-10 md:right-10 md:left-auto md:translate-x-0 left-1/2 -translate-x-1/2 w-[95%] sm:w-[380px] h-[500px] bg-white rounded-xl shadow-xl z-50 flex flex-col overflow-hidden border border-gray-200"
+        >
+          {/* Header */}
+          <div className="bg-gradient-to-r from-blue-200 to-blue-400 text-white px-4 py-3 flex justify-between items-center">
+            <div className="flex items-center gap-2">
+              <img src={vector} alt='logo' className='h-8 w-6' />
+              <h3 className="font-semibold text-lg text-blue-700">Lakshay</h3>
+            </div>
+            <button
+              onClick={() => {
+                setOpen(false);
+                sessionStorage.setItem('chatbotClosed', 'true');
+              }}
+              className="text-lg font-semibold hover:text-gray-300 transition"
+            >
+              ✖
+            </button>
+          </div>
 
           {/* Chat Area */}
           <div className="flex-1 px-4 py-3 bg-gray-50 text-sm overflow-y-auto custom-scroll space-y-3">
@@ -140,7 +161,7 @@ const ChatWidget = () => {
             <div className="mt-4">
               <button
                 onClick={() => setShowCourses((prev) => !prev)}
-                className="w-50 bg-[#2B4A7F] text-white py-3 px-2  rounded-md hover:bg-[#4F83C4] transition  text-xs font-medium"
+                className="w-50 bg-[#2B4A7F] text-white py-3 px-2 rounded-md hover:bg-[#4F83C4] transition text-xs font-medium"
               >
                 📚 Courses Offered
               </button>

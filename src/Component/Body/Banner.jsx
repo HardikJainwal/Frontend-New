@@ -2,14 +2,14 @@ import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import dseuPic1 from "../../assets/BannerImg/dseuPic1.jpg";
-import banner1 from "../../assets/DSEULogo/BANNER-DESIGN.jpg"
+import banner from "../../assets/DSEULogo/Banner.jpg"
 import Image6 from "../../assets/DSEULogo/BANNER-DESIGN-1.jpg"
 import Image7 from "../../assets/7.png";
 
 const HomeBody = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const slides = [{ image: dseuPic1 },{ image: banner1 } , {image: Image6} , {image: Image7} ];
+  const slides = [{ image: dseuPic1 } , {image:banner}, {image: Image6} , {image: Image7}, ];
 
   useEffect(() => {
     const timer = setInterval(() => {
