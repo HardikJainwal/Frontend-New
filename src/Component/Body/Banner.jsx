@@ -39,7 +39,7 @@ const HomeBody = () => {
   };
 
   return (
-    <div className="relative w-full h-[40vh] md:h-[60vh] lg:h-[80vh]">
+    <div className="relative w-full h-[30vh] sm:h-[40vh] md:h-[60vh] lg:h-[80vh]">
       <div className="relative w-full h-full overflow-hidden">
         {slides.map((slide, index) => (
           <div
@@ -54,7 +54,7 @@ const HomeBody = () => {
             <img
               src={slide.image}
               alt={`Slide ${index + 1}`}
-              className="w-full h-full object-contain md:object-cover brightness-110 contrast-105"
+              className="w-full h-full object-cover brightness-110 contrast-105"
               loading={index === 0 ? "eager" : "lazy"}
             />
           </div>
