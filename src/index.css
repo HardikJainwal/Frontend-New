@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
@@ -24,6 +23,13 @@
 * {
   scrollbar-width: thin;
   scrollbar-color: #ea580c #333;
+}
+
+
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
 }
 
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 
 import OrangeLoader from "../PageLoader/OrangeLoader";
-import { getAllPdf } from "../../utils/apiservice";
+import { getAcademicCouncilNotices } from "../../utils/apiservice";
 import { QUERY_KEYS } from "../../utils/queryKeys";
 
 const StatutoryBodiesComponent = () => {
@@ -11,7 +11,7 @@ const StatutoryBodiesComponent = () => {
   const [activeMinutesTab, setActiveMinutesTab] = useState("court");
 
   const { data, isLoading } = useQuery({
-    queryFn: getAllPdf,
+    queryFn: getAcademicCouncilNotices,
     queryKey: [QUERY_KEYS.GET_ALL_PDF],
   });
 
@@ -53,6 +53,10 @@ const StatutoryBodiesComponent = () => {
       id: "min-finance",
     },
   };
+
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
 
   if (isLoading) return <OrangeLoader />;
 

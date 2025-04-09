@@ -182,8 +182,10 @@ export const getCampusByName = async (name) => {
 }
 
 
-// get all pdf
-export const getAllPdf = async () => {
-  const response = await api.get('/pdf');
-  return response.data.data.nonAlertPDF;
-}
+// get academic council notices
+export const getAcademicCouncilNotices = async () => {
+  const response = await api.get('/notice', {
+    params: { section: 'academic council' },
+  });
+  return response.data.data.notices;
+};

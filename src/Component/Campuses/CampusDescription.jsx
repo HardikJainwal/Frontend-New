@@ -18,7 +18,7 @@ const CampusDescription = ({
         </a>
       </div>
 
-      <div className="text-base leading-7">{campus_info}</div>
+      <div className="text-base leading-7 text-justify">{campus_info}</div>
     </div>
   );
 };
