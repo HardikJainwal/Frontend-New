@@ -223,13 +223,13 @@ const members = [
     designation: "Campus Director - DSEU Okhla-II Campus",
     category: "Campus Directors",
   },
-  {
-    id: 25,
-    name: "Prof. Dipali Bansal",
-    src: dipaloBansal,
-    designation: "Campus Director",
-    category: "Campus Directors",
-  },
+  // {
+  //   id: 25,
+  //   name: "Prof. Dipali Bansal",
+  //   src: dipaloBansal,
+  //   designation: "Campus Director",
+  //   category: "Campus Directors",
+  // },
   {
     id: 26,
     name: "Dr. Pramod Kumar Goyal",
@@ -288,13 +288,13 @@ const members = [
     designation: "Assistant Registrar",
     category: "Officers",
   },
-  {
-    id: 33,
-    name: "R.K. Reddy",
-    src: rkReddy,
-    designation: "Senior Accounts Officer",
-    category: "Officers",
-  },
+  // {
+  //   id: 33,
+  //   name: "R.K. Reddy",
+  //   src: rkReddy,
+  //   designation: "Senior Accounts Officer",
+  //   category: "Officers",
+  // },
   {
     id: 34,
     name: "Veena Upadhyay",
@@ -313,35 +313,35 @@ const members = [
     id: 36,
     name: "Ahmad Omair",
     src: ahmadOmair,
-    designation: "Placement and Partnership Manager",
+    // designation: "Placement and Partnership Manager",s
     category: "Training and Placement Officers",
   },
   {
     id: 37,
     name: "Niharika Pandey",
     src: niharikaPandey,
-    designation: "Placement and Partnership Manager",
+    // designation: "Placement and Partnership Manager",s
     category: "Training and Placement Officers",
   },
   {
     id: 38,
     name: "Kaushalender Varma",
     src: kaushalSachdeva,
-    designation: "Placement and Partnership Manager",
+    // designation: "Placement and Partnership Manager",
     category: "Training and Placement Officers",
   },
   {
     id: 39,
     name: "Dr. Ravinder Jhorar",
     src: ravinderJohar,
-    designation: "Placement and Partnership Manager",
+    // designation: "Placement and Partnership Manager",s
     category: "Training and Placement Officers",
   },
   {
     id: 40,
     name: "Agrim Tomar",
     src: agrimTomar,
-    designation: "Placement and Partnership Manager",
+    // designation: "Placement and Partnership Manager",s
     category: "Training and Placement Officers",
   },
   // {
