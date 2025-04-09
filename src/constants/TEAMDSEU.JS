@@ -1,6 +1,8 @@
 import {
   agrimTomar,
   ahmadOmair,
+  ranbirSinghSharma,
+  arindamKumarChanda,
   binduNair,
   chancellor,
   dipaloBansal,
@@ -129,6 +131,7 @@ const members = [
     designation: "Campus Director - Ranhola Campus",
     category: "Campus Directors",
   },
+
   {
     id: 12,
     name: "Prof. Vibhakar Shrimali",
@@ -213,13 +216,13 @@ const members = [
     designation: "Campus Director - DSEU Dheerpur Campus",
     category: "Campus Directors",
   },
-  // {
-  //   id: 24,
-  //   name: "Dr. S V Vageesha",
-  //   src: svVageesha,
-  //   designation: "Campus Director - Aryabhatt DSEU Ashok Vihar Campus",
-  //   category: "Campus Directors",
-  // },
+  {
+    id: 24,
+    name: "Prof. Arindam Kumar Chanda",
+    src: arindamKumarChanda,
+    designation: "Campus Director - DSEU Okhla-II Campus",
+    category: "Campus Directors",
+  },
   {
     id: 25,
     name: "Prof. Dipali Bansal",
@@ -234,6 +237,15 @@ const members = [
     designation: "Campus Director - DSEU Pusa Campus I",
     category: "Campus Directors",
   },
+  
+  {
+    id: 26,
+    name: "Dr. Ranbir Singh Sharma",
+    src: ranbirSinghSharma,
+    designation: "Campus Director - Aryabhatt DSEU Campus",
+    category: "Campus Directors",
+  },
+
   {
     id: 27,
     name: "Shivam Gupta",

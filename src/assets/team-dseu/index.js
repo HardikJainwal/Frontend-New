@@ -46,12 +46,15 @@ import harvinderKaur from './harvinderKaur.jpg';
 import hrMeena from './hrMeena.png'
 import placeholder from './placeholder.jpg';
 import shubhaGV from './shubhaGV.jpg';
-import rituSareen from './rituSareen.jpeg'
+import rituSareen from './rituSareen.jpeg';
+import arindamKumarChanda from './arindamKumarChanda.jpeg';
+import ranbirSinghSharma from './ranbirSinghSharma.jpeg';
 
 
 export {
     agrimTomar,
     ahmadOmair,
+    arindamKumarChanda,
     binduNair,
     chancellor,
     dipaloBansal,
@@ -98,5 +101,6 @@ export {
     hrMeena,
     placeholder,
     shubhaGV,
-    rituSareen
+    rituSareen,
+    ranbirSinghSharma,
 };
