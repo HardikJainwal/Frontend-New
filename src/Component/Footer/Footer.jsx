@@ -72,19 +72,19 @@ const Footer = () => {
             </a>
           </p>
           <div className="mt-4 flex justify-center md:justify-start space-x-4">
-            <a href="#" aria-label="Twitter">
+            <a href="https://x.com/dseu_official?lang=en" aria-label="Twitter" target="_blank">
               <FontAwesomeIcon
                 icon={faTwitter}
                 style={{ color: "#1DA1F2", fontSize: "20px" }}
               />
             </a>
-            <a href="#" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/school/delhi-skill-and-entrepreneurship-university/?originalSubdomain=in" aria-label="LinkedIn" target="_blank">
               <FontAwesomeIcon
                 icon={faLinkedin}
                 style={{ color: "#0077B5", fontSize: "20px" }}
               />
             </a>
-            <a href="#" aria-label="Facebook">
+            <a href="https://www.facebook.com/dseuofficial/" aria-label="Facebook" target="_blank">
               <FontAwesomeIcon
                 icon={faFacebook}
                 style={{ color: "#4267B2", fontSize: "20px" }}
@@ -99,33 +99,33 @@ const Footer = () => {
           </h3>
           <ul className="space-y-2">
             <li>
-              <a href="/departments" className="hover:text-blue-600">
-                Departments
+              <a href="/Courses" className="hover:text-blue-600">
+                Courses
               </a>
             </li>
             <li>
-              <a href="#" className="hover:text-blue-600">
-                Centres & CoEs
+              <a href="/placement" className="hover:text-blue-600">
+                Placement
               </a>
             </li>
             <li>
               <a href="/academics/faculty" className="hover:text-blue-600">
-                Faculties
+                Faculties & Departments
               </a>
             </li>
             <li>
-              <a href="#" className="hover:text-blue-600">
-                Anti-Sexual Harassment Policy
+              <a href="/recruitment" className="hover:text-blue-600">
+                Recuirtment
               </a>
             </li>
             <li>
-              <a href="#" className="hover:text-blue-600">
-                Right to Information
+              <a href="/administration/administrative" className="hover:text-blue-600">
+                Administrative
               </a>
             </li>
             <li>
-              <a href="#" className="hover:text-blue-600">
-                Office of Career Services
+              <a href="/academics/regulations" className="hover:text-blue-600">
+                Academic Regulations
               </a>
             </li>
             <li></li>
