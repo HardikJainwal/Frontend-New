@@ -81,13 +81,13 @@ const members = [
     designation: "Controller of Finance",
     category: "University Officers",
   },
-  {
-    id: 5,
-    name: "Prof. (Dr.) Girish Kumar Sharma",
-    src: girishKumar,
-    designation: "Dean (Research)",
-    category: "University Officers",
-  },
+  // {
+  //   id: 5,
+  //   name: "Prof. (Dr.) Girish Kumar Sharma",
+  //   src: girishKumar,
+  //   designation: "Dean (Research)",
+  //   category: "University Officers",
+  // },
   {
     id: 6,
     name: "Dr. Pankaj Lathar",
