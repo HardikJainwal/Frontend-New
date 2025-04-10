@@ -65,11 +65,11 @@ const navItems = [
   {
     name: "Campuses",
     dropdownItems: [
-      { name: "Central", path: "/campus/central" },
-      { name: "North", path: "/campus/north" },
-      { name: "South", path: "/campus/south" },
-      { name: "East", path: "/campus/east" },
-      { name: "West", path: "/campus/west" },
+      { name: "Central", path: "/campus/zone/central zone" },
+      { name: "North", path: "/campus/zone/north zone" },
+      { name: "South", path: "/campus/zone/south zone" },
+      { name: "East", path: "/campus/zone/east zone" },
+      { name: "West", path: "/campus/zone/west zone" },
     ],
   },
   {

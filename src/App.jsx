@@ -42,6 +42,7 @@ const East = lazy(() => import("./Component/Campuses/East"));
 const West = lazy(() => import("./Component/Campuses/West"));
 const Central = lazy(() => import("./Component/Campuses/Central"));
 const CampusPage = lazy(() => import("./Component/Campuses/CampusPage"));
+const CampusByZone = lazy(() => import('./Component/Campuses/CampusByZone'));
 
 // Courses
 const CoursesPage = lazy(() => import("./Component/Courses/CoursesPage"));
@@ -149,7 +150,7 @@ function App() {
           <Route path="/campus/south" element={<South />} />
           <Route path="/campus/east" element={<East />} />
           <Route path="/campus/west" element={<West />} />
-          {/* <Route path="/campus/zone/:zone" element={} /> */}
+          <Route path="/campus/zone/:zone" element={<CampusByZone />} />
 
           {/* Courses */}
           <Route path="/courses" element={<CoursesPage />} />

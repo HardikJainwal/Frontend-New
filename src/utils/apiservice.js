@@ -197,3 +197,13 @@ export const fetchNoticesBySection = async (section) => {
   );
   return res.data?.data?.notices || [];
 };
+
+
+// get campus by zone 
+export const getCampusByZone = async (zoneName) => {
+  const res = await api.get('/campus', {
+    params: { zone: zoneName }
+  })
+
+  return res.data;
+}
