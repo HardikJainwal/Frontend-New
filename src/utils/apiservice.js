@@ -191,13 +191,11 @@ export const getAcademicCouncilNotices = async () => {
 };
 
 // pdf through category such as circular, students, board of management etc.
-export const fetchNoticesBySection = async (section) => {
-  const res = await axios.get(
-    `https://dseu-dave.onrender.com/api/v1/notice?section=${encodeURIComponent(section)}`
-  );
-  return res.data?.data?.notices || [];
-};
+export const getPdfBySections = async (section) => {
+  const res = await api.get(`/notice?section=${section}`);
 
+  return res.data.data.notices;
+};
 
 // get campus by zone 
 export const getCampusByZone = async (zoneName) => {

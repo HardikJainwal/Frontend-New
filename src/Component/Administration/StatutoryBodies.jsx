@@ -1,19 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { useQuery } from "@tanstack/react-query";
-
+import { useState } from "react";
+import { useNoticesBySection } from "../../hooks/useNoticesBySection";
 import OrangeLoader from "../PageLoader/OrangeLoader";
-import { getAcademicCouncilNotices } from "../../utils/apiservice";
-import { QUERY_KEYS } from "../../utils/queryKeys";
 
 const StatutoryBodiesComponent = () => {
   const [activeTab, setActiveTab] = useState("STATUTORY BODIES");
   const [activeSection, setActiveSection] = useState("members");
-  const [activeMinutesTab, setActiveMinutesTab] = useState("court");
+  const [activeMinutesTab, setActiveMinutesTab] = useState("university court");
 
-  const { data, isLoading } = useQuery({
-    queryFn: getAcademicCouncilNotices,
-    queryKey: [QUERY_KEYS.GET_ALL_PDF],
-  });
+  const { data, isLoading } = useNoticesBySection(activeMinutesTab);
+
+  // useEffect(() => {
+  //   console.log("Active Tab:", activeMinutesTab);
+  //   console.log("Data:", data);
+  // }, [activeMinutesTab, data]);
 
   const navItems = [
     "NOTICES",
@@ -25,38 +24,34 @@ const StatutoryBodiesComponent = () => {
   ];
 
   const boardMembers = [
-    { title: "University Court", id: "court" },
-    { title: "Board of Management", file: "/BOM.pdf" },
-    { title: "Academic Council", id: "academic" },
-    { title: "Finance Committee", id: "finance" },
+    { title: "University Court", id: "university court" },
+    { title: "Board of Management", id: "board of management" },
+    { title: "Academic Council", id: "academic council" },
+    { title: "Finance Committee", id: "finance committee" },
   ];
 
   const minutes = {
-    court: {
+    "university court": {
       title: "University Court",
       date: "23-Apr-2024",
       id: "min-court",
     },
-    management: {
+    "board of management": {
       title: "Board of Management",
       date: "15-Mar-2024",
       id: "min-management",
     },
-    academic: {
+    "academic council": {
       title: "Academic Council",
       date: "10-Feb-2024",
       id: "min-academic",
     },
-    finance: {
+    "finance committee": {
       title: "Finance Committee",
       date: "05-Jan-2024",
       id: "min-finance",
     },
   };
-
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
 
   if (isLoading) return <OrangeLoader />;
 
@@ -134,7 +129,7 @@ const StatutoryBodiesComponent = () => {
           </div>
         ) : (
           <>
-            {/* Minutes Tabs - Horizontal Scrollable */}
+            {/* Minutes Tabs */}
             <div className="overflow-x-auto">
               <div className="flex flex-col md:flex-row flex-nowrap bg-gray-100 p-2 rounded-lg mb-4 gap-2 min-w-max">
                 {Object.keys(minutes).map((key) => (
@@ -147,54 +142,46 @@ const StatutoryBodiesComponent = () => {
                     }`}
                     onClick={() => setActiveMinutesTab(key)}
                   >
-                    {minutes[key].title}
+                    {minutes[key]?.title || "Untitled"}
                   </button>
                 ))}
               </div>
             </div>
 
             {/* Selected Minutes Section */}
-            {activeMinutesTab === "academic" ? (
+            {data?.length > 0 ? (
               <div className="space-y-4">
-                {data
-                  ?.filter(
-                    (item) =>
-                      item.fileName
-                        .toLowerCase()
-                        .includes("academic council") ||
-                      item.fileName.toLowerCase().includes("ac")
-                  )
-                  .map((file) => (
-                    <div
-                      key={file._id}
-                      className="p-4 border rounded-lg hover:bg-blue-50 transition duration-200"
+                {data.map((file) => (
+                  <div
+                    key={file._id}
+                    className="p-4 border rounded-lg hover:bg-blue-50 transition duration-200"
+                  >
+                    <a
+                      href={file.fileLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-700 font-medium hover:underline flex items-center"
                     >
-                      <a
-                        href={file.fileLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-700 font-medium hover:underline flex items-center"
-                      >
-                        <span className="mr-2">📄</span>
-                        {file.fileName}
-                      </a>
-                      <p className="text-sm text-gray-500 mt-1">
-                        Uploaded on{" "}
-                        {new Date(file.uploadedAt).toLocaleDateString()}
-                      </p>
-                    </div>
-                  ))}
+                      <span className="mr-2">📄</span>
+                      {file.fileName}
+                    </a>
+                    <p className="text-sm text-gray-500 mt-1">
+                      Uploaded on{" "}
+                      {new Date(file.uploadedAt).toLocaleDateString()}
+                    </p>
+                  </div>
+                ))}
               </div>
             ) : (
-              <div className="p-6 border rounded-lg shadow-md bg-white">
-                <h3 className="text-xl font-bold text-blue-700">
-                  {minutes[activeMinutesTab].title}
+              <div className="p-6 border rounded-lg shadow-md bg-white text-gray-600">
+                <h3 className="text-xl font-semibold mb-2">
+                  {minutes[activeMinutesTab]?.title || "Not Found"}
                 </h3>
-                <p className="text-gray-600 mb-4">
-                  Date: {minutes[activeMinutesTab].date}
+                <p className="mb-4">
+                  Date: {minutes[activeMinutesTab]?.date || "N/A"}
                 </p>
                 <a
-                  href={`#${minutes[activeMinutesTab].id}`}
+                  href={`#${minutes[activeMinutesTab]?.id || ""}`}
                   className="text-blue-600 hover:underline flex items-center"
                 >
                   <span className="mr-2">📝</span>
