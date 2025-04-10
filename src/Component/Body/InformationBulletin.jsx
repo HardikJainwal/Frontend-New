@@ -1,25 +1,52 @@
-const cards = [
-  {
-    title: "Admission",
-    content: [
-      {
-        name: "Pre Admission Announcement 2025",
-        link: "/PreAdmissionAnnoucement2025.pdf",
-      },
-    ],
-    buttonText: "Apply Online",
-  },
-  { title: "Students", content: [], buttonText: "Online Fee Services" },
-  { title: "Important Links", content: [
-    {
-      name: "Invitation For Expression of Interest",
-      link: "/EOI.pdf"
-    }
-  ], buttonText: "Online Portal" },
-  { title: "Alerts & Circulars", content: [], buttonText: "View Notices" },
-];
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const InformationBulletin = () => {
+  const [cards, setCards] = useState([
+    { title: "Admission", content: [], buttonText: "Apply Online" },
+    { title: "Students", content: [], buttonText: "Online Fee Services" },
+    { title: "Important Links", content: [], buttonText: "Online Portal" },
+    { title: "Alerts & Circulars", content: [], buttonText: "View Notices" },
+  ]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const sections = [
+          { key: "admission", index: 0 },
+          { key: "students", index: 1 },
+          { key: "important links", index: 2 },
+          { key: "alerts & circulars", index: 3 },
+        ];
+
+        const requests = sections.map((section) =>
+          axios.get(
+            `https://dseu-dave.onrender.com/api/v1/notice?section=${encodeURIComponent(
+              section.key
+            )}`
+          )
+        );
+
+        const responses = await Promise.all(requests);
+
+        const updatedCards = [...cards];
+        responses.forEach((res, i) => {
+          const data = res.data?.data?.notices || [];
+          updatedCards[sections[i].index].content = data.map((notice) => ({
+            name: notice.fileName,
+            link: notice.fileLink,
+          }));
+        });
+
+        setCards(updatedCards);
+      } catch (err) {
+        console.error("Error fetching notices:", err);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div id="information-bulletin" className="container mx-auto px-4 py-4">
       <h2 className="text-4xl font-extrabold text-center text-blue-900 mb-8 mt-10 font-sans">
@@ -102,7 +129,7 @@ const style = `
   }
 
   .animate-scroll {
-    animation: scroll 30s linear infinite;
+    animation: scroll 10s linear infinite;
   }
 
   .group:hover .animate-scroll {
@@ -117,7 +144,7 @@ const style = `
 
   @media (max-width: 768px) {
     .animate-scroll {
-      animation-duration: 25s;
+      animation-duration: 10s;
     }
   }
 
