@@ -77,6 +77,7 @@ const ComputerCentre = lazy(() => import("./Component/Student Services/ComputerC
 import RegistararPage from "./Component/Body/RegistararPage";
 import ChatWidget from "./Component/chatbot";
 import Socials from "./Component/Footer/Socials";
+import NotFound from "./Component/NotFound/page";
 
 function App() {
   return (
@@ -168,6 +169,8 @@ function App() {
           <Route path="/amenities/Canteen" element={<Canteen />} />
           <Route path="/amenities/Sports" element={<Sports />} />
           <Route path="/amenities/Library" element={<Library />} />
+
+          <Route path="*" element={<NotFound />} />
 
         </Routes>
         <ChatWidget />

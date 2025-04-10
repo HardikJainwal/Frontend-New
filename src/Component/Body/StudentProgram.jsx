@@ -122,11 +122,12 @@ const StudyProgramsSection = () => {
                   {displayPrograms.map((program) => (
                     <div
                       key={program.code}
-                      className="relative bg-cover bg-center rounded-lg shadow-sm p-8 hover:shadow-lg transition-shadow duration-300 cursor-pointer h-28"
+                      className="relative bg-cover bg-center rounded-lg shadow-sm p-8 hover:shadow-lg duration-300 cursor-pointer h-28 hover:scale-[1.02] transition-all"
                       style={{
                         backgroundImage: `url(${study})`,
                       }}
-                      onClick={() => handleProgramClick(selectedProgram)}
+                      // onClick={() => handleProgramClick(selectedProgram)}
+                      onClick={() => navigate(`/programs/${program._id}`)}
                     >
                       <div className="absolute inset-0 bg-black opacity-50 rounded-lg"></div>
                       <div className="relative z-10 h-full flex flex-col justify-center items-center text-center px-2">
