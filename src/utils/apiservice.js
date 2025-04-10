@@ -177,7 +177,7 @@ export const getAllCampus = async () => {
 export const getCampusByName = async (name) => {
   const allCampuses = await getAllCampus();
   const data = allCampuses.find((campus) => campus.name.toLowerCase() === name);
-  
+
   return data || null;
 }
 
@@ -188,4 +188,12 @@ export const getAcademicCouncilNotices = async () => {
     params: { section: 'academic council' },
   });
   return response.data.data.notices;
+};
+
+// pdf through category such as circular, students, board of management etc.
+export const fetchNoticesBySection = async (section) => {
+  const res = await axios.get(
+    `https://dseu-dave.onrender.com/api/v1/notice?section=${encodeURIComponent(section)}`
+  );
+  return res.data?.data?.notices || [];
 };

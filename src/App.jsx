@@ -149,6 +149,7 @@ function App() {
           <Route path="/campus/south" element={<South />} />
           <Route path="/campus/east" element={<East />} />
           <Route path="/campus/west" element={<West />} />
+          {/* <Route path="/campus/zone/:zone" element={} /> */}
 
           {/* Courses */}
           <Route path="/courses" element={<CoursesPage />} />

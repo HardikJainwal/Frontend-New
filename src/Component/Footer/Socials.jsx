@@ -5,29 +5,31 @@ import {
   faXTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 
+const socialsData = [
+  {
+    name: "Facebook",
+    icon: faFacebook,    
+    href: "https://www.facebook.com/dseuofficial/",
+    bg: "#1877F2",
+  },
+  {
+    name: "LinkedIn",
+    icon: faLinkedin,
+    href: "https://www.linkedin.com/school/delhi-skill-and-entrepreneurship-university/?originalSubdomain=in",
+    bg: "#0A66C2",
+  },
+  {
+    name: "Twitter",
+    icon: faXTwitter,
+    href: "https://x.com/dseu_official?lang=en",
+    bg: "#000000",
+  },
+];
+
 const Socials = () => {
   return (
     <div className="flex flex-col gap-1 fixed top-[40%] left-0 z-50">
-      {[
-        {
-          name: "Facebook",
-          icon: faFacebook,
-          href: "https://www.facebook.com/dseuofficial/",
-          bg: "#1877F2",
-        },
-        {
-          name: "LinkedIn",
-          icon: faLinkedin,
-          href: "https://www.linkedin.com/school/delhi-skill-and-entrepreneurship-university/?originalSubdomain=in",
-          bg: "#0A66C2",
-        },
-        {
-          name: "Twitter",
-          icon: faXTwitter,
-          href: "https://x.com/dseu_official?lang=en",
-          bg: "#000000",
-        },
-      ].map((social, index) => (
+      {socialsData.map((social, index) => (
         <a
           key={index}
           className="group flex items-center justify-end p-2 pr-4 max-w-[50px] hover:max-w-[160px] transition-all duration-300 overflow-hidden rounded-r-full"
