@@ -1,39 +1,43 @@
+import React from "react";
 import VCsir from "../../assets/VCsir.jpg";
 
 const ViceChancellorMessage = () => {
   return (
-    <div className="max-w-4xl mx-auto px-6 py-12">
-      <h2 className="text-4xl font-bold text-blue-500 mb-2 text-center md:text-left">
+    <div className="max-w-4xl mx-auto px-6 py-12 font-sans">
+      {/* Heading */}
+      <h2 className="text-4xl font-bold text-blue-600 mb-2 text-center md:text-left">
         Welcome to DSEU
       </h2>
       <p className="text-orange-400 text-lg md:text-xl font-medium mb-10 text-center md:text-left">
         — A Hub of Possibility, Purpose, and Progress
       </p>
 
+      {/* Profile Section */}
       <div className="flex md:flex-row md:items-center md:gap-10 mb-10 flex-col gap-5 mx-auto">
-        <div className="w-40 h-40 rounded-3xl overflow-hidden mx-auto md:mx-0">
+        <div className="w-40 h-40 rounded-2xl overflow-hidden shadow-md mx-auto md:mx-0">
           <img
             src={VCsir}
             alt="Vice Chancellor"
             className="w-full h-full object-cover"
           />
         </div>
-        <div>
-          <h3 className="text-2xl font-semibold text-gray-900 mb-1 text-center md:text-left">
+        <div className="text-center md:text-left">
+          <h3 className="text-2xl font-semibold text-gray-900 mb-1">
             Professor Ashok Kumar Nagawat
           </h3>
-          <p className="text-blue-600 font-medium text-center">
+          <p className="text-blue-600 font-medium text-sm">
             Vice Chancellor, Delhi Skill and Entrepreneurship University
           </p>
         </div>
       </div>
 
+      {/* Message Section */}
       <h4 className="text-[1.5rem] md:text-2xl font-semibold text-gray-700 mb-2 text-center md:text-left">
         Message from the Vice Chancellor
       </h4>
-      <div className="w-full h-1 bg-blue-400 rounded-full mb-8 md:mb-4 animate-pulse" />
+      <div className="w-[403px] h-1 bg-orange-400 rounded-full mb-8 md:mb-6 mx-auto md:mx-0 animate-pulse" />
 
-      <div className="space-y-5 text-[16px] md:text-[17px] text-gray-800 leading-relaxed">
+      <div className="space-y-5 text-[16px] md:text-[17px] text-gray-800 leading-relaxed text-justify">
         <p>
           Congratulations and a warm welcome to the Delhi Skill and
           Entrepreneurship University (DSEU) – a pioneering institution built on
@@ -65,10 +69,7 @@ const ViceChancellorMessage = () => {
           DSEU is more than a university – it is a thriving community of
           learners, thinkers, builders, and leaders. Our campuses offer a
           supportive, inclusive, and engaging environment where your ideas are
-          valued, your voice is heard, and your dreams are nurtured. Here,
-          you’ll collaborate with passionate faculty, industry mentors, and
-          fellow students in meaningful ways—solving real challenges, building
-          sustainable solutions, and exploring your potential to the fullest.
+          valued, your voice is heard, and your dreams are nurtured.
         </p>
         <p>
           Whether you’re pursuing a diploma, undergraduate, or postgraduate
