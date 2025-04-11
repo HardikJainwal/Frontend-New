@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://dseu-dave.onrender.com/api/v1", // Keep this if your backend uses /api/v1 prefix
+  baseURL: "https://dseu-backend.onrender.com/api/v1/", // Keep this if your backend uses /api/v1 prefix
   timeout: 10000, // Add a timeout for better error handling
 });
 
