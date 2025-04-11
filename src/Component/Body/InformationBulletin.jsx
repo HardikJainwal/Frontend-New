@@ -21,7 +21,7 @@ const InformationBulletin = () => {
 
         const requests = sections.map((section) =>
           axios.get(
-            `http://localhost:5000/api/v1/notice?section=${encodeURIComponent(
+            `https://dseu-backend.onrender.com/api/v1/notice?section=${encodeURIComponent(
               section.key
             )}`
           )
