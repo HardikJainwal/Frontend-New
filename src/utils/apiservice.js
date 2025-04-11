@@ -1,3 +1,4 @@
+import axios from "axios";
 import api from "./api";
 
 const getAuthHeaders = () => {
@@ -205,3 +206,17 @@ export const getCampusByZone = async (zoneName) => {
 
   return res.data;
 }
+
+
+//? LOGIN
+export const login = async ({ email, password }) => {
+  const response = await axios.post(
+    "https://dseu-backend.onrender.com/api/v1/auth/login",
+    { email, password }
+  );
+
+  sessionStorage.setItem("adminLogin", response.data.token);
+  sessionStorage.setItem("currentRole", response.data.role);
+
+  return response.data;
+};

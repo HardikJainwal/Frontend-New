@@ -23,7 +23,7 @@ const TopBar = () => {
     <>
       <div className="flex flex-row justify-end my-4 md:mr-16 items-center">
         <Link
-          to="#"
+          to="/admin-login"
           className="border-blue-500 border-l-2 px-1 md:px-4 hover:underline hover:text-[#1b1b1b] whitespace-nowrap text-xs md:text-[1rem]"
         >
           Admin Login

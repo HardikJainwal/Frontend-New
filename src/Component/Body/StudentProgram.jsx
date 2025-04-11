@@ -119,9 +119,9 @@ const StudyProgramsSection = () => {
                 <p>Failed to load programs.</p>
               ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                  {displayPrograms.map((program) => (
+                  {displayPrograms.map((program, index) => (
                     <div
-                      key={program.code}
+                      key={index}
                       className="relative bg-cover bg-center rounded-lg shadow-sm p-8 hover:shadow-lg duration-300 cursor-pointer h-28 hover:scale-[1.02] transition-all"
                       style={{
                         backgroundImage: `url(${study})`,

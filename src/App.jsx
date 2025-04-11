@@ -74,6 +74,11 @@ const Library = lazy(() => import("./Component/Student Services/Library"));
 const Sports = lazy(() => import("./Component/Student Services/Sports"));
 const ComputerCentre = lazy(() => import("./Component/Student Services/ComputerCentre"));
 
+// Admins
+const AdminLogin = lazy(() => import('./Component/Admin/LoginForm'));
+const Dashboard = lazy(() => import('./Component/Admin/Dashboard'));
+const TestPage = lazy(() => import('./Component/Admin/TestPage'));
+
 import RegistararPage from "./Component/Body/RegistararPage";
 import ChatWidget from "./Component/chatbot";
 import Socials from "./Component/Footer/Socials";
@@ -172,6 +177,10 @@ function App() {
 
           <Route path="*" element={<NotFound />} />
 
+          {/* Admins */}
+          <Route path="/admin-login" element={<AdminLogin />} />
+          <Route path="/admin/test" element={<TestPage />} />
+          <Route path="/admin/dashboard" element={<Dashboard />} />
         </Routes>
         <ChatWidget />
         <Footer />
