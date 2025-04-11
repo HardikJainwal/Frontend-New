@@ -12,7 +12,7 @@ export default function ListOfFaculties() {
 
   useEffect(() => {
     axios
-      .get("https://dseu-dave.onrender.com/api/v1/departmentSchools")
+      .get("http://localhost:5000/api/v1/departmentSchools")
       .then((response) => {
         if (response.data?.data?.departmentSchools) {
           setDepartments(response.data.data.departmentSchools);
