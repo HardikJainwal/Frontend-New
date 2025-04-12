@@ -1,35 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FileText } from "lucide-react";
 import { useNoticesBySection } from "../../hooks/useNoticesBySection";
 
-import {
-  jobPortalData as data,
-  jobPortalTabs as tabs,
-} from "../../constants/JOBPORTAL.JS";
-
-// 'academic positions',
-// 'non academic positions',
-// 'short term positions',
-// 'results',
-// 'recruitments and notice',
+import { jobPortalTabs as tabs } from "../../constants/JOBPORTAL.JS";
 
 const JobListings = () => {
-  const [activeTab, setActiveTab] = useState("academic");
+  const [activeTab, setActiveTab] = useState("non academic positions");
   const [entriesCount, setEntriesCount] = useState(10);
 
-  // const { data: noticeData, isLoading } = activeTab;
-  // const getActiveData = () => {
-  //   return noticeData?.data?.notices || [];
-  // };
+  const { data: noticeData, isLoading } = useNoticesBySection(activeTab);
 
   const getActiveData = () => {
-    return data[activeTab] || [];
+    return noticeData || [];
   };
-  
+
+  // useEffect(() => {
+  //   console.log(noticeData);
+  // }, [noticeData]);
 
   return (
     <div className="flex pb bg-gray-50 rounded-md flex-col md:flex-row">
-      {/* Side Panel for desktop */}
+      {/* Side Panel */}
       <div className="xl:w-64 w-48 bg-white shadow-lg mt-6 rounded-3xl hidden lg:block text-sm xl:text-[1rem] whitespace-nowrap max-h-fit pb-10">
         <div className="p-4 bg-blue-700 text-white font-bold text-lg">
           Job Categories
@@ -73,7 +64,9 @@ const JobListings = () => {
           </div>
 
           <div className="overflow-x-auto">
-            {getActiveData().length > 0 ? (
+            {isLoading ? (
+              <div className="text-center p-4">Loading...</div>
+            ) : getActiveData().length > 0 ? (
               <table className="w-full border-collapse">
                 <thead>
                   <tr className="bg-blue-700 text-white text-sm md:text-md">
@@ -92,26 +85,22 @@ const JobListings = () => {
                 </thead>
                 <tbody className="text-[0.8rem] md:text-sm">
                   {getActiveData().map((item, index) => (
-                    <tr key={item.id} className="hover:bg-gray-50">
+                    <tr key={item._id} className="hover:bg-gray-50">
                       <td className="p-2 border">{index + 1}</td>
-                      <td className="p-2 border">{item.title}</td>
+                      <td className="p-2 border">{item.fileName}</td>
                       <td className="p-2 border">
                         <a
-                          href={item.notification}
+                          href={item.fileLink}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-blue-600 hover:text-blue-800 flex items-center gap-1"
                         >
-                          Notice{" "}
-                          {item.hasPdf && (
-                            <FileText className="text-red-500" size={16} />
-                          )}
+                          Notice <FileText className="text-red-500" size={16} />
                         </a>
                       </td>
-
                       <td className="p-2 border">-</td>
-                      <td className="p-2 border">{item.startDate}</td>
-                      <td className="p-2 border">{item.lastDate}</td>
+                      <td className="p-2 border">-</td>
+                      <td className="p-2 border">-</td>
                       <td className="p-2 border">
                         <a
                           href={item.apply}

@@ -1,22 +1,31 @@
 const jobPortalTabs = [
     {
-        id: "academic",
+        id: "academic positions",
         label: "Academic Positions",
-        empty: "No Academic positions found.",
+        empty: "No academic positions found.",
     },
     {
-        id: "nonAcademic",
+        id: "non academic positions",
         label: "Non Academic Positions",
-        empty: "No positions found.",
+        empty: "No non-academic positions found.",
     },
     {
-        id: "shortTerm",
+        id: "short term positions",
         label: "Short-Term Positions",
-        empty: "No short-term positons found.",
+        empty: "No short-term positions found.",
     },
-    { id: "results", label: "Results", empty: "No records found." },
-    { id: "notice", label: "Notice", empty: "No notices found." },
+    {
+        id: "results",
+        label: "Results",
+        empty: "No results found.",
+    },
+    {
+        id: "recruitments and notice",
+        label: "Recruitments and Notice",
+        empty: "No recruitments or notices found.",
+    },
 ];
+
 
 const jobPortalData = {
     academic: [

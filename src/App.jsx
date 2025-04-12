@@ -12,6 +12,7 @@ import GrievanceForm from "./Component/NavItems/Grievance";
 import IndustryPartnership from "./Component/News/news1";
 import LoginPage from "./Component/Login/LoginPage";
 import AcademicRegulation from "./Component/AcademicRegulation/page";
+import RecuirtmentUploads from "./Component/Admin/RecuirtmentUploads";
 
 // admission
 import AdmissionGuidelines from "./Component/Admission/AdmissionGuidelines";
@@ -184,6 +185,7 @@ function App() {
             <Route path="/admin-login" element={<AdminLogin />} />
             <Route path="/admin/dashboard" element={<Dashboard />} />
             <Route path="/admin/test" element={<TestPage />} />
+            <Route path="/admin/uploads" element={<RecuirtmentUploads />} />
           </Route>
           
             <Route path="*" element={<NotFound />} />

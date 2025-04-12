@@ -15,7 +15,7 @@ const LoginForm = () => {
     const role = sessionStorage.getItem("currentRole");
 
     if (token && role === "Admin") {
-      navigate("/admin/dashboard");
+      navigate("/admin/test");
     }
   }, [navigate]);
 
@@ -24,7 +24,7 @@ const LoginForm = () => {
     onSuccess: (data) => {
       if (data.role === "Admin") {
         showSuccessToast("Logged in successfully!");
-        navigate("/admin/dashboard");
+        navigate("/admin/test");
       } else {
         showErrorToast("This user isn't an admin.");
         setEmail("");
@@ -43,7 +43,7 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="min-h-screen md:min-h-[80vh] flex items-center justify-center px-4">
+    <div className="min-h-screen md:min-h-[90vh] flex items-center justify-center px-4">
       <form
         onSubmit={handleSubmit}
         className="w-full max-w-md bg-white shadow-2xl rounded-3xl p-8 md:p-10"
