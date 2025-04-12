@@ -6,6 +6,15 @@ import {
   jobPortalTabs as tabs,
 } from "../../constants/JOBPORTAL.JS";
 
+
+
+// 'academic positions',
+// 'non academic positions',
+// 'short term positions',
+// 'results',
+// 'recruitments and notice',
+
+
 const JobListings = () => {
   const [activeTab, setActiveTab] = useState("academic");
   const [entriesCount, setEntriesCount] = useState(10);

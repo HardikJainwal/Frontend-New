@@ -19,6 +19,7 @@ import FeeRefundPolicy from "./Component/Admission/FeeRefundPolicy";
 
 // Academics
 import AcademicCollabration from "./Component/Academics/AcademicCollaboration";
+import AcademicAdministration from './Component/Academics/AcademicAdministration';
 const AcademicCalendar = lazy(() => import("./Component/Calendar/AcademicCalendar"));
 import IQAC from "./Component/Academics/IQAC";
 
@@ -137,6 +138,7 @@ function App() {
             <Route path="/academics/collaboration" element={<AcademicCollabration />} />
             <Route path="/academics/IQAC" element={<IQAC />} />
             <Route path="/academics/academic-calendar" element={<AcademicCalendar />} />
+            <Route path="/academics/academicAdministration" element={<AcademicAdministration />} />
 
             {/* Administration */}
             <Route path="/administration/administrative/*" element={<Administration />} />

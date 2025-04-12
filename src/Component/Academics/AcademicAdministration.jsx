@@ -28,7 +28,7 @@ const AcademicAdministration = () => {
                         <FlowBox title="Vice Chancellor" />
                         <VerticalArrow />
 
-                        <div className="flex flex-row justify-center gap-10 w-full flex-wrap">
+                        <div className="flex flex-row justify-center gap-10 w-full items-center">
                             <FlowBox title="Director Academic" customClass="w-[160px] md:w-[250px]" />
                             <FlowBox title="Deans" customClass="w-[160px] md:w-[250px]" />
                         </div>
