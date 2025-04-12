@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { login } from "../../utils/apiservice";
 import { useNavigate } from "react-router-dom";
@@ -7,6 +7,16 @@ const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = sessionStorage.getItem("adminLogin");
+    const role = sessionStorage.getItem("currentRole");
+
+    if(token !== null && role === 'Admin') {
+      navigate('/admin/dashboard');
+    }
+
+  }, [navigate]);
 
   const mutation = useMutation({
     mutationFn: login,

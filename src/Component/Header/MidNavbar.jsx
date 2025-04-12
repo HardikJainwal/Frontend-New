@@ -121,7 +121,7 @@ const navItems = [
     ],
   },
   {
-    name: "Recruitment",
+    name: "Work with us",
     path: "/recruitment",
   },
   {

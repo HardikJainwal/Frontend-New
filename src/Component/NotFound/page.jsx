@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const NotFound = () => {
   return (
-    <div className="flex flex-col items-center justify-center md:min-h-[80vh] text-[#333] px-6">
+    <div className="flex flex-col items-center justify-center md:min-h-[80vh] min-h-screen text-[#333] px-6">
       <motion.h1
         initial={{ opacity: 0, y: -40 }}
         animate={{ opacity: 1, y: 0 }}

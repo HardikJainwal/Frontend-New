@@ -21,7 +21,6 @@ import FeeRefundPolicy from "./Component/Admission/FeeRefundPolicy";
 import AcademicCollabration from "./Component/Academics/AcademicCollaboration";
 const AcademicCalendar = lazy(() => import("./Component/Calendar/AcademicCalendar"));
 import IQAC from "./Component/Academics/IQAC";
-import AcademicAdministration from "./Component/Academics/AcademicAdministration";
 
 // Lazy Load Components
 const HomeBody = lazy(() => import("./Component/Body/Banner"));
@@ -84,108 +83,109 @@ import RegistararPage from "./Component/Body/RegistararPage";
 import ChatWidget from "./Component/chatbot";
 import Socials from "./Component/Footer/Socials";
 import NotFound from "./Component/NotFound/page";
+import UserLayout from "./Component/Layouts/UserLayout";
+import AdminLayout from "./Component/Layouts/AdminLayout";
 
 function App() {
   return (
     <BrowserRouter>
       <Toaster position="top-right" />
       <Suspense fallback={<Loader />}>
-        <MidNavbar />
+
+        {/* User Routes */}
         <Routes>
-          {/* Home */}
-          <Route
-            path="/"
-            element={
-              <>
-                <HomeBody />
-                <Announcements />
-                <Message />
-                <Socials />
-                <InformationBulletin />
-                <OurCampuses />
-                <StudyProgramsSection />
-                <OurPartners />
-                <News />
-                <EventsAndActivities />
-              </>
-            }
-          />
+          <Route element={<UserLayout />}>
+            {/* Home */}
+            <Route
+              path="/"
+              element={
+                <>
+                  <HomeBody />
+                  <Announcements />
+                  <Message />
+                  <Socials />
+                  <InformationBulletin />
+                  <OurCampuses />
+                  <StudyProgramsSection />
+                  <OurPartners />
+                  <News />
+                  <EventsAndActivities />
+                </>
+              }
+            />
 
-   
-          <Route path="/chancellor" element={<ChancellorMessage />} />
+            <Route path="/chancellor" element={<ChancellorMessage />} />
+            <Route path="/vice-chancellor" element={<ViceChancellorMessage />} />
 
-          <Route path="/vice-chancellor" element={<ViceChancellorMessage />} />
+            {/* Campuses */}
+            <Route path="/campus/:name" element={<CampusPage />} />
+            <Route path="/campus/zone/:zone" element={<CampusByZone />} />
 
-          {/* All other routes remain unchanged... */}
-          <Route path="/campus/:name" element={<CampusPage />} />
-          <Route path="/campus/zone/:zone" element={<CampusByZone />} />
+            {/* Courses */}
+            <Route path="/courses" element={<CoursesPage />} />
+            <Route path="/programs/:id" element={<Program />} />
+            <Route path="/curriculum" element={<Curriculum />} />
+            <Route path="/courses/:programLevel" element={<CoursesByLevel />} />
+            <Route path="/courses/certificate-courses" element={<CertificateCourses />} />
+            <Route path="/course-structure/:programCode" element={<CourseStructure />} />
 
-          {/* Courses */}
-          <Route path="/courses" element={<CoursesPage />} />
-          <Route path="/programs/:id" element={<Program />} />
-          <Route path="/curriculum" element={<Curriculum />} />
-          <Route path="/courses/:programLevel" element={<CoursesByLevel />} />
-          <Route path="/courses/certificate-courses" element={<CertificateCourses />} />
-          <Route path="/course-structure/:programCode" element={<CourseStructure />} />
+            {/* Academics */}
+            <Route path="/academics/faculty" element={<ListOfFaculties />} />
+            <Route path="/academics/regulations" element={<AcademicRegulation />} />
+            <Route path="/dept/:id" element={<DepartmentById />} />
+            <Route path="/logindseu" element={<LoginPage />} />
+            <Route path="/academics/collaboration" element={<AcademicCollabration />} />
+            <Route path="/academics/IQAC" element={<IQAC />} />
+            <Route path="/academics/academic-calendar" element={<AcademicCalendar />} />
+
+            {/* Administration */}
+            <Route path="/administration/administrative/*" element={<Administration />} />
+            <Route path="/administration/Support-Services" element={<UnderConstruction />} />
+            <Route path="/administration/Other-Academic-Units" element={<UnderConstruction />} />
+            <Route path="/registrar" element={<RegistararPage />} />
+            <Route path="/research/*" element={<ResearchDev />} />
+            <Route path="/administration/vice-chancellor" element={<ViceChancellorPage />} />
+
+            {/* About us */}
+            <Route path="/about-us/About-the-University" element={<About />} />
+            <Route path="/about-us/Vision-and-Mission" element={<VissionMission />} />
+            <Route path="/information-bulletin" element={<InformationBulletin />} />
+            <Route path="/UGC-Guidelines" element={<UnderConstruction />} />
+
+            {/* News */}
+            <Route path="/news/achievement" element={<IndustryPartnership />} />
+            <Route path="/news/partnership" element={<IndustryPartnership />} />
+            <Route path="/news/outreach" element={<IndustryPartnership />} />
+            <Route path="/news/innovation-hub" element={<IndustryPartnership />} />
+
+            {/* Admission */}
+            <Route path="/admission/guidelines" element={<AdmissionGuidelines />} />
+            <Route path="/admission/refund-policy" element={<FeeRefundPolicy />} />
+
+            {/* Misc */}
+            <Route path="/holiday-calendar" element={<HolidayCalendar />} />
+            <Route path="/alumni" element={<AlumniSection />} />
+            <Route path="/recruitment" element={<JobPortal />} />
+            <Route path="/grievance-form" element={<GrievanceForm />} />
+            <Route path="/placement" element={<Placement />} />
+
+            {/* Amenities */}
+            <Route path="/ncc" element={<Ncc />} />
+            <Route path="/amenities/Facilities" element={<Amenities />} />
+            <Route path="/amenities/Computer-Centre" element={<ComputerCentre />} />
+            <Route path="/amenities/Canteen" element={<Canteen />} />
+            <Route path="/amenities/Sports" element={<Sports />} />
+            <Route path="/amenities/Library" element={<Library />} />
+
+
+            {/* Admin routes */}
+            <Route path="/admin-login" element={<AdminLogin />} />
+            <Route path="/admin/dashboard" element={<Dashboard />} />
+            <Route path="/admin/test" element={<TestPage />} />
+          </Route>
           
-          {/* Academics */}
-          <Route path="/academics/faculty" element={<ListOfFaculties />} />
-          <Route path="/academics/regulations" element={<AcademicRegulation />} />
-          <Route path="/dept/:id" element={<DepartmentById />} />
-          <Route path="/logindseu" element={<LoginPage />} />
-          <Route path="/academics/collaboration" element={<AcademicCollabration />} />
-          <Route path="/academics/IQAC" element={<IQAC />} />
-          <Route path="/academics/academic-calendar" element={<AcademicCalendar />} />
-          <Route path="/academics/academicAdministration" element={<AcademicAdministration />} />
-
-          {/* Administration */}
-          <Route path="/administration/administrative/*" element={<Administration />} />
-          <Route path="/administration/Support-Services" element={<UnderConstruction />} />
-          <Route path="/administration/Other-Academic-Units" element={<UnderConstruction />} />
-          <Route path="/registrar" element={<RegistararPage />} />
-          <Route path="/research/*" element={<ResearchDev />} />
-          <Route path="/administration/vice-chancellor" element={<ViceChancellorPage />} />
-
-          {/* About us */}
-          <Route path="/about-us/About-the-University" element={<About />} />
-          <Route path="/about-us/Vision-and-Mission" element={<VissionMission />} />
-          <Route path="/information-bulletin" element={<InformationBulletin />} />
-          <Route path="/UGC-Guidelines" element={<UnderConstruction />} />
-
-          {/* News */}
-          <Route path="/news/achievement" element={<IndustryPartnership />} />
-          <Route path="/news/partnership" element={<IndustryPartnership />} />
-          <Route path="/news/outreach" element={<IndustryPartnership />} />
-          <Route path="/news/innovation-hub" element={<IndustryPartnership />} />
-
-          {/* Admission */}
-          <Route path="/admission/guidelines" element={<AdmissionGuidelines />} />
-          <Route path="/admission/refund-policy" element={<FeeRefundPolicy />} />
-
-          {/* Misc */}
-          <Route path="/holiday-calendar" element={<HolidayCalendar />} />
-          <Route path="/alumni" element={<AlumniSection />} />
-          <Route path="/recruitment" element={<JobPortal />} />
-          <Route path="/grievance-form" element={<GrievanceForm />} />
-          <Route path="/placement" element={<Placement />} />
-          
-          {/* Amenities */}
-          <Route path="/ncc" element={<Ncc />} />
-          <Route path="/amenities/Facilities" element={<Amenities />} />
-          <Route path="/amenities/Computer-Centre" element={<ComputerCentre />} />
-          <Route path="/amenities/Canteen" element={<Canteen />} />
-          <Route path="/amenities/Sports" element={<Sports />} />
-          <Route path="/amenities/Library" element={<Library />} />
-
-          <Route path="*" element={<NotFound />} />
-
-          {/* Admins */}
-          <Route path="/admin-login" element={<AdminLogin />} />
-          <Route path="/admin/test" element={<TestPage />} />
-          <Route path="/admin/dashboard" element={<Dashboard />} />
+            <Route path="*" element={<NotFound />} />
         </Routes>
-        <ChatWidget />
-        <Footer />
       </Suspense>
     </BrowserRouter>
   );
