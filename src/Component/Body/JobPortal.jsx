@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { FileText } from "lucide-react";
+import { useNoticesBySection } from "../../hooks/useNoticesBySection";
 
 import {
   jobPortalData as data,
   jobPortalTabs as tabs,
 } from "../../constants/JOBPORTAL.JS";
-
-
 
 // 'academic positions',
 // 'non academic positions',
@@ -14,14 +13,19 @@ import {
 // 'results',
 // 'recruitments and notice',
 
-
 const JobListings = () => {
   const [activeTab, setActiveTab] = useState("academic");
   const [entriesCount, setEntriesCount] = useState(10);
 
+  // const { data: noticeData, isLoading } = activeTab;
+  // const getActiveData = () => {
+  //   return noticeData?.data?.notices || [];
+  // };
+
   const getActiveData = () => {
     return data[activeTab] || [];
   };
+  
 
   return (
     <div className="flex pb bg-gray-50 rounded-md flex-col md:flex-row">

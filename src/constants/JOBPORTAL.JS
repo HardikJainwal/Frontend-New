@@ -54,7 +54,7 @@ const jobPortalData = {
             notification: "/job_portal/Advt-Teaching_Deputation_ pdf.pdf",
             startDate: "15/03/2024",
             lastDate: "30/04/2024",
-            apply: "/job-portal/Application_Form-Teaching_Deputation.pdf",
+            apply: "/job_portal/Application_Form-Teaching_Deputation.pdf",
             hasPdf: true,
         },
     ],

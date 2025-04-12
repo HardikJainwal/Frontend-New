@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 const withAuthProtection = (WrappedComponent) => {
+  
+
   return (props) => {
     const navigate = useNavigate();
     const [checkingAuth, setCheckingAuth] = useState(true);
@@ -10,13 +13,15 @@ const withAuthProtection = (WrappedComponent) => {
       const token = sessionStorage.getItem("adminLogin");
       const role = sessionStorage.getItem("currentRole");
 
-      if (!token || role !== "Admin") {
-        console.log("what?");
-        console.log(token, role);
-        
+      if (!token) {
+        navigate("/");
+      } else if (role !== "Admin") {
+        toast.error("Invalid Credentials!")
+        alert("Access denied: You are not an admin.");
+        sessionStorage.clear();
         navigate("/");
       } else {
-        setCheckingAuth(false); 
+        setCheckingAuth(false);
       }
     }, [navigate]);
 
