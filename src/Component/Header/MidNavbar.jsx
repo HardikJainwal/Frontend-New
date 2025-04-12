@@ -54,6 +54,7 @@ const navItems = [
     name: "Academics",
     dropdownItems: [
       { name: "Faculties & Department", path: "/academics/faculty" },
+      { name: "Academic Administration", path: "/academics/academicAdministration" },
       { name: "Academic Regulations", path: "/academics/regulations" },
       { name: "Academic Calendar", path: "/academics/academic-calendar" },
       { name: "Academic Collaboration", path: "/academics/collaboration" },
