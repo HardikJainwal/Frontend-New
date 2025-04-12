@@ -220,3 +220,32 @@ export const login = async ({ email, password }) => {
 
   return response.data;
 };
+
+// upload pdf
+export const uploadPdf = async (formData) => {
+  const token = sessionStorage.getItem("adminLogin");
+
+  console.log(token);
+  
+try{
+
+  const response = await axios.post("https://dseu-backend.onrender.com/api/v1/notice/upload",
+    formData,
+     {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "multipart/form-data", 
+      },
+    }
+  );
+
+  return  response
+  
+}catch(err){
+console.log(err.message);
+}
+  
+
+
+ 
+}
