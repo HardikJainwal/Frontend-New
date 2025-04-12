@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { login } from "../../utils/apiservice";
 import { useNavigate } from "react-router-dom";
+import { showErrorToast, showSuccessToast } from "../../utils/toasts";
 import logo from "../../assets/DSEULogo/DSEULOGOTHICK.svg";
 
 const LoginForm = () => {
@@ -13,18 +14,26 @@ const LoginForm = () => {
     const token = sessionStorage.getItem("adminLogin");
     const role = sessionStorage.getItem("currentRole");
 
-    if (token !== null && role === "Admin") {
+    if (token && role === "Admin") {
       navigate("/admin/dashboard");
     }
   }, [navigate]);
 
   const mutation = useMutation({
     mutationFn: login,
-    onSuccess: () => {
-      navigate("/admin/test");
+    onSuccess: (data) => {
+      if (data.role === "Admin") {
+        showSuccessToast("Logged in successfully!");
+        navigate("/admin/dashboard");
+      } else {
+        showErrorToast("This user isn't an admin.");
+        setEmail("");
+        setPassword("");
+        sessionStorage.clear();
+      }
     },
     onError: () => {
-      alert("Invalid credentials");
+      showErrorToast("Invalid credentials");
     },
   });
 
@@ -34,7 +43,7 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4">
+    <div className="min-h-screen md:min-h-[80vh] flex items-center justify-center px-4">
       <form
         onSubmit={handleSubmit}
         className="w-full max-w-md bg-white shadow-2xl rounded-3xl p-8 md:p-10"
@@ -43,7 +52,7 @@ const LoginForm = () => {
           <img src={logo} alt="Logo" className="w-20 h-auto" />
         </div>
 
-        <h2 className="text-2xl font-bold text-center text-blue-600 mb-6">
+        <h2 className="text-2xl font-bold text-center text-[#333] mb-6">
           Admin Login
         </h2>
 

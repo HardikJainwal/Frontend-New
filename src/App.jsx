@@ -90,7 +90,7 @@ import AdminLayout from "./Component/Layouts/AdminLayout";
 function App() {
   return (
     <BrowserRouter>
-      <Toaster position="top-right" />
+      <Toaster position="top-center" />
       <Suspense fallback={<Loader />}>
 
         {/* User Routes */}
