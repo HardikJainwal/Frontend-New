@@ -1,11 +1,17 @@
+// get faculty by department
+
+import { useNavigate } from "react-router-dom";
+
 const GetDepartmentByDesignation = ({ faculty, designation, facultyType }) => {
+    const navigate = useNavigate();
+
   const filteredFaculty = faculty?.filter(
     (person) =>
-      person.designation.toLowerCase() === designation.toLowerCase() &&
-      person.faculty_type.toLowerCase() === facultyType.toLowerCase()
+      person?.designation?.toLowerCase() === designation.toLowerCase() &&
+      person?.faculty_type?.toLowerCase() === facultyType.toLowerCase()
   );
 
-  const totalFaculty = filteredFaculty.length;
+  const totalFaculty = filteredFaculty?.length;
 
   if (!filteredFaculty || totalFaculty === 0) {
     return (
@@ -19,6 +25,7 @@ const GetDepartmentByDesignation = ({ faculty, designation, facultyType }) => {
         <div
           key={person._id}
           className="bg-gray-50 p-4 py-6 rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg hover:scale-[1.01] hover:cursor-pointer hover:shadow-blue-300 transition duration-300"
+          onClick={() => navigate(`/faculty/${person?._id}`)}
         >
           <img
             src={person.photo}
@@ -29,8 +36,10 @@ const GetDepartmentByDesignation = ({ faculty, designation, facultyType }) => {
             <div className="text-lg md:text-xl hover:text-[#333] font-semibold text-gray-800">
               {person.salutation} {person.firstname} {person.surname}
             </div>
-            <div className="md:text-md text-sm text-gray-600">{person.designation}</div>
-            <div className="md:text-md text-sm text-blue-600 break-words">
+            <div className="md:text-md text-sm text-gray-600">
+              {person.designation}
+            </div>
+            <div className="md:text-md text-sm text-blue-600 break-words hover:text-underline">
               {person.email}
             </div>
           </div>

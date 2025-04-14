@@ -91,6 +91,7 @@ import Socials from "./Component/Footer/Socials";
 import NotFound from "./Component/NotFound/page";
 import UserLayout from "./Component/Layouts/UserLayout";
 import AdminLayout from "./Component/Layouts/AdminLayout";
+import FacultyById from "./Component/Department/FacultyById";
 
 function App() {
   return (
@@ -144,6 +145,7 @@ function App() {
             <Route path="/academics/IQAC" element={<IQAC />} />
             <Route path="/academics/academic-calendar" element={<AcademicCalendar />} />
             <Route path="/academics/academicAdministration" element={<AcademicAdministration />} />
+            <Route path="/faculty/:id" element={<FacultyById />} />
 
             {/* Administration */}
             <Route path="/administration/administrative/*" element={<Administration />} />
