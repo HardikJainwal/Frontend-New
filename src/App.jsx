@@ -75,6 +75,10 @@ const Canteen = lazy(() => import("./Component/Student Services/Canteen"));
 const Library = lazy(() => import("./Component/Student Services/Library"));
 const Sports = lazy(() => import("./Component/Student Services/Sports"));
 const ComputerCentre = lazy(() => import("./Component/Student Services/ComputerCentre"));
+const HealthFacilities = lazy(() => import("./Component/Student Services/HealthFacilities"));
+const EqualOpportunity = lazy(() => import("./Component/Student Services/EqualOpportunity"));
+const ICC = lazy(() => import("./Component/Student Services/ICC"));
+const AntiRagging = lazy(() => import("./Component/Student Services/AntiRagging"));
 
 // Admins
 const AdminLogin = lazy(() => import('./Component/Admin/LoginForm'));
@@ -179,6 +183,12 @@ function App() {
             <Route path="/amenities/Canteen" element={<Canteen />} />
             <Route path="/amenities/Sports" element={<Sports />} />
             <Route path="/amenities/Library" element={<Library />} />
+            <Route path="/amenities/Health-Facilities" element={<HealthFacilities />} />
+            <Route path="/amenities/Equal-Opportunity" element={<EqualOpportunity />} />
+            <Route path="/amenities/ICC" element={<ICC />} />
+            <Route path="/amenities/Anti-Ragging" element={<AntiRagging />} />
+
+
 
 
             {/* Admin routes */}

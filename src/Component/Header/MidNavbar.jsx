@@ -113,11 +113,11 @@ const navItems = [
       
       { name: "NCC/NSS", path: "/ncc" },
       { name: "Sports facilities", path: "/amenities/Sports" },
-      { name: "Hostel" ,path: "" },
-      { name: "Health Facilitis" ,path: "" },
-      { name: "Internal Complaint Committee" ,path: "" },
-      { name: "Anti-Ragging Cell" ,path: "" },
-      { name: "Equal Oppurtunity Cell" ,path: "" },
+    
+      { name: "Health Facilities" ,path: "/amenities/Health-Facilities" },
+      { name: "Internal Complaint Committee" ,path: "/amenities/ICC" },
+      { name: "Anti-Ragging Cell" ,path: "amenities/Anti-Ragging" },
+      { name: "Equal Oppurtunity Cell" ,path: "/amenities/Equal-Opportunity" },
     ],
   },
   {
