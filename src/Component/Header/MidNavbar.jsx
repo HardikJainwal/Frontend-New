@@ -47,7 +47,7 @@ const navItems = [
       },
       // { name: "Handbook (Brochure)", path: "/about-us/Handbook" },
 
-      
+
     ],
   },
   {
@@ -59,7 +59,7 @@ const navItems = [
       { name: "Academic Calendar", path: "/academics/academic-calendar" },
       { name: "Academic Collaboration", path: "/academics/collaboration" },
       { name: "Internal Quality Assurance Cell (IQAC)", path: "/academics/IQAC" },
-      { name: "Library" ,path: "" },
+      { name: "Library", path: "/amenities/Library" },
       // { name: "Programs", path: "/Courses" },
     ],
   },
@@ -110,14 +110,13 @@ const navItems = [
   {
     name: "Student Life",
     dropdownItems: [
-      
+
       { name: "NCC/NSS", path: "/ncc" },
       { name: "Sports facilities", path: "/amenities/Sports" },
-    
-      { name: "Health Facilities" ,path: "/amenities/Health-Facilities" },
-      { name: "Internal Complaint Committee" ,path: "/amenities/ICC" },
-      { name: "Anti-Ragging Cell" ,path: "amenities/Anti-Ragging" },
-      { name: "Equal Oppurtunity Cell" ,path: "/amenities/Equal-Opportunity" },
+      { name: "Health Facilities", path: "/amenities/Health-Facilities" },
+      { name: "Internal Complaint Committee", path: "/amenities/ICC" },
+      { name: "Anti-Ragging Cell", path: "amenities/Anti-Ragging" },
+      { name: "Equal Oppurtunity Cell", path: "/amenities/Equal-Opportunity" },
     ],
   },
   {
@@ -207,9 +206,8 @@ const SidebarNav = ({ isOpen, onClose, navItems }) => {
                     )}
                     {item.dropdownItems && (
                       <ChevronDown
-                        className={`ml-2 transition-transform duration-200 ${
-                          openDropdown === item.name ? "rotate-180" : ""
-                        }`}
+                        className={`ml-2 transition-transform duration-200 ${openDropdown === item.name ? "rotate-180" : ""
+                          }`}
                       />
                     )}
                   </div>
@@ -256,11 +254,10 @@ const SidebarNav = ({ isOpen, onClose, navItems }) => {
                                 )}
                                 {subItem.dropdownItems && (
                                   <ChevronDown
-                                    className={`w-4 h-4 ml-2 transition-transform duration-200 ${
-                                      openNestedDropdown === subItem.name
+                                    className={`w-4 h-4 ml-2 transition-transform duration-200 ${openNestedDropdown === subItem.name
                                         ? "rotate-180"
                                         : ""
-                                    }`}
+                                      }`}
                                   />
                                 )}
                               </div>
@@ -536,9 +533,8 @@ const ResponsiveHeader = () => {
                       {item.name}
                       {item.dropdownItems && (
                         <ChevronDown
-                          className={`ml-0.5 h-3 w-3 transition-transform duration-300 ${
-                            openDropdown === item.name ? "rotate-180" : ""
-                          }`}
+                          className={`ml-0.5 h-3 w-3 transition-transform duration-300 ${openDropdown === item.name ? "rotate-180" : ""
+                            }`}
                         />
                       )}
 
@@ -601,11 +597,10 @@ const ResponsiveHeader = () => {
                                   <span>{subItem.name}</span>
                                   {subItem.dropdownItems && (
                                     <ChevronDown
-                                      className={`inline-block ml-2 h-4 w-4 transition-transform duration-300 ${
-                                        openNestedDropdown === subItem.name
+                                      className={`inline-block ml-2 h-4 w-4 transition-transform duration-300 ${openNestedDropdown === subItem.name
                                           ? "rotate-180"
                                           : "rotate-270"
-                                      }`}
+                                        }`}
                                     />
                                   )}
                                 </span>
