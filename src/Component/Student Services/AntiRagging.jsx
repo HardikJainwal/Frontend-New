@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRightCircle } from "lucide-react";
 import HeadingText from "../Reusable/HeadingText";
-import antiRaggingData from "../../constants/ANTIRAGGING .JS";
+import { antiRagging as antiRaggingData } from "../../constants/ANTIRAGGING.JS";
 
 const AntiRagging = () => {
   return (
