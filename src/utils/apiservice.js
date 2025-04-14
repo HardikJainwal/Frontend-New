@@ -33,7 +33,7 @@ export const getFaculties = async () => {
 export const getFacultyByDepartment = async (id) => {
   try {
     const faculties = await getFaculties();
-    // return faculties.filter((faculty) => faculty.department._id === id);
+    return faculties.filter((faculty) => faculty.dept_id._id === id);
     return faculties;
   } catch (error) {
     console.error("Error filtering faculty by department:", error.response?.data || error.message);

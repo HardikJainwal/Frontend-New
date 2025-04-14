@@ -4,8 +4,8 @@ import { useQuery } from "@tanstack/react-query";
 import { QUERY_KEYS } from "../../utils/queryKeys";
 import { getFacultyByDepartment, getHodInfo } from "../../utils/apiservice";
 
-import HodData from './GetHodInfo';
-import HodInfoLoading from '../ShimmerUI/HodInfoLoading';
+import HodData from "./GetHodInfo";
+import HodInfoLoading from "../ShimmerUI/HodInfoLoading";
 
 const primaryCategories = ["DSEU", "Deemed Deputation"];
 const subCategories = [
@@ -26,16 +26,16 @@ const FacultyByDepartment = ({ deptId }) => {
     enabled: !!deptId,
   });
 
-  const {data: faculty, isLoading: isFacultyLoading} = useQuery({
+  const { data: faculty, isLoading: isFacultyLoading } = useQuery({
     queryFn: () => getFacultyByDepartment(deptId),
     queryKey: [QUERY_KEYS.GET_FACULTIES_BY_DEPARTMENT, deptId],
     enabled: !!deptId,
-  })
+  });
 
   useEffect(() => {
+    console.log(deptId);
     console.log(faculty);
-    
-  }, [faculty]);
+  }, [deptId, faculty]);
 
   if (hodLoading) {
     return <HodInfoLoading />;
@@ -85,7 +85,5 @@ const FacultyByDepartment = ({ deptId }) => {
     </div>
   );
 };
-
-
 
 export default FacultyByDepartment;
