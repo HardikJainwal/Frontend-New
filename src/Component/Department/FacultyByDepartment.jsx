@@ -4,6 +4,9 @@ import { useQuery } from "@tanstack/react-query";
 import { QUERY_KEYS } from "../../utils/queryKeys";
 import { getHodInfo } from "../../utils/apiservice";
 
+import HodData from './GetHodInfo';
+import HodInfoLoading from '../ShimmerUI/HodInfoLoading';
+
 const primaryCategories = ["DSEU", "Deemed Deputation"];
 const subCategories = [
   "HOD",
@@ -24,7 +27,7 @@ const FacultyByDepartment = ({ deptId }) => {
   });
 
   if (hodLoading) {
-    return <div>Loading faculty information...</div>;
+    return <HodInfoLoading />;
   }
 
   return (
@@ -66,10 +69,12 @@ const FacultyByDepartment = ({ deptId }) => {
       </div>
 
       <div className="space-y-3 flex flex-col gap-2">
-        {activeSub === "HOD" && hod ? JSON.stringify(hod) : "Data not found."}
+        {activeSub === "HOD" && hod ? <HodData hod={hod} /> : "Data not found."}
       </div>
     </div>
   );
 };
+
+
 
 export default FacultyByDepartment;
