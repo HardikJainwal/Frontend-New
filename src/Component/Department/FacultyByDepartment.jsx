@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 
 import { QUERY_KEYS } from "../../utils/queryKeys";
-import { getHodInfo } from "../../utils/apiservice";
+import { getFacultyByDepartment, getHodInfo } from "../../utils/apiservice";
 
 import HodData from './GetHodInfo';
 import HodInfoLoading from '../ShimmerUI/HodInfoLoading';
@@ -25,6 +25,17 @@ const FacultyByDepartment = ({ deptId }) => {
     queryKey: [QUERY_KEYS.GET_HOD_INFO, deptId],
     enabled: !!deptId,
   });
+
+  const {data: faculty, isLoading: isFacultyLoading} = useQuery({
+    queryFn: () => getFacultyByDepartment(deptId),
+    queryKey: [QUERY_KEYS.GET_FACULTIES_BY_DEPARTMENT, deptId],
+    enabled: !!deptId,
+  })
+
+  useEffect(() => {
+    console.log(faculty);
+    
+  }, [faculty]);
 
   if (hodLoading) {
     return <HodInfoLoading />;
