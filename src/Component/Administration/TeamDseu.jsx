@@ -1,6 +1,11 @@
+import { useLocation } from "react-router-dom";
+import { useEffect, useRef } from "react";
 import { members } from "../../constants/TEAMDSEU.JS";
 
 const TeamDseu = () => {
+  const location = useLocation();
+  const deanRef = useRef(null);
+
   const priorityOrder = [
     "Chancellor",
     "Vice Chancellor",
@@ -16,6 +21,12 @@ const TeamDseu = () => {
     members.some((member) => member.category === cat)
   );
 
+  useEffect(() => {
+    if (location.state?.focus === "Dean" && deanRef.current) {
+      deanRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [location.state]);
+
   return (
     <div className="px-4 md:px-12 py-10 bg-gray-50">
       <div className="flex flex-col gap-24">
@@ -24,13 +35,12 @@ const TeamDseu = () => {
             (member) => member.category === category
           );
 
-          console.log("Rendering category:", category);
-          console.log("Filtered Members:", filteredMembers);
-
           const isRegistrar = category.toLowerCase() === "registrar";
 
+          const sectionRef = category === "Dean" ? deanRef : null;
+
           return (
-            <div key={category} className="space-y-10">
+            <div key={category} ref={sectionRef} className="space-y-10">
               <h3
                 className={`text-3xl md:text-4xl font-bold text-center text-gray-800 border-b-4 border-orange-400 pb-4 shadow-sm w-fit mx-auto ${
                   isRegistrar ? "uppercase" : ""

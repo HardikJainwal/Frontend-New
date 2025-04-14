@@ -10,7 +10,7 @@ import Group24 from "../../assets/DSEULogo/Group24.svg";
 import Orange from "../../assets/DSEULogo/Orange.svg";
 import SearchModal from "./SearchModal";
 
-// Existing carousel images and navItems arrays remain unchanged
+
 const carouselImages = [
   {
     src: DSEUTEXTFINAL,
@@ -47,7 +47,7 @@ const navItems = [
       },
       // { name: "Handbook (Brochure)", path: "/about-us/Handbook" },
 
-      // change from, handbook -> information bulletin
+      
     ],
   },
   {
