@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRightCircle } from "lucide-react";
 import HeadingText from "../Reusable/HeadingText";
-import { antiRagging as antiRaggingData } from "../../constants/ANTIRAGGING.JS";
+import { antiRagging } from "../../constants/ANTIRAGGING.JS";
 
 const AntiRagging = () => {
   return (
@@ -16,10 +16,10 @@ const AntiRagging = () => {
         >
           <HeadingText
             heading="Anti-Ragging Policy"
-            headingCN="text-5xl font-bold mb-3 text-center"
+            headingCN="text-3xl md:text-5xl font-bold mb-3 text-center"
           />
-          <p className="text-lg text-gray-600 mt-4 text-justify leading-relaxed">
-            {antiRaggingData.introText}
+          <p className="text-sm md:text-lg text-gray-600 mt-4 text-justify leading-relaxed">
+            {antiRagging.introText}
           </p>
         </motion.div>
 
@@ -31,7 +31,7 @@ const AntiRagging = () => {
         >
           <HeadingText
             heading="What is Ragging?"
-            headingCN="text-3xl font-bold mb-3"
+            headingCN="text-2xl md:text-3xl font-bold mb-4"
           />
         </motion.div>
 
@@ -39,12 +39,12 @@ const AntiRagging = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-6 space-y-4 text-gray-700 text-base leading-relaxed"
+          className="mt-6 space-y-6 text-gray-700 text-sm md:text-base leading-relaxed"
         >
-          {antiRaggingData.whatIsRagging.map((point, index) => (
+          {antiRagging.whatIsRagging.map((point, index) => (
             <li
               key={index}
-              className="flex items-start gap-3 list-none text-justify"
+              className="flex items-start gap-3 list-none text-justify p-4 bg-white rounded-2xl shadow-md"
             >
               <ArrowRightCircle className="text-red-500 w-5 h-5 mt-1" />
               <span>{point}</span>
@@ -56,11 +56,11 @@ const AntiRagging = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-10"
+          className="mt-12"
         >
           <HeadingText
             heading="Actions Against Ragging"
-            headingCN="text-3xl font-bold mb-3 text-center"
+            headingCN="text-2xl md:text-3xl font-bold mb-4 text-center"
           />
         </motion.div>
 
@@ -68,12 +68,12 @@ const AntiRagging = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-6 space-y-4 text-gray-700 text-base leading-relaxed"
+          className="mt-6 space-y-6 text-gray-700 text-sm md:text-base leading-relaxed"
         >
-          {antiRaggingData.actionsAgainstRagging.map((action, index) => (
+          {antiRagging.actionsAgainstRagging.map((action, index) => (
             <li
               key={index}
-              className="flex items-start gap-3 list-none text-justify"
+              className="flex items-start gap-3 list-none text-justify p-4 bg-white rounded-2xl shadow-md"
             >
               <ArrowRightCircle className="text-green-500 w-5 h-5 mt-1" />
               <span>{action}</span>
@@ -88,19 +88,19 @@ const AntiRagging = () => {
           className="mt-12"
         >
           <HeadingText
-            heading="Important Anti-Ragging Documents"
-            headingCN="text-3xl font-bold mb-3 text-center"
+            heading="Forms and Legal Notices"
+            headingCN="text-2xl md:text-3xl font-bold mb-4 text-center"
           />
         </motion.div>
 
-        <div className="flex flex-wrap gap-6 justify-center mt-8 text-gray-700 text-base leading-relaxed">
-          {antiRaggingData.pdfLinks.map((pdf, index) => (
+        <div className="mt-6 flex flex-col md:flex-row md:flex-wrap md:gap-12 gap-4 text-gray-700 text-sm md:text-base">
+          {antiRagging.pdfLinks.map((pdf, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
-              className="flex items-center gap-3 min-w-[250px] sm:min-w-[300px] text-sm sm:text-base"
+              className="flex items-center gap-2"
             >
               <ArrowRightCircle className="text-blue-500 w-5 h-5" />
               <a
