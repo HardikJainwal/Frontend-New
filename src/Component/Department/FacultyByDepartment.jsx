@@ -6,6 +6,7 @@ import { getFacultyByDepartment, getHodInfo } from "../../utils/apiservice";
 
 import HodData from "./GetHodInfo";
 import HodInfoLoading from "../ShimmerUI/HodInfoLoading";
+import GetDepartmentByDesignation from "./GetDepartmentByDesignation";
 
 const primaryCategories = ["DSEU", "Deemed Deputation"];
 const subCategories = [
@@ -80,7 +81,21 @@ const FacultyByDepartment = ({ deptId }) => {
       </div>
 
       <div className="space-y-3 flex flex-col gap-2">
-        {activeSub === "HOD" && hod ? <HodData hod={hod} /> : "Data not found."}
+        <div className="space-y-3 flex flex-col gap-2">
+          {activeSub === "HOD" ? (
+            hod ? (
+              <HodData hod={hod} />
+            ) : (
+              "Data not found."
+            )
+          ) : (
+            <GetDepartmentByDesignation
+              faculty={faculty}
+              designation={activeSub}
+              facultyType={activePrimary}
+            />
+          )}
+        </div>
       </div>
     </div>
   );
