@@ -6,7 +6,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import {
-  LibraryImage1,
   LibraryImage2,
   LibraryImage3,
   LibraryImage4,
@@ -37,7 +36,6 @@ const PrevArrow = ({ onClick }) => (
 
 const Library = () => {
   const images = [
-    LibraryImage1,
     LibraryImage2,
     LibraryImage3,
     LibraryImage4,

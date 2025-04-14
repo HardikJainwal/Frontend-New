@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 
 import { QUERY_KEYS } from "../../utils/queryKeys";
-import { getHodInfo } from "../../utils/apiservice";
+import { getFacultyByDepartment, getHodInfo } from "../../utils/apiservice";
+
+import HodData from "./GetHodInfo";
+import HodInfoLoading from "../ShimmerUI/HodInfoLoading";
 
 const primaryCategories = ["DSEU", "Deemed Deputation"];
 const subCategories = [
@@ -23,8 +26,19 @@ const FacultyByDepartment = ({ deptId }) => {
     enabled: !!deptId,
   });
 
+  const { data: faculty, isLoading: isFacultyLoading } = useQuery({
+    queryFn: () => getFacultyByDepartment(deptId),
+    queryKey: [QUERY_KEYS.GET_FACULTIES_BY_DEPARTMENT, deptId],
+    enabled: !!deptId,
+  });
+
+  useEffect(() => {
+    console.log(deptId);
+    console.log(faculty);
+  }, [deptId, faculty]);
+
   if (hodLoading) {
-    return <div>Loading faculty information...</div>;
+    return <HodInfoLoading />;
   }
 
   return (
@@ -66,7 +80,7 @@ const FacultyByDepartment = ({ deptId }) => {
       </div>
 
       <div className="space-y-3 flex flex-col gap-2">
-        {activeSub === "HOD" && hod ? JSON.stringify(hod) : "Data not found."}
+        {activeSub === "HOD" && hod ? <HodData hod={hod} /> : "Data not found."}
       </div>
     </div>
   );
