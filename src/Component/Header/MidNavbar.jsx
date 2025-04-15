@@ -41,10 +41,7 @@ const navItems = [
         name: "Annual Report",
         path: "/about-us/Annual-Report",
       },
-      {
-        name: " UGC Guidelines",
-        path: "/UGC-Guidelines",
-      },
+      
       // { name: "Handbook (Brochure)", path: "/about-us/Handbook" },
 
 
