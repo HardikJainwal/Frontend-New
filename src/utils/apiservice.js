@@ -202,22 +202,32 @@ export const getCampusByZone = async (zoneName) => {
 
 
 //? LOGIN
-export const login = async ({ email, password }) => {
-  const response = await axios.post(
-    "https://dseu-backend.onrender.com/api/v1/auth/login",
-    { email, password }
-  );
+export const login = async ({ email, password, emailFlag = false }) => {
+  try {
+    const response = await axios.post(
+      "https://dseu-backend.onrender.com/api/v1/auth/login",
+      { email, password }
+    );
 
-  sessionStorage.setItem("adminLogin", response.data.token);
-  sessionStorage.setItem("currentRole", response.data.role);
+    sessionStorage.setItem("token", response.data.token);
+    sessionStorage.setItem("currentRole", response.data.role);
+    if (emailFlag) {
+      console.log(response.data);
+      sessionStorage.setItem("email", email);
+    }
 
-  return response.data;
+    return response.data;
+  } catch (error) {
+    console.error("Login karte hue error:", error);
+    throw error;
+  }
 };
+
 
 
 // upload pdf
 export const uploadPdf = async (formData) => {
-  const token = sessionStorage.getItem("adminLogin");
+  const token = sessionStorage.getItem("token");
   console.log(token);
   try {
     const response = await axios.post("https://dseu-backend.onrender.com/api/v1/notice/upload",

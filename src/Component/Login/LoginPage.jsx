@@ -1,64 +1,58 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
+
 import loginimage from "../../assets/Image8.png";
 import LoginSuccessPopup from "./SucessPopUp";
+import { login } from "../../utils/apiservice";
+import { showErrorToast, showSuccessToast } from "../../utils/toasts";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
   const [loginSuccess, setLoginSuccess] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  // useEffect(() => {
+  //   const token = sessionStorage.getItem("token");
+  //   const role = sessionStorage.getItem("currentRole");
+
+  //   if (token && role) {
+  //     showSuccessToast("You are already logged in!");
+  //     setTimeout(() => navigate(getRedirectPath()), 1500);
+  //   }
+  // }, []);
+
+  const mutation = useMutation({
+    mutationFn: () => login({ email, password, emailFlag: true }),
+    onSuccess: () => {
+      setLoginSuccess(true);
+    },
+    onError: (error) => {
+      console.error("Login error:", error);
+      showErrorToast(
+        error?.response?.data?.message || "Login failed. Please try again."
+      );
+    },
+  });
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setError("");
-    setLoading(true);
-
-    try {
-      const response = await axios.post(
-        "https://dseu-backend.onrender.com/api/v1/auth/login",
-        { email, password },
-        { headers: { "Content-Type": "application/json" } }
-      );
-
-      if (response.data.status === "success") {
-        localStorage.setItem("token", response.data.token);
-        localStorage.setItem("user", JSON.stringify(response.data));
-        
-        // Set login success to show popup
-        setLoginSuccess(true);
-      }
-    } catch (err) {
-      console.error("Login error:", err);
-      setError(
-        err.response?.data?.message ||
-        "Login failed. Please try again."
-      );
-    } finally {
-      setLoading(false);
-    }
+    mutation.mutate();
   };
 
-  // Determine redirect path based on user role
   const getRedirectPath = () => {
-    const userData = JSON.parse(localStorage.getItem('user'));
-    const userRole = userData?.user?.designation; 
-
-    switch(userRole) {
-      case 'Faculty':
-        return '/academics/faculty';
-      case 'Training & Placement Officer':
-        return '/academics/faculty';
-      case 'Executive Engineer':
-        return '/academics/faculty';
-      case 'Deputy Registrar':
-      case 'Assistant Registrar':
-        return '/academics/faculty';
+    const role = sessionStorage.getItem("currentRole");
+    switch (role) {
+      case "Test":
+      case "Faculty":
+      case "Training & Placement Officer":
+      case "Executive Engineer":
+      case "Deputy Registrar":
+      case "Assistant Registrar":
+        return "/academics/faculty";
       default:
-        return '/academics/faculty';
+        return "/academics/faculty";
     }
   };
 
@@ -69,8 +63,8 @@ const LoginPage = () => {
   return (
     <>
       {loginSuccess && (
-        <LoginSuccessPopup 
-          message="Login Successful!" 
+        <LoginSuccessPopup
+          message="Login Successful!"
           onComplete={handleRedirect}
         />
       )}
@@ -88,12 +82,6 @@ const LoginPage = () => {
             <h2 className="text-3xl font-extrabold text-center text-[#0073e6] mb-6">
               Faculty Login Portal
             </h2>
-
-            {error && (
-              <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
-                {error}
-              </div>
-            )}
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
@@ -126,14 +114,14 @@ const LoginPage = () => {
 
               <button
                 type="submit"
-                disabled={loading}
+                disabled={mutation.isPending}
                 className={`w-full text-white py-3 rounded-lg text-lg font-bold hover:opacity-90 transition ${
-                  loading
+                  mutation.isPending
                     ? "bg-gray-400 cursor-not-allowed"
                     : "bg-gradient-to-r from-[#0073e6] to-[#005bb5]"
                 }`}
               >
-                {loading ? "Logging in..." : "Login"}
+                {mutation.isPending ? "Logging in..." : "Login"}
               </button>
             </form>
           </div>
