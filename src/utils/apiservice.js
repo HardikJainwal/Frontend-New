@@ -58,39 +58,39 @@ export const getDepartmentById = async (id) => {
   }
 };
 
-export const updateFacultyPhoto = async (id, file) => {
-  const formData = new FormData();
-  formData.append("photo", file);
+// export const updateFacultyPhoto = async (id, file) => {
+//   const formData = new FormData();
+//   formData.append("photo", file);
 
-  try {
-    const response = await api.put(`/faculty/${id}/photo`, formData, {
-      headers: {
-        ...getAuthHeaders(),
-        "Content-Type": "multipart/form-data",
-      },
-    });
-    return response.data.data.faculty;
-  } catch (error) {
-    console.error("Error updating faculty photo:", error.response?.data || error.message);
-    throw error;
-  }
-};
+//   try {
+//     const response = await api.put(`/faculty/${id}/photo`, formData, {
+//       headers: {
+//         ...getAuthHeaders(),
+//         "Content-Type": "multipart/form-data",
+//       },
+//     });
+//     return response.data.data.faculty;
+//   } catch (error) {
+//     console.error("Error updating faculty photo:", error.response?.data || error.message);
+//     throw error;
+//   }
+// };
 
-export const updateFacultyOverview = async (id, overview) => {
-  try {
-    const response = await api.patch(`/faculty/${id}`, { overview }, {
-      headers: {
-        ...getAuthHeaders(),
-        "Content-Type": "application/json",
-      },
-    });
-    console.log("Overview update response:", response.data);
-    return response.data.data.faculty;
-  } catch (error) {
-    console.error("Error updating faculty overview:", error.response?.data || error.message);
-    throw error;
-  }
-};
+// export const updateFacultyOverview = async (id, overview) => {
+//   try {
+//     const response = await api.patch(`/faculty/${id}`, { overview }, {
+//       headers: {
+//         ...getAuthHeaders(),
+//         "Content-Type": "application/json",
+//       },
+//     });
+//     console.log("Overview update response:", response.data);
+//     return response.data.data.faculty;
+//   } catch (error) {
+//     console.error("Error updating faculty overview:", error.response?.data || error.message);
+//     throw error;
+//   }
+// };
 
 export const updateFacultyResearch = async (id, data) => {
   try {
@@ -224,7 +224,6 @@ export const login = async ({ email, password, emailFlag = false }) => {
 };
 
 
-
 // upload pdf
 export const uploadPdf = async (formData) => {
   const token = sessionStorage.getItem("token");
@@ -246,4 +245,3 @@ export const uploadPdf = async (formData) => {
     console.log(err.message);
   }
 }
-

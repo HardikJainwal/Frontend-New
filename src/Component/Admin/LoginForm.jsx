@@ -24,6 +24,7 @@ const LoginForm = () => {
     onSuccess: (data) => {
       if (data.role === "Admin") {
         showSuccessToast("Logged in successfully!");
+        sessionStorage.removeItem("email");
         navigate("/admin/test");
       } else {
         showErrorToast("This user isn't an admin.");
