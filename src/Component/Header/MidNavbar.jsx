@@ -670,9 +670,10 @@ const ResponsiveHeader = () => {
             </div>
 
             <SearchModal
-              isOpen={isSearchOpen}
-              onClose={() => setIsSearchOpen(false)}
-            />
+  isOpen={isSearchOpen}
+  onClose={() => setIsSearchOpen(false)}
+  navItems={navItems}
+/>
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}

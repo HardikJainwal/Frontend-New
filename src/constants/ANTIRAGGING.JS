@@ -24,11 +24,11 @@ const antiRagging = {
     },
     {
       name: "UGC Regulations on Ragging",
-      url: "/UGC-Regulations.pdf"
+      url: "/Anti-Ragging-Rules-UGC.pdf"
     },
     {
       name: "Supreme Court Guidelines",
-      url: "/Supreme-Court-Guidelines.pdf"
+      url: "/Honourable-Supreme-Court-of-india-judgement.pdf"
     }
   ]
 };
