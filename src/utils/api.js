@@ -8,7 +8,7 @@ const api = axios.create({
 // Add request interceptor to include Authorization header dynamically
 api.interceptors.request.use(
   (config) => {
-    const token = sessionStorage.getItem("adminLogin");
+    const token = sessionStorage.getItem("token");
     if (token) {
       config.headers["Authorization"] = `Bearer ${token}`;
     }

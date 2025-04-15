@@ -3,13 +3,17 @@
 import { useNavigate } from "react-router-dom";
 
 const GetDepartmentByDesignation = ({ faculty, designation, facultyType }) => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  const filteredFaculty = faculty?.filter(
-    (person) =>
-      person?.designation?.toLowerCase() === designation.toLowerCase() &&
-      person?.faculty_type?.toLowerCase() === facultyType.toLowerCase()
-  );
+  const filteredFaculty = faculty?.filter((person) => {
+    const designationValue = person?.designation?.trim() || "Professor";
+    const facultyTypeValue = person?.faculty_type?.trim() || "DSEU";
+
+    return (
+      designationValue.toLowerCase() === designation.toLowerCase() &&
+      facultyTypeValue.toLowerCase() === facultyType.toLowerCase()
+    );
+  });
 
   const totalFaculty = filteredFaculty?.length;
 
@@ -25,7 +29,7 @@ const GetDepartmentByDesignation = ({ faculty, designation, facultyType }) => {
         <div
           key={person._id}
           className="bg-gray-50 p-4 py-6 rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg hover:scale-[1.01] hover:cursor-pointer hover:shadow-blue-300 transition duration-300"
-          onClick={() => navigate(`/faculty/${person?._id}`)}
+          onClick={() => navigate(`/faculty/${person?._id}`, "_blank")}
         >
           <img
             src={person.photo}

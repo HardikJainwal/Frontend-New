@@ -8,7 +8,7 @@ const withAuthProtection = (WrappedComponent) => {
     const [checkingAuth, setCheckingAuth] = useState(true);
 
     useEffect(() => {
-      const token = sessionStorage.getItem("adminLogin");
+      const token = sessionStorage.getItem("token");
       const role = sessionStorage.getItem("currentRole");
 
       if (!token) {

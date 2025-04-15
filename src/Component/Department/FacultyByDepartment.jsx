@@ -33,10 +33,10 @@ const FacultyByDepartment = ({ deptId }) => {
     enabled: !!deptId,
   });
 
-  useEffect(() => {
-    console.log(deptId);
-    console.log(faculty);
-  }, [deptId, faculty]);
+  // useEffect(() => {
+  //   console.log(deptId);
+  //   console.log(faculty);
+  // }, [deptId, faculty]);
 
   if (hodLoading) {
     return <HodInfoLoading />;

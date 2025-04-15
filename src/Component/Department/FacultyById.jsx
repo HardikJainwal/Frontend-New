@@ -2,13 +2,15 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 
-import { User, FileText, BookOpenCheck, Briefcase } from "lucide-react";
+import { User, FileText, BookOpenCheck } from "lucide-react";
 
 import { getFacultyById } from "../../utils/apiservice";
-
 import FacultyInfoLoading from "../ShimmerUI/FacultyInfoLoading";
 
 const FacultyById = () => {
+  const loggedEmail = sessionStorage.getItem("email");
+  const token = sessionStorage.getItem("token");
+
   const { id } = useParams();
   const {
     data: faculty,
@@ -122,7 +124,15 @@ const FacultyById = () => {
                 faculty.surname ?? ""
               }`}
             </h2>
-            <div className="flex flex-wrap gap-2 mt-2">
+            <div className="flex flex-wrap gap-2 mt-2 items-center">
+              {loggedEmail === faculty.email && token && (
+                <button
+                  onClick={() => alert("Edit mode not implemented yet")}
+                  className="px-4 py-2 border border-orange-500 text-orange-500 rounded hover:bg-orange-500 hover:text-white transition-colors"
+                >
+                  Edit
+                </button>
+              )}
               <TabBtn
                 label="Bio"
                 tab="bio"
@@ -137,13 +147,6 @@ const FacultyById = () => {
                 setActiveTab={setActiveTab}
                 icon={<FileText size={16} />}
               />
-              {/* <TabBtn
-                label="Courses Taught"
-                tab="courses"
-                activeTab={activeTab}
-                setActiveTab={setActiveTab}
-                icon={<Briefcase size={16} />}
-              /> */}
               <TabBtn
                 label="Publication"
                 tab="publication"
