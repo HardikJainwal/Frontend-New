@@ -1,15 +1,16 @@
 import { useState } from "react";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import withAuthProtection from "./withAuthProtection";
 import { uploadPdf } from "../../utils/apiservice";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
 
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState("information-bulletin");
   const [name, setName] = useState("");
   const [section, setSection] = useState("");
   const [file, setFile] = useState(null);
+
+  const queryClient = useQueryClient();
 
   // Define dropdown options based on active tab
   const getSectionOptions = () => {
@@ -19,8 +20,7 @@ const AdminDashboard = () => {
           { value: "admission", label: "Admission" },
           { value: "students", label: "Students" },
           { value: "important links", label: "Important Links" },
-          { value: "alerts and circular ", label: "Alerts and circular " },
-          
+          { value: "alerts and circular", label: "Alerts and circular" },
         ];
       case "announcement":
         return [{ value: "announcement", label: "Announcement" }];
@@ -30,7 +30,7 @@ const AdminDashboard = () => {
           { value: "university court", label: "University Court" },
           { value: "board of management", label: "Board of Management" },
           { value: "academic council", label: "Academic Council" },
-          { value: "finance comittee", label: "Finance Committee" }
+          { value: "finance comittee", label: "Finance Committee" },
         ];
       case "work-with-us":
         return [
@@ -38,7 +38,7 @@ const AdminDashboard = () => {
           { value: "non academic positions", label: "Non Academic Positions" },
           { value: "short term positions", label: "Short Term Positions" },
           { value: "results", label: "Results" },
-          { value: "recruitments and notice", label: "Recruitments and Notice" }
+          { value: "recruitments and notice", label: "Recruitments and Notice" },
         ];
       default:
         return [];
@@ -49,25 +49,45 @@ const AdminDashboard = () => {
   const handleTabChange = (tab) => {
     setActiveTab(tab);
     setSection("");
+    setName("");
+    setFile(null);
   };
 
   const mutation = useMutation({
     mutationFn: (formData) => {
+      console.log("FormData being sent:");
       for (let pair of formData.entries()) {
-        console.log(pair[0] + ": " + pair[1]);
+        console.log(`${pair[0]}: ${pair[1]}`);
       }
       return uploadPdf(formData);
     },
-    onSuccess: ({ data }) => {
-      toast.success("Upload successful!");
-      console.log(data);
+    onSuccess: (response) => {
+      console.log("Raw upload response:", response);
+      // Handle nested response (e.g., axios wraps in response.data)
+      const data = response?.data || response;
+      if (!data?.fileName || !data?.section) {
+        console.warn("Incomplete response:", data);
+        toast.error(
+          "Upload succeeded but response is incomplete. PDF may not appear."
+        );
+        // Invalidate anyway to attempt refetch
+        queryClient.invalidateQueries({ queryKey: ["notices", section] });
+        return;
+      }
+      toast.success(`Uploaded ${data.fileName} to ${data.section}`);
+      queryClient.invalidateQueries({ queryKey: ["notices", data.section] });
+      queryClient.invalidateQueries({ queryKey: ["notices", section] }); // Fallback
       setName("");
       setSection("");
       setFile(null);
     },
     onError: (error) => {
-      console.error("Upload failed:", error?.response?.data || error.message);
-      toast.error(error?.response?.data?.message || "Upload failed.");
+      const errorMessage =
+        error?.response?.data?.message ||
+        error.message ||
+        "Upload failed. Please try again.";
+      console.error("Upload failed:", errorMessage, error);
+      toast.error(errorMessage);
     },
   });
 
@@ -152,7 +172,11 @@ const AdminDashboard = () => {
       {/* Main Content */}
       <div className="flex-1 p-8">
         <h2 className="text-2xl font-bold text-gray-800 mb-6">
-          Upload PDF - {activeTab.split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ")}
+          Upload PDF -{" "}
+          {activeTab
+            .split("-")
+            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(" ")}
         </h2>
 
         {/* Upload Form */}
