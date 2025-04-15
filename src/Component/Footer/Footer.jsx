@@ -71,26 +71,6 @@ const Footer = () => {
               www.dseu.ac.in
             </a>
           </p>
-         {/*  <div className="mt-4 flex justify-center md:justify-start space-x-4">
-            <a href="https://x.com/dseu_official?lang=en" aria-label="Twitter" target="_blank">
-              <FontAwesomeIcon
-                icon={faTwitter}
-                style={{ color: "#1DA1F2", fontSize: "20px" }}
-              />
-            </a>
-            <a href="https://www.linkedin.com/school/delhi-skill-and-entrepreneurship-university/?originalSubdomain=in" aria-label="LinkedIn" target="_blank">
-              <FontAwesomeIcon
-                icon={faLinkedin}
-                style={{ color: "#0077B5", fontSize: "20px" }}
-              />
-            </a>
-            <a href="https://www.facebook.com/dseuofficial/" aria-label="Facebook" target="_blank">
-              <FontAwesomeIcon
-                icon={faFacebook}
-                style={{ color: "#4267B2", fontSize: "20px" }}
-              />
-            </a>
-          </div> */}
         </div>
 
         <div className="w-full md:w-1/3 mb-6 md:mb-0 md:pl-4">
@@ -138,35 +118,54 @@ const Footer = () => {
           </h3>
           <ul className="space-y-2">
             <li>
-              <a href="#" className="hover:text-blue-600">
-                Rules
+              <a href="/about-us/About-the-University" className="hover:text-blue-600">
+                About University
               </a>
             </li>
             <li>
-              <a href="#" className="hover:text-blue-600">
+              <a href="/ncc" className="hover:text-blue-600">
                 Campus Life
               </a>
             </li>
-
             <li>
-              <a href="#" className="hover:text-blue-600">
+              <a href="/Courses" className="hover:text-blue-600">
                 Educational Programmes
               </a>
             </li>
             <li>
-              <a href="#" className="hover:text-blue-600">
-                PhD Seminar
+              <a href="/about-us/Vision-and-Mission" className="hover:text-blue-600">
+                Vission & Mission
               </a>
             </li>
             <li>
               <a href="#" className="hover:text-blue-600">
-                Climate Action Plan
+                Fee Refund Policy
               </a>
             </li>
-            <li>
-              <a href="#" className="hover:text-blue-600">
-                Contact Us
+            <li className="flex items-center">
+              <a href="#" className="hover:text-blue-600 mr-3">
+                Connect with Us
               </a>
+              <div className="flex space-x-3">
+                <a href="https://x.com/dseu_official?lang=en" aria-label="Twitter" target="_blank" rel="noopener noreferrer">
+                  <FontAwesomeIcon
+                    icon={faTwitter}
+                    style={{ color: "#1DA1F2", fontSize: "20px" }}
+                  />
+                </a>
+                <a href="https://www.linkedin.com/school/delhi-skill-and-entrepreneurship-university/?originalSubdomain=in" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                  <FontAwesomeIcon
+                    icon={faLinkedin}
+                    style={{ color: "#0077B5", fontSize: "20px" }}
+                  />
+                </a>
+                <a href="https://www.facebook.com/dseuofficial/" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                  <FontAwesomeIcon
+                    icon={faFacebook}
+                    style={{ color: "#4267B2", fontSize: "20px" }}
+                  />
+                </a>
+              </div>
             </li>
           </ul>
         </div>

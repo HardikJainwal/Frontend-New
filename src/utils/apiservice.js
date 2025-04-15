@@ -41,15 +41,8 @@ export const getFacultyByDepartment = async (id) => {
 };
 
 export const getFacultyById = async (id) => {
-  try {
-    const response = await api.get(`/faculty/${id}`, {
-      headers: getAuthHeaders(),
-    });
-    return response.data.data.faculty;
-  } catch (error) {
-    console.error("Error fetching faculty by ID:", error.response?.data || error.message);
-    throw error;
-  }
+  const allFaculties = await getFaculties();
+  return allFaculties.find((faculty) => faculty._id === String(id));
 };
 
 export const getDepartmentById = async (id) => {
