@@ -17,7 +17,7 @@ const EqualOpportunity = () => {
         >
           <HeadingText
             heading="Equal Opportunity Cell"
-            headingCN="text-2xl md:text-5xl font-bold  text-center"
+            headingCN="text-2xl md:text-5xl font-bold  text-center mb-3"
           />
           <p className="text-xs md:text-lg text-gray-600 mt-4 text-justify leading-relaxed">
             {eocData.description}
@@ -32,7 +32,7 @@ const EqualOpportunity = () => {
         >
           <HeadingText
             heading="Functions & Responsibilities"
-            headingCN="text-lg md:text-3xl font-bold text-center"
+            headingCN="text-lg md:text-3xl font-bold text-center mb-3"
           />
         </motion.div>
 

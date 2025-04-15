@@ -1,6 +1,6 @@
 export const eocData = {
     description:
-      "The Equal Opportunity Cell (EOC) at Central Tribal University of Andhra Pradesh is committed to ensuring that every individual—regardless of background, identity, or socio-economic status—has equal access to opportunities, resources, and services. The EOC strives to create a campus culture rooted in inclusivity, equity, and dignity.",
+    "The Equal Opportunity Cell (EOC) at Delhi Skills and Entrepreneurship University (DSEU) is committed to ensuring that every individual—regardless of background, identity, or socio-economic status—has equal access to opportunities, resources, and services. The EOC strives to create a campus culture rooted in inclusivity, equity, and dignity.",
     objectives: [
       "Promote equality and inclusivity within the university.",
       "Addressing descrimination.",  
