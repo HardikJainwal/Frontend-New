@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import {
-  LibraryImage2,
+  
   LibraryImage3,
   LibraryImage4,
   LibraryImage5,
@@ -36,7 +36,7 @@ const PrevArrow = ({ onClick }) => (
 
 const Library = () => {
   const images = [
-    LibraryImage2,
+
     LibraryImage3,
     LibraryImage4,
     LibraryImage5,
@@ -64,7 +64,6 @@ const Library = () => {
       />
 
       <div className="max-w-5xl mx-auto px-6 py-12 text-gray-800">
-
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -84,7 +83,6 @@ const Library = () => {
             </p>
           ))}
         </motion.div>
-
 
         <motion.ul
           initial={{ opacity: 0, y: 30 }}
@@ -113,9 +111,7 @@ const Library = () => {
               </span>
             </li>
           ))}
-
         </motion.ul>
-
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -130,11 +126,11 @@ const Library = () => {
           <div className="w-full mt-4 h-auto rounded-xl overflow-hidden relative">
             <Slider {...sliderSettings}>
               {images.map((src, index) => (
-                <div key={index}>
+                <div key={index} className="w-full h-[500px]">
                   <img
                     src={src}
                     alt={`Library ${index + 1}`}
-                    className="w-full h-[400px] object-contain rounded-xl shadow-md"
+                    className="w-full h-[500px] object-cover rounded-xl shadow-md"
                   />
                 </div>
               ))}
