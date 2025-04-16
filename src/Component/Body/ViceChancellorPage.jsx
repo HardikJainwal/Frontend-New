@@ -16,9 +16,9 @@ const ViceChancellorPage = () => {
 
   return (
     <div className="max-w-6xl mx-auto px-6 sm:px-8 md:px-10 py-12 text-gray-800">
-      {/* Layout container */}
+
       <div className="flex flex-col md:flex-row items-start gap-10">
-        {/* Left Card */}
+
         <div className="w-full md:w-1/3 bg-white shadow-sm rounded-2xl p-6 md:p-8 border border-gray-100">
           <div className="flex flex-col items-center text-center">
             <img
@@ -32,7 +32,6 @@ const ViceChancellorPage = () => {
           </div>
         </div>
 
-        {/* Right Content */}
         <div className="w-full md:w-2/3 space-y-10">
           <section>
             <h3 className="text-lg font-semibold text-blue-600 mb-2 uppercase tracking-wide">
@@ -41,7 +40,7 @@ const ViceChancellorPage = () => {
             <p className="leading-relaxed">{profileSummary}</p>
           </section>
 
-          <section>
+          {/* <section>
             <h3 className="text-lg font-semibold text-blue-600 mb-2 uppercase tracking-wide">
               Previous Positions
             </h3>
@@ -72,7 +71,7 @@ const ViceChancellorPage = () => {
                 <li key={index}>{contribution}</li>
               ))}
             </ul>
-          </section>
+          </section> */}
 
           <section>
             <h3 className="text-lg font-semibold text-blue-600 mb-2 uppercase tracking-wide">
