@@ -1,32 +1,45 @@
 import { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
-import { User, FileText, BookOpenCheck } from "lucide-react";
+import { User, FileText } from "lucide-react";
 
 import TabBtn from "../Reusable/TabBtn";
 import FacultyInfoLoading from "../ShimmerUI/FacultyInfoLoading";
 import { getFacultyById } from "../../utils/apiservice";
 import EditOverviewModal from "./Modals/EditOverviewModal";
+import AddResearchModal from "./Modals/AddResearchModal";
+
+import ResearchTab from "./Tabs/ResearchTab";
+import PublicationsTab from "./Tabs/PublicationsTab";
+import { addResearch } from "../../utils/facultyApi";
 
 const FacultyById = () => {
+  const queryClient = useQueryClient();
   const loggedEmail = sessionStorage.getItem("email");
-  const token = sessionStorage.getItem("token");
   const { id } = useParams();
 
   const {
     data: faculty,
     isLoading,
     error,
-    refetch,
   } = useQuery({
     queryKey: ["getFacultyById", id],
     queryFn: () => getFacultyById(id),
     enabled: !!id,
   });
 
-  const [activeTab, setActiveTab] = useState("bio");
+  const [activeTab, setActiveTab] = useState("overview");
   const [showOverviewModal, setShowOverviewModal] = useState(false);
+  const [showResearchModal, setShowResearchModal] = useState(false);
   const [localOverview, setLocalOverview] = useState("");
+
+  const addMutation = useMutation({
+    mutationFn: (data) => addResearch(faculty._id, data),
+    onSuccess: () => {
+      queryClient.invalidateQueries(["getFacultyById", faculty._id]);
+      setShowResearchModal(false);
+    },
+  });
 
   const handleUpdatedOverview = (newOverview) => {
     setLocalOverview(newOverview);
@@ -39,11 +52,12 @@ const FacultyById = () => {
         Oops! Faculty details not found.
       </div>
     );
+
   if (error) return <div>Error: {error.message}</div>;
 
   const renderTabContent = () => {
     switch (activeTab) {
-      case "bio":
+      case "overview":
         return (
           <p className="text-gray-700">
             {localOverview || faculty.overview || "Bio not available"}
@@ -51,33 +65,10 @@ const FacultyById = () => {
         );
       case "research":
         return (
-          <ul className="list-disc pl-5 space-y-2 text-gray-700">
-            {faculty.research?.length ? (
-              faculty.research.map((item, i) => (
-                <li key={i}>
-                  <p className="font-semibold">
-                    Area: {item.research_area ?? "N/A"}
-                  </p>
-                  <p className="text-sm text-gray-600">
-                    Overview: {item.research_overview ?? "Not provided"}
-                  </p>
-                </li>
-              ))
-            ) : (
-              <p>Research details not available</p>
-            )}
-          </ul>
+          <ResearchTab researchList={faculty.research} faculty={faculty} />
         );
-      case "publication":
-        return (
-          <ul className="list-decimal pl-5 space-y-2 text-gray-700">
-            {faculty.publications?.length ? (
-              faculty.publications.map((pub, i) => <li key={i}>{pub}</li>)
-            ) : (
-              <p>Publication details not available</p>
-            )}
-          </ul>
-        );
+      case "publications":
+        return <PublicationsTab researchList={faculty.research} />;
       default:
         return null;
     }
@@ -111,15 +102,18 @@ const FacultyById = () => {
           </div>
 
           {loggedEmail === faculty.email && (
-            <div className="flex gap-3 mt-4">
+            <div className="flex gap-2 mt-3">
               <button
                 onClick={() => setShowOverviewModal(true)}
                 className="px-5 py-3 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors text-sm"
               >
                 Edit Overview
               </button>
-              <button className="px-5 py-3 bg-orange-500 text-white rounded hover:bg-orange-600 transition-colors text-sm">
-                Edit Research
+              <button
+                onClick={() => setShowResearchModal(true)}
+                className="px-5 py-3 bg-orange-500 text-white rounded hover:bg-orange-600 transition-colors text-sm"
+              >
+                Add Research
               </button>
             </div>
           )}
@@ -134,8 +128,8 @@ const FacultyById = () => {
             </h2>
             <div className="flex flex-wrap gap-2 mt-2 items-center">
               <TabBtn
-                label="Bio"
-                tab="bio"
+                label="Overview"
+                tab="overview"
                 activeTab={activeTab}
                 setActiveTab={setActiveTab}
                 icon={<User size={16} />}
@@ -148,11 +142,11 @@ const FacultyById = () => {
                 icon={<FileText size={16} />}
               />
               <TabBtn
-                label="Publication"
-                tab="publication"
+                label="Publications"
+                tab="publications"
                 activeTab={activeTab}
                 setActiveTab={setActiveTab}
-                icon={<BookOpenCheck size={16} />}
+                icon={<FileText size={16} />}
               />
             </div>
           </div>
@@ -166,6 +160,15 @@ const FacultyById = () => {
           initialOverview={faculty.overview}
           onClose={() => setShowOverviewModal(false)}
           onUpdated={handleUpdatedOverview}
+        />
+      )}
+
+      {showResearchModal && (
+        <AddResearchModal
+          type={"Add"}
+          facultyId={id}
+          onClose={() => setShowResearchModal(false)}
+          mutation={addMutation}
         />
       )}
     </div>
