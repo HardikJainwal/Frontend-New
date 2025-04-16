@@ -1,5 +1,6 @@
 import {
   agrimTomar,
+  arunDabas,
   ahmadOmair,
   ranbirSinghSharma,
   arindamKumarChanda,
@@ -161,7 +162,7 @@ const members = [
   {
     id: 16,
     name: "Dr. Arun Dabas",
-    src: placeholder,
+    src: arunDabas,
     designation: "Campus Director - Ranhola Campus",
     category: "Campus Directors",
   },

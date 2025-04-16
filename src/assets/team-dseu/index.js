@@ -49,10 +49,12 @@ import shubhaGV from './shubhaGV.jpg';
 import rituSareen from './rituSareen.jpeg';
 import arindamKumarChanda from './arindamKumarChanda.jpeg';
 import ranbirSinghSharma from './ranbirSinghSharma.jpeg';
+import arunDabas from './arunDabas.png';
 
 
 export {
     agrimTomar,
+    arunDabas,
     ahmadOmair,
     arindamKumarChanda,
     binduNair,
