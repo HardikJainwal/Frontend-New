@@ -1,28 +1,24 @@
 import { useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
-import { User, FileText } from "lucide-react";
+import { useParams, useNavigate } from "react-router-dom";
+import { User, FileText, LogOut } from "lucide-react";
 
 import TabBtn from "../Reusable/TabBtn";
 import FacultyInfoLoading from "../ShimmerUI/FacultyInfoLoading";
 import { getFacultyById } from "../../utils/apiservice";
 import EditOverviewModal from "./Modals/EditOverviewModal";
 import AddResearchModal from "./Modals/AddResearchModal";
-
 import ResearchTab from "./Tabs/ResearchTab";
 import PublicationsTab from "./Tabs/PublicationsTab";
 import { addResearch } from "../../utils/facultyApi";
 
 const FacultyById = () => {
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
   const loggedEmail = sessionStorage.getItem("email");
   const { id } = useParams();
 
-  const {
-    data: faculty,
-    isLoading,
-    error,
-  } = useQuery({
+  const { data: faculty, isLoading, error } = useQuery({
     queryKey: ["getFacultyById", id],
     queryFn: () => getFacultyById(id),
     enabled: !!id,
@@ -45,6 +41,11 @@ const FacultyById = () => {
     setLocalOverview(newOverview);
   };
 
+  const handleLogout = () => {
+    sessionStorage.clear();
+    navigate("/");
+  };
+
   if (isLoading) return <FacultyInfoLoading />;
   if (!faculty)
     return (
@@ -52,7 +53,6 @@ const FacultyById = () => {
         Oops! Faculty details not found.
       </div>
     );
-
   if (error) return <div>Error: {error.message}</div>;
 
   const renderTabContent = () => {
@@ -77,7 +77,7 @@ const FacultyById = () => {
   return (
     <div className="p-3 md:p-4 lg:p-6 md:mx-20 mt-10 mb-16">
       <div className="flex flex-col md:flex-row gap-10">
-        <div className="flex flex-col items-center md:items-start gap-4">
+        <div className="flex flex-col items-center md:items-start gap-4 md:min-w-[300px] sm:min-w-[250px]">
           <h2 className="text-2xl font-bold block md:hidden">
             {`${faculty.salutation ?? ""} ${faculty.firstname} ${
               faculty.surname ?? ""
@@ -102,18 +102,26 @@ const FacultyById = () => {
           </div>
 
           {loggedEmail === faculty.email && (
-            <div className="flex gap-2 mt-3">
+            <div className="flex flex-col gap-2 mt-3 w-full items-center md:items-start">
+              <div className="flex gap-2">
+                <button
+                  onClick={() => setShowOverviewModal(true)}
+                  className="px-5 py-3 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors text-sm"
+                >
+                  Edit Overview
+                </button>
+                <button
+                  onClick={() => setShowResearchModal(true)}
+                  className="px-5 py-3 bg-orange-500 text-white rounded hover:bg-orange-600 transition-colors text-sm"
+                >
+                  Add Research
+                </button>
+              </div>
               <button
-                onClick={() => setShowOverviewModal(true)}
-                className="px-5 py-3 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors text-sm"
+                onClick={handleLogout}
+                className="mt-2 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 flex items-center gap-2 text-sm"
               >
-                Edit Overview
-              </button>
-              <button
-                onClick={() => setShowResearchModal(true)}
-                className="px-5 py-3 bg-orange-500 text-white rounded hover:bg-orange-600 transition-colors text-sm"
-              >
-                Add Research
+                <LogOut size={16} /> Logout
               </button>
             </div>
           )}

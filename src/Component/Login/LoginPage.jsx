@@ -12,14 +12,14 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginSuccess, setLoginSuccess] = useState(false);
-  const [facultyId, setFacultyId] = useState(null);
   const navigate = useNavigate();
 
   const mutation = useMutation({
     mutationFn: () => login({ email, password, emailFlag: true }),
     onSuccess: async () => {
       const facultyData = await getFacutlyByEmail(email);
-      setFacultyId(facultyData._id);
+      sessionStorage.setItem("facultyId", facultyData._id);
+      sessionStorage.setItem("email", email); // optional
       setLoginSuccess(true);
     },
     onError: (error) => {
@@ -36,10 +36,11 @@ const LoginPage = () => {
 
   const getRedirectPath = () => {
     const role = sessionStorage.getItem("currentRole");
+    const storedFacultyId = sessionStorage.getItem("facultyId");
     switch (role) {
       case "Test":
       case "Faculty":
-        return `/faculty/${facultyId}`;
+        return `/faculty/${storedFacultyId}`;
       case "Training & Placement Officer":
       case "Executive Engineer":
       case "Deputy Registrar":
@@ -51,7 +52,8 @@ const LoginPage = () => {
   };
 
   const handleRedirect = () => {
-    navigate(getRedirectPath());
+    const redirectPath = getRedirectPath();
+    navigate(redirectPath);
   };
 
   return (
@@ -118,6 +120,18 @@ const LoginPage = () => {
               >
                 {mutation.isPending ? "Logging in..." : "Login"}
               </button>
+
+              {sessionStorage.getItem("token") &&
+                sessionStorage.getItem("email") && (
+                  <div className="w-full flex justify-center mt-6">
+                    <button
+                      onClick={handleRedirect}
+                      className="bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold py-2 px-6 rounded-full shadow-lg hover:scale-105 transition-transform duration-200"
+                    >
+                      🚀 Go to Profile
+                    </button>
+                  </div>
+                )}
             </form>
           </div>
         </div>

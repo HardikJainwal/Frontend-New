@@ -79,10 +79,10 @@ const ResearchTab = ({ researchList, faculty }) => {
                   className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition-colors text-sm"
                 >
                   {deleteMutation.isPending ? (
-                    <>
+                    <div className="flex flex-row gap-1">
+                      <p>Deleting</p>
                       <Loader2 className="animate-spin w-4 h-4" />
-                      Deleting
-                    </>
+                    </div>
                   ) : (
                     "Delete"
                   )}

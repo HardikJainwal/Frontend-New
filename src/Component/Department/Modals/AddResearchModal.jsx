@@ -1,10 +1,22 @@
 import { useState } from "react";
 import { Loader2 } from "lucide-react";
 
-const AddResearchModal = ({ facultyId, onClose, type, mutation, defaultValues = {} }) => {
-  const [researchArea, setResearchArea] = useState(defaultValues.research_area || "");
-  const [researchOverview, setResearchOverview] = useState(defaultValues.research_overview || "");
-  const [publications, setPublications] = useState(defaultValues.publications || "");
+const AddResearchModal = ({
+  facultyId,
+  onClose,
+  type,
+  mutation,
+  defaultValues = {},
+}) => {
+  const [researchArea, setResearchArea] = useState(
+    defaultValues.research_area || ""
+  );
+  const [researchOverview, setResearchOverview] = useState(
+    defaultValues.research_overview || ""
+  );
+  const [publications, setPublications] = useState(
+    defaultValues.publications || ""
+  );
 
   const handleAddResearch = () => {
     const data = {
@@ -14,7 +26,6 @@ const AddResearchModal = ({ facultyId, onClose, type, mutation, defaultValues = 
     };
     mutation.mutate(data);
   };
-
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
@@ -61,8 +72,10 @@ const AddResearchModal = ({ facultyId, onClose, type, mutation, defaultValues = 
           >
             {mutation.isPending ? (
               <>
-                <Loader2 className="animate-spin w-4 h-4" />
-                Saving
+                <div className="flex flex-row gap-1 justify-center items-center">
+                  <p>Saving</p>
+                  <Loader2 className="animate-spin w-4 h-4" />
+                </div>
               </>
             ) : (
               "Save Research"
