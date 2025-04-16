@@ -134,7 +134,7 @@ const Library = () => {
                   <img
                     src={src}
                     alt={`Library ${index + 1}`}
-                    className="w-full object-contain object-fit rounded-xl shadow-md"
+                    className="w-full h-[400px] object-contain rounded-xl shadow-md"
                   />
                 </div>
               ))}

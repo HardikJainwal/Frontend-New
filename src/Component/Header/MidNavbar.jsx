@@ -39,7 +39,7 @@ const navItems = [
       { name: "Vision and Mission", path: "/about-us/Vision-and-Mission" },
       {
         name: "Annual Report",
-        path: "/about-us/Annual-Report",
+        path: "#",
       },
       
       // { name: "Handbook (Brochure)", path: "/about-us/Handbook" },
