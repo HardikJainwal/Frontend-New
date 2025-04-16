@@ -29,10 +29,7 @@ const ICC = () => {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="mb-4 mt-5"
         >
-          <HeadingText
-            heading="Objectives"
-            headingCN="text-lg md:text-3xl font-bold text-center mn-1"
-          />
+          <h4 className="text-xl md:text-2xl font-bold text-center text-gray-800 border-b-4 border-orange-400 pb-3 shadow-sm w-fit mb-4">Objectives</h4>
         </motion.div>
 
         <motion.ul
@@ -69,10 +66,7 @@ const ICC = () => {
         className="mt-5"
       >
         <div className="max-w-5xl mx-auto px-6">
-          <HeadingText
-            heading="ICC Committee"
-            headingCN="text-lg md:text-2xl font-semibold text-center"
-          />
+          <h4 className="text-xl md:text-2xl font-bold text-center text-gray-800 border-b-4 border-orange-400 pb-3 shadow-sm w-fit mb-4">ICC Committee</h4>
 
           <div className="rounded-xl overflow-hidden border border-gray-200 shadow-sm mt-6 mb-6">
             <table className="w-full text-xs md:text-base text-left text-gray-700">

@@ -3,6 +3,12 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import withAuthProtection from "./withAuthProtection";
 import { uploadPdf } from "../../utils/apiservice";
 import toast from "react-hot-toast";
+import {
+  FileText,
+  Megaphone,
+  Users,
+  Briefcase,
+} from "lucide-react";
 
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState("information-bulletin");
@@ -22,7 +28,7 @@ const AdminDashboard = () => {
           { value: "admission", label: "Admission" },
           { value: "students", label: "Students" },
           { value: "important links", label: "Important Links" },
-          { value: "alerts and circulars", label: "Alerts and circulars" },
+          { value: "alerts and circulars", label: "Alerts and Circulars" },
         ];
       case "announcement":
         return [{ value: "announcement", label: "Announcement" }];
@@ -40,10 +46,7 @@ const AdminDashboard = () => {
           { value: "non academic positions", label: "Non Academic Positions" },
           { value: "short term positions", label: "Short Term Positions" },
           { value: "results", label: "Results" },
-          {
-            value: "recruitments and notice",
-            label: "Recruitments and Notice",
-          },
+          { value: "recruitments and notice", label: "Recruitments and Notice" },
         ];
       default:
         return [];
@@ -61,15 +64,11 @@ const AdminDashboard = () => {
   };
 
   const mutation = useMutation({
-    mutationFn: (formData) => {
-      return uploadPdf(formData);
-    },
+    mutationFn: (formData) => uploadPdf(formData),
     onSuccess: (response) => {
       const data = response?.data || response;
       if (!data?.fileName || !data?.section) {
-        toast.error(
-          "Upload succeeded but response is incomplete. PDF may not appear."
-        );
+        toast.error("Upload succeeded but response is incomplete. PDF may not appear.");
         queryClient.invalidateQueries({ queryKey: ["notices", section] });
         return;
       }
@@ -118,144 +117,96 @@ const AdminDashboard = () => {
     mutation.mutate(formData);
   };
 
+  const tabs = [
+    {
+      key: "information-bulletin",
+      label: "Information Bulletin",
+      icon: FileText,
+    },
+    {
+      key: "announcement",
+      label: "Announcement",
+      icon: Megaphone,
+    },
+    {
+      key: "statutory-body",
+      label: "Statutory Body",
+      icon: Users,
+    },
+    {
+      key: "work-with-us",
+      label: "Work With Us",
+      icon: Briefcase,
+    },
+  ];
+
+  const activeTabLabel = tabs.find((tab) => tab.key === activeTab)?.label || "";
+
+
   return (
-    <div className="min-h-screen bg-gray-50 flex">
-      <div className="w-64 bg-white shadow-md min-h-screen">
-        <div className="p-4 border-b">
-          <h2 className="text-xl font-semibold text-gray-800">Admin Panel</h2>
-        </div>
-        <nav className="py-4">
-          <ul>
-            <li>
+    <div className="min-h-screen bg-gray-100 p-4 sm:p-6 lg:p-10 flex gap-6">
+
+      <aside className="w-72 bg-white shadow-lg rounded-2xl p-6 space-y-4">
+        <h2 className="text-2xl font-bold text-gray-700">Dashboard</h2>
+        <ul className="space-y-2">
+          {tabs.map(({ key, label, icon: Icon }) => (
+            <li key={key}>
               <button
-                onClick={() => handleTabChange("information-bulletin")}
-                className={`w-full text-left px-6 py-3 flex items-center ${
-                  activeTab === "information-bulletin"
-                    ? "bg-blue-50 text-blue-600 border-l-4 border-blue-600"
-                    : "text-gray-700 hover:bg-gray-100"
+                onClick={() => handleTabChange(key)}
+                className={`w-full text-left px-4 py-2 rounded-full flex items-center gap-2 transition ${
+                  activeTab === key ? "bg-blue-400 text-white" : "text-gray-700 hover:bg-blue-100"
                 }`}
               >
-                Information Bulletin
+                <Icon className="w-5 h-5" />
+                <span>{label}</span>
               </button>
             </li>
-            <li>
-              <button
-                onClick={() => handleTabChange("announcement")}
-                className={`w-full text-left px-6 py-3 flex items-center ${
-                  activeTab === "announcement"
-                    ? "bg-blue-50 text-blue-600 border-l-4 border-blue-600"
-                    : "text-gray-700 hover:bg-gray-100"
-                }`}
-              >
-                Announcement
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => handleTabChange("statutory-body")}
-                className={`w-full text-left px-6 py-3 flex items-center ${
-                  activeTab === "statutory-body"
-                    ? "bg-blue-50 text-blue-600 border-l-4 border-blue-600"
-                    : "text-gray-700 hover:bg-gray-100"
-                }`}
-              >
-                Statutory Body
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => handleTabChange("work-with-us")}
-                className={`w-full text-left px-6 py-3 flex items-center ${
-                  activeTab === "work-with-us"
-                    ? "bg-blue-50 text-blue-600 border-l-4 border-blue-600"
-                    : "text-gray-700 hover:bg-gray-100"
-                }`}
-              >
-                Work With Us
-              </button>
-            </li>
-          </ul>
-        </nav>
-      </div>
+          ))}
+        </ul>
+      </aside>
 
-      <div className="flex-1 p-8">
-        <h2 className="text-2xl font-bold text-gray-800 mb-6">
-          Upload PDF -{" "}
-          {activeTab
-            .split("-")
-            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-            .join(" ")}
-        </h2>
+      <main className="flex-1 bg-white rounded-2xl shadow-xl p-8">
+        <h1 className="text-2xl font-bold text-gray-800 mb-6">Upload PDF  : {activeTabLabel.toUpperCase()}</h1>
 
-        <form
-          onSubmit={handleSubmit}
-          className="bg-white p-6 rounded-lg shadow-md w-full max-w-md space-y-4"
-        >
-          <label
-            htmlFor="name"
-            className="block text-sm font-semibold text-gray-700"
-          >
-            Document Name
-          </label>
-          <input
-            type="text"
-            id="name"
-            className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-            value={name}
-            placeholder="Enter the file name"
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
+        <form onSubmit={handleSubmit} className="space-y-9">
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">Select Section</label>
+            <select
+              className="py-3 px-4 pe-9 block w-full bg-gray-100 border-transparent rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+              value={section}
+              onChange={(e) => setSection(e.target.value)}
+              required
+            >
+              <option value="">Select Section</option>
+              {getSectionOptions().map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+          </div>
 
-          <label
-            htmlFor="section"
-            className="block text-sm font-semibold text-gray-700"
-          >
-            Select Section
-          </label>
-          <select
-            id="section"
-            className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-            value={section}
-            onChange={(e) => setSection(e.target.value)}
-            required
-          >
-            <option value="">Select Section</option>
-            {getSectionOptions().map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">PDF File</label>
+            <input
+              type="file"
+              accept="application/pdf"
+              onChange={(e) => setFile(e.target.files[0])}
+              className="w-full text-slate-500 font-medium text-base bg-gray-100 file:cursor-pointer cursor-pointer file:border-0 file:py-2.5 file:px-4 file:mr-4 file:bg-blue-400 file:hover:bg-orange-400 file:text-white rounded"
+              required
+            />
+          </div>
 
-          <label
-            htmlFor="file"
-            className="block text-sm font-semibold text-gray-700"
-          >
-            Upload PDF
-          </label>
-          <input
-            type="file"
-            id="file"
-            accept="application/pdf"
-            className="w-full px-4 py-2 border border-gray-300 rounded bg-gray-50 focus:outline-none"
-            onChange={(e) => setFile(e.target.files[0])}
-            required
-          />
-
-          <label
-            htmlFor="endDate"
-            className="block text-sm font-semibold text-gray-700"
-          >
-            End Date
-          </label>
-          <input
-            type="date"
-            id="endDate"
-            className="w-full px-4 py-2 border border-gray-300 rounded bg-gray-50 focus:outline-none"
-            value={endDate}
-            onChange={(e) => setEndDate(e.target.value)}
-          />
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">End Date</label>
+            <input
+              type="date"
+              value={endDate}
+              onChange={(e) => setEndDate(e.target.value)}
+              className="w-full bg-gray-100  px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            />
+          </div>
 
           <div className="flex items-center space-x-2">
             <input
@@ -271,34 +222,28 @@ const AdminDashboard = () => {
           </div>
 
           {autoArchive && (
-            <>
-              <label
-                htmlFor="validUntil"
-                className="block text-sm font-semibold text-gray-700"
-              >
-                Archive date
-              </label>
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">Archive Date</label>
               <input
                 type="date"
-                id="validUntil"
-                className="w-full px-4 py-2 border border-gray-300 rounded bg-gray-50 focus:outline-none"
-                value={"2025-04-16T09:30:00.000Z"}
+                value={validUntil}
                 onChange={(e) => setValidUntil(e.target.value)}
                 min={new Date().toISOString().split("T")[0]}
-                // required
+                className="w-full px-4 py-3 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
               />
-            </>
+            </div>
           )}
 
           <button
             type="submit"
             disabled={mutation.isPending}
-            className="w-full py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600 transition-colors"
+            className="w-full py-3 bg-blue-400 text-white font-semibold rounded-lg hover:bg-orange-400 transition"
           >
             {mutation.isPending ? "Uploading..." : "Upload PDF"}
           </button>
         </form>
-      </div>
+      </main>
     </div>
   );
 };

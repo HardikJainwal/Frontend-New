@@ -30,10 +30,7 @@ const EqualOpportunity = () => {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="mb-4"
         >
-          <HeadingText
-            heading="Functions & Responsibilities"
-            headingCN="text-lg md:text-3xl font-bold text-center mb-3"
-          />
+          <h4 className="text-xl md:text-2xl font-bold text-center text-gray-800 border-b-4 border-orange-400 pb-3 shadow-sm w-fit mb-4">Functions & Responsibilities</h4>
         </motion.div>
 
         <motion.ul
@@ -70,10 +67,7 @@ const EqualOpportunity = () => {
         className="mt-5"
       >
         <div className="max-w-5xl mx-auto px-6">
-          <HeadingText
-            heading="EOC Members"
-            headingCN="text-lg md:text-2xl font-semibold text-center"
-          />
+        <h4 className="text-xl md:text-2xl font-bold text-center text-gray-800 border-b-4 border-orange-400 pb-3 shadow-sm w-fit mb-4">EOC Members</h4>
 
           <div className="rounded-xl overflow-hidden border border-gray-200 shadow-sm mt-6 mb-6">
             <table className="w-full text-xs md:text-base text-left text-gray-700">
