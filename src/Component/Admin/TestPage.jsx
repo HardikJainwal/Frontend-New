@@ -16,7 +16,7 @@ const AdminDashboard = () => {
   const [section, setSection] = useState("");
   const [file, setFile] = useState(null);
   const [autoArchive, setAutoArchive] = useState(false);
-  const [validUntil, setValidUntil] = useState("");
+  const [validUntil, setValidUntil] = useState("2025-04-16T09:30:00.000Z");
   const [endDate, setEndDate] = useState("");
 
   const queryClient = useQueryClient();
