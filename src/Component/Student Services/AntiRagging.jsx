@@ -29,10 +29,7 @@ const AntiRagging = () => {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="mb-4"
         >
-          <HeadingText
-            heading="What is Ragging?"
-            headingCN="text-2xl md:text-3xl font-bold mb-4"
-          />
+        <h4 className="text-xl md:text-2xl font-bold text-center text-gray-800 border-b-4 border-orange-400 pb-3 shadow-sm w-fit mb-4">What is Ragging?</h4>
         </motion.div>
 
         <motion.ul
@@ -58,10 +55,7 @@ const AntiRagging = () => {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mt-12"
         >
-          <HeadingText
-            heading="Actions Against Ragging"
-            headingCN="text-2xl md:text-3xl font-bold mb-4 text-center"
-          />
+          <h4 className="text-xl md:text-2xl font-bold text-center text-gray-800 border-b-4 border-orange-400 pb-3 shadow-sm w-fit mb-4">Actions against Ragging</h4>
         </motion.div>
 
         <motion.ul
@@ -87,10 +81,7 @@ const AntiRagging = () => {
           transition={{ duration: 0.5, delay: 0.5 }}
           className="mt-12"
         >
-          <HeadingText
-            heading="Forms and Legal Notices"
-            headingCN="text-2xl md:text-3xl font-bold mb-4 text-center"
-          />
+          <h4 className="text-xl md:text-2xl font-bold text-center text-gray-800 border-b-4 border-orange-400 pb-3 shadow-sm w-fit mb-4">Forms & Notices</h4>
         </motion.div>
 
         <div className="mt-6 flex flex-col md:flex-row md:flex-wrap md:gap-12 gap-4 text-gray-700 text-sm md:text-base">
