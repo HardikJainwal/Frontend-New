@@ -7,12 +7,12 @@ const StatutoryBodiesComponent = () => {
   const [activeSection, setActiveSection] = useState("members");
   const [activeMinutesTab, setActiveMinutesTab] = useState("university court");
 
-  const { data, isLoading } = useNoticesBySection(activeMinutesTab);
+  const { data, isLoading, error } = useNoticesBySection(activeMinutesTab);
 
-  // useEffect(() => {
-  //   console.log("Active Tab:", activeMinutesTab);
-  //   console.log("Data:", data);
-  // }, [activeMinutesTab, data]);
+  // Debug logging
+  console.log("Active Minutes Tab:", activeMinutesTab);
+  console.log("Fetched Data:", data);
+  if (error) console.error("Fetch Error:", error);
 
   const navItems = [
     "NOTICES",
@@ -27,7 +27,7 @@ const StatutoryBodiesComponent = () => {
     { title: "University Court", id: "university court" },
     { title: "Board of Management", id: "board of management" },
     { title: "Academic Council", id: "academic council" },
-    { title: "Finance Committee", id: "finance committee" },
+    { title: "Finance Committee", id: "finance comittee" },
   ];
 
   const minutes = {
@@ -46,7 +46,7 @@ const StatutoryBodiesComponent = () => {
       date: "10-Feb-2024",
       id: "min-academic",
     },
-    "finance committee": {
+    "finance comittee": {
       title: "Finance Committee",
       date: "05-Jan-2024",
       id: "min-finance",
@@ -54,6 +54,12 @@ const StatutoryBodiesComponent = () => {
   };
 
   if (isLoading) return <OrangeLoader />;
+  if (error)
+    return (
+      <div className="p-6 text-red-600">
+        Error loading notices: {error.message}
+      </div>
+    );
 
   return (
     <div className="max-w-6xl mx-auto p-6 bg-white rounded-lg shadow-md">
@@ -180,13 +186,9 @@ const StatutoryBodiesComponent = () => {
                 <p className="mb-4">
                   Date: {minutes[activeMinutesTab]?.date || "N/A"}
                 </p>
-                <a
-                  href={`#${minutes[activeMinutesTab]?.id || ""}`}
-                  className="text-blue-600 hover:underline flex items-center"
-                >
-                  <span className="mr-2">📝</span>
-                  Download Minutes (PDF)
-                </a>
+                <p className="text-red-600">
+                  No PDFs available for this section.
+                </p>
               </div>
             )}
           </>

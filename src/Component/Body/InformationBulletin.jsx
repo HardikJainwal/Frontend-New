@@ -16,7 +16,7 @@ const InformationBulletin = () => {
           { key: "admission", index: 0 },
           { key: "students", index: 1 },
           { key: "important links", index: 2 },
-          { key: "alerts & circulars", index: 3 },
+          { key: "alerts and circulars", index: 3 },
         ];
 
         const requests = sections.map((section) =>

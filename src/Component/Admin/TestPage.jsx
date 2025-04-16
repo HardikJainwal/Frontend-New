@@ -1,17 +1,20 @@
 import { useState } from "react";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import withAuthProtection from "./withAuthProtection";
 import { uploadPdf } from "../../utils/apiservice";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
 
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState("information-bulletin");
   const [name, setName] = useState("");
   const [section, setSection] = useState("");
   const [file, setFile] = useState(null);
+  const [autoArchive, setAutoArchive] = useState(false);
+  const [validUntil, setValidUntil] = useState("");
+  const [endDate, setEndDate] = useState("");
 
-  // Define dropdown options based on active tab
+  const queryClient = useQueryClient();
+
   const getSectionOptions = () => {
     switch (activeTab) {
       case "information-bulletin":
@@ -19,8 +22,7 @@ const AdminDashboard = () => {
           { value: "admission", label: "Admission" },
           { value: "students", label: "Students" },
           { value: "important links", label: "Important Links" },
-          { value: "alerts and circular ", label: "Alerts and circular " },
-          
+          { value: "alerts and circulars", label: "Alerts and circulars" },
         ];
       case "announcement":
         return [{ value: "announcement", label: "Announcement" }];
@@ -30,7 +32,7 @@ const AdminDashboard = () => {
           { value: "university court", label: "University Court" },
           { value: "board of management", label: "Board of Management" },
           { value: "academic council", label: "Academic Council" },
-          { value: "finance comittee", label: "Finance Committee" }
+          { value: "finance comittee", label: "Finance Committee" },
         ];
       case "work-with-us":
         return [
@@ -38,36 +40,55 @@ const AdminDashboard = () => {
           { value: "non academic positions", label: "Non Academic Positions" },
           { value: "short term positions", label: "Short Term Positions" },
           { value: "results", label: "Results" },
-          { value: "recruitments and notice", label: "Recruitments and Notice" }
+          {
+            value: "recruitments and notice",
+            label: "Recruitments and Notice",
+          },
         ];
       default:
         return [];
     }
   };
 
-  // Reset form when changing tabs
   const handleTabChange = (tab) => {
     setActiveTab(tab);
     setSection("");
+    setName("");
+    setFile(null);
+    setAutoArchive(false);
+    setValidUntil("");
+    setEndDate("");
   };
 
   const mutation = useMutation({
     mutationFn: (formData) => {
-      for (let pair of formData.entries()) {
-        console.log(pair[0] + ": " + pair[1]);
-      }
       return uploadPdf(formData);
     },
-    onSuccess: ({ data }) => {
-      toast.success("Upload successful!");
-      console.log(data);
+    onSuccess: (response) => {
+      const data = response?.data || response;
+      if (!data?.fileName || !data?.section) {
+        toast.error(
+          "Upload succeeded but response is incomplete. PDF may not appear."
+        );
+        queryClient.invalidateQueries({ queryKey: ["notices", section] });
+        return;
+      }
+      toast.success(`Uploaded ${data.fileName} to ${data.section}`);
+      queryClient.invalidateQueries({ queryKey: ["notices", data.section] });
+      queryClient.invalidateQueries({ queryKey: ["notices", section] });
       setName("");
       setSection("");
       setFile(null);
+      setAutoArchive(false);
+      setValidUntil("");
+      setEndDate("");
     },
     onError: (error) => {
-      console.error("Upload failed:", error?.response?.data || error.message);
-      toast.error(error?.response?.data?.message || "Upload failed.");
+      const errorMessage =
+        error?.response?.data?.message ||
+        error.message ||
+        "Upload failed. Please try again.";
+      toast.error(errorMessage);
     },
   });
 
@@ -85,12 +106,20 @@ const AdminDashboard = () => {
     formData.append("pdf", file);
     formData.append("category", activeTab);
 
+    if (autoArchive && validUntil) {
+      formData.append("validUntil", new Date(validUntil).toISOString());
+      formData.append("autoArchive", "true");
+    }
+
+    if (endDate) {
+      formData.append("endDate", new Date(endDate).toISOString());
+    }
+
     mutation.mutate(formData);
   };
 
   return (
     <div className="min-h-screen bg-gray-50 flex">
-      {/* Sidebar */}
       <div className="w-64 bg-white shadow-md min-h-screen">
         <div className="p-4 border-b">
           <h2 className="text-xl font-semibold text-gray-800">Admin Panel</h2>
@@ -149,27 +178,43 @@ const AdminDashboard = () => {
         </nav>
       </div>
 
-      {/* Main Content */}
       <div className="flex-1 p-8">
         <h2 className="text-2xl font-bold text-gray-800 mb-6">
-          Upload PDF - {activeTab.split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ")}
+          Upload PDF -{" "}
+          {activeTab
+            .split("-")
+            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(" ")}
         </h2>
 
-        {/* Upload Form */}
         <form
           onSubmit={handleSubmit}
           className="bg-white p-6 rounded-lg shadow-md w-full max-w-md space-y-4"
         >
+          <label
+            htmlFor="name"
+            className="block text-sm font-semibold text-gray-700"
+          >
+            Document Name
+          </label>
           <input
             type="text"
-            placeholder="Document Name"
+            id="name"
             className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
             value={name}
+            placeholder="Enter the file name"
             onChange={(e) => setName(e.target.value)}
             required
           />
 
+          <label
+            htmlFor="section"
+            className="block text-sm font-semibold text-gray-700"
+          >
+            Select Section
+          </label>
           <select
+            id="section"
             className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
             value={section}
             onChange={(e) => setSection(e.target.value)}
@@ -183,13 +228,68 @@ const AdminDashboard = () => {
             ))}
           </select>
 
+          <label
+            htmlFor="file"
+            className="block text-sm font-semibold text-gray-700"
+          >
+            Upload PDF
+          </label>
           <input
             type="file"
+            id="file"
             accept="application/pdf"
             className="w-full px-4 py-2 border border-gray-300 rounded bg-gray-50 focus:outline-none"
             onChange={(e) => setFile(e.target.files[0])}
             required
           />
+
+          <label
+            htmlFor="endDate"
+            className="block text-sm font-semibold text-gray-700"
+          >
+            End Date
+          </label>
+          <input
+            type="date"
+            id="endDate"
+            className="w-full px-4 py-2 border border-gray-300 rounded bg-gray-50 focus:outline-none"
+            value={endDate}
+            onChange={(e) => setEndDate(e.target.value)}
+            required
+          />
+
+          <div className="flex items-center space-x-2">
+            <input
+              type="checkbox"
+              id="autoArchive"
+              checked={autoArchive}
+              onChange={(e) => setAutoArchive(e.target.checked)}
+              className="h-5 w-5 text-blue-600 border-gray-300 rounded-sm focus:ring-2 focus:ring-blue-500"
+            />
+            <label htmlFor="autoArchive" className="text-sm text-gray-700">
+              Auto Archive
+            </label>
+          </div>
+
+          {autoArchive && (
+            <>
+              <label
+                htmlFor="validUntil"
+                className="block text-sm font-semibold text-gray-700"
+              >
+                Archive date
+              </label>
+              <input
+                type="date"
+                id="validUntil"
+                className="w-full px-4 py-2 border border-gray-300 rounded bg-gray-50 focus:outline-none"
+                value={validUntil}
+                onChange={(e) => setValidUntil(e.target.value)}
+                min={new Date().toISOString().split("T")[0]}
+                required
+              />
+            </>
+          )}
 
           <button
             type="submit"

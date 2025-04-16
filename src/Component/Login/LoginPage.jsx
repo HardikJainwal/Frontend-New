@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 
 import loginimage from "../../assets/Image8.png";
 import LoginSuccessPopup from "./SucessPopUp";
 import { login } from "../../utils/apiservice";
-import { showErrorToast, showSuccessToast } from "../../utils/toasts";
+import { getFacutlyByEmail } from "../../utils/facultyApi";
+import { showErrorToast } from "../../utils/toasts";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -13,23 +14,15 @@ const LoginPage = () => {
   const [loginSuccess, setLoginSuccess] = useState(false);
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   const token = sessionStorage.getItem("token");
-  //   const role = sessionStorage.getItem("currentRole");
-
-  //   if (token && role) {
-  //     showSuccessToast("You are already logged in!");
-  //     setTimeout(() => navigate(getRedirectPath()), 1500);
-  //   }
-  // }, []);
-
   const mutation = useMutation({
     mutationFn: () => login({ email, password, emailFlag: true }),
-    onSuccess: () => {
+    onSuccess: async () => {
+      const facultyData = await getFacutlyByEmail(email);
+      sessionStorage.setItem("facultyId", facultyData._id);
+      sessionStorage.setItem("email", email); // optional
       setLoginSuccess(true);
     },
     onError: (error) => {
-      console.error("Login error:", error);
       showErrorToast(
         error?.response?.data?.message || "Login failed. Please try again."
       );
@@ -43,9 +36,11 @@ const LoginPage = () => {
 
   const getRedirectPath = () => {
     const role = sessionStorage.getItem("currentRole");
+    const storedFacultyId = sessionStorage.getItem("facultyId");
     switch (role) {
       case "Test":
       case "Faculty":
+        return `/faculty/${storedFacultyId}`;
       case "Training & Placement Officer":
       case "Executive Engineer":
       case "Deputy Registrar":
@@ -57,7 +52,8 @@ const LoginPage = () => {
   };
 
   const handleRedirect = () => {
-    navigate(getRedirectPath());
+    const redirectPath = getRedirectPath();
+    navigate(redirectPath);
   };
 
   return (
@@ -68,6 +64,7 @@ const LoginPage = () => {
           onComplete={handleRedirect}
         />
       )}
+
       <div className="flex h-screen">
         <div className="hidden md:flex w-3/5 bg-gray-200">
           <img
@@ -123,6 +120,18 @@ const LoginPage = () => {
               >
                 {mutation.isPending ? "Logging in..." : "Login"}
               </button>
+
+              {sessionStorage.getItem("token") &&
+                sessionStorage.getItem("email") && (
+                  <div className="w-full flex justify-center mt-6">
+                    <button
+                      onClick={handleRedirect}
+                      className="bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold py-2 px-6 rounded-full shadow-lg hover:scale-105 transition-transform duration-200"
+                    >
+                      🚀 Go to Profile
+                    </button>
+                  </div>
+                )}
             </form>
           </div>
         </div>
