@@ -6,7 +6,7 @@ const LoginSuccessPopup = ({ message, redirectPath, onComplete }) => {
 
   useEffect(() => {
     const startTime = Date.now();
-    const duration = 3000; // 3 seconds total
+    const duration = 1500;
 
     const animate = () => {
       const currentTime = Date.now();
