@@ -10,7 +10,7 @@ const AdminDashboard = () => {
   const [section, setSection] = useState("");
   const [file, setFile] = useState(null);
   const [autoArchive, setAutoArchive] = useState(false);
-  const [validUntil, setValidUntil] = useState("");
+  const [validUntil, setValidUntil] = useState("2025-04-16T09:30:00.000Z");
   const [endDate, setEndDate] = useState("");
 
   const queryClient = useQueryClient();
@@ -255,7 +255,6 @@ const AdminDashboard = () => {
             className="w-full px-4 py-2 border border-gray-300 rounded bg-gray-50 focus:outline-none"
             value={endDate}
             onChange={(e) => setEndDate(e.target.value)}
-            required
           />
 
           <div className="flex items-center space-x-2">
@@ -283,10 +282,10 @@ const AdminDashboard = () => {
                 type="date"
                 id="validUntil"
                 className="w-full px-4 py-2 border border-gray-300 rounded bg-gray-50 focus:outline-none"
-                value={validUntil}
+                value={"2025-04-16T09:30:00.000Z"}
                 onChange={(e) => setValidUntil(e.target.value)}
                 min={new Date().toISOString().split("T")[0]}
-                required
+                // required
               />
             </>
           )}
