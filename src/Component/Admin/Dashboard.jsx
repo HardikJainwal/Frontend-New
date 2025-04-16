@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useMutation } from "@tanstack/react-query";
+import { useState, useRef } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import withAuthProtection from "./withAuthProtection";
 import { uploadPdf } from "../../utils/apiservice";
 import toast from "react-hot-toast";
@@ -8,24 +8,39 @@ const Dashboard = () => {
   const [name, setName] = useState("");
   const [section, setSection] = useState("");
   const [file, setFile] = useState(null);
+  const fileInputRef = useRef(null);
+  const queryClient = useQueryClient();
 
   const mutation = useMutation({
-    mutationFn: (formData)=>{
+    mutationFn: (formData) => {
       for (let pair of formData.entries()) {
         console.log(pair[0] + ": " + pair[1]);
       }
-      return uploadPdf(formData)
+      return uploadPdf(formData);
     },
-    onSuccess: ({data}) => {
-      toast.success("Upload successful!");
-      console.log(data);
+    onSuccess: ({ data }) => {
+      console.log("Upload response:", data);
+      toast.success("Upload successful! It may take a moment to appear.");
       setName("");
       setSection("");
       setFile(null);
+      fileInputRef.current.value = "";
+      // Invalidate query for Alerts and Circular
+      queryClient.invalidateQueries(["notices", section], {
+        onSuccess: () => console.log("Query invalidated for section:", section),
+      });
     },
     onError: (error) => {
-      console.error("Upload failed:", error?.response?.data || error.message);
-      toast.error(error?.response?.data?.message || "Upload failed.");
+      console.error("Upload failed:", {
+        message: error.message,
+        status: error.response?.status,
+        data: error.response?.data,
+      });
+      const errorMessage =
+        error.response?.data?.message ||
+        error.message ||
+        "An error occurred while uploading the PDF.";
+      toast.error(errorMessage);
     },
   });
 
@@ -37,13 +52,17 @@ const Dashboard = () => {
       return;
     }
 
+    if (file.type !== "application/pdf") {
+      toast.error("Please upload a valid PDF file!");
+      return;
+    }
+
     const formData = new FormData();
-    
     formData.append("fileName", name);
     formData.append("section", section);
     formData.append("pdf", file);
 
-    
+    console.log("FormData entries:", [...formData.entries()]);
     mutation.mutate(formData);
   };
 
@@ -74,13 +93,13 @@ const Dashboard = () => {
           <option value="admission">Admission</option>
           <option value="students">Students</option>
           <option value="important links">Important Links</option>
-          <option value="alerts">Alerts</option>
-          <option value="circulars etc">Circulars etc</option>
+          <option value="alerts and circular">Alerts and Circular</option>
         </select>
 
         <input
           type="file"
           accept="application/pdf"
+          ref={fileInputRef}
           className="w-full px-4 py-2 border border-gray-300 rounded bg-gray-50 focus:outline-none"
           onChange={(e) => setFile(e.target.files[0])}
           required

@@ -20,7 +20,7 @@ const AdminDashboard = () => {
           { value: "admission", label: "Admission" },
           { value: "students", label: "Students" },
           { value: "important links", label: "Important Links" },
-          { value: "alerts and circular", label: "Alerts and circular" },
+          { value: "alerts and circulars", label: "Alerts and circulars" },
         ];
       case "announcement":
         return [{ value: "announcement", label: "Announcement" }];
