@@ -49,16 +49,16 @@ const CampusPage = () => {
       content: <CampusDescription {...data} />,
     },
     campus_message: {
-      title: "Campus Message",
+      title: "Message of Campus Director",
       content: (
         <div>
           <h2 className="text-2xl font-semibold text-blue-600 mb-4">
-            Campus Message
+            Message of Campus Director
           </h2>
           <p className="text-base leading-7">{data.campus_message}</p>
         </div>
       ),
-    },
+    },    
     courses: {
       title: "Courses Offered",
       content: <CampusCourses {...data} />,

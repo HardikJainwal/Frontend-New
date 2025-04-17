@@ -80,11 +80,11 @@ const sideNavItems = [
 const admins = [
     {
         id: 1,
-        name: "Shri Vinay Kumar Saxena",
+        name: "Shri Vinai Kumar Saxena",
         position: "Hon'ble Chancellor & Lt. Governor",
         image: DG,
         description:
-            "Shri Vinay Kumar Saxena serves as the Hon'ble Chancellor & Lt. Governor, contributing to the institution's growth and excellence. With a distinguished career in governance and public service, he plays a vital role in shaping policies that drive academic and infrastructural development at DSEU. His leadership ensures that the university remains committed to skill-based education and industry-aligned programs.",
+            "Shri Vinai Kumar Saxena serves as the Hon'ble Chancellor & Lt. Governor, contributing to the institution's growth and excellence. With a distinguished career in governance and public service, he plays a vital role in shaping policies that drive academic and infrastructural development at DSEU. His leadership ensures that the university remains committed to skill-based education and industry-aligned programs.",
     },
     {
         id: 2,

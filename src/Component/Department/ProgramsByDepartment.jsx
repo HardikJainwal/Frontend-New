@@ -7,10 +7,10 @@ import { getProgramByDepartment } from "../../utils/apiservice";
 
 import { QUERY_KEYS } from "../../utils/queryKeys";
 
-const categories = ["UG", "Diploma", "PG"];
+const categories = ["Diploma", "UG", "PG"];
 
 const ProgramsByDepartment = ({ deptId }) => {
-  const [activeCategory, setActiveCategory] = useState("UG");
+  const [activeCategory, setActiveCategory] = useState("Diploma");
   const navigate = useNavigate();
 
   console.log(deptId);

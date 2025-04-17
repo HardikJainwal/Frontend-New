@@ -15,12 +15,11 @@ const Ncc = () => {
           service, and making the youth socially responsible citizens.
         </p>
         <p className="mt-4 text-center md:text-left">
-          At our university, NCC is an integral part of the campus life,
-          offering cadets a unique opportunity to serve the nation while
-          enhancing their personal development. We are proud to host the NCC at
-          the GB Pant Okhla campus, where cadets actively engage in a variety of
-          activities that promote teamwork, leadership, and a sense of social
-          responsibility.
+          At our university, NCC is an integral part of campus life, offering
+          cadets a unique opportunity to serve the nation while enhancing their
+          personal development. We are proud to host the NCC across various DSEU
+          campuses, where cadets actively engage in a variety of activities that
+          promote teamwork, leadership, and a sense of social responsibility.
         </p>
       </div>
     ),

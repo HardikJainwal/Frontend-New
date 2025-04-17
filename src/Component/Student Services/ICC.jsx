@@ -9,13 +9,13 @@ const ICC = () => {
     <div className="w-full">
       <div className="max-w-5xl mx-auto px-6 py-12 text-gray-800">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
           <HeadingText
-            heading="Internal Complaints Committee (ICC)"
+            heading="Internal Complaint Committee (ICC)"
             headingCN="text-2xl md:text-4xl font-bold text-center mb-3"
           />
           <p className="text-xs md:text-lg text-gray-600 mt-7 text-justify leading-relaxed">

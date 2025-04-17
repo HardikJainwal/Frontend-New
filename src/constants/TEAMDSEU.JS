@@ -135,7 +135,7 @@ const members = [
     id: 12,
     name: "Prof. (Dr.) Shruti Tripathi",
     src: shrutiTripathi,
-    designation: "Faculty of Converging Science and Technology SkillsFaculty of Business, Finance and Managerial Skills",
+    designation: "Faculty of Business, Finance and Managerial Skills",
     category: "Dean",
   },
   {

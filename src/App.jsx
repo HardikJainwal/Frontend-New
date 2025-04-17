@@ -92,6 +92,8 @@ import NotFound from "./Component/NotFound/page";
 import UserLayout from "./Component/Layouts/UserLayout";
 import AdminLayout from "./Component/Layouts/AdminLayout";
 import FacultyById from "./Component/Department/FacultyById";
+import HistoryDSEU from "./Component/NavItems/HistoryDSEU";
+import Scholarship from "./Component/Student Services/Scholarship";
 
 function App() {
   return (
@@ -159,6 +161,7 @@ function App() {
             <Route path="/about-us/About-the-University" element={<About />} />
             <Route path="/about-us/Vision-and-Mission" element={<VissionMission />} />
             <Route path="/information-bulletin" element={<InformationBulletin />} />
+            <Route path="/about-us/history" element={<HistoryDSEU />} />
             <Route path="/UGC-Guidelines" element={<UnderConstruction />} />
 
             {/* News */}
@@ -189,9 +192,7 @@ function App() {
             <Route path="/amenities/Equal-Opportunity" element={<EqualOpportunity />} />
             <Route path="/amenities/ICC" element={<ICC />} />
             <Route path="/amenities/Anti-Ragging" element={<AntiRagging />} />
-
-
-
+            <Route path="/amenities/Scholarship" element={<Scholarship />} />
 
             {/* Admin routes */}
             <Route path="/admin-login" element={<AdminLogin />} />

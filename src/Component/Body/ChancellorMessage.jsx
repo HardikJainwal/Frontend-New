@@ -9,7 +9,7 @@ const ChancellorMessage = () => {
         Welcome to DSEU
       </h2>
       <p className="text-orange-400 text-lg md:text-xl font-medium mb-10 text-center md:text-left">
-        — A Hub of Possibility, Purpose, and Progress
+        — A Hub of Possibility, Purpose and Progress
       </p>
 
       {/* Profile Section */}
@@ -23,7 +23,7 @@ const ChancellorMessage = () => {
         </div>
         <div className="text-center md:text-left">
           <h3 className="text-2xl font-semibold text-gray-900 mb-1">
-            Shri Vinay Kumar Saxena
+            Shri Vinai Kumar Saxena
           </h3>
           <p className="text-blue-600 font-medium text-sm">
             Chancellor

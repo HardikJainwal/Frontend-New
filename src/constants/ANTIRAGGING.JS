@@ -1,6 +1,6 @@
 const antiRagging = {
   introText:
-    "Our college strictly prohibits ragging. The Anti-Ragging Cell ensures a safe and welcoming environment on campus by actively monitoring student interactions, conducting awareness programs, and addressing grievances promptly. We are committed to fostering a culture of mutual respect, inclusivity, and support, where every student can learn and grow without fear or intimidation.",
+    "The Anti-Ragging Cell ensures a safe and welcoming environment on campus by actively monitoring student interactions, conducting awareness programs, and addressing grievances promptly. We are committed to fostering a culture of mutual respect, inclusivity, and support, where every student can learn and grow without fear or intimidation.",
   whatIsRagging: [
     "Ragging is any act of physical or mental abuse targeted at a student, often under the guise of 'introduction' or 'interaction' by seniors.",
     "It includes behavior that causes embarrassment, fear, or humiliation, such as name-calling, forced tasks, or verbal harassment.",

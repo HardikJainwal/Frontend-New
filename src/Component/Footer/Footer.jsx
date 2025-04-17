@@ -9,6 +9,8 @@ import {
   faTwitter,
   faLinkedin,
   faFacebook,
+  faInstagram,
+  faXTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 
 import dseulogo from "../../assets/dseulogofullnew.svg";
@@ -42,7 +44,7 @@ const Footer = () => {
               style={{ color: "#005CB9" }}
             />
             <span className="text-black">
-              G/Floor, Delhi Skill and Entrepreneurship University,
+              Delhi Skill and Entrepreneurship University,
               <br />
               Sector-9, Dwarka, New Delhi- 110077
             </span>
@@ -80,7 +82,7 @@ const Footer = () => {
           <ul className="space-y-2">
             <li>
               <a href="/Courses" className="hover:text-blue-600">
-                Courses
+                Programs
               </a>
             </li>
             <li>
@@ -95,11 +97,14 @@ const Footer = () => {
             </li>
             <li>
               <a href="/recruitment" className="hover:text-blue-600">
-                Recuirtment
+                Recruitment
               </a>
             </li>
             <li>
-              <a href="/administration/administrative" className="hover:text-blue-600">
+              <a
+                href="/administration/administrative"
+                className="hover:text-blue-600"
+              >
                 Administrative
               </a>
             </li>
@@ -118,7 +123,10 @@ const Footer = () => {
           </h3>
           <ul className="space-y-2">
             <li>
-              <a href="/about-us/About-the-University" className="hover:text-blue-600">
+              <a
+                href="/about-us/About-the-University"
+                className="hover:text-blue-600"
+              >
                 About University
               </a>
             </li>
@@ -133,8 +141,11 @@ const Footer = () => {
               </a>
             </li>
             <li>
-              <a href="/about-us/Vision-and-Mission" className="hover:text-blue-600">
-                Vission & Mission
+              <a
+                href="/about-us/Vision-and-Mission"
+                className="hover:text-blue-600"
+              >
+                Vision & Mission
               </a>
             </li>
             <li>
@@ -147,22 +158,48 @@ const Footer = () => {
                 Connect with Us
               </a>
               <div className="flex space-x-3">
-                <a href="https://x.com/dseu_official?lang=en" aria-label="Twitter" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://x.com/dseu_official?lang=en"
+                  aria-label="Twitter"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <FontAwesomeIcon
-                    icon={faTwitter}
-                    style={{ color: "#1DA1F2", fontSize: "20px" }}
+                    icon={faXTwitter}
+                    style={{ color: "#000000", fontSize: "20px" }}
                   />
                 </a>
-                <a href="https://www.linkedin.com/school/delhi-skill-and-entrepreneurship-university/?originalSubdomain=in" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://www.linkedin.com/school/delhi-skill-and-entrepreneurship-university/?originalSubdomain=in"
+                  aria-label="LinkedIn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <FontAwesomeIcon
                     icon={faLinkedin}
-                    style={{ color: "#0077B5", fontSize: "20px" }}
+                    style={{ color: "#0A66C2", fontSize: "20px" }}
                   />
                 </a>
-                <a href="https://www.facebook.com/dseuofficial/" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://www.facebook.com/dseuofficial/"
+                  aria-label="Facebook"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <FontAwesomeIcon
                     icon={faFacebook}
-                    style={{ color: "#4267B2", fontSize: "20px" }}
+                    style={{ color: "#1877F2", fontSize: "20px" }}
+                  />
+                </a>
+                <a
+                  href="https://www.instagram.com/dseu_official"
+                  aria-label="Instagram"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FontAwesomeIcon
+                    icon={faInstagram}
+                    style={{ color: "#E1306C", fontSize: "20px" }}
                   />
                 </a>
               </div>

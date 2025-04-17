@@ -6,7 +6,7 @@ import VCsir from "../../assets/VCsir.jpg";
 const leaders = [
   {
     title: "Hon'ble Chancellor's Desk",
-    name: "Shri Vinay Kumar Saxena",
+    name: "Shri Vinai Kumar Saxena",
     image: DG,
     message:
       "It is with immense pleasure that I extend my heartfelt greetings to both our new and returning students. As the gates of DSEU swing open to usher you into our halls of knowledge, innovation, and growth, I am filled with excitement for the journey that lies ahead.",

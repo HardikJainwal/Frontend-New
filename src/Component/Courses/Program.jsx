@@ -65,7 +65,8 @@ const Program = () => {
             {data?.mode || "-"}
           </span>
         </div>
-        <div className="flex flex-col sm:flex-row justify-between py-3 sm:py-4">
+        {/* Remvoe karne ki bol diya tha  */}
+        {/*   <div className="flex flex-col sm:flex-row justify-between py-3 sm:py-4">
           <span className="text-base sm:text-lg font-semibold text-blue-600">
             Exit Options
           </span>
@@ -74,7 +75,7 @@ const Program = () => {
               <p key={idx}>{option}</p>
             )) || "-"}
           </div>
-        </div>
+        </div> */}
       </section>
 
       <section className="w-full flex flex-col items-center text-center">

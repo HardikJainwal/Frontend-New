@@ -9,7 +9,7 @@ const ViceChancellorMessage = () => {
         Welcome to DSEU
       </h2>
       <p className="text-orange-400 text-lg md:text-xl font-medium mb-10 text-center md:text-left">
-        — A Hub of Possibility, Purpose, and Progress
+        — A Hub of Possibility, Purpose and Progress
       </p>
 
       {/* Profile Section */}
@@ -32,10 +32,10 @@ const ViceChancellorMessage = () => {
       </div>
 
       {/* Message Section */}
-      <h4 className="text-[1.5rem] md:text-2xl font-semibold text-gray-700 mb-2 text-center md:text-left">
+      <h4 className="text-[1.3rem] whitespace-nowrap md:text-2xl font-semibold text-gray-700 mb-2 text-center md:text-left">
         Message from the Vice Chancellor
       </h4>
-      <div className="w-[403px] h-1 bg-orange-400 rounded-full mb-8 md:mb-6 mx-auto md:mx-0 animate-pulse" />
+      <div className="w-[330px] h-1 bg-orange-400 rounded-full mb-8 md:mb-6 mx-auto md:mx-0 animate-pulse" />
 
       <div className="space-y-5 text-[16px] md:text-[17px] text-gray-800 leading-relaxed text-justify">
         <p>

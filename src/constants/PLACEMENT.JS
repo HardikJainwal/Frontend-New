@@ -6,7 +6,7 @@ const invitationData = {
     content: [
         "Delhi Skill and Entrepreneurship University (DSEU) offers a diverse range of programs, including Bachelor of Technology (B.Tech) degrees in Mechanical Engineering, Computer Engineering, Mechatronics Engineering, and Electronics Engineering. Additionally, DSEU provides diploma programs in Computer Engineering, Mechanical Engineering, Chemical Engineering, Tool and Die, Electronics Engineering, and Production Engineering. The university also features Bachelor of Business Administration (BBA) programs across various specializations, as well as Bachelor of Computer Applications (BCA) and Master of Computer Applications (MCA) courses.",
         "DSEU students have consistently been recruited by leading international conglomerates and Indian corporations, proving to be valuable assets to their respective organizations. We are confident that our current students will maintain this high standard of performance and contribute significantly to the success of their employers.",
-        "We deeply appreciate our partnerships with recruiters, alumni, and supporters of Delhi Skill and Entrepreneurship University and are dedicated to providing a productive and positive recruitment experience. We cordially invite recruiting organizations to connect with and recruit our talented students."
+        "We deeply appreciate our partnerships with recruiters, alumni, and supporters of Delhi Skill and Entrepreneurship University and are dedicated to providing a productive and positive recruitment experience. We cordially invite recruiting organizations to connect with us and recruit our talented students."
     ]
 }
 

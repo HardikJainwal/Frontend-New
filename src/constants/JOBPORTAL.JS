@@ -21,7 +21,7 @@ const jobPortalTabs = [
     },
     {
         id: "recruitments and notice",
-        label: "Recruitments and Notice",
+        label: "Notice",
         empty: "No recruitments or notices found.",
     },
 ];
