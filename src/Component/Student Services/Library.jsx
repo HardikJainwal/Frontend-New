@@ -5,8 +5,8 @@ import { ArrowRightCircle, ChevronLeft, ChevronRight } from "lucide-react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+import LibraryBanner from '../../assets/Library.jpg'
 import {
-  
   LibraryImage3,
   LibraryImage4,
   LibraryImage5,
@@ -58,7 +58,7 @@ const Library = () => {
   return (
     <div className="w-full">
       <img
-        src="/src/assets/Library.jpg"
+        src={LibraryBanner}
         alt="Library"
         className="w-full h-[300px] object-cover object-center"
       />
