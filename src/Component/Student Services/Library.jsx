@@ -5,7 +5,7 @@ import { ArrowRightCircle, ChevronLeft, ChevronRight } from "lucide-react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import LibraryBanner from '../../assets/Library.jpg'
+import LibraryBanner from "../../assets/Library.jpg";
 import {
   LibraryImage3,
   LibraryImage4,
@@ -35,12 +35,7 @@ const PrevArrow = ({ onClick }) => (
 );
 
 const Library = () => {
-  const images = [
-
-    LibraryImage3,
-    LibraryImage4,
-    LibraryImage5,
-  ];
+  const images = [LibraryImage3, LibraryImage4, LibraryImage5];
 
   const sliderSettings = {
     dots: true,
@@ -91,8 +86,11 @@ const Library = () => {
           className="mt-6 space-y-3 text-gray-600 text-base leading-relaxed"
         >
           {List.content.map((item, index) => (
-            <li key={index} className="flex items-start gap-3 list-none">
-              <ArrowRightCircle className="text-blue-500 w-5 h-5 mt-1" />
+            <li
+              key={index}
+              className="flex items-start gap-3 list-none text-justify"
+            >
+              <ArrowRightCircle className="text-blue-500 min-w-6 min-h-6 mt-1" />
               <span>
                 {item}
                 {index === List.content.length - 1 && (
@@ -130,7 +128,7 @@ const Library = () => {
                   <img
                     src={src}
                     alt={`Library ${index + 1}`}
-                    className="w-full h-[500px] object-cover rounded-xl shadow-md"
+                    className="h-[500px] w-full object-cover rounded-xl shadow-md"
                   />
                 </div>
               ))}
