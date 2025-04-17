@@ -3,12 +3,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import withAuthProtection from "./withAuthProtection";
 import { uploadPdf } from "../../utils/apiservice";
 import toast from "react-hot-toast";
-import {
-  FileText,
-  Megaphone,
-  Users,
-  Briefcase,
-} from "lucide-react";
+import { FileText, Megaphone, Users, Briefcase } from "lucide-react";
 
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState("information-bulletin");
@@ -46,7 +41,10 @@ const AdminDashboard = () => {
           { value: "non academic positions", label: "Non Academic Positions" },
           { value: "short term positions", label: "Short Term Positions" },
           { value: "results", label: "Results" },
-          { value: "recruitments and notice", label: "Recruitments and Notice" },
+          {
+            value: "recruitments and notice",
+            label: "Recruitments and Notice",
+          },
         ];
       default:
         return [];
@@ -67,12 +65,9 @@ const AdminDashboard = () => {
     mutationFn: (formData) => uploadPdf(formData),
     onSuccess: (response) => {
       const data = response?.data || response;
-      if (!data?.fileName || !data?.section) {
-        toast.error("Upload succeeded but response is incomplete. PDF may not appear.");
-        queryClient.invalidateQueries({ queryKey: ["notices", section] });
-        return;
-      }
-      toast.success(`Uploaded ${data.fileName} to ${data.section}`);
+      console.log("work ?");
+      
+      toast.success(`Uploaded ${data.fileName}`);
       queryClient.invalidateQueries({ queryKey: ["notices", data.section] });
       queryClient.invalidateQueries({ queryKey: ["notices", section] });
       setName("");
@@ -142,10 +137,8 @@ const AdminDashboard = () => {
 
   const activeTabLabel = tabs.find((tab) => tab.key === activeTab)?.label || "";
 
-
   return (
     <div className="min-h-screen bg-gray-100 p-4 sm:p-6 lg:p-10 flex gap-6">
-
       <aside className="w-72 bg-white shadow-lg rounded-2xl p-6 space-y-4">
         <h2 className="text-2xl font-bold text-gray-700">Dashboard</h2>
         <ul className="space-y-2">
@@ -154,7 +147,9 @@ const AdminDashboard = () => {
               <button
                 onClick={() => handleTabChange(key)}
                 className={`w-full text-left px-4 py-2 rounded-full flex items-center gap-2 transition ${
-                  activeTab === key ? "bg-blue-400 text-white" : "text-gray-700 hover:bg-blue-100"
+                  activeTab === key
+                    ? "bg-blue-400 text-white"
+                    : "text-gray-700 hover:bg-blue-100"
                 }`}
               >
                 <Icon className="w-5 h-5" />
@@ -166,11 +161,27 @@ const AdminDashboard = () => {
       </aside>
 
       <main className="flex-1 bg-white rounded-2xl shadow-xl p-8">
-        <h1 className="text-2xl font-bold text-gray-800 mb-6">Upload PDF  : {activeTabLabel.toUpperCase()}</h1>
+        <h1 className="text-2xl font-bold text-gray-800 mb-6">
+          Upload PDF : {activeTabLabel.toUpperCase()}
+        </h1>
 
         <form onSubmit={handleSubmit} className="space-y-9">
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">Select Section</label>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
+              Enter the file name
+            </label>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="w-full bg-gray-100  px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
+              Select Section
+            </label>
             <select
               className="py-3 px-4 pe-9 block w-full bg-gray-100 border-transparent rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
               value={section}
@@ -187,7 +198,9 @@ const AdminDashboard = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">PDF File</label>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
+              PDF File
+            </label>
             <input
               type="file"
               accept="application/pdf"
@@ -198,13 +211,14 @@ const AdminDashboard = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">End Date</label>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
+              End Date
+            </label>
             <input
               type="date"
               value={endDate}
               onChange={(e) => setEndDate(e.target.value)}
               className="w-full bg-gray-100  px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
             />
           </div>
 
@@ -223,7 +237,9 @@ const AdminDashboard = () => {
 
           {autoArchive && (
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Archive Date</label>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
+                Archive Date
+              </label>
               <input
                 type="date"
                 value={validUntil}
