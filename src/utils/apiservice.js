@@ -109,6 +109,17 @@ export const updateFacultyResearch = async (id, data) => {
   }
 };
 
+
+// get school name by id
+export const getSchoolById = async (id) => {
+  const response = await api.get(`/departmentSchools`);
+  const schools = response.data.data.departmentSchools;
+  
+  return schools.find((school) => school._id === id);
+}
+
+
+
 // get department by school
 export const getDepartmentsBySchool = async (id) => {
   const response = await api.get(`/departmentSchools`);
