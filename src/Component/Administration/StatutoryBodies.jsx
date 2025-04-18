@@ -9,7 +9,7 @@ const StatutoryBodiesComponent = () => {
 
   const { data, isLoading, error } = useNoticesBySection(activeMinutesTab);
 
-  // Debug logging
+
   console.log("Active Minutes Tab:", activeMinutesTab);
   console.log("Fetched Data:", data);
   if (error) console.error("Fetch Error:", error);
@@ -67,7 +67,7 @@ const StatutoryBodiesComponent = () => {
         STATUTORY BODIES
       </h1>
 
-      {/* Navigation Tabs */}
+  
       <div className="flex flex-wrap mb-6 border-b">
         {navItems.map((item, index) => (
           <button
@@ -84,7 +84,7 @@ const StatutoryBodiesComponent = () => {
         ))}
       </div>
 
-      {/* Section Tabs */}
+
       <div className="flex mb-6 border-b text-lg">
         <button
           className={`px-6 py-3 font-medium ${
@@ -108,11 +108,7 @@ const StatutoryBodiesComponent = () => {
         </button>
       </div>
 
-      {/* Content Section */}
-      <div className="bg-white rounded-lg p-6 shadow-sm">
-        <div className="mb-4 text-gray-700 italic border-l-4 border-blue-700 pl-3">
-          *Click on the title to download the PDF
-        </div>
+      <div className="bg-white rounded-lg p-6 shadow-sm mt-2">
 
         {activeSection === "members" ? (
           <div className="space-y-3">
@@ -135,7 +131,7 @@ const StatutoryBodiesComponent = () => {
           </div>
         ) : (
           <>
-            {/* Minutes Tabs */}
+        
             <div className="overflow-x-auto">
               <div className="flex flex-col md:flex-row flex-nowrap bg-gray-100 p-2 rounded-lg mb-4 gap-2 min-w-max">
                 {Object.keys(minutes).map((key) => (
@@ -154,7 +150,6 @@ const StatutoryBodiesComponent = () => {
               </div>
             </div>
 
-            {/* Selected Minutes Section */}
             {data?.length > 0 ? (
               <div className="space-y-4">
                 {data.map((file) => (
