@@ -94,6 +94,7 @@ import AdminLayout from "./Component/Layouts/AdminLayout";
 import FacultyById from "./Component/Department/FacultyById";
 import HistoryDSEU from "./Component/NavItems/HistoryDSEU";
 import Scholarship from "./Component/Student Services/Scholarship";
+import ArchiveUploads from "./Component/Admin/ArchiveUploads";
 
 function App() {
   return (
@@ -196,8 +197,9 @@ function App() {
 
             {/* Admin routes */}
             <Route path="/admin-login" element={<AdminLogin />} />
-            <Route path="/admin/dashboard" element={<Dashboard />} />
-            <Route path="/admin/test" element={<TestPage />} />
+            {/* <Route path="/admin/dashboard" element={<Dashboard />} /> */}
+            <Route path="/admin/dashboard" element={<TestPage />} />
+            <Route path="/admin/archive-uploads" element={<ArchiveUploads />} />
             <Route path="/admin/uploads" element={<RecuirtmentUploads />} />
           </Route>
           

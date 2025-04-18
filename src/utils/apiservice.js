@@ -238,7 +238,7 @@ export const login = async ({ email, password, emailFlag = false }) => {
 // upload pdf
 export const uploadPdf = async (formData) => {
   const token = sessionStorage.getItem("token");
-  console.log(token);
+  // console.log(token);
   try {
     const response = await axios.post("https://dseu-backend.onrender.com/api/v1/notice/upload",
       formData,

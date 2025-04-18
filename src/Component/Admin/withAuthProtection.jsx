@@ -12,12 +12,12 @@ const withAuthProtection = (WrappedComponent) => {
       const role = sessionStorage.getItem("currentRole");
 
       if (!token) {
-        navigate("/login");
+        navigate("/admin-login");
       } else if (role !== "Admin") {
         showErrorToast("You are not an admin.");
         sessionStorage.clear();
         setCheckingAuth(false);
-        navigate("/login");
+        navigate("/admin-login");
       } else {
         setCheckingAuth(false);
       }
