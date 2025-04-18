@@ -95,6 +95,7 @@ import FacultyById from "./Component/Department/FacultyById";
 import HistoryDSEU from "./Component/NavItems/HistoryDSEU";
 import Scholarship from "./Component/Student Services/Scholarship";
 import ArchiveUploads from "./Component/Admin/ArchiveUploads";
+import ArchivedJobPortal from "./Component/Administration/ArchivedJobPortal";
 
 function App() {
   return (
@@ -179,6 +180,7 @@ function App() {
             <Route path="/holiday-calendar" element={<HolidayCalendar />} />
             <Route path="/alumni" element={<AlumniSection />} />
             <Route path="/recruitment" element={<JobPortal />} />
+            <Route path="/recruitment/archive/*" element={<ArchivedJobPortal />} />
             <Route path="/grievance-form" element={<GrievanceForm />} />
             <Route path="/placement" element={<Placement />} />
 
