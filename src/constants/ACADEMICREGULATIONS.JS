@@ -12,12 +12,6 @@ const regulations = [
         desc: "This regulation Covers CBCS, semester system, entry/exit options, and grading as per NEP 2020 at DSEU from 2024–25.",
     },
     {
-        id: "3C",
-        name: "Regulation 3C",
-        link: "/regulations/Regulation_3C.pdf",
-        desc: "This covers various skill programs (Technical, Vocational, Entrepreneurship, and Academic) and officially notified master’s programs, including a two-year (four-semester) Master’s in a major discipline, MBA, and one-year MS/MTech. It is based on Regulation 2-A.",
-    },
-    {
         id: "3A",
         name: "Regulation 3A",
         link: "/regulations/Regulation_3A.pdf",
@@ -28,6 +22,12 @@ const regulations = [
         name: "Regulation 3B",
         link: "/regulations/Regulation_3B.pdf",
         desc: "This regulation covers three-year (six semesters) and four-year (eight semesters) bachelor's degrees (major and minor) under TSP, VSP, ESP, and ASP, based on Regulation 2-A.",
+    },
+    {
+        id: "3C",
+        name: "Regulation 3C",
+        link: "/regulations/Regulation_3C.pdf",
+        desc: "This covers various skill programs (Technical, Vocational, Entrepreneurship, and Academic) and officially notified master’s programs, including a two-year (four-semester) Master’s in a major discipline, MBA, and one-year MS/MTech. It is based on Regulation 2-A.",
     },
 ];
 

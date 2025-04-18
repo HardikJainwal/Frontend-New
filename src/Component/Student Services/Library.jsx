@@ -51,24 +51,27 @@ const Library = () => {
   };
 
   return (
-    <div className="w-full">
-      <img
-        src={LibraryBanner}
-        alt="Library"
-        className="w-full h-[300px] object-cover object-center"
-      />
+    <div className="w-full flex flex-col items-center justify-center md:my-10 mb-16 md:mb-12 relative">
+      <div className="relative  md:w-[75%] w-full max-h-[250px] md:rounded-2xl overflow-hidden shadow-lg">
+        <img
+          src={LibraryBanner}
+          alt="Library Banner"
+          className="w-full  h-full object-cover brightness-75"
+        />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <h1 className="text-white text-2xl sm:text-4xl md:text-6xl font-semibold text-center drop-shadow-2xl px-2">
+            LIBRARY
+          </h1>
+        </div>
+      </div>
 
-      <div className="max-w-5xl mx-auto px-6 py-12 text-gray-800">
+      <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 py-10 sm:py-12 text-gray-800">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="text-center mb-10"
         >
-          <HeadingText
-            heading="Library"
-            headingCN="text-5xl font-bold mb-3 text-center"
-          />
           {Content.content.map((para, index) => (
             <p
               key={index}
@@ -124,11 +127,14 @@ const Library = () => {
           <div className="w-full mt-4 h-auto rounded-xl overflow-hidden relative">
             <Slider {...sliderSettings}>
               {images.map((src, index) => (
-                <div key={index} className="w-full h-[500px]">
+                <div
+                  key={index}
+                  className="w-full h-[250px] sm:h-[350px] md:h-[500px]"
+                >
                   <img
                     src={src}
                     alt={`Library ${index + 1}`}
-                    className="h-[500px] w-full object-cover rounded-xl shadow-md"
+                    className="h-full w-full object-cover rounded-xl shadow-md"
                   />
                 </div>
               ))}

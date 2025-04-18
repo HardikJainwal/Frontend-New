@@ -15,7 +15,7 @@ const LoginForm = () => {
     const role = sessionStorage.getItem("currentRole");
 
     if (token && role === "Admin") {
-      navigate("/admin/test");
+      navigate("/admin/dashboard");
     }
   }, [navigate]);
 
@@ -25,7 +25,7 @@ const LoginForm = () => {
       if (data.role === "Admin") {
         showSuccessToast("Logged in successfully!");
         sessionStorage.removeItem("email");
-        navigate("/admin/test");
+        navigate("/admin/dashboard");
       } else {
         showErrorToast("This user isn't an admin.");
         setEmail("");

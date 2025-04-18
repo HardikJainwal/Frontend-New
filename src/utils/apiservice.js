@@ -109,6 +109,17 @@ export const updateFacultyResearch = async (id, data) => {
   }
 };
 
+
+// get school name by id
+export const getSchoolById = async (id) => {
+  const response = await api.get(`/departmentSchools`);
+  const schools = response.data.data.departmentSchools;
+  
+  return schools.find((school) => school._id === id);
+}
+
+
+
 // get department by school
 export const getDepartmentsBySchool = async (id) => {
   const response = await api.get(`/departmentSchools`);
@@ -227,7 +238,7 @@ export const login = async ({ email, password, emailFlag = false }) => {
 // upload pdf
 export const uploadPdf = async (formData) => {
   const token = sessionStorage.getItem("token");
-  console.log(token);
+  // console.log(token);
   try {
     const response = await axios.post("https://dseu-backend.onrender.com/api/v1/notice/upload",
       formData,
