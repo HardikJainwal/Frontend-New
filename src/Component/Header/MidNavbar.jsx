@@ -114,12 +114,16 @@ const navItems = [
     ],
   },
   {
+    name: "T & P Cell",
+    path: "/placement",
+  },
+  {
     name: "Work with us",
     path: "/recruitment",
   },
   {
-    name: "T & P Cell",
-    path: "/placement",
+    name: "Entrepreneurship",
+    path: "/entrepreneurship",
   },
 ];
 
@@ -508,9 +512,9 @@ const ResponsiveHeader = () => {
       {/* Enhanced Desktop Navigation Bar */}
 
       <div className="hidden md:block bg-gradient-to-r from-blue-50 to-blue-100 shadow-lg shadow-blue-500/30 rounded-3xl w-[96%] mx-auto my-4 sticky top-0 z-50">
-        <nav className="max-w-7xl px-4 mx-auto">
+        <nav className="max-w-7xl  mx-auto">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-7">
+            <div className="flex items-center space-x-5">
               {navItems.map((item) => (
                 <div
                   key={item.name}
