@@ -44,7 +44,9 @@ const ArchivedJobPortal = () => {
               <table className="w-full border-collapse">
                 <thead>
                   <tr className="bg-blue-700 text-white text-sm md:text-md">
-                    <th className="p-2 text-left border whitespace-nowrap">S. No.</th>
+                    <th className="p-2 text-left border whitespace-nowrap">
+                      S. No.
+                    </th>
                     <th className="p-2 text-left border">Title</th>
                     <th className="p-2 text-left border">Notification</th>
                     <th className="p-2 text-left border">No of Vacancies</th>
@@ -70,14 +72,16 @@ const ArchivedJobPortal = () => {
                       <td className="p-2 border">-</td>
                       <td className="p-2 border">-</td>
                       <td className="p-2 border">
-                        <a
-                          href={item.apply}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-blue-600 hover:text-blue-800"
-                        >
-                          Apply
-                        </a>
+                        {item.apply ? (
+                          <a
+                            href={item.apply}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-blue-600 hover:text-blue-800"
+                          >
+                            Apply
+                          </a>
+                        ) : '-'}
                       </td>
                     </tr>
                   ))}
