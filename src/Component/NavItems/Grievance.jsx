@@ -199,78 +199,7 @@ function StudentGrievanceForm() {
         </div>
 
         {/* Present Address Section */}
-        <div className="bg-blue-100 p-3 mb-6 rounded">
-          <h2 className="text-lg font-semibold">Present Address</h2>
-        </div>
-
-        <div className="mb-6">
-          <div className="mb-4">
-            <label className="block mb-1">
-              Address <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              name="address"
-              value={formData.address}
-              onChange={handleChange}
-              placeholder="Enter Address"
-              className="w-full p-2 border rounded"
-              required
-            />
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div>
-              <label className="block mb-1">
-                Mobile No. <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="tel"
-                name="addressMobile"
-                value={formData.addressMobile}
-                onChange={handleChange}
-                placeholder="Enter your Mobile Number"
-                className="w-full p-2 border rounded"
-                required
-              />
-            </div>
-
-            <div>
-              <label className="block mb-1">
-                State <span className="text-red-500">*</span>
-              </label>
-              <select
-                name="state"
-                value={formData.state}
-                onChange={handleChange}
-                className="w-full p-2 border rounded"
-                required
-              >
-                <option value="">--select--</option>
-                <option value="dl">Delhi</option>
-                <option value="mh">Maharashtra</option>
-                <option value="ka">Karnataka</option>
-                <option value="tn">Tamil Nadu</option>
-                <option value="up">Uttar Pradesh</option>
-              </select>
-            </div>
-
-            <div>
-              <label className="block mb-1">
-                Pin Code <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="text"
-                name="pinCode"
-                value={formData.pinCode}
-                onChange={handleChange}
-                placeholder="Enter your six digit pin code"
-                className="w-full p-2 border rounded"
-                required
-              />
-            </div>
-          </div>
-        </div>
+        
 
         {/* Grievance Details Section */}
         <div className="bg-blue-100 p-3 mb-6 rounded">
@@ -291,9 +220,9 @@ function StudentGrievanceForm() {
             >
               <option value="">--select--</option>
               <option value="academic">Academic Issues</option>
-              <option value="facility">Facility Issues</option>
+              <option value="academic">Exam Issues</option>
               <option value="admin">Administrative Issues</option>
-              <option value="financial">Financial Issues</option>
+              
               <option value="other">Other</option>
             </select>
           </div>
@@ -314,7 +243,7 @@ function StudentGrievanceForm() {
 
           <div className="mb-4">
             <label className="block mb-1">
-              Want to Upload Document? <span className="text-red-500">*</span>
+              Want to Upload Document?
             </label>
             <select
               name="uploadDocument"
@@ -410,6 +339,27 @@ function EmployeeGrievanceForm() {
 
           <div className="col-span-1">
             <label className="block mb-1">
+              Designation <span className="text-red-500">*</span>
+            </label>
+            <select
+              name="designation"
+              value={formData.designation}
+              onChange={handleChange}
+              className="w-full p-2 border rounded"
+              required
+            >
+              <option value="">--select--</option>
+              <option value="assistant">Assistant</option>
+              <option value="officer">Officer</option>
+              <option value="manager">Manager</option>
+              <option value="senior-manager">Senior Manager</option>
+              <option value="director">Director</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div className="col-span-1">
+            <label className="block mb-1">
               E-mail ID <span className="text-red-500">*</span>
             </label>
             <input
@@ -492,101 +442,11 @@ function EmployeeGrievanceForm() {
             </select>
           </div>
 
-          <div className="col-span-1">
-            <label className="block mb-1">
-              Designation <span className="text-red-500">*</span>
-            </label>
-            <select
-              name="designation"
-              value={formData.designation}
-              onChange={handleChange}
-              className="w-full p-2 border rounded"
-              required
-            >
-              <option value="">--select--</option>
-              <option value="assistant">Assistant</option>
-              <option value="officer">Officer</option>
-              <option value="manager">Manager</option>
-              <option value="senior-manager">Senior Manager</option>
-              <option value="director">Director</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
+          
         </div>
 
         {/* Present Address Section */}
-        <div className="bg-blue-100 p-3 mb-6 rounded">
-          <h2 className="text-lg font-semibold">Present Address</h2>
-        </div>
-
-        <div className="mb-6">
-          <div className="mb-4">
-            <label className="block mb-1">
-              Address <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              name="address"
-              value={formData.address}
-              onChange={handleChange}
-              placeholder="Enter Address"
-              className="w-full p-2 border rounded"
-              required
-            />
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div>
-              <label className="block mb-1">
-                Mobile No. <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="tel"
-                name="addressMobile"
-                value={formData.addressMobile}
-                onChange={handleChange}
-                placeholder="Enter your Mobile Number"
-                className="w-full p-2 border rounded"
-                required
-              />
-            </div>
-
-            <div>
-              <label className="block mb-1">
-                State <span className="text-red-500">*</span>
-              </label>
-              <select
-                name="state"
-                value={formData.state}
-                onChange={handleChange}
-                className="w-full p-2 border rounded"
-                required
-              >
-                <option value="">--select--</option>
-                <option value="dl">Delhi</option>
-                <option value="mh">Maharashtra</option>
-                <option value="ka">Karnataka</option>
-                <option value="tn">Tamil Nadu</option>
-                <option value="up">Uttar Pradesh</option>
-              </select>
-            </div>
-
-            <div>
-              <label className="block mb-1">
-                Pin Code <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="text"
-                name="pinCode"
-                value={formData.pinCode}
-                onChange={handleChange}
-                placeholder="Enter your six digit pin code"
-                className="w-full p-2 border rounded"
-                required
-              />
-            </div>
-          </div>
-        </div>
+        
 
         {/* Grievance Details Section */}
         <div className="bg-blue-100 p-3 mb-6 rounded">
@@ -631,7 +491,7 @@ function EmployeeGrievanceForm() {
 
           <div className="mb-4">
             <label className="block mb-1">
-              Want to Upload Document? <span className="text-red-500">*</span>
+              Want to Upload Document?
             </label>
             <select
               name="uploadDocument"

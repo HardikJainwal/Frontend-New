@@ -4,15 +4,15 @@ import DG from "../../assets/DG.jpg";
 const ChancellorMessage = () => {
   return (
     <div className="max-w-4xl mx-auto px-6 py-12 font-sans">
-      {/* Heading */}
+
       <h2 className="text-4xl font-bold text-blue-600 mb-2 text-center md:text-left">
         Welcome to DSEU
       </h2>
-      <p className="text-orange-400 text-lg md:text-xl font-medium mb-10 text-center md:text-left">
-        — A Hub of Possibility, Purpose and Progress
+      <p className="text-orange-400 font-pacifico font-bold text-lg md:text-xl mb-10 text-center md:text-left">
+        — Crafting Excellence
       </p>
 
-      {/* Profile Section */}
+
       <div className="flex md:flex-row md:items-center md:gap-10 mb-10 flex-col gap-5 mx-auto">
         <div className="w-40 h-40 rounded-2xl overflow-hidden shadow-md mx-auto md:mx-0">
           <img
@@ -31,13 +31,12 @@ const ChancellorMessage = () => {
         </div>
       </div>
 
-      {/* Message Section */}
       <h4 className="text-[1.5rem] md:text-2xl font-semibold text-gray-700 mb-2 text-center md:text-left">
         Message from the Chancellor
       </h4>
       <div className="w-[343px] h-1 bg-orange-400 rounded-full mb-8 md:mb-6 mx-auto md:mx-0 animate-pulse" />
 
-      <div className="space-y-5 text-[16px] md:text-[17px] text-gray-800 leading-relaxed texxt-justify">
+      <div className="space-y-5 text-[16px] md:text-[17px] text-gray-800 leading-relaxed text-justify">
         <p>
           Congratulations and a warm, enthusiastic welcome to the dynamic community of Delhi Skill and Entrepreneurship University (DSEU)!
         </p>

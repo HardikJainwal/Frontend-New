@@ -5,9 +5,16 @@ import { useNavigate } from "react-router-dom";
 const SearchModal = ({ isOpen, onClose, navItems }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
+  const [activeIndex, setActiveIndex] = useState(-1); // Changed to -1 to avoid default selection
   const navigate = useNavigate();
 
-  // Flatten navItems to include dropdownItems for searching
+  // Default suggestions when the search query is empty
+  const defaultSuggestions = [
+    { name: "Undergraduate courses", path: "/Courses/ug" },
+    { name: "Postgraduate courses", path: "/Courses/pg" },
+    { name: "Diploma courses", path: "/Courses/Diploma" },
+  ];
+
   const flattenNavItems = () => {
     const flatItems = [];
     navItems.forEach((item) => {
@@ -23,31 +30,46 @@ const SearchModal = ({ isOpen, onClose, navItems }) => {
     return flatItems;
   };
 
-  // Update suggestions based on search query
   useEffect(() => {
-    if (searchQuery.trim() === "") {
+    if (!isOpen) {
+      setSearchQuery("");
       setSuggestions([]);
+      setActiveIndex(-1); // Reset to no selection
       return;
     }
 
-    const flatItems = flattenNavItems();
-    const filtered = flatItems.filter((item) =>
-      item.name.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-    setSuggestions(filtered);
-  }, [searchQuery]);
+    if (searchQuery.trim() === "") {
+      // Show default suggestions when query is empty
+      setSuggestions(defaultSuggestions);
+      setActiveIndex(-1); // No suggestion selected by default
+    } else {
+      // Filter navItems based on search query
+      const flatItems = flattenNavItems();
+      const filtered = flatItems.filter((item) =>
+        item.name.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setSuggestions(filtered);
+      setActiveIndex(-1); // Reset selection when query changes
+    }
+  }, [searchQuery, isOpen]);
 
-  // Handle Enter key press to navigate to the first suggestion
   const handleKeyDown = (e) => {
-    if (e.key === "Enter" && suggestions.length > 0) {
-      navigate(suggestions[0].path);
-      setSearchQuery("");
-      setSuggestions([]);
-      onClose();
+    if (e.key === "ArrowDown") {
+      setActiveIndex((prev) =>
+        prev < suggestions.length - 1 ? prev + 1 : prev
+      );
+    } else if (e.key === "ArrowUp") {
+      setActiveIndex((prev) => (prev > 0 ? prev - 1 : prev));
+    } else if (e.key === "Enter") {
+      if (suggestions.length > 0 && activeIndex >= 0) {
+        navigate(suggestions[activeIndex].path);
+        setSearchQuery("");
+        setSuggestions([]);
+        onClose();
+      }
     }
   };
 
-  // Handle suggestion click
   const handleSuggestionClick = (path) => {
     navigate(path);
     setSearchQuery("");
@@ -84,11 +106,16 @@ const SearchModal = ({ isOpen, onClose, navItems }) => {
             </button>
           </div>
           {suggestions.length > 0 && (
-            <div className="max-h-60 overflow-y-auto bg-white rounded-b-2xl shadow-xl">
+            <div className="max-h-60 overflow-y-auto bg-white">
+              <div className="px-6 pt-2 text-xs text-gray-500 uppercase">
+                Suggestions
+              </div>
               {suggestions.map((suggestion, index) => (
                 <div
                   key={index}
-                  className="px-6 py-3 hover:bg-blue-50 cursor-pointer text-gray-700"
+                  className={`px-6 py-3 cursor-pointer text-gray-700 ${
+                    index === activeIndex ? "bg-blue-100 font-medium" : "hover:bg-blue-50"
+                  }`}
                   onClick={() => handleSuggestionClick(suggestion.path)}
                 >
                   {suggestion.name}
