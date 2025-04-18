@@ -86,7 +86,9 @@ const ArchiveUploads = () => {
     mutationFn: (formData) => uploadPdf(formData),
     onSuccess: (response) => {
       const data = response?.data || response;
-      toast.success(`Uploaded file`);
+      if(file) {
+        toast.success(`Uploaded file`);
+      }
       queryClient.invalidateQueries({ queryKey: ["notices", data.section] });
       queryClient.invalidateQueries({ queryKey: ["notices", section] });
       setName("");

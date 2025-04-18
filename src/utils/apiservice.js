@@ -114,7 +114,7 @@ export const updateFacultyResearch = async (id, data) => {
 export const getSchoolById = async (id) => {
   const response = await api.get(`/departmentSchools`);
   const schools = response.data.data.departmentSchools;
-  
+
   return schools.find((school) => school._id === id);
 }
 
@@ -196,11 +196,16 @@ export const getAcademicCouncilNotices = async () => {
 };
 
 // pdf through category such as circular, students, board of management etc.
-export const getPdfBySections = async (section) => {
-  const res = await api.get(`/notice?section=${section}`);
+export const getPdfBySections = async (section, archived = false) => {
+  if (archived) {
+    const res = await api.get(`/notice/archived?section=${section}`);
+    return res.data.data.notices;
+  }
 
+  const res = await api.get(`/notice?section=${section}`);
   return res.data.data.notices;
 };
+
 
 // get campus by zone 
 export const getCampusByZone = async (zoneName) => {
