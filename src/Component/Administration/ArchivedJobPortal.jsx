@@ -70,7 +70,11 @@ const ArchivedJobPortal = () => {
                         </a>
                       </td>
                       <td className="p-2 border">-</td>
-                      <td className="p-2 border">-</td>
+                      <td className="p-2 border">
+                        {item.endDate
+                          ? new Date(item.endDate).toLocaleDateString("en-GB")
+                          : "-"}
+                      </td>
                       <td className="p-2 border">
                         {item.apply ? (
                           <a
@@ -81,7 +85,9 @@ const ArchivedJobPortal = () => {
                           >
                             Apply
                           </a>
-                        ) : '-'}
+                        ) : (
+                          "-"
+                        )}
                       </td>
                     </tr>
                   ))}
