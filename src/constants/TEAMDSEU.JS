@@ -317,7 +317,7 @@ const members = [
     id: 38,
     name: "Veena Upadhyay",
     src: veenaUpadhay,
-    designation: "Accounts Officer",
+    designation: "Senior Accounts Officer",
     category: "Officers",
   },
   {

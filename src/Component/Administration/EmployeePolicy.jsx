@@ -1,15 +1,39 @@
 import { useState } from "react";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ArrowRight, ChevronDown, Download } from "lucide-react";
 
 const tempData = [
   {
     id: 1,
-    name: "Policy for Employees",
+    name: "Policies for Employees",
     points: [
-      "Employees must adhere to company policies and ethical guidelines.",
-      "All employees are required to maintain confidentiality of sensitive information.",
-      "Performance reviews will be conducted annually for feedback and growth.",
-      "Code of conduct violations may result in disciplinary action.",
+      {
+        text: "Entitlement of Perks and Privileges to DSEU Officers Reg.- 07/03/2023 ",
+        path: "/Employee_policies/Entitlement of Perks and Privileges to DSEU Officers Reg.pdf",
+      },
+      {
+        text: "Joining Report after Availing Leave – 20.12.2022",
+        path: "/Employee_policies/Joining Report after Availing Leave.pdf",
+      },
+      {
+        text: "LTC Claim BIll (GAR-14C) – 30.03.2023",
+        path: "/employee_policies/LTC Claim BIll (GAR-14C).pdf",
+      },
+      {
+        text: "Medical Card for the employees of the Delhi Skill and Entrepreneurship University – 20.01.2023",
+        path: "/employee_policies/Medical Card for the employees of the Delhi Skill and Entrepreneurship University.pdf",
+      },
+      {
+        text: "Procedure for submission of Medical Bills for Re-imbursement – 20.01.2023",
+        path: "/employee_policies/Procedure for submission of Medical Bills for Re-imbursement.pdf",
+      },
+      {
+        text: "Professional Development Fund Guidelines – 22.06.2023 ",
+        path: "/employee_policies/Professional Development Fund Guidelines.pdf",
+      },
+      {
+        text: "Regarding Requirement of DGEHS Medical Card at DSEU Campuses – 18.01.2023",
+        path: "/employee_policies/Regarding Requirement of DGEHS Medical Card at DSEU Campuses.pdf",
+      },
     ],
   },
   {
@@ -85,7 +109,7 @@ const EmployeePolicy = () => {
                 {data.points.map((point, index) => (
                   <li
                     key={index}
-                    className="flex items-center gap-2 opacity-0 translate-x-[-10px] transition-all duration-300 ease-in-out"
+                    className="group flex items-center justify-between gap-2 opacity-0 translate-x-[-10px] transition-all duration-300 ease-in-out"
                     style={{
                       opacity: current === data.id ? 1 : 0,
                       transform:
@@ -94,12 +118,40 @@ const EmployeePolicy = () => {
                           : "translateX(-10px)",
                     }}
                   >
-                    <ArrowRight
-                      className={`min-h-4 min-w-4 transition-transform duration-300 ease-in-out ${
-                        current === data.id ? "scale-100" : "scale-0"
-                      }`}
-                    />
-                    {point}
+                    <div className="flex items-center gap-2">
+                      <ArrowRight
+                        className={`w-3 h-3 text-gray-400 transition-all duration-300 ease-in-out group-hover:text-blue-600 ${
+                          current === data.id
+                            ? "opacity-100 translate-x-0"
+                            : "opacity-0 -translate-x-2"
+                        }`}
+                      />
+                      {typeof point === "string" ? (
+                        point
+                      ) : point.path ? (
+                        <a
+                          href={point.path}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:text-blue-600 hover:underline"
+                        >
+                          {point.text}
+                        </a>
+                      ) : (
+                        point.text
+                      )}
+                    </div>
+
+                    {typeof point === "object" && point.path && (
+                      <a
+                        href={point.path}
+                        download
+                        onClick={(e) => e.stopPropagation()}
+                        className="p-1 rounded hover:bg-blue-100 transition"
+                      >
+                        <Download className="w-4 h-4 text-gray-400 hover:text-blue-600 transition-all" />
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>

@@ -59,13 +59,13 @@ const sideNavItems = [
     },
     {
         id: 4,
-        name: "Statutory committees",
+        name: "Statutory Committees",
         href: "/administration/administrative/advisory-board",
         active: false,
     },
     {
         id: 3,
-        name: "Employee Policy",
+        name: "Employee Policies",
         href: "/administration/administrative/employee-policy",
         active: false,
     },
