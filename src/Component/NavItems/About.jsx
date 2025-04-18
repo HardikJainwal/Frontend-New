@@ -3,8 +3,6 @@ import { aboutTheUniversity } from "../../constants/INTRODUCTION.JS";
 import HeadingText from "../Reusable/HeadingText";
 
 const About = () => {
-  console.log(aboutTheUniversity);
-
   return (
     <>
       <div className="w-4/5 p-1 sm:p-3 md:p-4 mx-auto my-8 rounded-lg text-gray-800">
@@ -21,9 +19,7 @@ const About = () => {
           <ul className="pl-6 text-gray-600 list-none">
             {aboutTheUniversity.objectives.map((objective, index) => (
               <li key={index} className="mb-2 flex flex-row items-center gap-2">
-                <ArrowBigRight 
-                className="min-h-5 min-w-5 md:mb-0 mb-5"
-                />
+                <ArrowBigRight className="min-h-5 min-w-5 md:mb-0 mb-5" />
                 {objective}
               </li>
             ))}
@@ -35,7 +31,6 @@ const About = () => {
             </p>
           ))}
         </div>
-
       </div>
     </>
   );

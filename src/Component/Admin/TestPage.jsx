@@ -4,6 +4,7 @@ import withAuthProtection from "./withAuthProtection";
 import { uploadPdf } from "../../utils/apiservice";
 import toast from "react-hot-toast";
 import { FileText, Megaphone, Users, Briefcase } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState("information-bulletin");
@@ -13,8 +14,14 @@ const AdminDashboard = () => {
   const [autoArchive, setAutoArchive] = useState(false);
   const [validUntil, setValidUntil] = useState("2025-04-16T09:30:00.000Z");
   const [endDate, setEndDate] = useState("");
+  const [apply, setApply] = useState("");
+  const [applyError, setApplyError] = useState("");
 
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
+
+  const urlPattern =
+    /^(https?:\/\/)?([a-z0-9]+[.])+(com|org|net|gov|edu|io)(\/[a-z0-9#]+\/?)*$/i;
 
   const getSectionOptions = () => {
     switch (activeTab) {
@@ -59,6 +66,7 @@ const AdminDashboard = () => {
     setAutoArchive(false);
     setValidUntil("");
     setEndDate("");
+    setApply("");
   };
 
   const mutation = useMutation({
@@ -66,8 +74,8 @@ const AdminDashboard = () => {
     onSuccess: (response) => {
       const data = response?.data || response;
       console.log("work ?");
-      
-      toast.success(`Uploaded ${data.fileName}`);
+
+      toast.success(`Uploaded File`);
       queryClient.invalidateQueries({ queryKey: ["notices", data.section] });
       queryClient.invalidateQueries({ queryKey: ["notices", section] });
       setName("");
@@ -76,6 +84,7 @@ const AdminDashboard = () => {
       setAutoArchive(false);
       setValidUntil("");
       setEndDate("");
+      setApply("");
     },
     onError: (error) => {
       const errorMessage =
@@ -89,6 +98,11 @@ const AdminDashboard = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    if (activeTabLabel === "Work With Us" && apply && !urlPattern.test(apply)) {
+      toast.error("Please enter a valid URL in Apply field!");
+      return;
+    }
+
     if (!name || !section || !file) {
       toast.error("All fields are required!");
       return;
@@ -98,7 +112,7 @@ const AdminDashboard = () => {
     formData.append("fileName", name);
     formData.append("section", section);
     formData.append("pdf", file);
-    formData.append("category", activeTab);
+    formData.append("category", "activeTab");
 
     if (autoArchive && validUntil) {
       formData.append("validUntil", new Date(validUntil).toISOString());
@@ -107,6 +121,10 @@ const AdminDashboard = () => {
 
     if (endDate) {
       formData.append("endDate", new Date(endDate).toISOString());
+    }
+
+    if (apply) {
+      formData.append("apply", apply);
     }
 
     mutation.mutate(formData);
@@ -141,23 +159,33 @@ const AdminDashboard = () => {
     <div className="min-h-screen bg-gray-100 p-4 sm:p-6 lg:p-10 flex gap-6">
       <aside className="w-72 bg-white shadow-lg rounded-2xl p-6 space-y-4">
         <h2 className="text-2xl font-bold text-gray-700">Dashboard</h2>
-        <ul className="space-y-2">
-          {tabs.map(({ key, label, icon: Icon }) => (
-            <li key={key}>
-              <button
-                onClick={() => handleTabChange(key)}
-                className={`w-full text-left px-4 py-2 rounded-full flex items-center gap-2 transition ${
-                  activeTab === key
-                    ? "bg-blue-400 text-white"
-                    : "text-gray-700 hover:bg-blue-100"
-                }`}
-              >
-                <Icon className="w-5 h-5" />
-                <span>{label}</span>
-              </button>
-            </li>
-          ))}
-        </ul>
+
+        <div className="flex flex-col gap-14 md:gap-16">
+          <ul className="space-y-2">
+            {tabs.map(({ key, label, icon: Icon }) => (
+              <li key={key}>
+                <button
+                  onClick={() => handleTabChange(key)}
+                  className={`w-full text-left px-4 py-2 rounded-full flex items-center gap-2 transition whitespace-nowrap ${
+                    activeTab === key
+                      ? "bg-blue-400 text-white"
+                      : "text-gray-700 hover:bg-blue-100"
+                  }`}
+                >
+                  <Icon className="w-5 h-5" />
+                  <span>{label}</span>
+                </button>
+              </li>
+            ))}
+          </ul>
+          <button
+            type="button"
+            onClick={() => navigate("/admin/archive-uploads")}
+            className="w-full py-2 mt-3 rounded-lg border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-semibold transition-colors duration-300"
+          >
+            Manual Archive
+          </button>
+        </div>
       </aside>
 
       <main className="flex-1 bg-white rounded-2xl shadow-xl p-8">
@@ -168,7 +196,7 @@ const AdminDashboard = () => {
         <form onSubmit={handleSubmit} className="space-y-9">
           <div>
             <label className="block text-sm font-semibold text-gray-700 mb-2">
-              Enter the file name
+              Enter the file name <span className="text-red-500">*</span>
             </label>
             <input
               type="text"
@@ -180,7 +208,7 @@ const AdminDashboard = () => {
 
           <div>
             <label className="block text-sm font-semibold text-gray-700 mb-2">
-              Select Section
+              Select Section <span className="text-red-500">*</span>
             </label>
             <select
               className="py-3 px-4 pe-9 block w-full bg-gray-100 border-transparent rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
@@ -199,7 +227,7 @@ const AdminDashboard = () => {
 
           <div>
             <label className="block text-sm font-semibold text-gray-700 mb-2">
-              PDF File
+              PDF File <span className="text-red-500">*</span>
             </label>
             <input
               type="file"
@@ -209,6 +237,32 @@ const AdminDashboard = () => {
               required
             />
           </div>
+
+          {activeTabLabel === "Work With Us" && (
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
+                Enter the apply (only links)
+              </label>
+              <input
+                type="text"
+                value={apply}
+                onChange={(e) => {
+                  const val = e.target.value;
+                  setApply(val);
+
+                  if (val && !urlPattern.test(val)) {
+                    setApplyError("Invalid URL format");
+                  } else {
+                    setApplyError("");
+                  }
+                }}
+                className="w-full bg-gray-100 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              {applyError && (
+                <p className="text-red-500 text-sm mt-1">{applyError}</p>
+              )}
+            </div>
+          )}
 
           <div>
             <label className="block text-sm font-semibold text-gray-700 mb-2">

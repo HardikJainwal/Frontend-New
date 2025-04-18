@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import { ChevronDown } from "lucide-react";
 
-import { getDepartmentsBySchool } from "../../utils/apiservice";
+import { getDepartmentsBySchool, getSchoolById } from "../../utils/apiservice";
 
 import ProgramsByDepartment from "./ProgramsByDepartment";
 import FacultyByDepartment from "./FacultyByDepartment";
@@ -19,16 +19,26 @@ const DepartmentById = () => {
     queryFn: () => getDepartmentsBySchool(id),
   });
 
+  const { data: school, isLoading: isSchoolLoading } = useQuery({
+    queryKey: ["getSchoolById", id],
+    queryFn: () => getSchoolById(id),
+    enabled: !!id,
+  });
+
   useEffect(() => {
     if (!deptId) {
       if (data?.departments) {
         setDeptId(data.departments[0]._id);
       }
     }
-  }, [deptId, data]);
+  }, [deptId, data, school]);
 
   if (isLoading) {
-    return <OrangeLoader />
+    return <OrangeLoader />;
+  }
+
+  if (isSchoolLoading) {
+    return <OrangeLoader />;
   }
 
   if (error) {
@@ -71,10 +81,12 @@ const DepartmentById = () => {
       </div>
 
       {/* Mobile departments bar */}
+      <h1 className="text-center text-xl font-bold block md:hidden">{school?.name}</h1>
       <MobileSelectBar deptId={deptId} setDeptId={setDeptId} data={data} />
 
       {/*  main content, either faculty or program  */}
       <div className="flex-1 flex flex-col">
+      <h1 className="text-center text-3xl mt-6 mb-10 font-bold md:block hidden">{school?.name}</h1>
         <div className="flex border-b border-gray-300">
           <button
             className={`flex-1 py-2 text-center ${
