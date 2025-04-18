@@ -8,13 +8,13 @@ const Ncc = () => {
     About: (
       <div>
         <h2 className="font-semibold text-xl mb-4">About NCC</h2>
-        <p className="md:text-left text-center">
+        <p className=" text-justify">
           The National Cadet Corps (NCC) is a youth development movement in
           India. It aims to groom the youth into disciplined and patriotic
           citizens, providing leadership opportunities, fostering community
           service, and making the youth socially responsible citizens.
         </p>
-        <p className="mt-4 text-center md:text-left">
+        <p className="mt-4 text-justify">
           At our university, NCC is an integral part of campus life, offering
           cadets a unique opportunity to serve the nation while enhancing their
           personal development. We are proud to host the NCC across various DSEU
@@ -59,7 +59,7 @@ const Ncc = () => {
               Email: <span className="font-normal">demo@ncc.com</span>
             </p>
           </div>
-          <p className="mt-4">
+          <p className="mt-4 text-justify">
             Demo Name is an experienced officer leading the NCC activities at
             our university. With years of service in the NCC, Demo Name is
             dedicated to fostering leadership, discipline, and a spirit of

@@ -15,7 +15,7 @@ const Placement = () => {
 
         <div className="mt-4 space-y-4">
           {invitationData.content.map((paragraph, index) => (
-            <p key={index} className="text-gray-600 leading-relaxed">
+            <p key={index} className="text-gray-600 leading-relaxed text-justify">
               {paragraph}
             </p>
           ))}

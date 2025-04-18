@@ -11,9 +11,10 @@ const TeamDseu = () => {
     "Vice Chancellor",
     "Registrar",
     "University Officers",
-    "Dean",
+    "Deans",
     "Campus Directors",
     "Officers",
+    "Accounts Officers",
     "Training and Placement Officers",
   ];
 
