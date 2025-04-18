@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FileText } from "lucide-react";
 import { useNoticesBySection } from "../../hooks/useNoticesBySection";
-
 import { jobPortalTabs as tabs } from "../../constants/JOBPORTAL.JS";
 
 const JobListings = () => {
@@ -9,14 +8,11 @@ const JobListings = () => {
   const [entriesCount, setEntriesCount] = useState(10);
 
   const { data: noticeData, isLoading } = useNoticesBySection(activeTab);
+  console.log(activeTab);
 
   const getActiveData = () => {
     return noticeData || [];
   };
-
-  // useEffect(() => {
-  //   console.log(noticeData);
-  // }, [noticeData]);
 
   return (
     <div className="flex pb bg-gray-50 rounded-md flex-col md:flex-row">
@@ -67,58 +63,77 @@ const JobListings = () => {
             {isLoading ? (
               <div className="text-center p-4">Loading...</div>
             ) : getActiveData().length > 0 ? (
-              <table className="w-full border-collapse">
-                <thead>
-                  <tr className="bg-blue-700 text-white text-sm md:text-md">
-                    <th className="p-2 text-left border whitespace-nowrap">
-                      S. No.
-                    </th>
-                    <th className="p-2 text-left border">Title</th>
-                    <th className="p-2 text-left border">Notification</th>
-                    <th className="p-2 text-left border">No of Vacancies</th>
-                    <th className="p-2 text-left border whitespace-nowrap">
-                      Starting Date
-                    </th>
-                    <th className="p-2 text-left border">Last Date</th>
-                    <th className="p-2 text-left border">Apply</th>
-                  </tr>
-                </thead>
-                <tbody className="text-[0.8rem] md:text-sm">
-                  {getActiveData().map((item, index) => (
-                    <tr key={item._id} className="hover:bg-gray-50">
-                      <td className="p-2 border">{index + 1}</td>
-                      <td className="p-2 border">{item.fileName}</td>
-                      <td className="p-2 border">
-                        <a
-                          href={item.fileLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-blue-600 hover:text-blue-800 flex items-center gap-1"
-                        >
-                          Notice <FileText className="text-red-500" size={16} />
-                        </a>
-                      </td>
-                      <td className="p-2 border">-</td>
-                      <td className="p-2 border">-</td>
-                      <td className="p-2 border">-</td>
-                      <td className="p-2 border">
-                        <a
-                          href={item.apply}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-blue-600 hover:text-blue-800"
-                        >
-                          Apply
-                        </a>
-                      </td>
+              <>
+                <table className="w-full border-collapse">
+                  <thead>
+                    <tr className="bg-blue-700 text-white text-sm md:text-md">
+                      <th className="p-2 text-left border whitespace-nowrap">
+                        S. No.
+                      </th>
+                      <th className="p-2 text-left border">Title</th>
+                      <th className="p-2 text-left border">Notification</th>
+                      <th className="p-2 text-left border">No of Vacancies</th>
+                      <th className="p-2 text-left border whitespace-nowrap">
+                        Starting Date
+                      </th>
+                      <th className="p-2 text-left border">Last Date</th>
+                      <th className="p-2 text-left border">Apply</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody className="text-[0.8rem] md:text-sm">
+                    {getActiveData().map((item, index) => (
+                      <tr key={item._id} className="hover:bg-gray-50">
+                        <td className="p-2 border">{index + 1}</td>
+                        <td className="p-2 border">{item.fileName}</td>
+                        <td className="p-2 border">
+                          <a
+                            href={item.fileLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-blue-600 hover:text-blue-800 flex items-center gap-1"
+                          >
+                            Notice <FileText className="text-red-500" size={16} />
+                          </a>
+                        </td>
+                        <td className="p-2 border">-</td>
+                        <td className="p-2 border">-</td>
+                        <td className="p-2 border">-</td>
+                        <td className="p-2 border">
+                          <a
+                            href={item.apply}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-blue-600 hover:text-blue-800"
+                          >
+                            Apply
+                          </a>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+
+                {/* archive wala Button */}
+                <div className="mt-4 text-right">
+                  <a
+                    href={`/recruitment/archive/${encodeURIComponent(activeTab)}`}
+                    className="inline-block bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-700 transition-colors"
+                  >
+                    Archived
+                  </a>
+                </div>
+              </>
             ) : (
               <div className="text-center p-4">
-                {tabs.find((tab) => tab.id === activeTab)?.empty ||
-                  "No data available."}
+                {tabs.find((tab) => tab.id === activeTab)?.empty || "No data available."}
+                <div className="mt-4 text-center">
+                  <a
+                    href={`/recruitment/archive/${encodeURIComponent(activeTab)}`}
+                    className="inline-block bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-700 transition-colors"
+                  >
+                    Archived
+                  </a>
+                </div>
               </div>
             )}
           </div>

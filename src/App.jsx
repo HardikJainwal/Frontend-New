@@ -180,7 +180,7 @@ function App() {
             <Route path="/holiday-calendar" element={<HolidayCalendar />} />
             <Route path="/alumni" element={<AlumniSection />} />
             <Route path="/recruitment" element={<JobPortal />} />
-            <Route path="/recruitment/archive/*" element={<ArchivedJobPortal />} />
+            <Route path="/recruitment/archive/:category" element={<ArchivedJobPortal />} />
             <Route path="/grievance-form" element={<GrievanceForm />} />
             <Route path="/placement" element={<Placement />} />
 
