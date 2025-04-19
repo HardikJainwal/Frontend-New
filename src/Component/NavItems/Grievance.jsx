@@ -113,23 +113,7 @@ function StudentGrievanceForm() {
             />
           </div>
 
-          <div className="col-span-1">
-            <label className="block mb-1">
-              Gender <span className="text-red-500">*</span>
-            </label>
-            <select
-              name="gender"
-              value={formData.gender}
-              onChange={handleChange}
-              className="w-full p-2 border rounded"
-              required
-            >
-              <option value="">Select</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
+         
 
           <div className="col-span-1">
             <label className="block mb-1">
@@ -545,23 +529,7 @@ function EmployeeGrievanceForm() {
             />
           </div>
 
-          <div className="col-span-1">
-            <label className="block mb-1">
-              Gender <span className="text-red-500">*</span>
-            </label>
-            <select
-              name="gender"
-              value={formData.gender}
-              onChange={handleChange}
-              className="w-full p-2 border rounded"
-              required
-            >
-              <option value="">Select</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
+          
 
           <div className="col-span-1">
             <label className="block mb-1">

@@ -50,7 +50,8 @@ import {
   hrMeena,
   placeholder,
   shubhaGV,
-  rituSareen
+  rituSareen,
+  shubhamChakraborty,
 } from "../assets/team-dseu";
 
 const members = [
@@ -108,42 +109,42 @@ const members = [
     name: "Prof. Arindam Kumar Chanda",
     src: arindamKumarChanda,
     designation: "Faculty of Mechanical Engineering Skills",
-    category: "Dean",
+    category: "Deans",
   },
   {
     id: 9,
     name: "Prof. (Dr.) Gagan Dhawan",
     src: gagandhawan,
     designation: "Faculty of Allied Medical Sciences and Healthcare Skills",
-    category: "Dean",
+    category: "Deans",
   },
   {
     id: 10,
     name: "Prof. (Dr.) Girish Kumar Sharma",
     src: girishKumar,
     designation: "Research",
-    category: "Dean",
+    category: "Deans",
   },
   {
     id: 11,
     name: "Prof. (Dr.) Kamna Sachdeva",
     src: kamnaSachdeva,
     designation: "Faculty of Converging Science and Technology Skills",
-    category: "Dean",
+    category: "Deans",
   },
   {
     id: 12,
     name: "Prof. (Dr.) Shruti Tripathi",
     src: shrutiTripathi,
     designation: "Faculty of Business, Finance and Managerial Skills",
-    category: "Dean",
+    category: "Deans",
   },
   {
     id: 13,
     name: "Prof. Vibhakar Shrimali",
     src: vibhakarShrimali,
     designation: "Faculty of Electronics and Electrical Engineering Skills",
-    category: "Dean",
+    category: "Deans",
   },
   {
     id: 14,
@@ -314,18 +315,32 @@ const members = [
     category: "Officers",
   },
   {
-    id: 38,
-    name: "Veena Upadhyay",
-    src: veenaUpadhay,
-    designation: "Senior Accounts Officer",
-    category: "Officers",
-  },
-  {
     id: 39,
     name: "Kireet Kant Srivastava",
     src: kieraatSrivastava,
     designation: "Executive Engineer (Civil)",
     category: "Officers",
+  },
+  
+  {
+    id: 38,
+    name: "Veena Upadhyay",
+    src: veenaUpadhay,
+    designation: "Senior Accounts Officer",
+    category: "Accounts Officers",
+  },
+  {
+    id: 38,
+    name: "Mr. Shubham Chakraborty",
+    src: shubhamChakraborty,
+    designation: "Assistant Accounts Officer",
+    category: "Accounts Officers",
+  },
+  { 
+    id: 43,
+    name: "Dr. Ravinder Jhorar",
+    src: ravinderJohar,
+    category: "Training and Placement Officers",
   },
   {
     id: 40,
@@ -343,12 +358,6 @@ const members = [
     id: 42,
     name: "Kaushalender Varma",
     src: kaushalSachdeva,
-    category: "Training and Placement Officers",
-  },
-  {
-    id: 43,
-    name: "Dr. Ravinder Jhorar",
-    src: ravinderJohar,
     category: "Training and Placement Officers",
   },
   {

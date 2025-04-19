@@ -1,18 +1,18 @@
 export const iccData = {
-  description:
-    "Delhi Skill and Entrepreneurship University (DSEU) is a coeducational institution committed to providing equal opportunities to all. The University fosters a professional and respectful environment where men and women work together harmoniously. The Internal Complaints Committee (ICC) is dedicated to sensitizing students and staff, ensuring a campus culture that prevents sexual harassment. All complaints of sexual harassment are to be reported to the Committee, which takes appropriate disciplinary action in line with the University’s rules and regulations.",
+  description: 
+  "Delhi Skill and Entrepreneurship University (DSEU) is a coeducational institution dedicated to ensuring equal opportunities for all individuals. The University promotes a professional and respectful environment where men and women collaborate in harmony. The Internal Complaints Committee (ICC) is committed to raising awareness among students and staff, and to fostering a campus culture that actively prevents sexual harassment. All incidents of sexual harassment must be reported to the Committee, which undertakes appropriate disciplinary measures in accordance with the University's established rules and regulations.",
 
-  objectives: [
-    "Create an environment where women staff feel safe and supported to raise concerns without fear of reprisal.",
-    "Foster a culture where harassment and discrimination are not tolerated.",
-    "Empower individuals to speak up against inappropriate behavior.",
-    "Promote gender equality by addressing systemic issues affecting women in academia.",
-    "Tackle gender bias and ensure equitable access to opportunities.",
-    "Support the professional advancement of women.",
-    "Uphold fairness and transparency in complaint investigations.",
-    "Provide clear guidelines and conduct impartial investigations.",
-    "Treat all parties involved with respect and dignity."
-  ],
+    objectives: [
+      "Establish an environment in which women staff feel safe and supported to voice concerns without fear of retaliation.",
+      "Cultivate a culture that does not tolerate harassment or discrimination in any form.",
+      "Empower individuals to report inappropriate behavior with confidence and assurance of protection.",
+      "Advance gender equality by addressing systemic challenges faced by women in academia.",
+      "Eliminate gender bias and ensure equitable access to resources and opportunities.",
+      "Promote the professional growth and advancement of women staff members.",
+      "Ensure fairness and transparency throughout all complaint investigation processes.",
+      "Provide comprehensive guidelines and conduct impartial, objective investigations.",
+      "Treat all individuals involved in the process with respect, dignity, and sensitivity."
+    ],
 
   members: [
     {
@@ -22,6 +22,10 @@ export const iccData = {
     {
       name: "Ms. Mansi Gupta",
       role: "External Member"
+    },
+    {
+      name: "Dr. Ashima Sharma",
+      role: "Member"
     },
     {
       name: "Ms. Preeti Vajpeyi",
