@@ -63,14 +63,6 @@ const Circulars = () => {
                   {circular.fileName}
                 </a>
               </div>
-              <a
-                href={circular.fileLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 text-xl hover:text-blue-700"
-              >
-                <FaDownload />
-              </a>
             </li>
           ))}
         </ul>

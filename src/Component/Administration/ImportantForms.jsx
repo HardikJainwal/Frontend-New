@@ -1,30 +1,38 @@
 import { useState } from "react";
 import { FaFilePdf } from "react-icons/fa";
+import { useNoticesBySection } from "../../hooks/useNoticesBySection"; 
 
 const ImportantForms = () => {
-  const [archived, setArchived] = useState(true);
+  const [archived, setArchived] = useState(false);
 
   const handleArchivedButton = (e) => {
     e.preventDefault();
     setArchived((prev) => !prev);
   };
 
-  const forms = archived
-    ? Array.from({ length: 25 }, (_, i) => ({
-        name: `Archived Form ${i + 1}`,
-        link: "#",
-      }))
-    : Array.from({ length: 10 }, (_, i) => ({
-        name: `Latest Form ${i + 1}`,
-        link: "#",
-      }));
+  const { data: forms, isLoading } = useNoticesBySection("ad important forms", archived);
+
+  if (isLoading) {
+    return <div>Loading important forms...</div>;
+  }
+
+  if (!forms || forms.length === 0) {
+    return (
+      <>
+        <h2 className="text-2xl font-semibold mb-2 whitespace-nowrap text-center md:text-left text-[#333]">
+          {archived ? "Archived Important Forms" : "Important Forms for Employees"}
+        </h2>
+        <hr className="mb-6 border-gray-300" />
+        <div className="mt-10 text-slate-600">No forms available.</div>
+        <ArchiveButton handleArchivedButton={handleArchivedButton} archived={archived} />
+      </>
+    );
+  }
 
   return (
-    <div className=" mb-10">
+    <div className="mb-10">
       <h2 className="text-2xl font-semibold mb-2 whitespace-nowrap text-center md:text-left text-[#333]">
-        {archived
-          ? "Archived Important Forms"
-          : "Important Forms for Employees"}
+        {archived ? "Archived Important Forms" : "Important Forms for Employees"}
       </h2>
       <hr className="mb-6 border-gray-300" />
 
@@ -37,33 +45,38 @@ const ImportantForms = () => {
             >
               <span className="text-blue-600 text-xl">»</span>
               <a
-                href={form.link}
+                href={form.fileLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline hover:text-blue-700"
               >
-                {form.name}
+                {form.fileName}
               </a>
               <FaFilePdf className="text-red-600 text-xl" />
             </li>
           ))}
         </ul>
+        <ArchiveButton handleArchivedButton={handleArchivedButton} archived={archived} />
       </div>
-
-      <button
-        onClick={handleArchivedButton}
-        className="relative px-5 py-3 overflow-hidden font-medium text-gray-600 bg-gray-100 border border-gray-100 rounded-lg shadow-inner group mt-20 md:mt-10"
-      >
-        <span className="absolute top-0 left-0 w-0 h-0 transition-all duration-200 border-t-2 border-blue-600 group-hover:w-full ease"></span>
-        <span className="absolute bottom-0 right-0 w-0 h-0 transition-all duration-200 border-b-2 border-blue-600 group-hover:w-full ease"></span>
-        <span className="absolute top-0 left-0 w-full h-0 transition-all duration-300 delay-200 bg-blue-600 group-hover:h-full ease"></span>
-        <span className="absolute bottom-0 left-0 w-full h-0 transition-all duration-300 delay-200 bg-blue-600 group-hover:h-full ease"></span>
-        <span className="absolute inset-0 w-full h-full duration-300 delay-300 bg-blue-600 opacity-0 group-hover:opacity-100"></span>
-        <span className="relative transition-colors duration-300 delay-200 group-hover:text-white ease">
-          {archived ? "See Latest Forms" : "See Archived Forms"}
-        </span>
-      </button>
     </div>
+  );
+};
+
+const ArchiveButton = ({ handleArchivedButton, archived }) => {
+  return (
+    <button
+      onClick={handleArchivedButton}
+      className="relative px-5 py-3 overflow-hidden font-medium text-gray-600 bg-gray-100 border border-gray-100 rounded-lg shadow-inner group mt-20 md:mt-10"
+    >
+      <span className="absolute top-0 left-0 w-0 h-0 transition-all duration-200 border-t-2 border-blue-600 group-hover:w-full ease"></span>
+      <span className="absolute bottom-0 right-0 w-0 h-0 transition-all duration-200 border-b-2 border-blue-600 group-hover:w-full ease"></span>
+      <span className="absolute top-0 left-0 w-full h-0 transition-all duration-300 delay-200 bg-blue-600 group-hover:h-full ease"></span>
+      <span className="absolute bottom-0 left-0 w-full h-0 transition-all duration-300 delay-200 bg-blue-600 group-hover:h-full ease"></span>
+      <span className="absolute inset-0 w-full h-full duration-300 delay-300 bg-blue-600 opacity-0 group-hover:opacity-100"></span>
+      <span className="relative transition-colors duration-300 delay-200 group-hover:text-white ease">
+        {archived ? "See Latest Forms" : "See Archived Forms"}
+      </span>
+    </button>
   );
 };
 
