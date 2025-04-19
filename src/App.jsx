@@ -96,6 +96,7 @@ import HistoryDSEU from "./Component/NavItems/HistoryDSEU";
 import Scholarship from "./Component/Student Services/Scholarship";
 import ArchiveUploads from "./Component/Admin/ArchiveUploads";
 import ArchivedJobPortal from "./Component/Administration/ArchivedJobPortal";
+import ChancellorPage from "./Component/Administration/ChancellorPage";
 
 function App() {
   return (
@@ -158,6 +159,7 @@ function App() {
             <Route path="/registrar" element={<RegistararPage />} />
             <Route path="/research/*" element={<ResearchDev />} />
             <Route path="/administration/vice-chancellor" element={<ViceChancellorPage />} />
+            <Route path="/administration/chancellor" element={<ChancellorPage />} />
 
             {/* About us */}
             <Route path="/about-us/About-the-University" element={<About />} />
