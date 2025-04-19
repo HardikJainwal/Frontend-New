@@ -85,7 +85,7 @@ const navItems = [
       },
       {
         name: "Process and guidelines",
-        path: "/admission/guidelines",
+        path: "/admission/process-and-guidelines",
       },
       {
         name: "Fee Refund Policy",

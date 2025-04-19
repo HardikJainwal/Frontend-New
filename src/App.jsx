@@ -17,6 +17,7 @@ import RecuirtmentUploads from "./Component/Admin/RecuirtmentUploads";
 // admission
 import AdmissionGuidelines from "./Component/Admission/AdmissionGuidelines";
 import FeeRefundPolicy from "./Component/Admission/FeeRefundPolicy";
+import ProcessAndGuidelines from "./Component/Admission/ProcessAndGuidelines";
 
 // Academics
 import AcademicCollabration from "./Component/Academics/AcademicCollaboration";
@@ -180,6 +181,7 @@ function App() {
             {/* Admission */}
             <Route path="/admission/guidelines" element={<AdmissionGuidelines />} />
             <Route path="/admission/refund-policy" element={<FeeRefundPolicy />} />
+            <Route path="/admission/process-and-guidelines" element={<ProcessAndGuidelines />} />
 
             {/* Misc */}
             <Route path="/holiday-calendar" element={<HolidayCalendar />} />
