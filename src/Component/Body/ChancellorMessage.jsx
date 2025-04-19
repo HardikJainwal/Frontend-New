@@ -38,29 +38,21 @@ const ChancellorMessage = () => {
 
       <div className="space-y-5 text-[16px] md:text-[17px] text-gray-800 leading-relaxed text-justify">
         <p>
-          Congratulations and a warm, enthusiastic welcome to the dynamic community of Delhi Skill and Entrepreneurship University (DSEU)!
+        Welcome to Delhi Skill and Entrepreneurship University (DSEU)—a vibrant community dedicated to learning, innovation, and meaningful impact.
         </p>
         <p>
-          It is with immense pleasure that I extend my heartfelt greetings to both our new and returning students. As the gates of DSEU swing open to usher you into our halls of knowledge, innovation, and growth, I am filled with excitement for the journey that lies ahead.
+        At DSEU, we are committed to providing an education that blends academic excellence with practical skills, preparing you to navigate and contribute to the evolving global landscape.
         </p>
         <p>
-          The meticulously designed curriculum across various academic programs at DSEU is strategically crafted to ignite your potential, transforming you into catalysts for economic and social change. We pride ourselves on fostering an environment where creativity, innovation, and entrepreneurship flourish, enabling you to embark on a journey of self-discovery and transformation.
+        Our programs are thoughtfully designed to ignite your potential and foster an entrepreneurial mindset. With the support of our dedicated faculty, industry partners, and a collaborative campus environment, you’ll find ample opportunities to grow, innovate, and make a difference.
         </p>
         <p>
-          Our esteemed faculty, dedicated staff, invaluable partners, and collaborative allies are constantly pioneering groundbreaking initiatives that redefine what’s possible. As you immerse yourself in the vibrant campus life at DSEU, you’ll find a plethora of avenues to showcase your unique talents, refine your abilities, form meaningful connections, and collaborate closely within small, tightly-knit teams.
+        As you embark on this transformative journey, I encourage you to engage fully, explore new horizons, and harness the resources available to shape your future.
         </p>
         <p>
-          These interactions will not only facilitate your personal growth but also nurture enduring relationships with our distinguished faculty and staff, setting you on a trajectory of lifelong learning. DSEU presents you with an array of opportunities and benefits that are tailored to support your aspirations, both within and beyond the academic realm.
+        Wishing you a fulfilling and successful academic experience at DSEU.
         </p>
-        <p>
-          I am confident that your journey with us will be richly rewarding, filled with moments of deep engagement and personal growth. I encourage you to explore every corner of our campuses, extract every ounce of knowledge, and embrace the full spectrum of experiences that DSEU has to offer.
-        </p>
-        <p>
-          With great anticipation, I look forward to witnessing your journey unfold, and I hope that you share my enthusiasm for an academic year brimming with novel experiences, endless possibilities, and remarkable growth.
-        </p>
-        <p>
-          As we forge ahead, aiming to conquer the challenges and seize the opportunities that the landscape of skill education presents, our commitment to fostering a resilient community and empowering our students and faculty remains unswerving. We are steadfast in our pursuit of investments that nurture passion, drive innovation, and solidify our University’s standing as a beacon of excellence.
-        </p>
+        
       </div>
     </div>
   );

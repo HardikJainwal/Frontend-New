@@ -38,53 +38,18 @@ const ViceChancellorMessage = () => {
 
       <div className="space-y-5 text-[16px] md:text-[17px] text-gray-800 leading-relaxed text-justify">
         <p>
-          Congratulations and a warm welcome to the Delhi Skill and
-          Entrepreneurship University (DSEU) – a pioneering institution built on
-          the principles of innovation, inclusivity, and impact.
+          Welcome to Delhi Skill and Entrepreneurship University (DSEU), where innovation, inclusivity, and impact drive our mission.
         </p>
         <p>
-          It gives me immense pleasure to extend my heartfelt greetings to all
-          our new and returning students. As you step into our vibrant ecosystem
-          of learning, I am excited for the transformative journey that lies
-          ahead of you.
+          At DSEU, we offer skill-integrated, industry-aligned programs inspired by the National Education Policy 2020. Our learner-centric approach combines academic excellence with practical experience, preparing you to thrive in a dynamic global economy.
         </p>
         <p>
-          At DSEU, we are committed to redefining higher education through a
-          skill-integrated, industry-responsive, and learner-centric approach.
-          Guided by the vision of the National Education Policy (NEP) 2020, our
-          academic programs blend flexibility, multidisciplinary learning, and
-          hands-on experience to empower you with not just knowledge, but
-          real-world competence.
+          Our campuses foster a supportive and inclusive environment, encouraging you to explore, innovate, and lead with purpose.
         </p>
         <p>
-          We understand the evolving needs of today’s world and aim to equip you
-          with the tools to succeed in a dynamic, tech-driven, and
-          interconnected global economy. Our NEP-aligned curriculum is
-          thoughtfully designed to foster critical thinking, creativity,
-          entrepreneurship, and social responsibility, ensuring you graduate as
-          confident professionals and compassionate citizens.
+          Embrace the opportunities ahead, stay curious, and make the most of your journey with us.We are excited to support your aspirations and witness your growth at DSEU.
         </p>
-        <p>
-          DSEU is more than a university – it is a thriving community of
-          learners, thinkers, builders, and leaders. Our campuses offer a
-          supportive, inclusive, and engaging environment where your ideas are
-          valued, your voice is heard, and your dreams are nurtured.
-        </p>
-        <p>
-          Whether you’re pursuing a diploma, undergraduate, or postgraduate
-          program, DSEU offers you a platform to learn, grow, and lead with
-          purpose.
-        </p>
-        <p>
-          As we begin this new academic chapter, I encourage you to embrace
-          every opportunity, stay curious, and remain open to the boundless
-          possibilities ahead. We are here to support you at every step as you
-          carve your unique path.
-        </p>
-        <p>
-          I look forward to witnessing your growth, your achievements, and the
-          positive impact you will create in the world.
-        </p>
+
       </div>
     </div>
   );
