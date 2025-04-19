@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FaFilePdf } from "react-icons/fa";
-import { useNoticesBySection } from "../../hooks/useNoticesBySection"; 
+import { useNoticesBySection } from "../../hooks/useNoticesBySection";
 
 const ImportantForms = () => {
   const [archived, setArchived] = useState(false);
@@ -10,7 +10,10 @@ const ImportantForms = () => {
     setArchived((prev) => !prev);
   };
 
-  const { data: forms, isLoading } = useNoticesBySection("ad important forms", archived);
+  const { data: forms, isLoading } = useNoticesBySection(
+    "ad important forms",
+    archived
+  );
 
   if (isLoading) {
     return <div>Loading important forms...</div>;
@@ -20,11 +23,16 @@ const ImportantForms = () => {
     return (
       <>
         <h2 className="text-2xl font-semibold mb-2 whitespace-nowrap text-center md:text-left text-[#333]">
-          {archived ? "Archived Important Forms" : "Important Forms for Employees"}
+          {archived
+            ? "Archived Important Forms"
+            : "Important Forms for Employees"}
         </h2>
         <hr className="mb-6 border-gray-300" />
         <div className="mt-10 text-slate-600">No forms available.</div>
-        <ArchiveButton handleArchivedButton={handleArchivedButton} archived={archived} />
+        <ArchiveButton
+          handleArchivedButton={handleArchivedButton}
+          archived={archived}
+        />
       </>
     );
   }
@@ -32,7 +40,9 @@ const ImportantForms = () => {
   return (
     <div className="mb-10">
       <h2 className="text-2xl font-semibold mb-2 whitespace-nowrap text-center md:text-left text-[#333]">
-        {archived ? "Archived Important Forms" : "Important Forms for Employees"}
+        {archived
+          ? "Archived Important Forms"
+          : "Important Forms for Employees"}
       </h2>
       <hr className="mb-6 border-gray-300" />
 
@@ -56,8 +66,11 @@ const ImportantForms = () => {
             </li>
           ))}
         </ul>
-        <ArchiveButton handleArchivedButton={handleArchivedButton} archived={archived} />
       </div>
+      <ArchiveButton
+        handleArchivedButton={handleArchivedButton}
+        archived={archived}
+      />
     </div>
   );
 };
