@@ -38,23 +38,27 @@ const tempData = [
   },
   {
     id: 2,
-    name: "IT Policy",
+    name: "IT Policies",
     points: [
-      "All employees must use official email accounts for work-related communication.",
-      "Unauthorized software installations on company devices are strictly prohibited.",
-      "Data security measures must be followed, including regular password updates.",
-      "Company internet should only be used for work-related tasks.",
+      {
+        text: "Purchase and AMC of ComputersIT Equipment via GeM Portal & Hiring of Manpower on an Outsourcing Basis",
+        path: "/IT_policies/Purchase and AMC of ComputersIT Equipment via GeM Portal & Hiring of Manpower on an Outsourcing Basis.pdf"
+      }
     ],
   },
   {
     id: 3,
-    name: "Leave Policy",
+    name: "Leave Policies",
     points: [
-      "Employees are entitled to a fixed number of paid leaves per year.",
-      "Sick leave must be reported to the HR department as soon as possible.",
-      "Unapproved leave may result in salary deduction or disciplinary action.",
-      "Long-term leaves require prior approval from the management.",
-    ],
+      {
+        text: "Guidelines to apply for Regular Leave",
+        path: "/Leave_policies/Guidelines to apply for Regular Leave.pdf"
+      },
+      {
+        text: "Leave Policy",
+        path: "/Leave_policies/Leave Policy.pdf"
+      }
+      ],
   },
 ];
 
@@ -66,12 +70,11 @@ const EmployeePolicy = () => {
   };
 
   return (
-    <div className="p-6 md:p-10 flex flex-col gap-10">
+    <div className="p-6 md:p-10 flex flex-col gap-6">
       <div className="text-center md:text-left">
-        <h3 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-          Policy for Employees
+        <h3 className="text-xl md:text-2xl font-bold text-center text-gray-800 border-b-4 border-orange-400 pb-3 shadow-sm w-fit mb-1">
+        Policies for Employees
         </h3>
-        <hr className="h-1 bg-gray-700 border-none rounded-full w-32 md:w-48 mx-auto md:mx-0" />
       </div>
 
       <div className="flex flex-col gap-6 md:mb-10">
