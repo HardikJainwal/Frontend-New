@@ -50,6 +50,7 @@ import rituSareen from './rituSareen.jpeg';
 import arindamKumarChanda from './arindamKumarChanda.jpeg';
 import ranbirSinghSharma from './ranbirSinghSharma.jpeg';
 import arunDabas from './arunDabas.png';
+import shubhamChakraborty from './shubhamChakraborty.jpeg';
 
 
 export {
@@ -105,4 +106,5 @@ export {
     shubhaGV,
     rituSareen,
     ranbirSinghSharma,
+    shubhamChakraborty,
 };

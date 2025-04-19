@@ -9,33 +9,37 @@ import {
   keyPrincipals,
 } from "../../constants/VISION&MISSION.JS";
 
-const VissionMission = () => {
+const VisionMission = () => {
   const sections = [vision, mission, keyPrincipals];
 
   return (
-    <div className="w-full max-w-4xl mx-auto my-10 mb-16 md:mb-0 px-6 text-gray-800">
+    <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-gray-800">
       {sections.map((section) => (
         <motion.div
           key={section.id}
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-left mb-10"
+          viewport={{ once: true }}
+          className="mb-14"
         >
-
           <HeadingText
             heading={section.name}
-            headingCN="text-3xl font-bold mb-3"
+            headingCN="text-3xl md:text-4xl font-bold mb-4 text-blue-700"
           />
 
-          {section.desc && <div className="mt-4 space-y-3">{section.desc}</div>}
+          {section.desc && (
+            <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-4">
+              {section.desc}
+            </p>
+          )}
 
-          <div className="mt-4 space-y-3">
+          <div className="space-y-3 pl-1">
             {section.content.map((paragraph, index) => (
-              <p key={index} className="text-gray-600 flex items-center gap-2">
-                <ArrowRightCircle className="text-blue-500 min-w-5 min-h-5 max-w-5 max-h-5" />
-                {paragraph}
-              </p>
+              <div key={index} className="flex items-start gap-3 text-gray-700">
+                <ArrowRightCircle className="text-blue-500 mt-1 w-5 h-5 shrink-0" />
+                <p className="text-sm md:text-base leading-snug">{paragraph}</p>
+              </div>
             ))}
           </div>
         </motion.div>
@@ -44,4 +48,4 @@ const VissionMission = () => {
   );
 };
 
-export default VissionMission;
+export default VisionMission;

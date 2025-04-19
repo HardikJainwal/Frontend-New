@@ -96,7 +96,11 @@ const navItems = [
   {
     name: "Administration",
     dropdownItems: [
-      { name: "Administrative Offices", path: "/administration/administrative" },
+      {
+        name: "Administrative Offices",
+        path: "/administration/administrative",
+      },
+      { name: "Chancellor", path: "/administration/chancellor" },
       { name: "Vice Chancellor", path: "/administration/vice-chancellor" },
       { name: "Registrar", path: "/registrar" },
     ],
