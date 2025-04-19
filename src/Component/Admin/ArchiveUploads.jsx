@@ -22,6 +22,10 @@ const getSectionOptions = () => [
   { value: "results", label: "Results" },
   { value: "recruitments and notice", label: "Recruitments and Notices" },
   { value: "announcements", label: "Announcements" },
+  { value: "recruitment rules", label: "Administration Recruitment Rules" },
+  { value: "ad office orders", label: "Administration Office Orders" },
+  { value: "ad circulars", label: "Administration Circulars" },
+  { value: "ad important forms", label: "Administration Important Forms" },
 ];
 
 const ArchiveUploads = () => {
