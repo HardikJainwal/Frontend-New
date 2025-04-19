@@ -97,6 +97,8 @@ import Scholarship from "./Component/Student Services/Scholarship";
 import ArchiveUploads from "./Component/Admin/ArchiveUploads";
 import ArchivedJobPortal from "./Component/Administration/ArchivedJobPortal";
 import ChancellorPage from "./Component/Administration/ChancellorPage";
+import Entrepreneurship from './Component/Entrepreneurship/Entrepreneurship';
+import RecruitmentRules from "./Component/Administration/RecruitmentRules";
 
 function App() {
   return (
@@ -160,6 +162,7 @@ function App() {
             <Route path="/research/*" element={<ResearchDev />} />
             <Route path="/administration/vice-chancellor" element={<ViceChancellorPage />} />
             <Route path="/administration/chancellor" element={<ChancellorPage />} />
+            <Route path="/administration/recruitment-rules" element={<RecruitmentRules />} />
 
             {/* About us */}
             <Route path="/about-us/About-the-University" element={<About />} />
@@ -205,6 +208,9 @@ function App() {
             <Route path="/admin/dashboard" element={<TestPage />} />
             <Route path="/admin/archive-uploads" element={<ArchiveUploads />} />
             <Route path="/admin/uploads" element={<RecuirtmentUploads />} />
+
+            <Route path="/Entrepreneurship" element={<Entrepreneurship />} />
+
           </Route>
           
             <Route path="*" element={<NotFound />} />

@@ -1,27 +1,5 @@
 import { useState } from "react";
 
-const circulars = [
-  {
-    id: 1,
-    name: "Circular - Regarding Missing Files",
-    link: "/circulars/demo_circular.pdf",
-  },
-  {
-    id: 2,
-    name: "Guidelines for Engagement of Guest Faculty",
-    link: "/circulars/demo_circular.pdf",
-  },
-  {
-    id: 3,
-    name: "VC Madam Extension - 12/6/2023",
-    link: "/circulars/demo_circular.pdf",
-  },
-  {
-    id: 4,
-    name: "Circular – Regarding Non-Government Fund",
-    link: "/circulars/demo_circular.pdf",
-  },
-];
 
 const ImportantForms = () => {
   const [forms, setForms] = useState(false);
