@@ -7,12 +7,8 @@ const StatutoryBodiesComponent = () => {
   const [activeSection, setActiveSection] = useState("members");
   const [activeMinutesTab, setActiveMinutesTab] = useState("university court");
 
-  const { data, isLoading, error } = useNoticesBySection(activeMinutesTab);
-
-
-  console.log("Active Minutes Tab:", activeMinutesTab);
-  console.log("Fetched Data:", data);
-  if (error) console.error("Fetch Error:", error);
+  const sectionToFetch = activeSection === "members" ? "members" : activeMinutesTab;
+  const { data, isLoading, error } = useNoticesBySection(sectionToFetch);
 
   const navItems = [
     "NOTICES",
@@ -67,7 +63,6 @@ const StatutoryBodiesComponent = () => {
         STATUTORY BODIES
       </h1>
 
-  
       <div className="flex flex-wrap mb-6 border-b">
         {navItems.map((item, index) => (
           <button
@@ -83,7 +78,6 @@ const StatutoryBodiesComponent = () => {
           </button>
         ))}
       </div>
-
 
       <div className="flex mb-6 border-b text-lg">
         <button
@@ -109,29 +103,38 @@ const StatutoryBodiesComponent = () => {
       </div>
 
       <div className="bg-white rounded-lg p-6 shadow-sm mt-2">
-
         {activeSection === "members" ? (
-          <div className="space-y-3">
-            {boardMembers.map((board, idx) => (
-              <div
-                key={board.id || idx}
-                className="p-4 border rounded-lg hover:bg-blue-50 transition duration-200"
-              >
-                <a
-                  href={board.file || `#${board.id}`}
-                  className="text-blue-600 hover:text-blue-800 flex items-center"
-                  target="_blank"
-                  rel="noopener noreferrer"
+          data?.length > 0 ? (
+            <div className="space-y-4">
+              {data.map((file) => (
+                <div
+                  key={file._id}
+                  className="p-4 border rounded-lg hover:bg-blue-50 transition duration-200"
                 >
-                  <span className="mr-2">📄</span>
-                  {board.title}
-                </a>
-              </div>
-            ))}
-          </div>
+                  <a
+                    href={file.fileLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-700 font-medium hover:underline flex items-center"
+                  >
+                    <span className="mr-2">📄</span>
+                    {file.fileName}
+                  </a>
+                  <p className="text-sm text-gray-500 mt-1">
+                    Uploaded on{" "}
+                    {new Date(file.uploadedAt).toLocaleDateString()}
+                  </p>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="p-6 border rounded-lg shadow-md bg-white text-gray-600">
+              <h3 className="text-xl font-semibold mb-2">Members</h3>
+              <p className="text-red-600">No PDFs available for members.</p>
+            </div>
+          )
         ) : (
           <>
-        
             <div className="overflow-x-auto">
               <div className="flex flex-col md:flex-row flex-nowrap bg-gray-100 p-2 rounded-lg mb-4 gap-2 min-w-max">
                 {Object.keys(minutes).map((key) => (
