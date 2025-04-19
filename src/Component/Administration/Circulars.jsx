@@ -1,23 +1,43 @@
 import { useState } from "react";
 import { FaDownload } from "react-icons/fa";
+import { useNoticesBySection } from "../../hooks/useNoticesBySection";
 
 const Circulars = () => {
-  const [archived, setArchived] = useState(true);
+  const [archived, setArchived] = useState(false);
 
   const handleArchivedButton = (e) => {
     e.preventDefault();
     setArchived((prev) => !prev);
   };
 
-  const circulars = archived
-    ? Array.from({ length: 15 }, (_, i) => ({
-        title: `Archived Circular ${i + 1}`,
-        link: "#",
-      }))
-    : Array.from({ length: 10 }, (_, i) => ({
-        title: `Latest Circular ${i + 1}`,
-        link: "#",
-      }));
+  const { data: circulars, isLoading } = useNoticesBySection(
+    "ad circulars",
+    archived
+  );
+
+  if (isLoading) {
+    return <div>Loading circulars...</div>;
+  }
+
+  if (!circulars || circulars.length === 0) {
+    return (
+      <>
+        <h2 className="text-2xl font-semibold mb-2 whitespace-nowrap text-center md:text-left text-[#333]">
+          {archived ? "Archived Circulars" : "Latest Circulars"}
+        </h2>
+        <hr className="mb-6 border-gray-300" />
+
+        <div className="mt-10 text-slate-600">No circulars available.</div>
+
+        <button
+          onClick={handleArchivedButton}
+          className="px-5 py-3 font-medium text-white bg-blue-600 rounded-lg shadow-md hover:bg-white hover:text-blue-600 hover:shadow-md hover:shadow-blue-300 transition-colors duration-300 md:mt-14 mt-10"
+        >
+          {archived ? "See Latest Circulars" : "See Archived Circulars"}
+        </button>
+      </>
+    );
+  }
 
   return (
     <div className="mb-10">
@@ -35,16 +55,16 @@ const Circulars = () => {
             >
               <div className="flex items-center space-x-2 text-blue-900">
                 <a
-                  href={circular.link}
+                  href={circular.fileLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="font-medium underline text-sm hover:text-blue-700"
                 >
-                  {circular.title}
+                  {circular.fileName}
                 </a>
               </div>
               <a
-                href={circular.link}
+                href={circular.fileLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-600 text-xl hover:text-blue-700"
