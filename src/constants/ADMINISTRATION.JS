@@ -75,6 +75,18 @@ const sideNavItems = [
         href: "/administration/administrative/important-forms",
         active: false,
     },
+    {
+        id: 7,
+        name: "Office Orders",
+        href: '/administration/administrative/office-orders',
+        active: false,
+    },
+    {
+        id: 8,
+        name: "Circulars",
+        href: "/administration/administrative/circulars",
+        active: false,
+    }
 ];
 
 const admins = [

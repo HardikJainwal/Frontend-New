@@ -3,7 +3,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import withAuthProtection from "./withAuthProtection";
 import { uploadPdf } from "../../utils/apiservice";
 import toast from "react-hot-toast";
-import { FileText, Megaphone, Users, Briefcase } from "lucide-react";
+import { FileText, Megaphone, Users, Briefcase, Shield } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const AdminDashboard = () => {
@@ -52,6 +52,13 @@ const AdminDashboard = () => {
             value: "recruitments and notice",
             label: "Recruitments and Notice",
           },
+        ];
+      case "administration":
+        return [
+          { value: "recruitment rules", label: "Recruitment Rules" },
+          { value: "ad office orders", label: "Office Orders" },
+          { value: "ad circulars", label: "Circulars" },
+          { value: "ad important forms", label: "Important Forms" },
         ];
       default:
         return [];
@@ -150,6 +157,11 @@ const AdminDashboard = () => {
       key: "work-with-us",
       label: "Work With Us",
       icon: Briefcase,
+    },
+    {
+      key: "administration",
+      label: "Administration",
+      icon: Shield,
     },
   ];
 
@@ -264,7 +276,7 @@ const AdminDashboard = () => {
             </div>
           )}
 
-          <div>
+          <div className={`${activeTabLabel === 'Administration' && 'hidden'}`}>
             <label className="block text-sm font-semibold text-gray-700 mb-2">
               End Date
             </label>
@@ -272,7 +284,7 @@ const AdminDashboard = () => {
               type="date"
               value={endDate}
               onChange={(e) => setEndDate(e.target.value)}
-              className="w-full bg-gray-100  px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className={`w-full bg-gray-100  px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 `}
             />
           </div>
 

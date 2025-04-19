@@ -22,6 +22,10 @@ const getSectionOptions = () => [
   { value: "results", label: "Results" },
   { value: "recruitments and notice", label: "Recruitments and Notices" },
   { value: "announcements", label: "Announcements" },
+  { value: "recruitment rules", label: "Administration Recruitment Rules" },
+  { value: "ad office orders", label: "Administration Office Orders" },
+  { value: "ad circulars", label: "Administration Circulars" },
+  { value: "ad important forms", label: "Administration Important Forms" },
 ];
 
 const ArchiveUploads = () => {
@@ -268,7 +272,7 @@ const TopHeading = () => {
 
           <button
             onClick={() => navigate("/admin/dashboard")}
-            className="block text-white bg-blue-400 hover:bg-orange-400 transition-colors font-semibold  text-sm rounded-lg px-2"
+            className="block text-white bg-blue-400 hover:bg-orange-400 transition-colors font-semibold  text-sm rounded-lg px-2 md:hidden"
           >
             Dashboard
           </button>
