@@ -99,11 +99,11 @@ const InformationBulletin = () => {
               </div>
               <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-blue-50 to-transparent pointer-events-none"></div>
             </div>
-            <div className="p-2 mt-auto">
+            {/* <div className="p-2 mt-auto">
               <button className="w-full py-3 bg-blue-900 text-yellow-400 rounded text-lg hover:bg-yellow-400 hover:text-blue-900 transition-colors duration-300 font-medium">
                 {card.buttonText}
               </button>
-            </div>
+            </div> */}
           </div>
         ))}
       </div>
@@ -114,50 +114,50 @@ const InformationBulletin = () => {
 // animation styling
 const style = `
   @keyframes scroll {
-    0% {
-      transform: translateY(100%);
-    }
-    100% {
-      transform: translateY(-100%);
-    }
+  0% {
+    transform: translateY(100%);
   }
-
-  @keyframes gradient-shift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+  100% {
+    transform: translateY(-100%);
   }
+}
 
-  .animate-scroll {
-    animation: scroll 10s linear infinite;
-  }
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
-  .group:hover .animate-scroll {
+.animate-scroll {
+  animation: scroll 10s linear infinite;
+  overflow: hidden; /* Ensure the content doesn't spill out */
+}
+
+.group:hover .animate-scroll {
+  animation-play-state: running; /* Optional: ensure it runs continuously */
+}
+
+@media (pointer: coarse) {
+  .group:active .animate-scroll {
     animation-play-state: paused;
   }
+}
 
-  @media (pointer: coarse) {
-    .group:active .animate-scroll {
-      animation-play-state: paused;
-    }
+@media (max-width: 768px) {
+  .animate-scroll {
+    animation-duration: 10s;
   }
+}
 
-  @media (max-width: 768px) {
-    .animate-scroll {
-      animation-duration: 10s;
-    }
-  }
-
-  .animated-label {
-    font-size: 12px;
-    font-weight: bold;
-    background: linear-gradient(90deg, rgb(255, 0, 0), rgb(0, 255, 0), rgb(0, 0, 255), rgb(255, 0, 255));
-    background-size: 300%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: gradient-shift 3s infinite linear;
-  }
-`;
+.animated-label {
+  font-size: 12px;
+  font-weight: bold;
+  background: linear-gradient(90deg, rgb(255, 0, 0), rgb(0, 255, 0), rgb(0, 0, 255), rgb(255, 0, 255));
+  background-size: 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 3s infinite linear;
+}`;
 
 export default () => (
   <>
