@@ -4,10 +4,12 @@ import { login } from "../../utils/apiservice";
 import { useNavigate } from "react-router-dom";
 import { showErrorToast, showSuccessToast } from "../../utils/toasts";
 import logo from "../../assets/DSEULogo/DSEULOGOTHICK.svg";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -24,6 +26,8 @@ const LoginForm = () => {
     onSuccess: (data) => {
       if (data.role === "Admin") {
         showSuccessToast("Logged in successfully!");
+        sessionStorage.setItem("token", data.token);
+        sessionStorage.setItem("currentRole", data.role);
         sessionStorage.removeItem("email");
         navigate("/admin/dashboard");
       } else {
@@ -71,24 +75,35 @@ const LoginForm = () => {
           />
         </div>
 
-        <div className="mb-6">
+        <div className="mb-6 relative">
           <label className="block text-sm font-medium text-blue-600 mb-1">
             Password
           </label>
           <input
-            type="password"
+            type={showPassword ? "text" : "password"}
             placeholder="Enter your password"
-            className="w-full px-4 py-2 rounded-lg border border-blue-200 focus:outline-none focus:ring-2 focus:ring-orange-400"
+            className="w-full px-4 py-2 pr-10 rounded-lg border border-blue-200 focus:outline-none focus:ring-2 focus:ring-orange-400"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
+          <button
+            type="button"
+            onClick={() => setShowPassword((prev) => !prev)}
+            className="absolute top-9 right-3 text-gray-500 hover:text-blue-600 focus:outline-none"
+          >
+            {showPassword ? <FaEyeSlash /> : <FaEye />}
+          </button>
         </div>
 
         <button
           type="submit"
           disabled={mutation.isPending}
-          className="w-full py-2 rounded-lg bg-blue-600 hover:bg-orange-400 text-white font-semibold transition-colors duration-300"
+          className={`w-full py-2 rounded-lg text-white font-semibold transition-colors duration-300 ${
+            mutation.isPending
+              ? "bg-blue-400 cursor-not-allowed opacity-70"
+              : "bg-blue-600 hover:bg-orange-400"
+          }`}
         >
           {mutation.isPending ? "Logging in..." : "Login"}
         </button>
