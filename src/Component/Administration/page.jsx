@@ -1,17 +1,18 @@
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+
+import DirectorsOffice from "./DirectorsOffice";
+import BoardOfManagement from "./BoardOfManagement";
+import ImportantForms from "./ImportantForms";
+import AdvisoryBoard from "./AdvisoryBoard";
+import EmployeePolicy from "./EmployeePolicy";
 import StatutoryBodies from "./StatutoryBodies";
 import TeamDseu from "./TeamDseu";
+import OfficeOrders from "./OfficeOrders";
+import Circulars from "./Circulars";
 
 import SideBar from "./SideBar";
 import MobileSideBar from "./MobileSideBar";
-import {
-  AdvisoryBoard,
-  BoardOfManagement,
-  DirectorsOffice,
-  ImportantForms,
-  EmployeePolicy,
-} from ".";
 
 const AdministrationTemp = () => {
   const location = useLocation();
@@ -38,6 +39,8 @@ const AdministrationTemp = () => {
           <Route path="employee-policy" element={<EmployeePolicy />} />
           <Route path="statutory-bodies" element={<StatutoryBodies />} />
           <Route path="team-dseu" element={<TeamDseu />} />
+          <Route path="office-orders" element={<OfficeOrders />} />
+          <Route path="circulars" element={<Circulars />} />
         </Routes>
       </div>
     </div>
