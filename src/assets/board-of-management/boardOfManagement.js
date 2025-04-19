@@ -5,5 +5,10 @@ import principalSecratory from './principal-secratory.jpg';
 import secratory from './secratory.jpg';
 import drpankajlathar from './drpankajlathar.jpg';
 import dttesecratory from './newsecratory.jpeg';
+import vivekAggrawal from './vivekAggrawal.jpg';
+import kamnaSachdeva from './kamnaSachdeva.png';
+import shrutiTripathi from './shrutiTripathi.png';
+import vibhakarShrimali from './vibhakarShrimali.jpg';
+import placeholder from './placeholder.jpg';
 
-export { deshmukh, girishKumar, jpSaini, principalSecratory, secratory, drpankajlathar, dttesecratory };
+export { deshmukh, girishKumar, jpSaini, principalSecratory, secratory, drpankajlathar, dttesecratory,vivekAggrawal, vibhakarShrimali, kamnaSachdeva, shrutiTripathi, placeholder };

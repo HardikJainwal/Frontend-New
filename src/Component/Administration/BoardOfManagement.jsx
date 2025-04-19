@@ -2,8 +2,12 @@ import { boardOfManagement } from "../../constants/BOARDOFMANAGEMENT.JS";
 
 const BoardOfManagement = () => {
   const sections = [
-    { title: "Board of Management", category: "Board of Management" },
-    { title: "Ex-Officio Members", category: "Ex-Officio Members" },
+    { title: "Chairperson", category: "Chairperson" },
+    { title: "Registrar", category: "Registrar" },
+    { title: "Representative", category: "Representative" },
+    { title: "Secretary", category: "Secretary" },
+    { title: "Deans", category: "Deans" },
+    { title: "HoD(s)", category: "HoD" },
   ];
 
   return (
