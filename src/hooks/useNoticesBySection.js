@@ -3,8 +3,9 @@ import { useQuery } from '@tanstack/react-query'
 
 export const useNoticesBySection = (section, archived = false) => {
   return useQuery({
-    queryKey: ["notices", section],
+    queryKey: ["notices", section, archived], 
     queryFn: () => getPdfBySections(section, archived),
-    enabled: !!section,
+    enabled: !!section, 
   });
 };
+

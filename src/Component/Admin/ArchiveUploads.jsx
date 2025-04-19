@@ -268,7 +268,7 @@ const TopHeading = () => {
 
           <button
             onClick={() => navigate("/admin/dashboard")}
-            className="block text-white bg-blue-400 hover:bg-orange-400 transition-colors font-semibold  text-sm rounded-lg px-2"
+            className="block text-white bg-blue-400 hover:bg-orange-400 transition-colors font-semibold  text-sm rounded-lg px-2 md:hidden"
           >
             Dashboard
           </button>
