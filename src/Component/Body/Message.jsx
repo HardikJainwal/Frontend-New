@@ -9,7 +9,7 @@ const leaders = [
     name: "Shri Vinai Kumar Saxena",
     image: DG,
     message:
-      "It is with immense pleasure that I extend my heartfelt greetings to both our new and returning students. As the gates of DSEU swing open to usher you into our halls of knowledge, innovation, and growth, I am filled with excitement for the journey that lies ahead.",
+      "As you embark on this transformative journey, I encourage you to engage fully, explore new horizons, and harness the resources available to shape your future.",
     link: "/chancellor",
   },
   {
@@ -17,7 +17,7 @@ const leaders = [
     name: "Prof Ashok Kumar Nagawat",
     image: VCsir,
     message:
-      "It gives me immense pleasure to extend my heartfelt greetings to all our new and returning students. As you step into our vibrant ecosystem of learning, I am excited for the transformative journey that lies ahead of you.",
+      "Embrace the opportunities ahead, stay curious, and make the most of your journey with us. We are excited to support your aspirations and witness your growth at DSEU.",
     link: "/vice-chancellor",
   },
 ];
@@ -30,35 +30,38 @@ const Message = () => {
           {leaders.map((leader, index) => (
             <div
               key={index}
-              className="flex flex-col md:flex-row items-center md:items-start bg-blue-600 bg-opacity-100 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow h-full"
+              className="flex flex-col md:flex-row items-center md:items-start bg-blue-600 bg-opacity-100 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all h-full"
             >
               <div className="flex-shrink-0">
                 <img
                   src={leader.image}
                   alt={leader.name}
-                  className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-white"
+                  className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-white shadow-md"
                 />
               </div>
+
               <div className="flex flex-col justify-between flex-grow md:ml-6 mt-6 md:mt-0 text-center md:text-left h-full">
                 <div>
-                  <div className="flex flex-col items-center mb-4">
-                    <h2 className="text-xl font-extrabold text-white font-sans">
+                  <div className="flex flex-col items-center md:items-start mb-2">
+                    <h2 className="text-xl md:text-xl font-bold text-center text-white border-b-4 border-orange-400 pb-3 shadow-sm w-fit mb-1">
                       {leader.title}
                     </h2>
-                    <div className="mt-1 w-[125px] h-1 bg-orange-400 rounded"></div>
                   </div>
-                  <p className="text-white text-sm leading-relaxed mb-4 min-h-[96px]">
+
+                  <p className="text-white text-sm leading-relaxed mb-4 min-h-[96px] px-2 md:px-0 text-justify">
                     {leader.message}
                   </p>
+
                   <div className="text-white font-semibold mb-4">
-                    ~{leader.name}
+                    ~ {leader.name}
                   </div>
                 </div>
+
                 <div>
                   <a
                     href={leader.link}
                     rel="noopener noreferrer"
-                    className="px-4 py-2 bg-blue-700 text-white rounded-md inline-flex items-center space-x-2 hover:bg-blue-800 transition-colors"
+                    className="px-4 py-2 bg-white text-blue-700 font-semibold rounded-md inline-flex items-center space-x-2 hover:bg-gray-100 transition-colors"
                   >
                     <span>Know More</span>
                     <ArrowRight className="w-4 h-4" />
