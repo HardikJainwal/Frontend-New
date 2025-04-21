@@ -34,7 +34,7 @@ const Circulars = () => {
   }
 
   return (
-    <div className="mb-10 px-4 md:px-0">
+    <div className="mb-10">
       <h2 className="text-xl font-semibold mb-4 text-center md:text-left text-[#333]">
         {sectionTitle}
       </h2>
@@ -44,7 +44,7 @@ const Circulars = () => {
         {circulars.map((circular, index) => (
           <li
             key={index}
-            className="bg-white border border-gray-200 rounded-md shadow-sm p-3 flex flex-col sm:flex-row sm:items-center sm:justify-between"
+            className="bg-white border border-gray-200 rounded-md shadow-sm p-3 flex sm:items-center justify-between flex-row"
           >
             <div className="flex items-center gap-2">
               <a

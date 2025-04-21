@@ -19,8 +19,8 @@ const ImportantForms = () => {
   }
 
   return (
-    <div className="mb-10 px-4 md:px-0">
-      <h2 className="text-xl font-semibold mb-4 text-center md:text-left text-[#333]">
+    <div className="mb-10">
+      <h2 className="text-lg sm:text-xl md:text-2xl md:mt-6 sm:mt-3 font-semibold mb-4 text-center md:text-left text-[#333]">
         {sectionTitle}
       </h2>
       <hr className="mb-6 border-gray-300" />
@@ -36,7 +36,7 @@ const ImportantForms = () => {
             {forms.map((form, index) => (
               <li
                 key={index}
-                className="bg-white border border-gray-200 rounded-md shadow-sm p-3 flex flex-col sm:flex-row sm:items-center sm:justify-between"
+                className="bg-white border border-gray-200 rounded-md shadow-sm p-3 flex flex-row items-center justify-between "
               >
                 <div className="flex items-center gap-2">
                   <span className="text-blue-600 text-lg">»</span>
@@ -44,7 +44,7 @@ const ImportantForms = () => {
                     href={form.fileLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-900 underline hover:text-blue-700 text-sm break-words max-w-full"
+                    className="text-blue-900 underline hover:text-blue-700 text-sm md:text-base break-words max-w-full"
                   >
                     {form.fileName}
                   </a>

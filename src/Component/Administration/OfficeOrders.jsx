@@ -38,21 +38,21 @@ const OfficeOrders = () => {
   }
 
   return (
-    <div className="mb-10">
+    <div className="mb-10 mt-4">
       <h2 className="text-2xl font-semibold mb-2 whitespace-nowrap text-center md:text-left text-[#333]">
         {archived ? "Archived Office Orders" : "Latest Office Orders"}
       </h2>
       <hr className="mb-6 border-gray-300" />
 
-      <div className="max-h-80 overflow-y-auto custom-scroll px-2 space-y-3">
-        <ul className="mb-6">
+      <div className="max-h-80 overflow-y-auto custom-scroll  space-y-3">
+        <ul className="mb-6 flex flex-col gap-5">
           {orders.map((order, index) => (
             <li
               key={index}
               className="flex items-center space-x-3 bg-gray-50 rounded-lg px-4 py-3 shadow-md hover:bg-gray-100 transition-all duration-200"
             >
-              <div className="flex items-center space-x-2 text-blue-900">
-                <FaFileAlt className="text-blue-600 text-xl" />
+              <div className="flex items-center space-x-2 ">
+                <FaFileAlt className="text-blue-600 text-xl min-h-3 max-h-4 min-w-3 max-w-4" />
                 <a
                   href={order.fileLink}
                   target="_blank"

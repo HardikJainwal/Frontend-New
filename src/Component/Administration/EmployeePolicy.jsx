@@ -16,23 +16,23 @@ const tempData = [
       },
       {
         text: "LTC Claim BIll (GAR-14C) – 30.03.2023",
-        path: "/employee_policies/LTC Claim BIll (GAR-14C).pdf",
+        path: "/Employee_policies/LTC Claim BIll (GAR-14C).pdf",
       },
       {
         text: "Medical Card for the employees of the Delhi Skill and Entrepreneurship University – 20.01.2023",
-        path: "/employee_policies/Medical Card for the employees of the Delhi Skill and Entrepreneurship University.pdf",
+        path: "/Employee_policies/Medical Card for the employees of the Delhi Skill and Entrepreneurship University.pdf",
       },
       {
         text: "Procedure for submission of Medical Bills for Re-imbursement – 20.01.2023",
-        path: "/employee_policies/Procedure for submission of Medical Bills for Re-imbursement.pdf",
+        path: "/Employee_policies/Procedure for submission of Medical Bills for Re-imbursement.pdf",
       },
       {
         text: "Professional Development Fund Guidelines – 22.06.2023 ",
-        path: "/employee_policies/Professional Development Fund Guidelines.pdf",
+        path: "/Employee_policies/Professional Development Fund Guidelines.pdf",
       },
       {
         text: "Regarding Requirement of DGEHS Medical Card at DSEU Campuses – 18.01.2023",
-        path: "/employee_policies/Regarding Requirement of DGEHS Medical Card at DSEU Campuses.pdf",
+        path: "/Employee_policies/Regarding Requirement of DGEHS Medical Card at DSEU Campuses.pdf",
       },
     ],
   },
@@ -70,9 +70,9 @@ const EmployeePolicy = () => {
   };
 
   return (
-    <div className="p-6 md:p-10 flex flex-col gap-6">
+    <div className="md:p-10 flex flex-col gap-6 mt-1 mb-16">
       <div className="text-center md:text-left">
-        <h3 className="text-xl md:text-2xl font-bold text-center text-gray-800 border-b-4 border-orange-400 pb-3 shadow-sm w-fit mb-1">
+        <h3 className="text-xl md:text-2xl font-bold text-center text-gray-800 border-b-4 border-orange-400 pb-3 shadow-sm md:w-fit mb-1">
         Policies for Employees
         </h3>
       </div>
@@ -84,7 +84,7 @@ const EmployeePolicy = () => {
             className="bg-white shadow-md rounded-lg overflow-hidden"
           >
             <div
-              className={`flex justify-between items-center p-4 cursor-pointer hover:bg-blue-200 transition-all ${
+              className={`flex justify-between items-center p-3 md:p-4 cursor-pointer hover:bg-blue-200 transition-all ${
                 current === data.id && "bg-blue-400 text-white font-semibold"
               }`}
               onClick={() => handleClick(data.id)}
@@ -97,18 +97,18 @@ const EmployeePolicy = () => {
                 {data.name}
               </h3>
               <ChevronDown
-                className={`w-6 h-6 text-gray-600 transition-transform duration-300 ${
+                className={`min-w-6 min-h-6 text-gray-600 transition-transform duration-300 ${
                   current === data.id ? "rotate-180" : "rotate-0"
                 }`}
               />
             </div>
 
             <div
-              className={`overflow-hidden transition-all duration-500 ${
+              className={`overflow-scroll md:overflow-hidden transition-all duration-500 text-xs md:text-[16px] sm:text-sm ${
                 current === data.id ? "max-h-[500px] p-3" : "max-h-0 p-0"
               }`}
             >
-              <ul className="list-none pl-4 text-gray-700 space-y-2 p-3">
+              <ul className="list-none pl-4 text-gray-700 space-y-2 md:p-3 flex flex-col gap-4 md:gap-2 sm:gap-3">
                 {data.points.map((point, index) => (
                   <li
                     key={index}
@@ -123,7 +123,7 @@ const EmployeePolicy = () => {
                   >
                     <div className="flex items-center gap-2">
                       <ArrowRight
-                        className={`w-3 h-3 text-gray-400 transition-all duration-300 ease-in-out group-hover:text-blue-600 ${
+                        className={`min-w-3 min-h-3 max-w-3 max-h-3 text-gray-400 transition-all duration-300 ease-in-out group-hover:text-blue-600 ${
                           current === data.id
                             ? "opacity-100 translate-x-0"
                             : "opacity-0 -translate-x-2"
@@ -152,7 +152,7 @@ const EmployeePolicy = () => {
                         onClick={(e) => e.stopPropagation()}
                         className="p-1 rounded hover:bg-blue-100 transition"
                       >
-                        <Download className="w-4 h-4 text-gray-400 hover:text-blue-600 transition-all" />
+                        <Download className="min-w-4 min-h-4 max-w-4 max-h-4 md:max-h-6 md:max-w-6 text-gray-400 hover:text-blue-600 transition-all" />
                       </a>
                     )}
                   </li>

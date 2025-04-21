@@ -58,7 +58,7 @@ const StatutoryBodiesComponent = () => {
     );
 
   return (
-    <div className="max-w-6xl mx-auto p-6 bg-white rounded-lg shadow-md">
+    <div className="max-w-6xl mx-[-10px] md:mx-0 p-6 bg-white rounded-lg shadow-md mb-16 md:mb-10 mt-3">
       <h1 className="text-3xl font-bold text-center mb-8 text-gray-800">
         STATUTORY BODIES
       </h1>
@@ -102,7 +102,7 @@ const StatutoryBodiesComponent = () => {
         </button>
       </div>
 
-      <div className="bg-white rounded-lg p-6 shadow-sm mt-2">
+      <div className="bg-white rounded-lg shadow-sm mt-2">
         {activeSection === "members" ? (
           data?.length > 0 ? (
             <div className="space-y-4">
@@ -136,7 +136,7 @@ const StatutoryBodiesComponent = () => {
         ) : (
           <>
             <div className="overflow-x-auto">
-              <div className="flex flex-col md:flex-row flex-nowrap bg-gray-100 p-2 rounded-lg mb-4 gap-2 min-w-max">
+              <div className="flex flex-col md:flex-row flex-nowrap bg-gray-100 md:p-2 rounded-lg mb-4 gap-2 min-w-max">
                 {Object.keys(minutes).map((key) => (
                   <button
                     key={key}
@@ -158,7 +158,7 @@ const StatutoryBodiesComponent = () => {
                 {data.map((file) => (
                   <div
                     key={file._id}
-                    className="p-4 border rounded-lg hover:bg-blue-50 transition duration-200"
+                    className="p-2 border rounded-lg hover:bg-blue-50 transition duration-200"
                   >
                     <a
                       href={file.fileLink}

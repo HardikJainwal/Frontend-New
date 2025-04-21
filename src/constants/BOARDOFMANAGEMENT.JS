@@ -1,6 +1,5 @@
 import { registarar, VC } from '../assets/advisory-board';
-import { jpSaini, deshmukh, girishKumar, vivekAggrawal, vibhakarShrimali, kamnaSachdeva, shrutiTripathi,dttesecratory, placeholder } from '../assets/board-of-management/boardOfManagement';
-
+import { jpSaini, deshmukh, girishKumar, vivekAggrawal, vibhakarShrimali, kamnaSachdeva, shrutiTripathi, dttesecratory, placeholder } from '../assets/board-of-management/boardOfManagement';
 const boardOfManagement = [
     {
         id: 1,
@@ -16,64 +15,64 @@ const boardOfManagement = [
         src: vivekAggrawal,
     },
     {
-        id: 2,
+        id: 3,
         name: "Prof. (Dr.) Gagan Dhawan",
         category: "Deans",
         src: registarar,
     },
     {
-        id: 3,
+        id: 4,
         name: "Prof. J.P. Saini",
         designation: "Representative AICTE",
         category: "Representative",
         src: jpSaini,
     },
     {
-        id: 4,
+        id: 5,
         name: "Prof. S. G. Deshmukh",
         designation: "Representative UGC",
         category: "Representative",
         src: deshmukh,
     },
     {
-        id: 5,
+        id: 6,
         name: "Prof. Girish Kumar",
         category: "Deans",
         src: girishKumar,
     },
     {
-        id: 5,
+        id: 7,
         name: "Prof. Vibhakar Shrimali",
         category: "Deans",
         src: vibhakarShrimali,
     },
     {
-        id: 5,
+        id: 8,
         name: "Prof. Kamna Sachdeva",
         category: "Deans",
         src: kamnaSachdeva,
     },
     {
-        id: 5,
+        id: 9,
         name: "Prof. Shruti Tripathi",
         category: "HoD",
         src: shrutiTripathi,
     },
     {
-        id: 5,
+        id: 10,
         name: "Prof. N Jena",
         category: "HoD",
         src: placeholder,
     },
     {
-        id: 8,
+        id: 11,
         name: "Ms. Nandini Paliwal",
         designation: "Secretary DTTE",
         category: "Secretary",
         src: dttesecratory,
     },
     {
-        id: 8,
+        id: 12,
         name: "Sh. Ashish Chandra Verma, IAS",
         designation: "Principal Secretary Finance",
         category: "Secretary",
