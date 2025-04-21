@@ -1,6 +1,10 @@
+import UnderConstruction from "../Reusable/UnderConstruction"
+
 const HealthFacilities = () => {
   return (
-    <div>HealthFacilities</div>
+    <div>
+      <UnderConstruction/>
+    </div>
   )
 }
 

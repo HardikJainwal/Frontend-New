@@ -38,9 +38,7 @@ const navItems = [
       { name: "Vision and Mission", path: "/about-us/Vision-and-Mission" },
       { name: "History of DSEU", path: "/about-us/history" },
       {
-        name: "Annual Report",
-        path: "#",
-      },
+        name: "Annual Report", path: "/about-us/annualReport"},
     ],
   },
   {
@@ -111,7 +109,7 @@ const navItems = [
     dropdownItems: [
       { name: "NCC/NSS", path: "/ncc" },
       { name: "Sports facilities", path: "/amenities/Sports" },
-      { name: "Health Facilities", path: "/amenities/Health-Facilities" },
+      // { name: "Health Facilities", path: "/amenities/Health-Facilities" },
       { name: "Scholarship", path: "/amenities/Scholarship" },
       { name: "Internal Complaint Committee", path: "/amenities/ICC" },
       { name: "Anti-Ragging Cell", path: "amenities/Anti-Ragging" },
@@ -128,7 +126,7 @@ const navItems = [
   },
   {
     name: "Entrepreneurship",
-    path: "/entrepreneurship",
+    path: "/Entrepreneurship",
   },
 ];
 

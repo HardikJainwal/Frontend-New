@@ -1,7 +1,9 @@
+import NotAvaliablePage from "../Reusable/NotAvaliablePage"
+
 const Scholarship = () => {
   return (
     <div>
-      Scholarship
+      <NotAvaliablePage/>
     </div>
   )
 }

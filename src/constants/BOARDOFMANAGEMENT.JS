@@ -1,5 +1,5 @@
 import { registarar, VC } from '../assets/advisory-board';
-import { jpSaini, deshmukh, girishKumar, vivekAggrawal, vibhakarShrimali, kamnaSachdeva, shrutiTripathi, dttesecratory, placeholder } from '../assets/board-of-management/boardOfManagement';
+import { jpSaini, deshmukh, girishKumar, vivekAggrawal, vibhakarShrimali, kamnaSachdeva, shrutiTripathi, dttesecratory, placeholder, njena, principalSecratory } from '../assets/board-of-management/boardOfManagement';
 const boardOfManagement = [
     {
         id: 1,
@@ -62,7 +62,7 @@ const boardOfManagement = [
         id: 10,
         name: "Prof. N Jena",
         category: "HoD",
-        src: placeholder,
+        src: njena,
     },
     {
         id: 11,
@@ -76,7 +76,7 @@ const boardOfManagement = [
         name: "Sh. Ashish Chandra Verma, IAS",
         designation: "Principal Secretary Finance",
         category: "Secretary",
-        src: placeholder,
+        src: principalSecratory,
     }
 ];
 
