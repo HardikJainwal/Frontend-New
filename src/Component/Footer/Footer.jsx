@@ -132,12 +132,12 @@ const Footer = () => {
             </li>
             <li>
               <a href="/ncc" className="hover:text-blue-600">
-                Campus Life
+                Student Life
               </a>
             </li>
             <li>
-              <a href="/Courses" className="hover:text-blue-600">
-                Educational Programmes
+              <a href="/amenities/Library" className="hover:text-blue-600">
+                Library
               </a>
             </li>
             <li>
