@@ -1,21 +1,40 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaDownload } from "react-icons/fa";
 import { useNoticesBySection } from "../../hooks/useNoticesBySection";
+import UploadModal from "../Admin/UploadModal";
+import ToggleButton from "../Reusable/ArchiveButton";
 
 const Circulars = () => {
   const [archived, setArchived] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  const token = sessionStorage.getItem("token");
+  const currentRole = sessionStorage.getItem("currentRole");
+
+  useEffect(() => {
+    if (currentRole === "Admin" && token) {
+      setIsAdmin(true);
+    }
+  }, [currentRole, token]);
 
   const handleArchivedButton = (e) => {
     e.preventDefault();
     setArchived((prev) => !prev);
   };
 
-  const { data: circulars, isLoading } = useNoticesBySection("ad circulars", archived);
-
+  const { data: circulars, isLoading } = useNoticesBySection(
+    "ad circulars",
+    archived
+  );
   const sectionTitle = archived ? "Archived Circulars" : "Latest Circulars";
 
   if (isLoading) {
-    return <div className="text-center py-6 text-gray-500 text-base">Loading circulars...</div>;
+    return (
+      <div className="text-center py-6 text-gray-500 text-base">
+        Loading circulars...
+      </div>
+    );
   }
 
   if (!circulars || circulars.length === 0) {
@@ -24,20 +43,49 @@ const Circulars = () => {
         <h2 className="text-xl font-semibold mb-4 text-center md:text-left text-[#333]">
           {sectionTitle}
         </h2>
+
         <hr className="mb-6 border-gray-300" />
-        <div className="mt-8 text-center text-slate-600">No circulars available.</div>
-        <div className="flex justify-center md:justify-start mt-10">
-          <ToggleButton handleArchivedButton={handleArchivedButton} archived={archived} />
+
+        <div className="mt-8 text-center text-slate-600">
+          No circulars available.
         </div>
+
+        <div className="flex justify-center md:justify-start mt-10">
+          <ToggleButton
+            handleArchivedButton={handleArchivedButton}
+            archived={archived}
+          />
+        </div>
+
+        {showModal && (
+          <UploadModal
+            onClose={() => setShowModal(false)}
+            setShowModal={setShowModal}
+            section={"ad circulars"}
+          />
+        )}
       </div>
     );
   }
 
   return (
     <div className="mb-10">
+      <div className="flex flex-row items-center justify-between">
       <h2 className="text-xl font-semibold mb-4 text-center md:text-left text-[#333]">
         {sectionTitle}
       </h2>
+
+      <div className="flex justify-end mb-4 md:mr-5 sm:mr-3">
+        {isAdmin && (
+          <button
+            className="cursor-pointer bg-blue-600 text-white px-4 py-2 rounded-full text-sm md:text-base hover:bg-blue-700 transition-colors duration-300 shadow-md"
+            onClick={() => setShowModal(true)}
+          >
+            + Upload PDF
+          </button>
+        )}
+      </div>
+      </div>
       <hr className="mb-6 border-gray-300" />
 
       <ul className="space-y-4 max-h-[60vh] overflow-y-auto custom-scroll pr-1">
@@ -64,27 +112,20 @@ const Circulars = () => {
       </ul>
 
       <div className="flex justify-center md:justify-start mt-10">
-        <ToggleButton handleArchivedButton={handleArchivedButton} archived={archived} />
+        <ToggleButton
+          handleArchivedButton={handleArchivedButton}
+          archived={archived}
+        />
       </div>
-    </div>
-  );
-};
 
-const ToggleButton = ({ handleArchivedButton, archived }) => {
-  return (
-    <button
-      onClick={handleArchivedButton}
-      className="relative px-5 py-3 overflow-hidden font-medium text-gray-600 bg-gray-100 border border-gray-100 rounded-lg shadow-inner group"
-    >
-      <span className="absolute top-0 left-0 w-0 h-0 transition-all duration-200 border-t-2 border-blue-600 group-hover:w-full ease"></span>
-      <span className="absolute bottom-0 right-0 w-0 h-0 transition-all duration-200 border-b-2 border-blue-600 group-hover:w-full ease"></span>
-      <span className="absolute top-0 left-0 w-full h-0 transition-all duration-300 delay-200 bg-blue-600 group-hover:h-full ease"></span>
-      <span className="absolute bottom-0 left-0 w-full h-0 transition-all duration-300 delay-200 bg-blue-600 group-hover:h-full ease"></span>
-      <span className="absolute inset-0 w-full h-full duration-300 delay-300 bg-blue-600 opacity-0 group-hover:opacity-100"></span>
-      <span className="relative transition-colors duration-300 delay-200 group-hover:text-white ease">
-        {archived ? "See Latest Circulars" : "See Archived Circulars"}
-      </span>
-    </button>
+      {showModal && (
+        <UploadModal
+          onClose={() => setShowModal(false)}
+          setShowModal={setShowModal}
+          section={"ad circulars"}
+        />
+      )}
+    </div>
   );
 };
 
