@@ -10,7 +10,7 @@ const About = () => {
           <HeadingText heading={"About DSEU"} />
 
           {aboutTheUniversity.info1.map((info, index) => (
-            <p key={index} className="my-4 text-gray-600">
+            <p key={index} className="my-4 text-gray-600 text-justify">
               {info}
             </p>
           ))}
@@ -18,7 +18,7 @@ const About = () => {
           <h2 className="text-xl mt-6 mb-3 font-semibold">Objectives</h2>
           <ul className="pl-6 text-gray-600 list-none">
             {aboutTheUniversity.objectives.map((objective, index) => (
-              <li key={index} className="mb-2 flex flex-row items-center gap-2">
+              <li key={index} className="mb-2 flex flex-row items-center gap-2 text-justify">
                 <ArrowBigRight className="min-h-5 min-w-5 md:mb-0 mb-5" />
                 {objective}
               </li>
@@ -26,7 +26,7 @@ const About = () => {
           </ul>
 
           {aboutTheUniversity.info2.map((info, index) => (
-            <p key={index} className="my-4 text-gray-600">
+            <p key={index} className="my-4 text-gray-600 text-justify">
               {info}
             </p>
           ))}
