@@ -38,9 +38,7 @@ const navItems = [
       { name: "Vision and Mission", path: "/about-us/Vision-and-Mission" },
       { name: "History of DSEU", path: "/about-us/history" },
       {
-        name: "Annual Report",
-        path: "#",
-      },
+        name: "Annual Report", path: "/about-us/annualReport"},
     ],
   },
   {
@@ -128,7 +126,7 @@ const navItems = [
   },
   {
     name: "Entrepreneurship",
-    path: "/entrepreneurship",
+    path: "/Entrepreneurship",
   },
 ];
 

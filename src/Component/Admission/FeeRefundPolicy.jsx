@@ -1,5 +1,9 @@
+import UnderConstruction from "../Reusable/UnderConstruction";
+
 const FeeRefundPolicy = () => {
-  return <div></div>;
+  return <div>
+    <UnderConstruction/>
+  </div>;
 };
 
 export default FeeRefundPolicy;

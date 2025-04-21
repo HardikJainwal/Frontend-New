@@ -97,8 +97,9 @@ import Scholarship from "./Component/Student Services/Scholarship";
 import ArchiveUploads from "./Component/Admin/ArchiveUploads";
 import ArchivedJobPortal from "./Component/Administration/ArchivedJobPortal";
 import ChancellorPage from "./Component/Administration/ChancellorPage";
-import Entrepreneurship from './Component/Entrepreneurship/Entrepreneurship';
+import Entrepreneurship from './Component/NavItems/Entrepreneurship';
 import RecruitmentRules from "./Component/Administration/RecruitmentRules";
+import AnnualReport from "./Component/NavItems/AnnualReport";
 
 function App() {
   return (
@@ -169,6 +170,7 @@ function App() {
             <Route path="/information-bulletin" element={<InformationBulletin />} />
             <Route path="/about-us/history" element={<HistoryDSEU />} />
             <Route path="/UGC-Guidelines" element={<UnderConstruction />} />
+            <Route path="/about-us/annualReport" element={<AnnualReport/>} />
 
             {/* News */}
             <Route path="/news/achievement" element={<IndustryPartnership />} />
