@@ -36,11 +36,26 @@ const AdminDashboard = () => {
         return [{ value: "announcement", label: "Announcement" }];
       case "statutory-body":
         return [
-          { value: "members", label: "Members" },
-          { value: "university court", label: "University Court" },
-          { value: "board of management", label: "Board of Management" },
-          { value: "academic council", label: "Academic Council" },
-          { value: "finance comittee", label: "Finance Committee" },
+          {
+            value: "member university court",
+            label: "University Court Members",
+          },
+          {
+            value: "member board of management",
+            label: "Board of Management Members",
+          },
+          {
+            value: "member academic council",
+            label: "Academic Council Members",
+          },
+          {
+            value: "member finance comittee",
+            label: "Finance Committee Members",
+          },
+          { value: "university court", label: "MOM University Court" },
+          { value: "board of management", label: "MOM Board of Management" },
+          { value: "academic council", label: "MOM Academic Council" },
+          { value: "finance comittee", label: "MOM Finance Committee" },
         ];
       case "work-with-us":
         return [
@@ -276,7 +291,7 @@ const AdminDashboard = () => {
             </div>
           )}
 
-          <div className={`${activeTabLabel === 'Administration' && 'hidden'}`}>
+          <div className={`${activeTabLabel === "Administration" && "hidden"}`}>
             <label className="block text-sm font-semibold text-gray-700 mb-2">
               End Date
             </label>

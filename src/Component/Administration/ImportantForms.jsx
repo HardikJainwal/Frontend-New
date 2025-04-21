@@ -1,9 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaFilePdf } from "react-icons/fa";
 import { useNoticesBySection } from "../../hooks/useNoticesBySection";
+import UploadModal from "../Admin/UploadModal";
+import ArchiveButton from "../Reusable/ArchiveButton";
 
 const ImportantForms = () => {
   const [archived, setArchived] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  const token = sessionStorage.getItem("token");
+  const currentRole = sessionStorage.getItem("currentRole");
+
+  useEffect(() => {
+    if (currentRole === "Admin" && token) {
+      setIsAdmin(true);
+    }
+  }, [currentRole, token]);
 
   const handleArchivedButton = (e) => {
     e.preventDefault();
@@ -20,9 +33,23 @@ const ImportantForms = () => {
 
   return (
     <div className="mb-10">
-      <h2 className="text-lg sm:text-xl md:text-2xl md:mt-6 sm:mt-3 font-semibold mb-4 text-center md:text-left text-[#333]">
-        {sectionTitle}
-      </h2>
+      <div className="flex flex-row items-center justify-between">
+        <h2 className="text-lg sm:text-xl md:text-2xl md:mt-6 sm:mt-3 font-semibold mb-4 text-center md:text-left text-[#333]">
+          {sectionTitle}
+        </h2>
+
+        {isAdmin && (
+          <div className="flex justify-end mb-4 md:mr-5 sm:mr-3">
+            <button
+              className="cursor-pointer bg-blue-600 text-white px-4 py-2 rounded-full text-sm md:text-base hover:bg-blue-700 transition-colors duration-300 shadow-md"
+              onClick={() => setShowModal(true)}
+            >
+              + Upload PDF
+            </button>
+          </div>
+        )}
+      </div>
+
       <hr className="mb-6 border-gray-300" />
 
       {(!forms || forms.length === 0) ? (
@@ -58,28 +85,17 @@ const ImportantForms = () => {
           <ArchiveButton handleArchivedButton={handleArchivedButton} archived={archived} />
         </>
       )}
+
+      {showModal && (
+        <UploadModal
+          onClose={() => setShowModal(false)}
+          setShowModal={setShowModal}
+          section={"ad important forms"}
+        />
+      )}
     </div>
   );
 };
 
-const ArchiveButton = ({ handleArchivedButton, archived }) => {
-  return (
-    <div className="flex justify-center md:justify-start mt-10">
-      <button
-        onClick={handleArchivedButton}
-        className="relative px-5 py-3 overflow-hidden font-medium text-gray-600 bg-gray-100 border border-gray-100 rounded-lg shadow-inner group"
-      >
-        <span className="absolute top-0 left-0 w-0 h-0 transition-all duration-200 border-t-2 border-blue-600 group-hover:w-full ease"></span>
-        <span className="absolute bottom-0 right-0 w-0 h-0 transition-all duration-200 border-b-2 border-blue-600 group-hover:w-full ease"></span>
-        <span className="absolute top-0 left-0 w-full h-0 transition-all duration-300 delay-200 bg-blue-600 group-hover:h-full ease"></span>
-        <span className="absolute bottom-0 left-0 w-full h-0 transition-all duration-300 delay-200 bg-blue-600 group-hover:h-full ease"></span>
-        <span className="absolute inset-0 w-full h-full duration-300 delay-300 bg-blue-600 opacity-0 group-hover:opacity-100"></span>
-        <span className="relative transition-colors duration-300 delay-200 group-hover:text-white ease">
-          {archived ? "See Latest Forms" : "See Archived Forms"}
-        </span>
-      </button>
-    </div>
-  );
-};
 
 export default ImportantForms;
