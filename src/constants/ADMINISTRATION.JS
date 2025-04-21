@@ -86,6 +86,12 @@ const sideNavItems = [
         name: "Circulars",
         href: "/administration/administrative/circulars",
         active: false,
+    },
+    {
+        id: 9,
+        name: "Statutes, University Act, Ordinances",
+        href: "/administration/administrative/Statutes",
+        active: false,
     }
 ];
 

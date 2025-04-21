@@ -10,6 +10,7 @@ import StatutoryBodies from "./StatutoryBodies";
 import TeamDseu from "./TeamDseu";
 import OfficeOrders from "./OfficeOrders";
 import Circulars from "./Circulars";
+import Statutes from "./statutes"
 
 import SideBar from "./SideBar";
 import MobileSideBar from "./MobileSideBar";
@@ -41,6 +42,7 @@ const AdministrationTemp = () => {
           <Route path="team-dseu" element={<TeamDseu />} />
           <Route path="office-orders" element={<OfficeOrders />} />
           <Route path="circulars" element={<Circulars />} />
+          <Route path="statutes" element ={<Statutes/>}/>
         </Routes>
       </div>
     </div>
