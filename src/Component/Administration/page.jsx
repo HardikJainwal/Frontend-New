@@ -10,7 +10,7 @@ import StatutoryBodies from "./StatutoryBodies";
 import TeamDseu from "./TeamDseu";
 import OfficeOrders from "./OfficeOrders";
 import Circulars from "./Circulars";
-import Statutes from "./statutes"
+import Statutes from "./Statutes"
 
 import SideBar from "./SideBar";
 import MobileSideBar from "./MobileSideBar";
