@@ -11,6 +11,7 @@ const boardOfManagement = [
     {
         id: 2,
         name: "Mr. Vivek Agarwal",
+        designation: "Registrar",
         category: "Registrar",
         src: vivekAggrawal,
     },

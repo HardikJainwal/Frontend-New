@@ -3,27 +3,20 @@ import { useNoticesBySection } from "../../hooks/useNoticesBySection";
 import OrangeLoader from "../PageLoader/OrangeLoader";
 
 const StatutoryBodiesComponent = () => {
-  const [activeSection, setActiveSection] = useState("members");
-  const [activeMinutesTab, setActiveMinutesTab] = useState("university court");
-  const [activeMembersTab, setActiveMembersTab] = useState("member university court");
+  const [activeMainTab, setActiveMainTab] = useState("university court");
+  const [activeSectionTab, setActiveSectionTab] = useState("members");
 
-  const sectionToFetch = activeSection === "members" ? activeMembersTab : activeMinutesTab;
+  const sectionToFetch =
+    activeSectionTab === "members"
+      ? `member ${activeMainTab}`
+      : activeMainTab;
 
-  const memberTabs = {
-    "member university court": "University Court",
-    "member board of management": "Board of Management",
-    "member academic council": "Academic Council",
-    "member finance comittee": "Finance Committee",
-  };
-
-  const minutesTabs = {
+  const mainTabs = {
     "university court": "University Court",
     "board of management": "Board of Management",
     "academic council": "Academic Council",
     "finance comittee": "Finance Committee",
   };
-
-  const tabs = activeSection === "members" ? memberTabs : minutesTabs;
 
   const { data, isLoading, error } = useNoticesBySection(sectionToFetch);
 
@@ -41,55 +34,50 @@ const StatutoryBodiesComponent = () => {
         STATUTORY BODIES
       </h1>
 
-      <div className="flex mb-6 border-b text-lg">
-        <button
-          className={`px-6 py-3 font-medium ${
-            activeSection === "members"
-              ? "border-b-2 border-blue-700 text-blue-900"
-              : "text-gray-500"
-          }`}
-          onClick={() => setActiveSection("members")}
-        >
-          Members
-        </button>
-        <button
-          className={`px-6 py-3 font-medium ${
-            activeSection === "minutes"
-              ? "border-b-2 border-blue-700 text-blue-900"
-              : "text-gray-500"
-          }`}
-          onClick={() => setActiveSection("minutes")}
-        >
-          Minutes of Meeting
-        </button>
-      </div>
-
-      <div className="overflow-x-auto">
-        <div className="flex flex-col md:flex-row flex-nowrap bg-gray-100 md:p-2 rounded-lg mb-4 gap-2 min-w-max">
-          {Object.keys(tabs).map((key) => (
+      {/* MAIN TABS */}
+      <div className="overflow-x-auto mb-6">
+        <div className="flex flex-col md:flex-row flex-nowrap bg-gray-100 md:p-2 rounded-lg gap-2 min-w-max justify-center">
+          {Object.keys(mainTabs).map((key) => (
             <button
               key={key}
               className={`px-4 py-2 rounded-lg whitespace-nowrap text-lg transition-all duration-200 ${
-                activeSection === "members"
-                  ? activeMembersTab === key
-                    ? "bg-blue-600 text-white"
-                    : "text-gray-700 hover:bg-gray-200"
-                  : activeMinutesTab === key
+                activeMainTab === key
                   ? "bg-blue-600 text-white"
                   : "text-gray-700 hover:bg-gray-200"
               }`}
-              onClick={() =>
-                activeSection === "members"
-                  ? setActiveMembersTab(key)
-                  : setActiveMinutesTab(key)
-              }
+              onClick={() => setActiveMainTab(key)}
             >
-              {tabs[key]}
+              {mainTabs[key]}
             </button>
           ))}
         </div>
       </div>
 
+      {/* SUB TABS: Members | Minutes */}
+      <div className="flex justify-center mb-6 border-b text-lg">
+        <button
+          className={`px-6 py-3 font-medium ${
+            activeSectionTab === "members"
+              ? "border-b-2 border-blue-700 text-blue-900"
+              : "text-gray-500"
+          }`}
+          onClick={() => setActiveSectionTab("members")}
+        >
+          Members
+        </button>
+        <button
+          className={`px-6 py-3 font-medium ${
+            activeSectionTab === "minutes"
+              ? "border-b-2 border-blue-700 text-blue-900"
+              : "text-gray-500"
+          }`}
+          onClick={() => setActiveSectionTab("minutes")}
+        >
+          Minutes of Meeting
+        </button>
+      </div>
+
+      {/* PDF LISTING */}
       <div className="bg-white rounded-lg shadow-sm mt-2">
         {data?.length > 0 ? (
           <div className="space-y-4">
@@ -113,11 +101,9 @@ const StatutoryBodiesComponent = () => {
         ) : (
           <div className="p-6 border rounded-lg shadow-md bg-white text-gray-600">
             <h3 className="text-xl font-semibold mb-2">
-              {tabs[activeSection === "members" ? activeMembersTab : activeMinutesTab] || "Not Found"}
+              {mainTabs[activeMainTab]} — {activeSectionTab === "members" ? "Members" : "Minutes"}
             </h3>
-            <p className="text-red-600">
-              No PDFs available for this section.
-            </p>
+            <p className="text-red-600">No PDFs available for this section.</p>
           </div>
         )}
       </div>
