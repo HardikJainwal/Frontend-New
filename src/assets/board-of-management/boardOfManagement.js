@@ -10,5 +10,6 @@ import kamnaSachdeva from './kamnaSachdeva.png';
 import shrutiTripathi from './shrutiTripathi.png';
 import vibhakarShrimali from './vibhakarShrimali.jpg';
 import placeholder from './placeholder.jpg';
+import njena from './njena.jpg'
 
-export { deshmukh, girishKumar, jpSaini, principalSecratory, secratory, drpankajlathar, dttesecratory,vivekAggrawal, vibhakarShrimali, kamnaSachdeva, shrutiTripathi, placeholder };
+export {njena, deshmukh, girishKumar, jpSaini, principalSecratory, secratory, drpankajlathar, dttesecratory,vivekAggrawal, vibhakarShrimali, kamnaSachdeva, shrutiTripathi, placeholder };
