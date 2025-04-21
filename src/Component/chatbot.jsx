@@ -163,7 +163,7 @@ const ChatWidget = () => {
                 onClick={() => setShowCourses((prev) => !prev)}
                 className="w-50 bg-[#2B4A7F] text-white py-3 px-2 rounded-md hover:bg-[#4F83C4] transition text-xs font-medium"
               >
-                📚 Courses Offered
+                📚 Programs Offered
               </button>
 
               {showCourses && (

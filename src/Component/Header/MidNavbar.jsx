@@ -76,7 +76,7 @@ const navItems = [
     name: "Admission",
     dropdownItems: [
       {
-        name: "Admission Main Page",
+        name: "Admission Portal",
         path: "/",
       },
       {

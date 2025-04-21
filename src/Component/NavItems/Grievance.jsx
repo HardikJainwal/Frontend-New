@@ -175,7 +175,7 @@ function StudentGrievanceForm() {
 
           <div className="col-span-1">
             <label className="block mb-1">
-              Course <span className="text-red-500">*</span>
+              Program <span className="text-red-500">*</span>
             </label>
             <input
               type="text"
