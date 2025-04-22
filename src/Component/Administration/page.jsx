@@ -10,7 +10,7 @@ import StatutoryBodies from "./StatutoryBodies";
 import TeamDseu from "./TeamDseu";
 import OfficeOrders from "./OfficeOrders";
 import Circulars from "./Circulars";
-import Statutes from "./Statutes"
+import Statutes from "./Statutes";
 
 import SideBar from "./SideBar";
 import MobileSideBar from "./MobileSideBar";
@@ -25,7 +25,7 @@ const AdministrationTemp = () => {
         replace: true,
       });
     }
-  }, [location, navigate]);
+  }, [location.pathname]);
 
   return (
     <div className="flex flex-col my-1 sm:my-4 md:my-10 lg:flex-row gap-6">
@@ -42,7 +42,7 @@ const AdministrationTemp = () => {
           <Route path="team-dseu" element={<TeamDseu />} />
           <Route path="office-orders" element={<OfficeOrders />} />
           <Route path="circulars" element={<Circulars />} />
-          <Route path="statutes" element ={<Statutes/>}/>
+          <Route path="statutes" element={<Statutes />} />
         </Routes>
       </div>
     </div>

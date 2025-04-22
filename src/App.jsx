@@ -55,7 +55,6 @@ const DepartmentById = lazy(() => import("./Component/Department/DepartmentById"
 const FacultyInfo = lazy(() => import("./Component/Department/FacultyInfo"));
 
 // Administration
-const Administration = lazy(() => import("./Component/Administration/page"));
 const ViceChancellorPage = lazy(() => import('./Component/Body/ViceChancellorPage'));
 
 // Other Sections
@@ -100,6 +99,7 @@ import ChancellorPage from "./Component/Administration/ChancellorPage";
 import Entrepreneurship from './Component/NavItems/Entrepreneurship';
 import RecruitmentRules from "./Component/Administration/RecruitmentRules";
 import AnnualReport from "./Component/NavItems/AnnualReport";
+import AdministrationTemp from "./Component/Administration/page";
 
 function App() {
   return (
@@ -155,7 +155,7 @@ function App() {
             <Route path="/faculty/:id" element={<FacultyById />} />
 
             {/* Administration */}
-            <Route path="/administration/administrative/*" element={<Administration />} />
+            <Route path="/administration/administrative/*" element={<AdministrationTemp />} />
             <Route path="/administration/Support-Services" element={<UnderConstruction />} />
             <Route path="/administration/Other-Academic-Units" element={<UnderConstruction />} />
             <Route path="/registrar" element={<RegistararPage />} />

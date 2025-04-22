@@ -40,19 +40,19 @@ const leaders = [
 
 const sideNavItems = [
     {
-        id: 2,
+        id: 1,
         name: "Board of Management",
         href: "/administration/administrative/board-of-management",
         active: false,
     },
     {
-        id: 6,
+        id: 2,
         name: "Statutory Bodies",
         href: "/administration/administrative/statutory-bodies",
         active: false,
     },
     {
-        id: 1,
+        id: 3,
         name: "Team DSEU",
         href: "/administration/administrative/team-dseu",
         active: false,
@@ -64,13 +64,13 @@ const sideNavItems = [
         active: false,
     },
     {
-        id: 3,
+        id: 5,
         name: "Employee Policies",
         href: "/administration/administrative/employee-policy",
         active: false,
     },
     {
-        id: 5,
+        id: 6,
         name: "Important Forms",
         href: "/administration/administrative/important-forms",
         active: false,
