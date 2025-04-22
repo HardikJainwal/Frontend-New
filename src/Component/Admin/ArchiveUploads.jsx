@@ -5,28 +5,7 @@ import { QueryClient, useMutation } from "@tanstack/react-query";
 import { uploadPdf } from "../../utils/apiservice";
 import { toast } from "react-hot-toast";
 import { Loader2 } from "lucide-react";
-
-const getSectionOptions = () => [
-  { value: "admission", label: "Admission" },
-  { value: "students", label: "Students" },
-  { value: "important links", label: "Important Links" },
-  { value: "alerts and circulars", label: "Alerts & Circulars" },
-  { value: "members", label: "Members" },
-  { value: "university court", label: "University Court" },
-  { value: "board of management", label: "Board of management" },
-  { value: "academic council", label: "Academic Council" },
-  { value: "finance comittee", label: "Finance Committee" },
-  { value: "academic positions", label: "Academic Positions" },
-  { value: "non academic positions", label: "Non Academic Positions" },
-  { value: "short term positions", label: "Short Term Positions" },
-  { value: "results", label: "Results" },
-  { value: "recruitments and notice", label: "Recruitments and Notices" },
-  { value: "announcements", label: "Announcements" },
-  { value: "recruitment rules", label: "Administration Recruitment Rules" },
-  { value: "ad office orders", label: "Administration Office Orders" },
-  { value: "ad circulars", label: "Administration Circulars" },
-  { value: "ad important forms", label: "Administration Important Forms" },
-];
+import { getSectionOptions } from "./adminConstant";
 
 const ArchiveUploads = () => {
   const navigate = useNavigate();
@@ -90,7 +69,7 @@ const ArchiveUploads = () => {
     mutationFn: (formData) => uploadPdf(formData),
     onSuccess: (response) => {
       const data = response?.data || response;
-      if(file) {
+      if (file) {
         toast.success(`Uploaded file`);
       }
       queryClient.invalidateQueries({ queryKey: ["notices", data.section] });
