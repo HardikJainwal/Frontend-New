@@ -1,19 +1,27 @@
 import { Listbox } from '@headlessui/react'
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useLocation } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { sideNavItems } from "../../constants/ADMINISTRATION.JS"
 
 const MobileSidebar = () => {
-  const [selected, setSelected] = useState(sideNavItems[0])
+  const location = useLocation()
   const navigate = useNavigate()
+  const [selected, setSelected] = useState(sideNavItems[0])
 
+ 
   useEffect(() => {
-    navigate(selected.href)
-  }, [selected, navigate])
+    const current = sideNavItems.find(item => item.href === location.pathname)
+    if (current) setSelected(current)
+  }, [location.pathname])
+
+  const handleChange = (item) => {
+    setSelected(item)
+    navigate(item.href)
+  }
 
   return (
-  <div className="w-full max-w-xs mx-auto mt-4 md:hidden ">
-      <Listbox value={selected} onChange={setSelected}>
+    <div className="w-full max-w-xs mx-auto mt-4 md:hidden">
+      <Listbox value={selected} onChange={handleChange}>
         <div className="relative">
           <Listbox.Button className="w-full cursor-pointer rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400">
             {selected.name}

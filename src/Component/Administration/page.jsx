@@ -10,7 +10,7 @@ import StatutoryBodies from "./StatutoryBodies";
 import TeamDseu from "./TeamDseu";
 import OfficeOrders from "./OfficeOrders";
 import Circulars from "./Circulars";
-import Statutes from "./statutes"
+import Statutes from "./statutes";
 
 import SideBar from "./SideBar";
 import MobileSideBar from "./MobileSideBar";
@@ -20,12 +20,11 @@ const AdministrationTemp = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (location.pathname === "/administration/administrative") {
-      navigate("/administration/administrative/board-of-management", {
-        replace: true,
-      });
+    // Run once on mount, NOT on every location change
+    if (window.location.pathname === "/administration/administrative") {
+      navigate("/administration/administrative/board-of-management", { replace: true });
     }
-  }, [location, navigate]);
+  }, []); // Don't include `location` to avoid re-triggering on route change
 
   return (
     <div className="flex flex-col my-1 sm:my-4 md:my-10 lg:flex-row gap-6">
@@ -42,7 +41,7 @@ const AdministrationTemp = () => {
           <Route path="team-dseu" element={<TeamDseu />} />
           <Route path="office-orders" element={<OfficeOrders />} />
           <Route path="circulars" element={<Circulars />} />
-          <Route path="statutes" element ={<Statutes/>}/>
+          <Route path="statutes" element={<Statutes />} />
         </Routes>
       </div>
     </div>
