@@ -20,12 +20,11 @@ const AdministrationTemp = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (location.pathname === "/administration/administrative") {
-      navigate("/administration/administrative/board-of-management", {
-        replace: true,
-      });
+    // Run once on mount, NOT on every location change
+    if (window.location.pathname === "/administration/administrative") {
+      navigate("/administration/administrative/board-of-management", { replace: true });
     }
-  }, [location.pathname]);
+  }, []); // Don't include `location` to avoid re-triggering on route change
 
   return (
     <div className="flex flex-col my-1 sm:my-4 md:my-10 lg:flex-row gap-6">
