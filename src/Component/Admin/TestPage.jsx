@@ -15,6 +15,7 @@ const AdminDashboard = () => {
   const [validUntil, setValidUntil] = useState("2025-04-16T09:30:00.000Z");
   const [endDate, setEndDate] = useState("");
   const [apply, setApply] = useState("");
+  const [vacancy, setVacancy] = useState("");
   const [applyError, setApplyError] = useState("");
 
   const queryClient = useQueryClient();
@@ -36,22 +37,10 @@ const AdminDashboard = () => {
         return [{ value: "announcements", label: "Announcement" }];
       case "statutory-body":
         return [
-          {
-            value: "member university court",
-            label: "University Court Members",
-          },
-          {
-            value: "member board of management",
-            label: "Board of Management Members",
-          },
-          {
-            value: "member academic council",
-            label: "Academic Council Members",
-          },
-          {
-            value: "member finance comittee",
-            label: "Finance Committee Members",
-          },
+          { value: "member university court", label: "University Court Members" },
+          { value: "member board of management", label: "Board of Management Members" },
+          { value: "member academic council", label: "Academic Council Members" },
+          { value: "member finance comittee", label: "Finance Committee Members" },
           { value: "university court", label: "MOM University Court" },
           { value: "board of management", label: "MOM Board of Management" },
           { value: "academic council", label: "MOM Academic Council" },
@@ -63,10 +52,7 @@ const AdminDashboard = () => {
           { value: "non academic positions", label: "Non Academic Positions" },
           { value: "short term positions", label: "Short Term Positions" },
           { value: "results", label: "Results" },
-          {
-            value: "recruitments and notice",
-            label: "Notice",
-          },
+          { value: "recruitments and notice", label: "Notice" },
         ];
       case "administration":
         return [
@@ -89,14 +75,13 @@ const AdminDashboard = () => {
     setValidUntil("");
     setEndDate("");
     setApply("");
+    setVacancy("");
   };
 
   const mutation = useMutation({
     mutationFn: (formData) => uploadPdf(formData),
     onSuccess: (response) => {
       const data = response?.data || response;
-      console.log("work ?");
-
       toast.success(`Uploaded File`);
       queryClient.invalidateQueries({ queryKey: ["notices", data.section] });
       queryClient.invalidateQueries({ queryKey: ["notices", section] });
@@ -107,6 +92,7 @@ const AdminDashboard = () => {
       setValidUntil("");
       setEndDate("");
       setApply("");
+      setVacancy("");
     },
     onError: (error) => {
       const errorMessage =
@@ -119,12 +105,10 @@ const AdminDashboard = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (activeTabLabel === "Work With Us" && apply && !urlPattern.test(apply)) {
       toast.error("Please enter a valid URL in Apply field!");
       return;
     }
-
     if (!name || !section || !file) {
       toast.error("All fields are required!");
       return;
@@ -149,20 +133,18 @@ const AdminDashboard = () => {
       formData.append("apply", apply);
     }
 
+    if (vacancy) {
+      formData.append("vacancies", vacancy);
+    }
+
     mutation.mutate(formData);
   };
 
   const activeTabLabel = tabs.find((tab) => tab.key === activeTab)?.label || "";
 
   return (
-    <div
-      className="min-h-screen bg-gray-100 p-4 sm:p-6 lg:p-10 
-    flex gap-6 flex-col md:flex-row"
-    >
-      {/* desktop view */}
+    <div className="min-h-screen bg-gray-100 p-4 sm:p-6 lg:p-10 flex gap-6 flex-col md:flex-row">
       <DesktopNav activeTab={activeTab} handleTabChange={handleTabChange} />
-
-      {/* MOBILE BAR */}
       <MobileNav activeTab={activeTab} handleTabChange={handleTabChange} />
 
       <main className="flex-1 bg-white rounded-2xl shadow-xl p-8">
@@ -216,29 +198,42 @@ const AdminDashboard = () => {
           </div>
 
           {activeTabLabel === "Work With Us" && (
-            <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
-                Enter the apply (only links)
-              </label>
-              <input
-                type="text"
-                value={apply}
-                onChange={(e) => {
-                  const val = e.target.value;
-                  setApply(val);
+            <>
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  Enter the apply (only links)
+                </label>
+                <input
+                  type="text"
+                  value={apply}
+                  onChange={(e) => {
+                    const val = e.target.value;
+                    setApply(val);
+                    if (val && !urlPattern.test(val)) {
+                      setApplyError("Invalid URL format");
+                    } else {
+                      setApplyError("");
+                    }
+                  }}
+                  className="w-full bg-gray-100 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+                {applyError && (
+                  <p className="text-red-500 text-sm mt-1">{applyError}</p>
+                )}
+              </div>
 
-                  if (val && !urlPattern.test(val)) {
-                    setApplyError("Invalid URL format");
-                  } else {
-                    setApplyError("");
-                  }
-                }}
-                className="w-full bg-gray-100 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-              {applyError && (
-                <p className="text-red-500 text-sm mt-1">{applyError}</p>
-              )}
-            </div>
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  Enter Number of Vacancies
+                </label>
+                <input
+                  type="number"
+                  value={vacancy}
+                  onChange={(e) => setVacancy(e.target.value)}
+                  className="w-full bg-gray-100 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+            </>
           )}
 
           <div className={`${activeTabLabel === "Administration" && "hidden"}`}>
@@ -249,7 +244,7 @@ const AdminDashboard = () => {
               type="date"
               value={endDate}
               onChange={(e) => setEndDate(e.target.value)}
-              className={`w-full bg-gray-100  px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 `}
+              className="w-full bg-gray-100  px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
