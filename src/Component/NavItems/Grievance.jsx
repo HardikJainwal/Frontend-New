@@ -79,7 +79,7 @@ function StudentGrievanceForm() {
   };
 
   return (
-    <div>
+    <div className="md:mx-[20vh]">
       <div className="bg-blue-600 text-white text-center p-4 text-2xl font-bold mb-6 rounded">
         Student Grievance Form
       </div>
@@ -318,7 +318,7 @@ function EmployeeGrievanceForm() {
   };
 
   return (
-    <div>
+    <div className="lg:mx-[20vh] sm:mx-[20px] mx-[4vh]">
       <div className="bg-blue-600 text-white text-center p-4 text-2xl font-bold mb-6 rounded">
         Employee Grievance Form
       </div>
@@ -757,55 +757,6 @@ function RTIDisclosure() {
       setShowGrievanceForm(false);
     }
   };
-
-  // Grievance Form component
-  const GrievanceForm = () => (
-    <div className="max-w-4xl mx-auto">
-      <div className="bg-blue-600 text-white text-center p-4 text-2xl font-bold mb-6 rounded">
-        Grievance Redressal Form
-      </div>
-      <form className="space-y-6">
-        <div>
-          <label className="block text-gray-700 mb-2">Name:</label>
-          <input
-            type="text"
-            className="w-full border border-gray-300 rounded p-2"
-          />
-        </div>
-        <div>
-          <label className="block text-gray-700 mb-2">Email:</label>
-          <input
-            type="email"
-            className="w-full border border-gray-300 rounded p-2"
-          />
-        </div>
-        <div>
-          <label className="block text-gray-700 mb-2">Subject:</label>
-          <input
-            type="text"
-            className="w-full border border-gray-300 rounded p-2"
-          />
-        </div>
-        <div>
-          <label className="block text-gray-700 mb-2">Grievance:</label>
-          <textarea
-            className="w-full border border-gray-300 rounded p-2 h-32"
-          ></textarea>
-        </div>
-        <div>
-          <button
-            type="submit"
-            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-          >
-            Submit
-          </button>
-        </div>
-      </form>
-      <div className="mt-6 text-blue-800">
-        Email at <a href="mailto:osd.legal@dseu.ac.in" className="text-orange-500 hover:underline">osd.legal@dseu.ac.in</a> for advance service of court-related petitions
-      </div>
-    </div>
-  );
 
 
   const RTIDataTable = () => (
