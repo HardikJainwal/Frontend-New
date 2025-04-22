@@ -32,8 +32,8 @@ const AdminDashboard = () => {
           { value: "important links", label: "Important Links" },
           { value: "alerts and circulars", label: "Alerts and Circulars" },
         ];
-      case "announcement":
-        return [{ value: "announcement", label: "Announcement" }];
+      case "announcements":
+        return [{ value: "announcements", label: "Announcement" }];
       case "statutory-body":
         return [
           {
@@ -65,7 +65,7 @@ const AdminDashboard = () => {
           { value: "results", label: "Results" },
           {
             value: "recruitments and notice",
-            label: "Recruitments and Notice",
+            label: "Notice",
           },
         ];
       case "administration":
@@ -159,7 +159,7 @@ const AdminDashboard = () => {
       icon: FileText,
     },
     {
-      key: "announcement",
+      key: "announcements",
       label: "Announcement",
       icon: Megaphone,
     },
