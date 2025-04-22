@@ -1,42 +1,58 @@
 import React from "react";
 import HeadingText from "../Reusable/HeadingText";
-import { ArrowRight, Download } from "lucide-react";
+import { Download } from "lucide-react";
 
-const data = [];
+const data = [
+  {
+    text: "Guidelines for Condemnation",
+    path: "/statutes/Student Greivence.pdf"
+  },
+  {
+    text: "Delhi Skill and Entrepreneurship University First Statutes",
+    path: "/statutes/Delhi Skill and Entrepreneurship University First Statutes.pdf"
+  },
+  {
+    text: "Delhi Skill and Entrepreneurship University Act-2019",
+    path: "/statutes/Delhi Skill and Entrepreneurship University Act-2019.pdf"
+  }
+];
 
 const Statutes = () => {
   return (
-    <div className="my-10">
-      <HeadingText
-        heading="Statutes, University Act, Ordinances"
-        headingCN="text-2xl md:text-3xl font-bold mb-1 text-center"
-      />
+    <div className="mb-10">
+      <h2 className="text-lg sm:text-xl md:text-2xl font-semibold mb-4 text-center md:text-left text-[#333]">
+        Statutes, University Act, Ordinances
+      </h2>
 
-      <ul className="pl-4 text-gray-700 space-y-4 md:space-y-2 mt-10">
+      <hr className="mb-6 border-gray-300" />
+
+      <ul className="space-y-4 max-h-[60vh] overflow-y-auto custom-scroll pr-1">
         {data.map((item, index) => (
           <li
             key={index}
-            className="group flex items-center justify-between gap-2 transition-all duration-300"
+            className="bg-white border border-gray-200 rounded-md shadow-sm p-3 flex flex-row items-center justify-between"
           >
             <div className="flex items-center gap-2">
-              <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-blue-600 transition" />
+              <span className="text-blue-600 text-lg">»</span>
               <a
                 href={item.path}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-blue-600 hover:underline"
+                className="text-blue-900 underline hover:text-blue-700 text-sm md:text-base break-words max-w-full"
               >
                 {item.text}
               </a>
             </div>
-            <a
-              href={item.path}
-              download
-              onClick={(e) => e.stopPropagation()}
-              className="p-1 rounded hover:bg-blue-100 transition"
-            >
-              <Download className="w-5 h-5 text-gray-400 hover:text-blue-600 transition" />
-            </a>
+            <div className="mt-2 sm:mt-0 sm:ml-4 flex justify-end">
+              <a
+                href={item.path}
+                download
+                onClick={(e) => e.stopPropagation()}
+                className="hover:text-blue-600"
+              >
+                <Download className="w-5 h-5 text-gray-400 hover:text-blue-600 transition" />
+              </a>
+            </div>
           </li>
         ))}
       </ul>

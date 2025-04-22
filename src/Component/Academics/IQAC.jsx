@@ -102,8 +102,16 @@ const IQAC = () => {
         >
           <h4 className="text-xl md:text-2xl font-bold text-center text-gray-800 border-b-4 border-orange-400 pb-3 shadow-sm w-fit mb-4">Contact IQAC</h4>
           <p className="text-sm md:text-base text-gray-700">
-            For queries, suggestions, or collaborations, reach out to our IQAC team.
+            For queries, suggestions, or collaborations, reach out to the head of the committee –{' '}
+            <a
+              href="https://dseuacin-one.vercel.app/faculty/67fcb6a3594afd76950ae309"
+              className="text-blue-500 hover:text-blue-700  font-regular"
+            >
+              <span className="inline-block hover:underline">Prof. Kamna Sachdeva</span>
+            </a>
           </p>
+
+
         </motion.div>
       </div>
     </div>
