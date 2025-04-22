@@ -4,11 +4,14 @@ import { uploadPdf } from "../../utils/apiservice";
 import toast from "react-hot-toast";
 
 const UploadModal = ({
+  title,
   onClose,
   setShowModal,
   section,
   isEndDate,
   isApplyLink,
+  mannualArchive = false,
+  veryLargeModal = false,
 }) => {
   const [name, setName] = useState("");
   const [file, setFile] = useState(null);
@@ -58,6 +61,10 @@ const UploadModal = ({
       formData.append("autoArchive", "true");
     }
 
+    if (mannualArchive) {
+      formData.append("archive", "true");
+    }
+
     if (isEndDate && endDate) {
       formData.append("endDate", new Date(endDate).toISOString());
     }
@@ -79,9 +86,20 @@ const UploadModal = ({
           ×
         </button>
 
-        <h1 className="text-2xl font-bold text-gray-800 mb-6">Upload PDF</h1>
+        <h1 className="text-2xl font-bold text-gray-800 mb-6">
+          {title ? title : "Upload PDF"}
+        </h1>
+        {mannualArchive && (
+          <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 p-4 rounded-md mb-6">
+            <h2 className="text-lg font-semibold">Manual Archive Enabled</h2>
+            <p className="text-sm mt-1">
+              Files uploaded here will be directly placed into the archive
+              section.
+            </p>
+          </div>
+        )}
 
-        <form className="space-y-9" onSubmit={handleSubmit}>
+        <form className={`${veryLargeModal ? 'space-y-4' : 'space-y-9'}`} onSubmit={handleSubmit}>
           <div>
             <label className="block text-sm font-semibold text-gray-700 mb-2">
               Enter the file name <span className="text-red-500">*</span>
@@ -105,36 +123,6 @@ const UploadModal = ({
               className="w-full text-slate-500 font-medium text-base bg-gray-100 file:cursor-pointer cursor-pointer file:border-0 file:py-2.5 file:px-4 file:mr-4 file:bg-blue-400 file:hover:bg-orange-400 file:text-white rounded"
             />
           </div>
-
-          <div className="flex items-center gap-3">
-            <input
-              type="checkbox"
-              checked={autoArchive}
-              onChange={() => setAutoArchive(!autoArchive)}
-              className="w-4 h-4"
-              id="auto-archive"
-            />
-            <label
-              htmlFor="auto-archive"
-              className="text-sm font-medium text-gray-700"
-            >
-              Auto Archive
-            </label>
-          </div>
-
-          {autoArchive && (
-            <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
-                Valid Until <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="datetime-local"
-                value={validUntil}
-                onChange={(e) => setValidUntil(e.target.value)}
-                className="w-full bg-gray-100 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 border-2 border-blue-200"
-              />
-            </div>
-          )}
 
           {isEndDate && (
             <div>
@@ -162,6 +150,40 @@ const UploadModal = ({
                 placeholder="https://example.com/apply"
                 className="w-full bg-gray-100 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 border-2 border-blue-200"
               />
+            </div>
+          )}
+
+          {!mannualArchive && (
+            <div className="flex flex-col gap-4">
+              <div className="flex items-center gap-3">
+                <input
+                  type="checkbox"
+                  checked={autoArchive}
+                  onChange={() => setAutoArchive(!autoArchive)}
+                  className="w-4 h-4"
+                  id="auto-archive"
+                />
+                <label
+                  htmlFor="auto-archive"
+                  className="text-sm font-medium text-gray-700"
+                >
+                  Auto Archive
+                </label>
+              </div>
+
+              {autoArchive && (
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    Valid Until <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="datetime-local"
+                    value={validUntil}
+                    onChange={(e) => setValidUntil(e.target.value)}
+                    className="w-full bg-gray-100 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 border-2 border-blue-200"
+                  />
+                </div>
+              )}
             </div>
           )}
 
