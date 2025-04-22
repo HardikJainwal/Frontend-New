@@ -1,15 +1,21 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import ArchiveBanner from "../../assets/ArchiveBanner.jpg";
 import { jobPortalTabs as categoryTabs } from "../../constants/JOBPORTAL.JS";
 import { useNoticesBySection } from "../../hooks/useNoticesBySection";
 import { FileText } from "lucide-react";
+import UploadModal from "../Admin/UploadModal"; 
 
 const ArchivedJobPortal = () => {
   const { category } = useParams();
   const navigate = useNavigate();
-
+  
   const { data: noticeData, isLoading } = useNoticesBySection(category, true);
+  const [showModal, setShowModal] = useState(false); 
+  const [isAdmin, setIsAdmin] = useState(false); 
+  
+  const currentRole = sessionStorage.getItem("currentRole");
+  const token = sessionStorage.getItem("token");
 
   useEffect(() => {
     const isValidCategory = categoryTabs.some(
@@ -18,7 +24,11 @@ const ArchivedJobPortal = () => {
     if (!isValidCategory) {
       navigate("/recruitment");
     }
-  }, [category, noticeData]);
+
+    if (currentRole === "Admin" && token) {
+      setIsAdmin(true); 
+    }
+  }, [category, noticeData, currentRole, token, navigate]);
 
   return (
     <div className="flex flex-col justify-center items-center">
@@ -99,6 +109,30 @@ const ArchivedJobPortal = () => {
           )}
         </div>
       </main>
+
+      {isAdmin && (
+        <div className="flex justify-end my-4">
+          <button
+            className="cursor-pointer bg-blue-600 text-white px-4 py-2 rounded-full text-sm md:text-base hover:bg-blue-700 transition-colors duration-300 shadow-md"
+            onClick={() => setShowModal(true)}
+          >
+            + Upload PDF
+          </button>
+        </div>
+      )}
+
+      {showModal && (
+        <UploadModal
+          onClose={() => setShowModal(false)}
+          setShowModal={setShowModal}
+          section={category}
+          isEndDate
+          isApplyLink
+          title={category.toLocaleUpperCase()}
+          mannualArchive={true}
+          veryLargeModal={true}
+        />
+      )}
     </div>
   );
 };

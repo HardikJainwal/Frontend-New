@@ -2,13 +2,25 @@ import React, { useEffect, useState } from "react";
 import { FileText } from "lucide-react";
 import { useNoticesBySection } from "../../hooks/useNoticesBySection";
 import { jobPortalTabs as tabs } from "../../constants/JOBPORTAL.JS";
+import UploadModal from "../Admin/UploadModal"; 
 
 const JobListings = () => {
   const [activeTab, setActiveTab] = useState("non academic positions");
   const [entriesCount, setEntriesCount] = useState(10);
+  const [showModal, setShowModal] = useState(false); 
+  const [isAdmin, setIsAdmin] = useState(false);
 
   const { data: noticeData, isLoading } = useNoticesBySection(activeTab);
   console.log(activeTab);
+
+  const currentRole = sessionStorage.getItem("currentRole");
+  const token = sessionStorage.getItem("token");
+
+  useEffect(() => {
+    if (currentRole === "Admin" && token) {
+      setIsAdmin(true);
+    }
+  }, [currentRole, token]);
 
   const getActiveData = () => {
     return noticeData || [];
@@ -113,7 +125,7 @@ const JobListings = () => {
                   </tbody>
                 </table>
 
-                {/* archive wala Button */}
+                {/* Archive Button */}
                 <div className="mt-4 text-right">
                   <a
                     href={`/recruitment/archive/${encodeURIComponent(activeTab)}`}
@@ -136,9 +148,34 @@ const JobListings = () => {
                 </div>
               </div>
             )}
+
+            {/* Upload Button for Admin */}
+            {isAdmin && (
+              <div className="flex justify-end mt-4">
+                <button
+                  className="cursor-pointer bg-blue-600 text-white px-4 py-2 rounded-full text-sm md:text-base hover:bg-blue-700 transition-colors duration-300 shadow-md"
+                  onClick={() => setShowModal(true)}
+                >
+                  + Upload PDF
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>
+
+
+      {showModal && (
+        <UploadModal
+          onClose={() => setShowModal(false)}
+          setShowModal={setShowModal}
+          section={activeTab}
+          isEndDate
+          isApplyLink
+          title={activeTab.toLocaleUpperCase()}
+          veryLargeModal={true}
+        />
+      )}
     </div>
   );
 };
