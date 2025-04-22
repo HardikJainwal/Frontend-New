@@ -1,4 +1,5 @@
 import { FileText, Megaphone, Users, Briefcase, Shield } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export const navTabs = [
   {
@@ -29,6 +30,8 @@ export const navTabs = [
 ];
 
 export const DesktopNav = ({ activeTab, handleTabChange }) => {
+  const navigate = useNavigate();
+
   return (
     <aside className="w-72 bg-white shadow-lg rounded-2xl p-6 space-y-4 hidden md:block">
       <h2 className="text-2xl font-bold text-gray-700">Dashboard</h2>

@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { FileText } from "lucide-react";
 import { useNoticesBySection } from "../../hooks/useNoticesBySection";
 import { jobPortalTabs as tabs } from "../../constants/JOBPORTAL.JS";
-import UploadModal from "../Admin/UploadModal"; 
+import UploadModal from "../Admin/UploadModal";
 
 const JobListings = () => {
   const [activeTab, setActiveTab] = useState("non academic positions");
   const [entriesCount, setEntriesCount] = useState(10);
-  const [showModal, setShowModal] = useState(false); 
+  const [showModal, setShowModal] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
 
   const { data: noticeData, isLoading } = useNoticesBySection(activeTab);
@@ -104,7 +104,8 @@ const JobListings = () => {
                             rel="noopener noreferrer"
                             className="text-blue-600 hover:text-blue-800 flex items-center gap-1"
                           >
-                            Notice <FileText className="text-red-500" size={16} />
+                            Notice{" "}
+                            <FileText className="text-red-500" size={16} />
                           </a>
                         </td>
                         <td className="p-2 border">-</td>
@@ -128,7 +129,9 @@ const JobListings = () => {
                 {/* Archive Button */}
                 <div className="mt-4 text-right">
                   <a
-                    href={`/recruitment/archive/${encodeURIComponent(activeTab)}`}
+                    href={`/recruitment/archive/${encodeURIComponent(
+                      activeTab
+                    )}`}
                     className="inline-block bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-700 transition-colors"
                   >
                     Archived
@@ -137,10 +140,13 @@ const JobListings = () => {
               </>
             ) : (
               <div className="text-center p-4">
-                {tabs.find((tab) => tab.id === activeTab)?.empty || "No data available."}
+                {tabs.find((tab) => tab.id === activeTab)?.empty ||
+                  "No data available."}
                 <div className="mt-4 text-center">
                   <a
-                    href={`/recruitment/archive/${encodeURIComponent(activeTab)}`}
+                    href={`/recruitment/archive/${encodeURIComponent(
+                      activeTab
+                    )}`}
                     className="inline-block bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-700 transition-colors"
                   >
                     Archived
@@ -164,7 +170,6 @@ const JobListings = () => {
         </div>
       </div>
 
-
       {showModal && (
         <UploadModal
           onClose={() => setShowModal(false)}
@@ -174,6 +179,7 @@ const JobListings = () => {
           isApplyLink
           title={activeTab.toLocaleUpperCase()}
           veryLargeModal={true}
+          isVacancy
         />
       )}
     </div>

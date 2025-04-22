@@ -131,6 +131,7 @@ const ArchivedJobPortal = () => {
           title={category.toLocaleUpperCase()}
           mannualArchive={true}
           veryLargeModal={true}
+          isVacancy
         />
       )}
     </div>

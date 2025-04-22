@@ -12,6 +12,7 @@ const UploadModal = ({
   isApplyLink,
   mannualArchive = false,
   veryLargeModal = false,
+  isVacancy = false,
 }) => {
   const [name, setName] = useState("");
   const [file, setFile] = useState(null);
@@ -19,6 +20,7 @@ const UploadModal = ({
   const [validUntil, setValidUntil] = useState("");
   const [endDate, setEndDate] = useState("");
   const [applyLink, setApplyLink] = useState("");
+  const [vacancy, setVacancy] = useState("");
 
   const queryClient = useQueryClient();
 
@@ -73,6 +75,10 @@ const UploadModal = ({
       formData.append("apply", applyLink);
     }
 
+    if (isVacancy && vacancy) {
+      formData.append("vacancy", vacancy);
+    }
+
     mutation.mutate(formData);
   };
 
@@ -99,7 +105,10 @@ const UploadModal = ({
           </div>
         )}
 
-        <form className={`${veryLargeModal ? 'space-y-4' : 'space-y-9'}`} onSubmit={handleSubmit}>
+        <form
+          className={`${veryLargeModal ? "space-y-4" : "space-y-9"}`}
+          onSubmit={handleSubmit}
+        >
           <div>
             <label className="block text-sm font-semibold text-gray-700 mb-2">
               Enter the file name <span className="text-red-500">*</span>
@@ -148,6 +157,21 @@ const UploadModal = ({
                 value={applyLink}
                 onChange={(e) => setApplyLink(e.target.value)}
                 placeholder="https://example.com/apply"
+                className="w-full bg-gray-100 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 border-2 border-blue-200"
+              />
+            </div>
+          )}
+
+          {isVacancy && (
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
+                Vacancy Name
+              </label>
+              <input
+                type="text"
+                value={vacancy}
+                onChange={(e) => setVacancy(e.target.value)}
+                placeholder="e.g., Assistant Professor, Clerk"
                 className="w-full bg-gray-100 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 border-2 border-blue-200"
               />
             </div>

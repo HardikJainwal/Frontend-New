@@ -15,6 +15,7 @@ const ArchiveUploads = () => {
   const [file, setFile] = useState(null);
   const [endDate, setEndDate] = useState("");
   const [apply, setApply] = useState("");
+  const [vacancies, setVacancies] = useState("");
   const [applyError, setApplyError] = useState("");
   const [errors, setErrors] = useState({});
 
@@ -60,6 +61,9 @@ const ArchiveUploads = () => {
           setApplyError("");
         }
         break;
+      case "vacancies":
+        setVacancies(value);
+        break;
     }
 
     setErrors((prev) => ({ ...prev, [field]: validateField(field, value) }));
@@ -79,6 +83,7 @@ const ArchiveUploads = () => {
       setFile(null);
       setEndDate("");
       setApply("");
+      setVacancies("");
       setApplyError("");
       setErrors({});
     },
@@ -120,6 +125,10 @@ const ArchiveUploads = () => {
 
     if (apply) {
       formData.append("apply", apply);
+    }
+
+    if (vacancies) {
+      formData.append("vacancies", vacancies);
     }
 
     formData.forEach((value, key) => {
@@ -208,6 +217,19 @@ const ArchiveUploads = () => {
 
           <div>
             <label className="block text-sm font-semibold text-gray-700 mb-2">
+              Vacancies (if any)
+            </label>
+            <input
+              type="text"
+              value={vacancies}
+              onChange={(e) => handleChange("vacancies", e.target.value)}
+              placeholder="Eg: 5 Posts, 2 Interns"
+              className="w-full bg-gray-100 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
               End Date
             </label>
             <input
@@ -237,7 +259,7 @@ const ArchiveUploads = () => {
   );
 };
 
-//? TOP HEADINNG OF THE PAGE
+//? TOP HEADING OF THE PAGE
 const TopHeading = () => {
   const navigate = useNavigate();
 
