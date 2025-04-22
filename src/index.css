@@ -91,3 +91,11 @@
 .animate-fade-in {
   animation: fade-in 0.8s ease-out forwards;
 }
+.custom-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}

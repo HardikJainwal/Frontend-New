@@ -58,6 +58,12 @@ const sideNavItems = [
         active: false,
     },
     {
+        id: 9,
+        name: "Statutes, University Act, Ordinances",
+        href: "/administration/administrative/Statutes",
+        active: false,
+    },
+    {
         id: 4,
         name: "Statutory Committees",
         href: "/administration/administrative/advisory-board",
@@ -87,14 +93,7 @@ const sideNavItems = [
         href: "/administration/administrative/circulars",
         active: false,
     },
-    {
-        id: 9,
-        name: "Statutes, University Act, Ordinances",
-        href: "/administration/administrative/Statutes",
-        active: false,
-    }
 ];
-
 const admins = [
     {
         id: 1,
