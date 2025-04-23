@@ -59,9 +59,19 @@ const ArchivedJobPortal = () => {
                     </th>
                     <th className="p-2 text-left border">Title</th>
                     <th className="p-2 text-left border">Notification</th>
-                    <th className="p-2 text-left border">No of Vacancies</th>
-                    <th className="p-2 text-left border">Last Date</th>
-                    <th className="p-2 text-left border">Apply</th>
+
+                    {category !== "results" && (
+                      <th className="p-2 text-left border">No of Vacancies</th>
+                    )}
+                    {category === "results" ? (
+                      <th className="p-2 text-left border">Publish Date</th>
+                    ) : (
+                      <th className="p-2 text-left border">Last Date</th>
+                    )}
+
+                    {category !== "results" && (
+                      <th className="p-2 text-left border">Apply</th>
+                    )}
                   </tr>
                 </thead>
                 <tbody className="text-[0.8rem] md:text-sm">
@@ -79,28 +89,32 @@ const ArchivedJobPortal = () => {
                           Notice <FileText className="text-red-500" size={16} />
                         </a>
                       </td>
-                      <td className="p-2 border">
-                        {item.vacancies ? item.vacancies : "-"}
-                      </td>
+                      {category !== "results" && (
+                        <td className="p-2 border">
+                          {item.vacancies ? item.vacancies : "-"}
+                        </td>
+                      )}
                       <td className="p-2 border">
                         {item.endDate
                           ? new Date(item.endDate).toLocaleDateString("en-GB")
                           : "-"}
                       </td>
-                      <td className="p-2 border">
-                        {item.apply ? (
-                          <a
-                            href={item.apply}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-blue-600 hover:text-blue-800"
-                          >
-                            Apply
-                          </a>
-                        ) : (
-                          "-"
-                        )}
-                      </td>
+                      {category !== "results" && (
+                        <td className="p-2 border">
+                          {item.apply ? (
+                            <a
+                              href={item.apply}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-blue-600 hover:text-blue-800"
+                            >
+                              Apply
+                            </a>
+                          ) : (
+                            "-"
+                          )}
+                        </td>
+                      )}
                     </tr>
                   ))}
                 </tbody>

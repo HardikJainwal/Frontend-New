@@ -34,7 +34,7 @@ export const DesktopNav = ({ activeTab, handleTabChange }) => {
 
   return (
     <aside className="w-72 bg-white shadow-lg rounded-2xl p-6 space-y-4 hidden md:block">
-      <h2 className="text-2xl font-bold text-gray-700">Dashboard</h2>
+      <h2 className="text-2xl font-bold text-gray-700">Upload Categories</h2>
 
       <div className="flex flex-col gap-14 md:gap-16">
         <ul className="space-y-2">

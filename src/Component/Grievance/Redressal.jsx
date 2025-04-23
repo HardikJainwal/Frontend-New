@@ -2,7 +2,7 @@ import React from 'react';
 
 const Redressal = () => {
   return (
-    <div className="max-w-6xl mx-auto bg-white rounded-xl shadow-md p-6 mt-[-25px]">
+    <div className="max-w-6xl mx-auto bg-white md:rounded-xl md:shadow-md md:p-6 mt-[-25px]">
       <div className="text-2xl font-semibold text-blue-700 mb-4 border-b pb-2">
         Grievance Redressal Form
       </div>

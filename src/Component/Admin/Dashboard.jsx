@@ -1,118 +1,34 @@
-import { useState, useRef } from "react";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { Plus, FileSearch } from "lucide-react";
 import withAuthProtection from "./withAuthProtection";
-import { uploadPdf } from "../../utils/apiservice";
-import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
-  const [name, setName] = useState("");
-  const [section, setSection] = useState("");
-  const [file, setFile] = useState(null);
-  const fileInputRef = useRef(null);
-  const queryClient = useQueryClient();
-
-  const mutation = useMutation({
-    mutationFn: (formData) => {
-      for (let pair of formData.entries()) {
-        console.log(pair[0] + ": " + pair[1]);
-      }
-      return uploadPdf(formData);
-    },
-    onSuccess: ({ data }) => {
-      console.log("Upload response:", data);
-      toast.success("Upload successful! It may take a moment to appear.");
-      setName("");
-      setSection("");
-      setFile(null);
-      fileInputRef.current.value = "";
-      // Invalidate query for Alerts and Circular
-      queryClient.invalidateQueries(["notices", section], {
-        onSuccess: () => console.log("Query invalidated for section:", section),
-      });
-    },
-    onError: (error) => {
-      console.error("Upload failed:", {
-        message: error.message,
-        status: error.response?.status,
-        data: error.response?.data,
-      });
-      const errorMessage =
-        error.response?.data?.message ||
-        error.message ||
-        "An error occurred while uploading the PDF.";
-      toast.error(errorMessage);
-    },
-  });
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (!name || !section || !file) {
-      toast.error("All fields are required!");
-      return;
-    }
-
-    if (file.type !== "application/pdf") {
-      toast.error("Please upload a valid PDF file!");
-      return;
-    }
-
-    const formData = new FormData();
-    formData.append("fileName", name);
-    formData.append("section", section);
-    formData.append("pdf", file);
-
-    console.log("FormData entries:", [...formData.entries()]);
-    mutation.mutate(formData);
-  };
+  const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white px-4">
-      <form
-        onSubmit={handleSubmit}
-        className="bg-white p-6 rounded-lg shadow-md w-full max-w-md space-y-4 border"
-      >
-        <h2 className="text-2xl font-bold text-gray-800 text-center">Upload PDF</h2>
+    <div className="flex flex-col min-h-screen md:min-h-[70vh] items-center justify-center px-4">
+      <h1 className="text-4xl md:text-5xl font-bold text-center text-[#333] md:mb-16 mb-6">
+        DASHBOARD
+      </h1>
 
-        <input
-          type="text"
-          placeholder="Name"
-          className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
-
-        <select
-          className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-          value={section}
-          onChange={(e) => setSection(e.target.value)}
-          required
-        >
-          <option value="">Select Section</option>
-          <option value="admission">Admission</option>
-          <option value="students">Students</option>
-          <option value="important links">Important Links</option>
-          <option value="alerts and circular">Alerts and Circular</option>
-        </select>
-
-        <input
-          type="file"
-          accept="application/pdf"
-          ref={fileInputRef}
-          className="w-full px-4 py-2 border border-gray-300 rounded bg-gray-50 focus:outline-none"
-          onChange={(e) => setFile(e.target.files[0])}
-          required
-        />
-
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <button
-          type="submit"
-          disabled={mutation.isPending}
-          className="w-full py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600 transition-colors"
+          className="group flex flex-col items-center justify-center border-2 border-gray-300 rounded-2xl p-6 bg-white shadow-md hover:shadow-lg transition-all duration-300 hover:border-blue-500"
+          onClick={() => navigate("/")}
         >
-          {mutation.isPending ? "Uploading..." : "Submit"}
+          <Plus className="h-[150px] w-[150px] text-gray-400 group-hover:text-blue-500 transition-colors duration-300" />
+          <span className="text-lg md:text-xl text-gray-700 group-hover:text-blue-600 font-medium mt-2 transition-colors duration-300">
+            Upload PDFs
+          </span>
         </button>
-      </form>
+
+        <button className="group flex flex-col items-center justify-center border-2 border-gray-300 rounded-2xl p-6 bg-white shadow-md hover:shadow-lg transition-all duration-300 hover:border-blue-500">
+          <FileSearch className="h-[150px] w-[150px] text-gray-400 group-hover:text-blue-500 transition-colors duration-300" />
+          <span className="text-lg md:text-xl text-gray-700 group-hover:text-blue-600 font-medium mt-2 transition-colors duration-300">
+            View all PDFs
+          </span>
+        </button>
+      </div>
     </div>
   );
 };

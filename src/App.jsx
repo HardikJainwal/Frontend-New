@@ -207,8 +207,8 @@ function App() {
 
             {/* Admin routes */}
             <Route path="/admin-login" element={<AdminLogin />} />
-            {/* <Route path="/admin/dashboard" element={<Dashboard />} /> */}
-            <Route path="/admin/dashboard" element={<TestPage />} />
+            <Route path="/admin/uploads" element={<TestPage />} />
+            <Route path="/admin/dashboard" element={<Dashboard />} />
             <Route path="/admin/archive-uploads" element={<ArchiveUploads />} />
             <Route path="/admin/uploads" element={<RecuirtmentUploads />} />
 
