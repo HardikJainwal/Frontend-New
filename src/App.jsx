@@ -8,7 +8,7 @@ import Footer from "./Component/Footer/Footer";
 import Loader from "./Component/PageLoader/Loader";
 import UnderConstruction from "./Component/Reusable/UnderConstruction";
 import StudyProgramsSection from "./Component/Body/StudentProgram";
-import GrievanceForm from "./Component/NavItems/Grievance";
+import GrievanceForm from "./Component/Grievance/Grievance";
 import IndustryPartnership from "./Component/News/news1";
 import LoginPage from "./Component/Login/LoginPage";
 import AcademicRegulation from "./Component/AcademicRegulation/page";
@@ -100,6 +100,7 @@ import Entrepreneurship from './Component/NavItems/Entrepreneurship';
 import RecruitmentRules from "./Component/Administration/RecruitmentRules";
 import AnnualReport from "./Component/NavItems/AnnualReport";
 import AdministrationTemp from "./Component/Administration/page";
+
 
 function App() {
   return (
