@@ -5,6 +5,7 @@ import { jobPortalTabs as categoryTabs } from "../../constants/JOBPORTAL.JS";
 import { useNoticesBySection } from "../../hooks/useNoticesBySection";
 import { FileText } from "lucide-react";
 import UploadModal from "../Admin/UploadModal";
+import ReactPaginate from "react-paginate";
 
 const ArchivedJobPortal = () => {
   const { category } = useParams();
@@ -13,8 +14,10 @@ const ArchivedJobPortal = () => {
   const [showModal, setShowModal] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [noticeData, setNoticeData] = useState([]);
+  const [page, setPage] = useState(1); // for the page number
+  const [totalPages, setTotalPages] = useState(3);
 
-  const { data, isLoading } = useNoticesBySection(category, true, 10, 1);
+  const { data, isLoading } = useNoticesBySection(category, true, 10, page);
 
   const currentRole = sessionStorage.getItem("currentRole");
   const token = sessionStorage.getItem("token");
@@ -32,11 +35,20 @@ const ArchivedJobPortal = () => {
     }
   }, [category, currentRole, token, navigate]);
 
+  // for data and pagination
   useEffect(() => {
     if (data?.data?.notices) {
       setNoticeData(data.data.notices);
     }
+
+    if (data) {
+      setTotalPages(data.metadata.totalPages);
+    }
   }, [data]);
+
+  const handlePageClick = ({ selected }) => {
+    setPage(selected + 1);
+  };
 
   return (
     <div className="flex flex-col justify-center items-center">
@@ -85,7 +97,13 @@ const ArchivedJobPortal = () => {
                 <tbody className="text-[0.8rem] md:text-sm">
                   {noticeData.map((item, index) => (
                     <tr key={item._id} className="hover:bg-gray-50">
-                      <td className="p-2 border">{index + 1}</td>
+                      {page ? (
+                        <td className="p-2 border">
+                          {(page - 1) * 10 + index + 1}
+                        </td>
+                      ) : (
+                        <td className="p-2 border">{index + 1}</td>
+                      )}
                       <td className="p-2 border">{item.fileName}</td>
                       <td className="p-2 border">
                         <a
@@ -132,6 +150,25 @@ const ArchivedJobPortal = () => {
             <div className="text-center p-4">No archived notices found.</div>
           )}
         </div>
+
+        {totalPages && totalPages > 1 && (
+          <ReactPaginate
+            breakLabel="..."
+            nextLabel="next >"
+            onPageChange={handlePageClick}
+            pageRangeDisplayed={5}
+            pageCount={totalPages}
+            previousLabel="< previous"
+            renderOnZeroPageCount={null}
+            forcePage={page - 1}
+            containerClassName="flex justify-center gap-2 my-6"
+            pageClassName="px-3 py-1 border rounded cursor-pointer"
+            activeClassName="bg-blue-600 text-white"
+            previousClassName="px-3 py-1 border rounded cursor-pointer"
+            nextClassName="px-3 py-1 border rounded cursor-pointer"
+            breakClassName="px-3 py-1"
+          />
+        )}
       </main>
 
       {isAdmin && (
