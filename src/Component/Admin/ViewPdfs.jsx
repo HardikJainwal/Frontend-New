@@ -1,154 +1,142 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-
-// Axios instance — replace baseURL if needed
-const api = axios.create({
-  baseURL: 'https://dseu-backend.onrender.com/api/v1/', // <-- UPDATE this!
-});
-
-// Get PDFs by section
-const getPdfBySections = async (section, archived = false) => {
-  const url = archived ? `/notice/archived?section=${section}` : `/notice?section=${section}`;
-  const res = await api.get(url);
-  return res.data.data.notices;
-};
-
-// All sections to fetch from
-const allSections = [
-  'admission',
-  'students',
-  'important links',
-  'alerts and circulars',
-  'members',
-  'university court',
-  'board of management',
-  'academic council',
-  'finance comittee',
-  'academic positions',
-  'non academic positions',
-  'short term positions',
-  'results',
-  'recruitments and notice',
-  'announcements',
-  'recruitment rules',
-  'ad office orders',
-  'ad circulars',
-  'ad important forms',
-];
-
-// Fetch all PDFs with section info
-const fetchAllPdfsWithSections = async () => {
-  const results = await Promise.all(
-    allSections.map(async (section) => {
-      try {
-        const notices = await getPdfBySections(section);
-        return notices.map((notice) => ({ ...notice, section }));
-      } catch (err) {
-        console.error(`Error fetching section: ${section}`, err);
-        return [];
-      }
-    })
-  );
-  return results.flat();
-};
-
-const ITEMS_PER_PAGE = 10;
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const ViewPdfs = () => {
-  const [pdfs, setPdfs] = useState([]);
+  const [nonArchivedData, setNonArchivedData] = useState([]);
+  const [archivedData, setArchivedData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [loading, setLoading] = useState(true);
-
-  const totalPages = Math.ceil(pdfs.length / ITEMS_PER_PAGE);
-
-  const paginatedPdfs = pdfs.slice(
-    (currentPage - 1) * ITEMS_PER_PAGE,
-    currentPage * ITEMS_PER_PAGE
-  );
+  const [totalPages, setTotalPages] = useState(1);
+  const [selectedTab, setSelectedTab] = useState("non-archived");
+  const [selectedSection, setSelectedSection] = useState("all");
 
   useEffect(() => {
-    const loadData = async () => {
-      const data = await fetchAllPdfsWithSections();
-      setPdfs(data);
-      setLoading(false);
-    };
-    loadData();
-  }, []);
+    // Fetch Non-Archived PDFs
+    axios.get(`https://dseu-backend.onrender.com/api/v1/notice/non-archived?page=${currentPage}`)
+      .then((response) => {
+        setNonArchivedData(response.data.data.notices);
+        setTotalPages(response.data.metadata.totalPages);
+      })
+      .catch((error) => {
+        console.error("Error fetching non-archived PDFs", error);
+      });
 
-  const handlePageChange = (newPage) => {
-    if (newPage >= 1 && newPage <= totalPages) {
-      setCurrentPage(newPage);
+    // Fetch Archived PDFs
+    axios.get(`https://dseu-backend.onrender.com/api/v1/notice/archived?page=${currentPage}`)
+      .then((response) => {
+        setArchivedData(response.data.data.notices);
+        setTotalPages(response.data.metadata.totalPages);
+      })
+      .catch((error) => {
+        console.error("Error fetching archived PDFs", error);
+      });
+  }, [currentPage]);
+
+  const handleTabChange = (tab) => {
+    setSelectedTab(tab);
+    setCurrentPage(1); // Reset page to 1 when switching tabs
+  };
+
+  const handleSectionChange = (e) => {
+    setSelectedSection(e.target.value);
+  };
+
+  const filterNoticesBySection = (notices) => {
+    if (selectedSection === "all") return notices;
+    return notices.filter(notice => notice.section === selectedSection);
+  };
+
+  const getNotices = () => {
+    if (selectedTab === "non-archived") {
+      return filterNoticesBySection(nonArchivedData);
     }
+    return filterNoticesBySection(archivedData);
   };
 
   return (
-    <div className="p-4 md:p-8 bg-gray-50 min-h-screen">
-      <h1 className="text-2xl font-bold mb-6 text-gray-800">All Uploaded PDFs</h1>
+    <div className="container mx-auto p-4">
+      <div className="flex justify-center space-x-4 mb-6">
+        <button
+          onClick={() => handleTabChange("non-archived")}
+          className={`px-6 py-3 rounded-lg ${selectedTab === "non-archived" ? "bg-blue-500 text-white" : "bg-gray-200"}`}
+        >
+          Show Non-Archived
+        </button>
+        <button
+          onClick={() => handleTabChange("archived")}
+          className={`px-6 py-3 rounded-lg ${selectedTab === "archived" ? "bg-blue-500 text-white" : "bg-gray-200"}`}
+        >
+          Show Archived
+        </button>
+      </div>
 
-      {loading ? (
-        <p className="text-gray-500">Loading...</p>
-      ) : (
-        <>
-          <div className="overflow-x-auto bg-white shadow rounded-lg mb-4">
-            <table className="min-w-full border border-gray-200">
-              <thead className="bg-gray-100">
-                <tr>
-                  <th className="px-4 py-2 border-b text-left">Title</th>
-                  <th className="px-4 py-2 border-b text-left">Section</th>
-                  <th className="px-4 py-2 border-b text-left">Uploaded At</th>
-                  <th className="px-4 py-2 border-b text-left">Link</th>
-                </tr>
-              </thead>
-              <tbody>
-                {paginatedPdfs.map((pdf, index) => (
-                  <tr key={index} className="hover:bg-gray-50 transition">
-                    <td className="px-4 py-2 border-b">{pdf.title || 'Untitled'}</td>
-                    <td className="px-4 py-2 border-b capitalize">{pdf.section}</td>
-                    <td className="px-4 py-2 border-b">
-                      {pdf.uploadedAt ? new Date(pdf.uploadedAt).toLocaleDateString() : 'N/A'}
-                    </td>
-                    <td className="px-4 py-2 border-b">
-                      <a
-                        href={pdf.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-600 hover:underline"
-                      >
-                        View PDF
-                      </a>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+      <div className="mb-6 flex justify-center items-center">
+        <label htmlFor="section" className="mr-4">Filter by Section:</label>
+        <select
+          id="section"
+          onChange={handleSectionChange}
+          value={selectedSection}
+          className="px-4 py-2 border rounded-lg"
+        >
+          <option value="all">All Sections</option>
+          <option value="academic council">Academic Council</option>
+          <option value="students">Students</option>
+          <option value="admission">Admission</option>
+          <option value="non academic positions">Non Academic Positions</option>
+          <option value="important links">Important Links</option>
+        </select>
+      </div>
 
-          {/* Pagination Controls */}
-          <div className="flex justify-center items-center gap-2">
-            <button
-              onClick={() => handlePageChange(currentPage - 1)}
-              disabled={currentPage === 1}
-              className="px-3 py-1 rounded-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
-            >
-              Prev
-            </button>
-            <span className="font-medium">
-              Page {currentPage} of {totalPages}
-            </span>
-            <button
-              onClick={() => handlePageChange(currentPage + 1)}
-              disabled={currentPage === totalPages}
-              className="px-3 py-1 rounded-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
-            >
-              Next
-            </button>
-          </div>
-        </>
-      )}
+      <table className="min-w-full border-collapse border text-sm">
+        <thead>
+          <tr className="bg-gray-100">
+            <th className="py-2 px-4 border">File Name</th>
+            <th className="py-2 px-4 border">Section</th>
+            <th className="py-2 px-4 border">Uploaded At</th>
+            <th className="py-2 px-4 border">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {getNotices().map((notice) => (
+            <tr key={notice._id} className="border-b hover:bg-gray-50">
+              <td className="py-2 px-4">{notice.fileName}</td>
+              <td className="py-2 px-4">{notice.section}</td>
+              <td className="py-2 px-4">{new Date(notice.uploadedAt).toLocaleDateString()}</td>
+              <td className="py-2 px-4">
+                <a
+                  href={notice.fileLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline"
+                >
+                  View PDF
+                </a>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      <div className="flex justify-center items-center mt-6 space-x-4">
+        <button
+          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+          disabled={currentPage === 1}
+          className="px-4 py-2 bg-gray-200 rounded-lg disabled:opacity-50"
+        >
+          Previous
+        </button>
+        <span className="text-lg">
+          Page {currentPage} of {totalPages}
+        </span>
+        <button
+          onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+          disabled={currentPage === totalPages}
+          className="px-4 py-2 bg-gray-200 rounded-lg disabled:opacity-50"
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 };
 
 export default ViewPdfs;
-
-
