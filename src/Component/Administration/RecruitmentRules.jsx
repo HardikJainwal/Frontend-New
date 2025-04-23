@@ -13,7 +13,7 @@ const RecruitmentRules = () => {
     data: rules,
     isLoading,
     error,
-  } = useNoticesBySection("recruitment rules", archived);
+  } = useNoticesBySection("recruitment rules", archived, 1000, 1);
 
   const currentRole = sessionStorage.getItem("currentRole");
   const token = sessionStorage.getItem("token");
@@ -22,7 +22,8 @@ const RecruitmentRules = () => {
     if (currentRole === "Admin" && token) {
       setIsAdmin(true);
     }
-  }, [currentRole, token]);
+    console.log(rules);
+  }, [currentRole, token, rules]);
 
   const handleArchivedButton = (e) => {
     e.preventDefault();

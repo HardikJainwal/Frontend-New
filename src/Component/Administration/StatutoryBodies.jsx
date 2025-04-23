@@ -18,7 +18,7 @@ const StatutoryBodiesComponent = () => {
     "finance comittee": "Finance Committee",
   };
 
-  const { data, isLoading, error } = useNoticesBySection(sectionToFetch);
+  const { data, isLoading, error } = useNoticesBySection(sectionToFetch, false, 1000, 1);
 
   if (isLoading) return <OrangeLoader />;
   if (error)

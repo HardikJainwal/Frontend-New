@@ -23,7 +23,7 @@ const InformationBulletin = () => {
           axios.get(
             `https://dseu-backend.onrender.com/api/v1/notice?section=${encodeURIComponent(
               section.key
-            )}`
+            )}&limit=50&page=1`
           )
         );
 

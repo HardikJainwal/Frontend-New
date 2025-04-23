@@ -196,13 +196,15 @@ export const getAcademicCouncilNotices = async () => {
 };
 
 // pdf through category such as circular, students, board of management etc.
-export const getPdfBySections = async (section, archived = false) => {
+export const getPdfBySections = async (section, archived = false, limit, page) => {
   if (archived) {
-    const res = await api.get(`/notice/archived?section=${section}`);
+    const res = await api.get(`/notice/archived?section=${section}&limit=${limit}&page=${page}`);
     return res.data.data.notices;
-  }
+  } 
+  
+  const res = await api.get(`/notice?section=${section}&limit=${limit}&page=${page}`);
+  console.log(res);
 
-  const res = await api.get(`/notice?section=${section}`);
   return res.data.data.notices;
 };
 

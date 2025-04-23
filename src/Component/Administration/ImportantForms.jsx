@@ -23,12 +23,23 @@ const ImportantForms = () => {
     setArchived((prev) => !prev);
   };
 
-  const { data: forms, isLoading } = useNoticesBySection("ad important forms", archived);
+  const { data: forms, isLoading } = useNoticesBySection(
+    "ad important forms",
+    archived,
+    1000,
+    1
+  );
 
-  const sectionTitle = archived ? "Archived Important Forms" : "Important Forms for Employees";
+  const sectionTitle = archived
+    ? "Archived Important Forms"
+    : "Important Forms for Employees";
 
   if (isLoading) {
-    return <div className="text-center py-6 text-gray-500 text-base">Loading important forms...</div>;
+    return (
+      <div className="text-center py-6 text-gray-500 text-base">
+        Loading important forms...
+      </div>
+    );
   }
 
   return (
@@ -52,10 +63,17 @@ const ImportantForms = () => {
 
       <hr className="mb-6 border-gray-300" />
 
-      {(!forms || forms.length === 0) ? (
+      {!forms || forms.length === 0 ? (
         <>
-          <div className="mt-8 text-center text-slate-600">No forms available.</div>
-          <ArchiveButton handleArchivedButton={handleArchivedButton} archived={archived} />
+          <div className="mt-8 text-center text-slate-600">
+            No forms available.
+          </div>
+          <ArchiveButton
+            handleArchivedButton={handleArchivedButton}
+            archived={archived}
+            text="See Archived Forms"
+            archivedText="See latest forms"
+          />
         </>
       ) : (
         <>
@@ -82,7 +100,10 @@ const ImportantForms = () => {
               </li>
             ))}
           </ul>
-          <ArchiveButton handleArchivedButton={handleArchivedButton} archived={archived} />
+          <ArchiveButton
+            handleArchivedButton={handleArchivedButton}
+            archived={archived}
+          />
         </>
       )}
 
@@ -96,6 +117,5 @@ const ImportantForms = () => {
     </div>
   );
 };
-
 
 export default ImportantForms;
