@@ -279,8 +279,8 @@ const AdminDashboard = () => {
 
           <button
             type="submit"
-            disabled={mutation.isPending}
-            className="w-full py-3 bg-blue-400 text-white font-semibold rounded-lg hover:bg-orange-400 transition"
+            disabled={mutation.status === 'pending'}
+            className="w-full py-3 bg-blue-400 text-white font-semibold rounded-lg hover:bg-orange-400 transition disabled:cursor-not-allowed"
           >
             {mutation.isPending ? "Uploading..." : "Upload PDF"}
           </button>

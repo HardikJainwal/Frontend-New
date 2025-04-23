@@ -2,8 +2,16 @@ import { ExternalLink } from "lucide-react";
 import { useNoticesBySection } from "../../hooks/useNoticesBySection";
 
 const AnnouncementStrip = () => {
-  const { data: announcements, isLoading } =
-    useNoticesBySection("announcements");
+  const { data: announcements, isLoading } = useNoticesBySection(
+    "announcements",
+    false,
+    100,
+    1
+  );
+
+  if (isLoading) {
+    return <div>Loading..</div>;
+  }
 
   if (!announcements) {
     return <p>No announcements as of now.</p>;

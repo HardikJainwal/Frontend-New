@@ -25,7 +25,9 @@ const Circulars = () => {
 
   const { data: circulars, isLoading } = useNoticesBySection(
     "ad circulars",
-    archived
+    archived,
+    1000,
+    1
   );
   const sectionTitle = archived ? "Archived Circulars" : "Latest Circulars";
 
@@ -90,6 +92,8 @@ const Circulars = () => {
         <ToggleButton
           handleArchivedButton={handleArchivedButton}
           archived={archived}
+          text="See Archived Circulars"
+          archivedText="See latest Circulars"
         />
       </div>
 

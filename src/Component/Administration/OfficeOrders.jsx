@@ -12,12 +12,6 @@ const OfficeOrders = () => {
   const token = sessionStorage.getItem("token");
   const currentRole = sessionStorage.getItem("currentRole");
 
-  useEffect(() => {
-    if (currentRole === "Admin" && token) {
-      setIsAdmin(true);
-    }
-  }, [currentRole, token]);
-
   const handleArchivedButton = (e) => {
     e.preventDefault();
     setArchived((prev) => !prev);
@@ -25,9 +19,20 @@ const OfficeOrders = () => {
 
   const { data: orders, isLoading } = useNoticesBySection(
     "ad office orders",
-    archived
+    archived,
+    1000,
+    1
   );
-  const sectionTitle = archived ? "Archived Office Orders" : "Latest Office Orders";
+
+  useEffect(() => {
+    if (currentRole === "Admin" && token) {
+      setIsAdmin(true);
+    }
+  }, [currentRole, token]);
+
+  const sectionTitle = archived
+    ? "Archived Office Orders"
+    : "Latest Office Orders";
 
   if (isLoading) {
     return (
@@ -90,6 +95,8 @@ const OfficeOrders = () => {
         <ToggleButton
           handleArchivedButton={handleArchivedButton}
           archived={archived}
+          archivedText="See latest Orders"
+          text="Archived Orders"
         />
       </div>
 

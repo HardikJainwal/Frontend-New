@@ -242,7 +242,8 @@ const ArchiveUploads = () => {
 
           <button
             type="submit"
-            className="w-full py-3 bg-blue-400 text-white font-semibold rounded-lg hover:bg-orange-400 transition-colors"
+            disabled={mutation.status === 'pending'}
+            className="w-full py-3 bg-blue-400 text-white font-semibold rounded-lg hover:bg-orange-400 transition-colors disabled:cursor-not-allowed"
           >
             {mutation.isPending ? (
               <div className="flex flex-row gap-1 items-center justify-center">
