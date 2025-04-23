@@ -40,6 +40,15 @@ export default function GrievanceForms() {
             <RTIDisclosure />
           )}
         </div>
+        <div className="mt-8 text-sm text-center text-gray-700">
+        For advance service of court-related petitions, email us at{' '}
+        <a
+          href="mailto:osd.legal@dseu.ac.in"
+          className="text-orange-600 hover:underline font-medium"
+        >
+          osd.legal@dseu.ac.in
+        </a>
+      </div>
       </div>
     </div>
 

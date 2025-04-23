@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from "react";
+import GrievanceForm from './Redressal';
 
 
 const RTI = () => {
@@ -272,7 +273,7 @@ const RTI = () => {
     { id: "powers", label: "RTI Act, 2005" },
     { id: "procedure", label: "DSEU University Act" },
     { id: "norms", label: "Link to State RTI Portal" },
-    // { id: "rules", label: "Grievance Redressal Form" },
+    { id: "rules", label: "Grievance Redressal Form" },
   ];
   return (
     <div className="flex">
