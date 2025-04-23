@@ -199,16 +199,26 @@ export const getAcademicCouncilNotices = async () => {
 export const getPdfBySections = async (section, archived = false, limit, page) => {
   if (archived) {
     const res = await api.get(`/notice/archived?section=${section}&limit=${limit}&page=${page}`);
-    console.log(res.data);
+    // console.log(res.data);
     return res.data;
-  } 
-  
+  }
+
   const res = await api.get(`/notice?section=${section}&limit=${limit}&page=${page}`);
-  console.log(res.data);
+  // console.log(res.data);
 
   return res.data;
 };
 
+// for the search bar
+export const getAllPdfs = async (archived, limit, page) => {
+  if(archived) {
+    const res = await api.get(`/notice/archived?limit=${limit}&page=${page}`);
+    return res.data;
+  }
+
+  const res = await api.get(`/notice?limit=${limit}&page=${page}`)
+  return res.data;
+}
 
 // get campus by zone 
 export const getCampusByZone = async (zoneName) => {
@@ -246,7 +256,6 @@ export const login = async ({ email, password, emailFlag = false }) => {
 // upload pdf
 export const uploadPdf = async (formData) => {
   const token = sessionStorage.getItem("token");
-  // console.log(token);
   try {
     const response = await axios.post("https://dseu-backend.onrender.com/api/v1/notice/upload",
       formData,
@@ -261,6 +270,7 @@ export const uploadPdf = async (formData) => {
     return response;
 
   } catch (err) {
-    console.log(err.message);
+    // console.log(err);
+    console.error(err.response);
   }
 }

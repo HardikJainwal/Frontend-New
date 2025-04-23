@@ -154,19 +154,19 @@ const ArchivedJobPortal = () => {
         {totalPages && totalPages > 1 && (
           <ReactPaginate
             breakLabel="..."
-            nextLabel="next >"
-            onPageChange={handlePageClick}
+            nextLabel="Next >"
+            previousLabel="< Prev"
+            onPageChange={({ selected }) => setPage(selected + 1)}
             pageRangeDisplayed={5}
             pageCount={totalPages}
-            previousLabel="< previous"
-            renderOnZeroPageCount={null}
             forcePage={page - 1}
-            containerClassName="flex justify-center gap-2 my-6"
-            pageClassName="px-3 py-1 border rounded cursor-pointer"
-            activeClassName="bg-blue-600 text-white"
-            previousClassName="px-3 py-1 border rounded cursor-pointer"
-            nextClassName="px-3 py-1 border rounded cursor-pointer"
-            breakClassName="px-3 py-1"
+            renderOnZeroPageCount={null}
+            containerClassName="flex justify-center flex-wrap gap-2 my-6 text-sm md:text-base"
+            pageClassName="px-4 py-1.5 border border-blue-200 rounded-full cursor-pointer hover:bg-blue-100 hover:text-blue-700 transition-colors duration-200"
+            activeClassName="bg-blue-600 text-white font-semibold"
+            previousClassName="px-3 py-1.5 border border-gray-300 rounded-full cursor-pointer hover:bg-gray-100"
+            nextClassName="px-3 py-1.5 border border-gray-300 rounded-full cursor-pointer hover:bg-gray-100"
+            breakClassName="px-3 py-1.5 text-gray-500"
           />
         )}
       </main>

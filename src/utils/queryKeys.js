@@ -14,4 +14,5 @@ export const QUERY_KEYS = Object.freeze({
     GET_ALL_PDF: "getAllPDFs",
     GET_PDFS_BY_CATEGORY: "getPdfsByCategory",
     GET_CAMPUS_BY_ZONE: "getCampusByZone",
+    GET_NOTICES: "notices",
 });

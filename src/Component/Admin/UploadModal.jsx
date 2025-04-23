@@ -168,7 +168,7 @@ const UploadModal = ({
                 Vacancy (If any)
               </label>
               <input
-                type="text"
+                type="number"
                 value={vacancy}
                 onChange={(e) => setVacancy(e.target.value)}
                 placeholder="e.g., Assistant Professor, Clerk"
@@ -213,7 +213,7 @@ const UploadModal = ({
 
           <button
             type="submit"
-            disabled={mutation.status === 'pending'}
+            disabled={mutation.status === "pending"}
             className="w-full py-3 bg-blue-400 text-white font-semibold rounded-lg hover:bg-orange-400 transition disabled:cursor-not-allowed"
           >
             {mutation.isPending ? "Uploading..." : "Upload PDF"}
