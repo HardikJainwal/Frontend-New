@@ -5,13 +5,13 @@ import { jobPortalTabs as tabs } from "../../constants/JOBPORTAL.JS";
 import UploadModal from "../Admin/UploadModal";
 
 const JobListings = () => {
-  const [activeTab, setActiveTab] = useState("non academic positions");
+  const [activeTab, setActiveTab] = useState("academic positions");
   const [entriesCount, setEntriesCount] = useState(10);
   const [showModal, setShowModal] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [noticeData, setNoticeData] = useState([]);
 
-  const { data: noticeData, isLoading } = useNoticesBySection(activeTab);
-  console.log(activeTab);
+  const { data, isLoading } = useNoticesBySection(activeTab, false, 1000, 1);
 
   const currentRole = sessionStorage.getItem("currentRole");
   const token = sessionStorage.getItem("token");
@@ -20,16 +20,26 @@ const JobListings = () => {
     if (currentRole === "Admin" && token) {
       setIsAdmin(true);
     }
-  }, [currentRole, token]);
+
+    if (data?.data?.notices && data.data.notices.length > 0) {
+      setNoticeData(data.data.notices);
+    } else {
+      setNoticeData([]);
+    }
+
+  }, [currentRole, token, data, activeTab]);
 
   const getActiveData = () => {
+    if (!noticeData || noticeData.length === 0) {
+      return [];
+    }
     return noticeData || [];
   };
 
   return (
     <div className="flex pb bg-gray-50 rounded-md flex-col md:flex-row">
       {/* Side Panel */}
-      <div className="xl:w-64 w-48 bg-white shadow-lg mt-6 rounded-3xl hidden lg:block text-sm xl:text-[1rem] whitespace-nowrap max-h-fit pb-10">
+      <div className="xl:w-64 w-48 bg-white shadow-lg mt-6 rounded-3xl hidden md:block text-sm xl:text-[1rem] whitespace-nowrap max-h-fit pb-10">
         <div className="p-4 bg-blue-700 text-white font-bold text-lg">
           Job Categories
         </div>
@@ -113,7 +123,9 @@ const JobListings = () => {
                         </td>
                         <td className="p-2 border">
                           {item.uploadedAt
-                            ? new Date(item.uploadedAt).toLocaleDateString("en-GB")
+                            ? new Date(item.uploadedAt).toLocaleDateString(
+                                "en-GB"
+                              )
                             : "-"}
                         </td>
                         <td className="p-2 border">

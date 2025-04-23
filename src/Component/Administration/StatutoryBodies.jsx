@@ -1,15 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNoticesBySection } from "../../hooks/useNoticesBySection";
 import OrangeLoader from "../PageLoader/OrangeLoader";
 
 const StatutoryBodiesComponent = () => {
   const [activeMainTab, setActiveMainTab] = useState("university court");
   const [activeSectionTab, setActiveSectionTab] = useState("members");
+  const [pdfs, setPdfs] = useState([]);
 
   const sectionToFetch =
-    activeSectionTab === "members"
-      ? `member ${activeMainTab}`
-      : activeMainTab;
+    activeSectionTab === "members" ? `member ${activeMainTab}` : activeMainTab;
 
   const mainTabs = {
     "university court": "University Court",
@@ -18,9 +17,23 @@ const StatutoryBodiesComponent = () => {
     "finance comittee": "Finance Committee",
   };
 
-  const { data, isLoading, error } = useNoticesBySection(sectionToFetch, false, 1000, 1);
+  const { data, isLoading, error } = useNoticesBySection(
+    sectionToFetch,
+    false,
+    1000,
+    1
+  );
+
+  useEffect(() => {
+    if (data?.data?.notices) {
+      setPdfs(data.data.notices);
+    } else {
+      setPdfs([]);
+    }
+  }, [data]);
 
   if (isLoading) return <OrangeLoader />;
+
   if (error)
     return (
       <div className="p-6 text-red-600">
@@ -79,9 +92,9 @@ const StatutoryBodiesComponent = () => {
 
       {/* PDF LISTING */}
       <div className="bg-white rounded-lg shadow-sm mt-2">
-        {data?.length > 0 ? (
+        {pdfs.length > 0 ? (
           <div className="space-y-4">
-            {data.map((file) => (
+            {pdfs.map((file) => (
               <div
                 key={file._id}
                 className="p-4 border rounded-lg hover:bg-blue-50 transition duration-200"
@@ -101,7 +114,8 @@ const StatutoryBodiesComponent = () => {
         ) : (
           <div className="p-6 border rounded-lg shadow-md bg-white text-gray-600">
             <h3 className="text-xl font-semibold mb-2">
-              {mainTabs[activeMainTab]} — {activeSectionTab === "members" ? "Members" : "Minutes"}
+              {mainTabs[activeMainTab]} —{" "}
+              {activeSectionTab === "members" ? "Members" : "Minutes"}
             </h3>
             <p className="text-red-600">No PDFs available for this section.</p>
           </div>

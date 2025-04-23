@@ -199,13 +199,14 @@ export const getAcademicCouncilNotices = async () => {
 export const getPdfBySections = async (section, archived = false, limit, page) => {
   if (archived) {
     const res = await api.get(`/notice/archived?section=${section}&limit=${limit}&page=${page}`);
-    return res.data.data.notices;
+    console.log(res.data);
+    return res.data;
   } 
   
   const res = await api.get(`/notice?section=${section}&limit=${limit}&page=${page}`);
-  console.log(res);
+  console.log(res.data);
 
-  return res.data.data.notices;
+  return res.data;
 };
 
 

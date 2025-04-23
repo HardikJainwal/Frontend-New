@@ -8,6 +8,7 @@ const OfficeOrders = () => {
   const [archived, setArchived] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [orders, setOrders] = useState([]);
 
   const token = sessionStorage.getItem("token");
   const currentRole = sessionStorage.getItem("currentRole");
@@ -17,7 +18,7 @@ const OfficeOrders = () => {
     setArchived((prev) => !prev);
   };
 
-  const { data: orders, isLoading } = useNoticesBySection(
+  const { data, isLoading } = useNoticesBySection(
     "ad office orders",
     archived,
     1000,
@@ -28,7 +29,11 @@ const OfficeOrders = () => {
     if (currentRole === "Admin" && token) {
       setIsAdmin(true);
     }
-  }, [currentRole, token]);
+
+    if (data) {
+      setOrders(data.data.notices);
+    }
+  }, [currentRole, token, data]);
 
   const sectionTitle = archived
     ? "Archived Office Orders"

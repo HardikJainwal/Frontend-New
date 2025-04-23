@@ -1,13 +1,22 @@
 import { ExternalLink } from "lucide-react";
 import { useNoticesBySection } from "../../hooks/useNoticesBySection";
+import { useEffect, useState } from "react";
 
 const AnnouncementStrip = () => {
-  const { data: announcements, isLoading } = useNoticesBySection(
+  const [announcements, setAnnouncements] = useState([]);
+  const { data, isLoading } = useNoticesBySection(
     "announcements",
     false,
     100,
     1
   );
+
+  useEffect(() => {
+    if (data) {
+      setAnnouncements(data.data.notices);
+    }
+    console.log(data);
+  }, [data]);
 
   if (isLoading) {
     return <div>Loading..</div>;

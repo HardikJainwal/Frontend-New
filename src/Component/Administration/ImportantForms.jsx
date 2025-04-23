@@ -8,6 +8,7 @@ const ImportantForms = () => {
   const [archived, setArchived] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [forms, setForms] = useState([]);
 
   const token = sessionStorage.getItem("token");
   const currentRole = sessionStorage.getItem("currentRole");
@@ -23,12 +24,18 @@ const ImportantForms = () => {
     setArchived((prev) => !prev);
   };
 
-  const { data: forms, isLoading } = useNoticesBySection(
+  const { data, isLoading } = useNoticesBySection(
     "ad important forms",
     archived,
     1000,
     1
   );
+
+  useEffect(() => {
+    if (data) {
+      setForms(data.data.notices);
+    } 
+  }, [data]);
 
   const sectionTitle = archived
     ? "Archived Important Forms"

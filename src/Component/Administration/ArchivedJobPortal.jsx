@@ -10,9 +10,11 @@ const ArchivedJobPortal = () => {
   const { category } = useParams();
   const navigate = useNavigate();
 
-  const { data: noticeData, isLoading } = useNoticesBySection(category, true);
   const [showModal, setShowModal] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [noticeData, setNoticeData] = useState([]);
+
+  const { data, isLoading } = useNoticesBySection(category, true, 10, 1);
 
   const currentRole = sessionStorage.getItem("currentRole");
   const token = sessionStorage.getItem("token");
@@ -28,7 +30,13 @@ const ArchivedJobPortal = () => {
     if (currentRole === "Admin" && token) {
       setIsAdmin(true);
     }
-  }, [category, noticeData, currentRole, token, navigate]);
+  }, [category, currentRole, token, navigate]);
+
+  useEffect(() => {
+    if (data?.data?.notices) {
+      setNoticeData(data.data.notices);
+    }
+  }, [data]);
 
   return (
     <div className="flex flex-col justify-center items-center">
@@ -49,7 +57,7 @@ const ArchivedJobPortal = () => {
         <div className="bg-white rounded-lg shadow p-6 mt-6">
           {isLoading ? (
             <div className="text-center p-4">Loading...</div>
-          ) : noticeData && noticeData.length > 0 ? (
+          ) : noticeData.length > 0 ? (
             <div className="overflow-x-auto">
               <table className="w-full border-collapse">
                 <thead>

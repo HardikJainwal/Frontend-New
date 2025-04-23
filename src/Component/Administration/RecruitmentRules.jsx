@@ -9,11 +9,21 @@ const RecruitmentRules = () => {
   const [archived, setArchived] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const {
-    data: rules,
-    isLoading,
-    error,
-  } = useNoticesBySection("recruitment rules", archived, 1000, 1);
+  const [rules, setRules] = useState([]);
+
+  const { data, isLoading, error } = useNoticesBySection(
+    "recruitment rules",
+    archived,
+    1000,
+    1
+  );
+
+  useEffect(() => {
+    if (data) {
+      setRules(data.data.notices);
+    }
+    console.log(data);
+  }, [data]);
 
   const currentRole = sessionStorage.getItem("currentRole");
   const token = sessionStorage.getItem("token");

@@ -8,27 +8,33 @@ const Circulars = () => {
   const [archived, setArchived] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [circulars, setCirculars] = useState([]);
 
   const token = sessionStorage.getItem("token");
   const currentRole = sessionStorage.getItem("currentRole");
+
+  const { data, isLoading } = useNoticesBySection(
+    "ad circulars",
+    archived,
+    1000,
+    1
+  );
 
   useEffect(() => {
     if (currentRole === "Admin" && token) {
       setIsAdmin(true);
     }
-  }, [currentRole, token]);
+
+    if (data) {
+      setCirculars(data.data.notices);
+    }
+  }, [currentRole, token, data]);
 
   const handleArchivedButton = (e) => {
     e.preventDefault();
     setArchived((prev) => !prev);
   };
 
-  const { data: circulars, isLoading } = useNoticesBySection(
-    "ad circulars",
-    archived,
-    1000,
-    1
-  );
   const sectionTitle = archived ? "Archived Circulars" : "Latest Circulars";
 
   if (isLoading) {
