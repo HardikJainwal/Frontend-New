@@ -83,7 +83,7 @@ const AntiRagging = lazy(() => import("./Component/Student Services/AntiRagging"
 const AdminLogin = lazy(() => import('./Component/Admin/LoginForm'));
 const Dashboard = lazy(() => import('./Component/Admin/Dashboard'));
 const TestPage = lazy(() => import('./Component/Admin/TestPage'));
-
+const ViewPdf = lazy(() => import('./Component/Admin/ViewPdfs'));
 import RegistararPage from "./Component/Body/RegistararPage";
 import ChatWidget from "./Component/chatbot";
 import Socials from "./Component/Footer/Socials";
@@ -208,6 +208,8 @@ function App() {
             {/* Admin routes */}
             <Route path="/admin-login" element={<AdminLogin />} />
             <Route path="/admin/uploads" element={<TestPage />} />
+            <Route path="/admin/view-pdfs" element={<ViewPdf />} />
+
             <Route path="/admin/dashboard" element={<Dashboard />} />
             <Route path="/admin/archive-uploads" element={<ArchiveUploads />} />
             <Route path="/admin/uploads" element={<RecuirtmentUploads />} />
