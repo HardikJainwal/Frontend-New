@@ -76,7 +76,7 @@ const UploadModal = ({
     }
 
     if (isVacancy && vacancy) {
-      formData.append("vacancy", vacancy);
+      formData.append("vacancies", vacancy);
     }
 
     mutation.mutate(formData);
@@ -165,7 +165,7 @@ const UploadModal = ({
           {isVacancy && (
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-2">
-                Vacancy Name
+                Vacancy (If any)
               </label>
               <input
                 type="text"

@@ -4,16 +4,16 @@ import ArchiveBanner from "../../assets/ArchiveBanner.jpg";
 import { jobPortalTabs as categoryTabs } from "../../constants/JOBPORTAL.JS";
 import { useNoticesBySection } from "../../hooks/useNoticesBySection";
 import { FileText } from "lucide-react";
-import UploadModal from "../Admin/UploadModal"; 
+import UploadModal from "../Admin/UploadModal";
 
 const ArchivedJobPortal = () => {
   const { category } = useParams();
   const navigate = useNavigate();
-  
+
   const { data: noticeData, isLoading } = useNoticesBySection(category, true);
-  const [showModal, setShowModal] = useState(false); 
-  const [isAdmin, setIsAdmin] = useState(false); 
-  
+  const [showModal, setShowModal] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+
   const currentRole = sessionStorage.getItem("currentRole");
   const token = sessionStorage.getItem("token");
 
@@ -26,7 +26,7 @@ const ArchivedJobPortal = () => {
     }
 
     if (currentRole === "Admin" && token) {
-      setIsAdmin(true); 
+      setIsAdmin(true);
     }
   }, [category, noticeData, currentRole, token, navigate]);
 
@@ -79,7 +79,9 @@ const ArchivedJobPortal = () => {
                           Notice <FileText className="text-red-500" size={16} />
                         </a>
                       </td>
-                      <td className="p-2 border">-</td>
+                      <td className="p-2 border">
+                        {item.vacancies ? item.vacancies : "-"}
+                      </td>
                       <td className="p-2 border">
                         {item.endDate
                           ? new Date(item.endDate).toLocaleDateString("en-GB")
