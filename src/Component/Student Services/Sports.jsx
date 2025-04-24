@@ -27,7 +27,7 @@ const Sport = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % total);
-    }, 3000); 
+    }, 5000); 
 
     return () => clearInterval(interval); 
   }, [total]);
@@ -76,7 +76,7 @@ const Sport = () => {
           <img
             src={images[current]}
             alt={`Sports ${current + 1}`}
-            className="w-full h-[400px] object-fill transition-all duration-500"
+            className="w-full md:h-[400px] h-[250px] md:object-fill object-cover transition-all duration-500"
           />
 
       
