@@ -1,0 +1,1 @@
+export const SESSION_EXPIRE='Your session has expired. please log in again!'

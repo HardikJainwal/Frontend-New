@@ -5,6 +5,8 @@ import { uploadPdf } from "../../utils/apiservice";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { DesktopNav, MobileNav, navTabs as tabs } from "./AdminNavBar";
+import { configs } from "@eslint/js";
+import { SESSION_EXPIRE } from "../../constants/LOCALES.JS";
 
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState("information-bulletin");
@@ -17,6 +19,7 @@ const AdminDashboard = () => {
   const [apply, setApply] = useState("");
   const [vacancy, setVacancy] = useState("");
   const [applyError, setApplyError] = useState("");
+  const [errorMessage, setErrorMesage] = useState("");
 
   const queryClient = useQueryClient();
   const navigate = useNavigate();
@@ -37,10 +40,22 @@ const AdminDashboard = () => {
         return [{ value: "announcements", label: "Announcement" }];
       case "statutory-body":
         return [
-          { value: "member university court", label: "University Court Members" },
-          { value: "member board of management", label: "Board of Management Members" },
-          { value: "member academic council", label: "Academic Council Members" },
-          { value: "member finance comittee", label: "Finance Committee Members" },
+          {
+            value: "member university court",
+            label: "University Court Members",
+          },
+          {
+            value: "member board of management",
+            label: "Board of Management Members",
+          },
+          {
+            value: "member academic council",
+            label: "Academic Council Members",
+          },
+          {
+            value: "member finance comittee",
+            label: "Finance Committee Members",
+          },
           { value: "university court", label: "MOM University Court" },
           { value: "board of management", label: "MOM Board of Management" },
           { value: "academic council", label: "MOM Academic Council" },
@@ -66,8 +81,10 @@ const AdminDashboard = () => {
     }
   };
 
-  const handleTabChange = (tab) => {
-    setActiveTab(tab);
+  const handleTabChange = (tab = false) => {
+    if (tab) {
+      setActiveTab(tab);
+    }
     setSection("");
     setName("");
     setFile(null);
@@ -82,7 +99,6 @@ const AdminDashboard = () => {
     mutationFn: (formData) => uploadPdf(formData),
     onSuccess: (response) => {
       const data = response?.data || response;
-      toast.success(`Uploaded File`);
       queryClient.invalidateQueries({ queryKey: ["notices", data.section] });
       queryClient.invalidateQueries({ queryKey: ["notices", section] });
       setName("");
@@ -93,13 +109,16 @@ const AdminDashboard = () => {
       setEndDate("");
       setApply("");
       setVacancy("");
+      toast.success(`Uploaded File`);
     },
     onError: (error) => {
-      const errorMessage =
-        error?.response?.data?.message ||
-        error.message ||
-        "Upload failed. Please try again.";
-      toast.error(errorMessage);
+      if (error?.response?.data?.error) {
+        toast.error(error?.response?.data?.error);
+      } else {
+        toast.error(SESSION_EXPIRE || error?.message);
+        sessionStorage.clear();
+        navigate("/admin-login");
+      }
     },
   });
 
@@ -245,7 +264,7 @@ const AdminDashboard = () => {
               value={endDate}
               onChange={(e) => setEndDate(e.target.value)}
               className="w-full bg-gray-100  px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              min={new Date().toISOString().split("T")[0]} 
+              min={new Date().toISOString().split("T")[0]}
             />
           </div>
 
@@ -280,7 +299,7 @@ const AdminDashboard = () => {
 
           <button
             type="submit"
-            disabled={mutation.status === 'pending'}
+            disabled={mutation.status === "pending"}
             className="w-full py-3 bg-blue-400 text-white font-semibold rounded-lg hover:bg-orange-400 transition disabled:cursor-not-allowed"
           >
             {mutation.isPending ? "Uploading..." : "Upload PDF"}

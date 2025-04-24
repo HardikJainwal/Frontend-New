@@ -43,7 +43,7 @@ const getSectionName = (section) => {
         case "admission": return "Admission";
         case "students": return "Students";
         case "important links": return "Important Links";
-        case "alerts and circulars": return "Alerts & Circulars";
+        case "alerts and circulars": return "Notices";
         case "academic positions": return "Academic Positions";
         case "non academic positions": return "Non Academic Positions";
         case "short term positions": return "Short Term Positions";
