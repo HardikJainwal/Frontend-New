@@ -211,7 +211,7 @@ export const getPdfBySections = async (section, archived = false, limit, page) =
 
 // for the search bar
 export const getAllPdfs = async (archived, limit, page) => {
-  if(archived) {
+  if (archived) {
     const res = await api.get(`/notice/archived?limit=${limit}&page=${page}`);
     return res.data;
   }
@@ -274,3 +274,25 @@ export const uploadPdf = async (formData) => {
     console.error(err.response);
   }
 }
+
+// delete pdf by id only admin can
+export const deletePdf = async (id) => {
+  const token = sessionStorage.getItem("token");
+
+  try {
+    const response = await axios.delete(
+      `https://dseu-backend.onrender.com/api/v1/notice/${id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    
+    console.log(response);
+    return response;
+  } catch (err) {
+    console.error(err.response);
+    throw err;
+  }
+};
