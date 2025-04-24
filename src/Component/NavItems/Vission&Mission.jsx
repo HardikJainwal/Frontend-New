@@ -25,16 +25,16 @@ const VisionMission = () => {
         >
           <HeadingText
             heading={section.name}
-            headingCN="text-3xl md:text-4xl font-bold mb-4 text-blue-700"
+            headingCN="text-3xl md:text-4xl font-bold mb-1 text-blue-700"
           />
 
           {section.desc && (
-            <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-4">
+            <p className="text-base md:text-lg text-gray-600 mt-4 leading-relaxed mb-4">
               {section.desc}
             </p>
           )}
 
-          <div className="space-y-3 pl-1">
+          <div className="space-y-3 pl-1 mt-4">
             {section.content.map((paragraph, index) => (
               <div key={index} className="flex items-start gap-3 text-gray-700">
                 <ArrowRightCircle className="text-blue-500 mt-1 w-5 h-5 shrink-0" />
