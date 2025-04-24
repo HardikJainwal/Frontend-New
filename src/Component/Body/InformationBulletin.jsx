@@ -132,9 +132,11 @@ const style = `
   animation: scroll 10s linear infinite;
   overflow: hidden; /* Ensure the content doesn't spill out */
 }
+  
+
 
 .group:hover .animate-scroll {
-  animation-play-state: running; /* Optional: ensure it runs continuously */
+  animation-play-state: paused; /* Optional: ensure it runs continuously */
 }
 
 @media (pointer: coarse) {
