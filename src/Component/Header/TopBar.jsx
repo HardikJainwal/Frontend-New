@@ -21,42 +21,40 @@ const TopBar = () => {
 
   return (
     <>
-      <div className="flex flex-row justify-end my-4 md:mr-16 items-center">
+      <div className="flex flex-row justify-end my-2 md:my-4 md:mr-16 items-center text-[0.6rem] md:text-md">
         <Link
           to="/admin-login"
-          className="border-blue-500 border-l-2 px-1 md:px-4 hover:underline hover:text-[#1b1b1b] whitespace-nowrap text-xs md:text-[1rem]"
+          className="border-blue-500 border-l-2 px-1 md:px-4 hover:underline hover:text-[#1b1b1b] whitespace-nowrap text-[0.6rem] md:text-[1rem]"
         >
           Admin Login
         </Link>
 
         <div
           onClick={openModal}
-          className="relative group border-blue-500 border-l-2 border-r-2 px-1 md:px-4 hover:underline hover:text-[#1b1b1b] cursor-pointer whitespace-nowrap"
+          className="relative group border-blue-500 border-l-2 border-r-2 px-1 md:px-4 hover:underline hover:text-[#1b1b1b] cursor-pointer whitespace-nowrap text-[0.6rem] md:text-[1rem]"
         >
-          <div className="flex items-center whitespace-nowrap text-xs md:text-[1rem]">
-            Faculty Login
-          </div>
+          Faculty Login
         </div>
 
         <a
           href={studentLoginSamarth}
           target="_blank"
           rel="noopener noreferrer"
-          className="border-blue-500 border-r-2 px-1 md:px-4 hover:underline hover:text-[#1b1b1b] whitespace-nowrap text-xs md:text-[1rem]"
+          className="border-blue-500 border-r-2 px-1 md:px-4 hover:underline hover:text-[#1b1b1b] whitespace-nowrap text-[0.6rem] md:text-[1rem]"
         >
           Student Login
         </a>
 
         <Link
           to="/grievance-form"
-          className=" border-l-2 px-1 md:px-4 hover:underline hover:text-[#1b1b1b] whitespace-nowrap text-xs md:text-[1rem]"
+          className="border-l-2 px-1 md:px-4 hover:underline hover:text-[#1b1b1b] whitespace-nowrap text-[0.6rem] md:text-[1rem]"
         >
           Grievance form <span className="hidden md:inline">& RTI</span>
         </Link>
 
         <Link
           to="alumni"
-          className="px-1 border-blue-500 border-l-2 md:px-4 hover:underline hover:text-[#1b1b1b] whitespace-nowrap text-xs md:text-[1rem]"
+          className="px-1 border-blue-500 border-l-2 md:px-4 hover:underline hover:text-[#1b1b1b] whitespace-nowrap text-[0.6rem] md:text-[1rem]"
         >
           Alumni
         </Link>
@@ -68,7 +66,7 @@ const TopBar = () => {
           onClick={closeModal}
         >
           <div
-            className="relative bg-white/90 backdrop-blur-md shadow-xl w-[420px] rounded-2xl p-6 animate-fadeIn flex flex-col items-center"
+            className="relative bg-white/90 backdrop-blur-md shadow-xl w-[90%] sm:w-[420px] rounded-2xl p-6 animate-fadeIn flex flex-col items-center"
             onClick={(e) => e.stopPropagation()}
           >
             <button
