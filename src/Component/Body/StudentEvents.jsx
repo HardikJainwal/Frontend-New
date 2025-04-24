@@ -21,10 +21,42 @@ import activity16 from "/src/assets/Activities/Activities16.jpg";
 import activity17 from "/src/assets/Activities/Activities17.jpg";
 import activity18 from "/src/assets/Activities/Activities18.jpg";
 
+import thumbnail1 from "/src/assets/thumbnail/thumbnail1.jpg";
+import thumbnail2 from "/src/assets/thumbnail/thumbnail2.jpg";
+import thumbnail3 from "/src/assets/thumbnail/thumbnail3.jpg";
+import thumbnail4 from "/src/assets/thumbnail/thumbnail4.jpg";
+
 const allImages = [
   activity1, activity2, activity3, activity4, activity5, activity6,
   activity7, activity8, activity9, activity10, activity11, activity12,
   activity13, activity14, activity15, activity16, activity17, activity18
+];
+
+const videoData = [
+  {
+    thumbnail: thumbnail1,
+    title: "Valedictory Speech of Hon'ble Vice Chancellor, DSEU",
+    subheading: "",
+    link: "https://www.youtube.com/watch?v=RV42xYACFZM&t=320s"
+  },
+  {
+    thumbnail: thumbnail2,
+    title: "Women Works Programme (WWP) | Introduction | DSEU",
+    subheading: "",
+    link: "https://www.youtube.com/watch?v=0rb7BHbcfIM"
+  },
+  {
+    thumbnail: thumbnail3,
+    title: "DSEU Chetak Awards",
+    subheading: "",
+    link: "https://www.youtube.com/watch?v=RfnC6ltc9pg"
+  },
+  {
+    thumbnail: thumbnail4,
+    title: "G20 Fashionista organised at DSEU",
+    subheading: "",
+    link: "https://www.youtube.com/watch?v=_2nZ5XGAzgg"
+  }
 ];
 
 const getRandomImages = (array, count) => {
@@ -35,11 +67,9 @@ const getRandomImages = (array, count) => {
 const StudentEvents = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [carouselImages, setCarouselImages] = useState([]);
-  const [gridImages, setGridImages] = useState([]);
 
   useEffect(() => {
     setCarouselImages(getRandomImages(allImages, 14));
-    setGridImages(getRandomImages(allImages, 4));
   }, []);
 
   useEffect(() => {
@@ -84,27 +114,24 @@ const StudentEvents = () => {
             VOICE OF DSEU
           </h2>
           <div className="grid grid-cols-2 gap-4">
-            {gridImages.map((img, index) => (
+            {videoData.map((video, index) => (
               <button
                 key={index}
                 className="relative overflow-hidden rounded-lg group h-[190px]"
-                onClick={() => window.open("https://youtube.com", "_blank")}
+                onClick={() => window.open(video.link, "_blank")}
               >
                 <img
-                  src={img}
-                  alt={`Grid image ${index + 1}`}
+                  src={video.thumbnail}
+                  alt={`Video ${index + 1}`}
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-black bg-opacity-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end pl-4 pr-4">
-                  <div className="text-white absolute bottom-0 left-0 mb-2 ml-2">
-                    <h3 className="font-semibold text-lg">Video Title</h3>
-                    <p className="text-sm">Subheading text</p>
+                <div className="absolute inset-0 bg-black bg-opacity-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                  <div className="text-white">
+                    <h3 className="font-semibold text-lg">{video.title}</h3>
+                    <p className="text-sm">{video.subheading}</p>
                   </div>
-                  <div className="absolute bottom-0 left-36 mb-5 mr-2">
-                    <FontAwesomeIcon
-                      icon={faArrowRight}
-                      className="text-white text-2xl"
-                    />
+                  <div className="absolute bottom-0 right-4 mb-4">
+                    
                   </div>
                 </div>
               </button>

@@ -108,7 +108,7 @@ const navItems = [
     name: "Student Life",
     dropdownItems: [
       { name: "NCC/NSS", path: "/ncc" },
-      { name: "Sports facilities", path: "/amenities/Sports" },
+      { name: "Sports", path: "/amenities/Sports" },
       // { name: "Health Facilities", path: "/amenities/Health-Facilities" },
       { name: "Scholarship", path: "/amenities/Scholarship" },
       { name: "Internal Complaint Committee", path: "/amenities/ICC" },
