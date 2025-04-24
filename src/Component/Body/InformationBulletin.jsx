@@ -6,7 +6,7 @@ const InformationBulletin = () => {
     { title: "Admission", content: [], buttonText: "Apply Online" },
     { title: "Students", content: [], buttonText: "Online Fee Services" },
     { title: "Important Links", content: [], buttonText: "Online Portal" },
-    { title: "Alerts & Circulars", content: [], buttonText: "View Notices" },
+    { title: "Notices", content: [], buttonText: "View Notices" },
   ]);
 
   useEffect(() => {

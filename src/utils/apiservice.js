@@ -209,16 +209,31 @@ export const getPdfBySections = async (section, archived = false, limit, page) =
   return res.data;
 };
 
-// for the search bar
-export const getAllPdfs = async (archived, limit, page) => {
-  if(archived) {
-    const res = await api.get(`/notice/archived?limit=${limit}&page=${page}`);
-    return res.data;
+// for the search bar and date picker thingy
+export const getAllPdfs = async (
+  archived,
+  limit,
+  page,
+  regex = "",
+  created_at_gteq,
+  created_at_lteq
+) => {
+  let query = archived
+    ? `/notice/archived?limit=${limit}&page=${page}&regex=${encodeURIComponent(regex)}`
+    : `/notice?limit=${limit}&page=${page}&regex=${encodeURIComponent(regex)}`;
+
+  if (created_at_gteq) {
+    query += `&created_at_gteq=${encodeURIComponent(created_at_gteq)}`;
   }
 
-  const res = await api.get(`/notice?limit=${limit}&page=${page}`)
+  if (created_at_lteq) {
+    query += `&created_at_lteq=${encodeURIComponent(created_at_lteq)}`;
+  }
+
+  const res = await api.get(query);
   return res.data;
-}
+};
+
 
 // get campus by zone 
 export const getCampusByZone = async (zoneName) => {
@@ -274,3 +289,25 @@ export const uploadPdf = async (formData) => {
     console.error(err.response);
   }
 }
+
+// delete pdf by id only admin can
+export const deletePdf = async (id) => {
+  const token = sessionStorage.getItem("token");
+
+  try {
+    const response = await axios.delete(
+      `https://dseu-backend.onrender.com/api/v1/notice/${id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    console.log(response);
+    return response;
+  } catch (err) {
+    console.error(err.response);
+    throw err;
+  }
+};
