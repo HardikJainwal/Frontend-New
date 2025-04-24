@@ -4,8 +4,9 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { deletePdf, getAllPdfs } from "../../utils/apiservice";
 import { QUERY_KEYS } from "../../utils/queryKeys";
 import { getSectionName } from "./adminConstant";
-import { Trash } from "lucide-react";
+import { Loader2, Plus, Trash } from "lucide-react";
 import { Pagination } from "../Reusable/Pagination";
+import DeleteConfirmModal from "./DeleteConfirmModal";
 
 const ViewPdfs = () => {
   const [selectedTab, setSelectedTab] = useState("non-archived");
@@ -13,6 +14,8 @@ const ViewPdfs = () => {
   const [searchInput, setSearchInput] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
+  const [showModal, setShowModal] = useState(false);
+  const [deleteId, setDeleteId] = useState(null);
 
   const limit = 10;
   const isArchived = selectedTab === "archived";
@@ -203,7 +206,8 @@ const ViewPdfs = () => {
                         <button
                           onClick={(e) => {
                             e.stopPropagation();
-                            handleDelete(notice._id);
+                            setDeleteId(notice._id);
+                            setShowModal(true);
                           }}
                           className="text-red-600 hover:text-red-800 text-lg transition-colors pl-2"
                           title="Delete"
@@ -215,7 +219,10 @@ const ViewPdfs = () => {
                   ))
                 ) : (
                   <tr className="my-10">
-                    <td colSpan="6" className="md:py-8 sm:py-6 py-5 px-4 text-center ">
+                    <td
+                      colSpan="6"
+                      className="md:py-8 sm:py-6 py-5 px-4 text-center "
+                    >
                       {(startDate || endDate) &&
                         !searchInput &&
                         "No PDFs found for the asked dates."}
@@ -232,6 +239,16 @@ const ViewPdfs = () => {
             totalPages={totalPages}
             onPageChange={handlePageClick}
           />
+
+          {showModal && (
+            <DeleteConfirmModal
+              onClose={() => setShowModal(false)}
+              onConfirm={() => {
+                handleDelete(deleteId);
+                setShowModal(false);
+              }}
+            />
+          )}
         </>
       )}
     </div>
