@@ -245,6 +245,7 @@ const AdminDashboard = () => {
               value={endDate}
               onChange={(e) => setEndDate(e.target.value)}
               className="w-full bg-gray-100  px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              min={new Date().toISOString().split("T")[0]} 
             />
           </div>
 

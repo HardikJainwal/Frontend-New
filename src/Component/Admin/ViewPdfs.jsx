@@ -1,29 +1,44 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
-import ReactPaginate from "react-paginate";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { deletePdf, getAllPdfs } from "../../utils/apiservice";
 import { QUERY_KEYS } from "../../utils/queryKeys";
 import { getSectionName } from "./adminConstant";
 import { Trash } from "lucide-react";
+import { Pagination } from "../Reusable/Pagination";
 
 const ViewPdfs = () => {
   const [selectedTab, setSelectedTab] = useState("non-archived");
   const [currentPage, setCurrentPage] = useState(1);
-  const [searchText, setSearchText] = useState("");
+  const [searchInput, setSearchInput] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
 
   const limit = 10;
   const isArchived = selectedTab === "archived";
   const queryClient = useQueryClient();
 
-  // fetching pdfs
   const { data, isLoading, isError } = useQuery({
-    queryKey: [QUERY_KEYS.GET_NOTICES, isArchived, currentPage],
-    queryFn: () => getAllPdfs(isArchived, limit, currentPage),
+    queryKey: [
+      QUERY_KEYS.GET_NOTICES,
+      isArchived,
+      currentPage,
+      searchInput,
+      startDate,
+      endDate,
+    ],
+    queryFn: () =>
+      getAllPdfs(
+        isArchived,
+        limit,
+        currentPage,
+        searchInput,
+        startDate,
+        endDate
+      ),
     keepPreviousData: true,
   });
 
-  // deleteing pdfs
   const deleteMutation = useMutation({
     mutationFn: deletePdf,
     onSuccess: () => {
@@ -75,9 +90,53 @@ const ViewPdfs = () => {
         </button>
       </div>
 
-      {/* <input 
-        
-      /> */}
+      {/* Filter things */}
+      <div className="flex flex-col md:flex-row flex-wrap gap-4 mb-6 items-start md:items-center">
+        <input
+          type="text"
+          value={searchInput}
+          onChange={(e) => {
+            setSearchInput(e.target.value);
+            setCurrentPage(1);
+          }}
+          placeholder="Search by file name..."
+          className="flex-1 px-4 py-2 rounded-xl border-2 border-blue-300 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-300 shadow-sm"
+        />
+
+        <div className="flex items-center gap-2">
+          <label htmlFor="start-date" className="text-sm text-gray-600">
+            Start Date:
+          </label>
+          <input
+            type="date"
+            id="start-date"
+            value={startDate}
+            onChange={(e) => {
+              setStartDate(e.target.value);
+              setCurrentPage(1);
+            }}
+            className="border px-3 py-2 rounded-md text-sm shadow-sm"
+            max={new Date().toISOString().split("T")[0]}
+          />
+        </div>
+
+        <div className="flex items-center gap-2">
+          <label htmlFor="end-date" className="text-sm text-gray-600">
+            End Date:
+          </label>
+          <input
+            type="date"
+            id="end-date"
+            value={endDate}
+            onChange={(e) => {
+              setEndDate(e.target.value);
+              setCurrentPage(1);
+            }}
+            className="border px-3 py-2 rounded-md text-sm shadow-sm"
+            min={startDate}
+          />
+        </div>
+      </div>
 
       {isLoading ? (
         <p className="text-center text-gray-600 text-lg">Loading...</p>
@@ -110,67 +169,68 @@ const ViewPdfs = () => {
                 </tr>
               </thead>
               <tbody>
-                {notices.map((notice, index) => (
-                  <tr
-                    key={notice._id}
-                    className="border-b border-gray-200 hover:bg-gray-50"
-                    onClick={() => console.log("PDF clicked:", notice._id)}
-                  >
-                    <td className="py-3 px-4">
-                      {(currentPage - 1) * limit + index + 1}
-                    </td>
-                    <td className="py-3 px-4">{notice.fileName}</td>
-
-                    <td className="py-3 px-4 capitalize">
-                      {getSectionName(notice.section)}
-                    </td>
-                    <td className="text-blue-500 hover:text-blue-600 hover:underline">
-                      {notice.uploadedBy}
-                    </td>
-                    <td className="py-3 px-4">
-                      {new Date(notice.uploadedAt).toLocaleDateString()}
-                    </td>
-                    <td className="py-3 px-4 flex items-center gap-4">
-                      <a
-                        href={notice.fileLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-600 hover:underline"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        View PDF
-                      </a>
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleDelete(notice._id);
-                        }}
-                        className="text-red-600 hover:text-red-800 text-lg transition-colors pl-2"
-                        title="Delete"
-                      >
-                        <Trash className="min-h-4 min-w-4 hover:scale-105 text-red-400 hover:text-red-500" />
-                      </button>
+                {notices.length > 0 ? (
+                  notices.map((notice, index) => (
+                    <tr
+                      key={notice._id}
+                      className="border-b border-gray-200 hover:bg-gray-50"
+                    >
+                      <td className="py-3 px-4">
+                        {(currentPage - 1) * limit + index + 1}
+                      </td>
+                      <td className="py-3 px-4">{notice.fileName}</td>
+                      <td className="py-3 px-4 capitalize">
+                        {getSectionName(notice.section)}
+                      </td>
+                      <td className="text-blue-500 hover:text-blue-600 hover:underline">
+                        {notice.uploadedBy}
+                      </td>
+                      <td className="py-3 px-4">
+                        {new Date(notice.uploadedAt).toLocaleDateString(
+                          "en-GB"
+                        )}
+                      </td>
+                      <td className="py-3 px-4 flex items-center gap-4">
+                        <a
+                          href={notice.fileLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-600 hover:underline"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          View PDF
+                        </a>
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleDelete(notice._id);
+                          }}
+                          className="text-red-600 hover:text-red-800 text-lg transition-colors pl-2"
+                          title="Delete"
+                        >
+                          <Trash className="min-h-4 min-w-4 hover:scale-105 text-red-400 hover:text-red-500" />
+                        </button>
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr className="my-10">
+                    <td colSpan="6" className="md:py-8 sm:py-6 py-5 px-4 text-center ">
+                      {(startDate || endDate) &&
+                        !searchInput &&
+                        "No PDFs found for the asked dates."}
+                      {searchInput && "Couldn't find PDFs for required text"}
                     </td>
                   </tr>
-                ))}
+                )}
               </tbody>
             </table>
           </div>
 
-          <ReactPaginate
-            breakLabel="..."
-            nextLabel="👉 Next"
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
             onPageChange={handlePageClick}
-            pageRangeDisplayed={3}
-            pageCount={totalPages}
-            forcePage={currentPage - 1}
-            previousLabel="👈 Prev"
-            containerClassName="flex justify-center gap-2 my-8"
-            pageClassName="px-3 py-1 rounded-full cursor-pointer bg-gray-100 text-gray-800 hover:bg-blue-500 hover:text-white transition"
-            activeClassName="bg-blue-800 text-white"
-            previousClassName="px-3 py-1 rounded-full bg-gray-200 hover:bg-blue-500 hover:text-white"
-            nextClassName="px-3 py-1 rounded-full bg-gray-200 hover:bg-blue-500 hover:text-white"
-            breakClassName="px-3 py-1 text-gray-600"
           />
         </>
       )}

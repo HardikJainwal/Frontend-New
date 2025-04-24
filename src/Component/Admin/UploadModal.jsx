@@ -139,10 +139,15 @@ const UploadModal = ({
                 End Date <span className="text-red-500">*</span>
               </label>
               <input
-                type="datetime-local"
+                type="date"
                 value={endDate}
                 onChange={(e) => setEndDate(e.target.value)}
                 className="w-full bg-gray-100 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 border-2 border-blue-200"
+                min={
+                  mannualArchive
+                    ? undefined
+                    : new Date().toISOString().split("T")[0]
+                }
               />
             </div>
           )}
@@ -201,7 +206,7 @@ const UploadModal = ({
                     Valid Until <span className="text-red-500">*</span>
                   </label>
                   <input
-                    type="datetime-local"
+                    type="date"
                     value={validUntil}
                     onChange={(e) => setValidUntil(e.target.value)}
                     className="w-full bg-gray-100 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 border-2 border-blue-200"
