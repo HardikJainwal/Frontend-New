@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 
@@ -6,20 +6,29 @@ import loginimage from "../../assets/Image8.png";
 import LoginSuccessPopup from "./SucessPopUp";
 import { login } from "../../utils/apiservice";
 import { getFacutlyByEmail } from "../../utils/facultyApi";
-import { showErrorToast } from "../../utils/toasts";
+import { showErrorToast, showSuccessToast } from "../../utils/toasts";
+import toast from "react-hot-toast";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginSuccess, setLoginSuccess] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (sessionStorage.getItem("token") && sessionStorage.getItem("email")) {
+      setIsLoggedIn(true);
+    }
+  }, [navigate]);
 
   const mutation = useMutation({
     mutationFn: () => login({ email, password, emailFlag: true }),
     onSuccess: async () => {
       const facultyData = await getFacutlyByEmail(email);
       sessionStorage.setItem("facultyId", facultyData._id);
-      sessionStorage.setItem("email", email); // optional
+      sessionStorage.setItem("email", email);
       setLoginSuccess(true);
     },
     onError: (error) => {
@@ -32,6 +41,15 @@ const LoginPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     mutation.mutate();
+  };
+
+  const handleLogoutConfirm = () => {
+    sessionStorage.removeItem("email");
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("currentRole");
+    setShowLogoutModal(false);
+    navigate("/");
+    showSuccessToast("Logged out succesfully!");
   };
 
   const getRedirectPath = () => {
@@ -65,6 +83,29 @@ const LoginPage = () => {
         />
       )}
 
+      {showLogoutModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
+          <div className="bg-white rounded-xl p-6 shadow-xl max-w-sm w-full text-center">
+            <h3 className="text-xl font-bold mb-4">Are you sure?</h3>
+            <p className="text-gray-600 mb-6">Do you really want to log out?</p>
+            <div className="flex justify-center gap-4">
+              <button
+                onClick={handleLogoutConfirm}
+                className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600"
+              >
+                Yes, Logout
+              </button>
+              <button
+                onClick={() => setShowLogoutModal(false)}
+                className="bg-gray-300 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="flex h-screen">
         <div className="hidden md:flex w-3/5 bg-gray-200">
           <img
@@ -87,7 +128,8 @@ const LoginPage = () => {
                 </label>
                 <input
                   type="email"
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:outline-blue-500"
+                  disabled={isLoggedIn}
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:outline-blue-500 disabled:cursor-not-allowed"
                   placeholder="Enter your email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -101,37 +143,48 @@ const LoginPage = () => {
                 </label>
                 <input
                   type="password"
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:outline-blue-500"
+                  disabled={isLoggedIn}
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:outline-blue-500 disabled:cursor-not-allowed"
                   placeholder="Enter your password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
                 />
               </div>
- 
+
               <button
                 type="submit"
-                disabled={mutation.isPending}
+                disabled={mutation.isPending || isLoggedIn}
                 className={`w-full text-white py-3 rounded-lg text-lg font-bold hover:opacity-90 transition ${
-                  mutation.isPending
+                  mutation.isPending || isLoggedIn
                     ? "bg-gray-400 cursor-not-allowed"
                     : "bg-gradient-to-r from-[#0073e6] to-[#005bb5]"
                 }`}
               >
-                {mutation.isPending ? "Logging in..." : "Login"}
+                {mutation.isPending
+                  ? "Logging in..."
+                  : isLoggedIn
+                  ? "Already Logged In"
+                  : "Login"}
               </button>
 
-              {sessionStorage.getItem("token") &&
-                sessionStorage.getItem("email") && (
-                  <div className="w-full flex justify-center mt-6">
-                    <button
-                      onClick={handleRedirect}
-                      className="bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold py-2 px-6 rounded-full shadow-lg hover:scale-105 transition-transform duration-200"
-                    >
-                      🚀 Go to Profile
-                    </button>
-                  </div>
-                )}
+              {isLoggedIn && (
+                <div className="w-full flex justify-center mt-6 flex-col gap-2">
+                  <button
+                    onClick={handleRedirect}
+                    className="bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold py-2 px-6 rounded-full shadow-lg hover:scale-105 transition-transform duration-200"
+                  >
+                    🚀 Go to Profile
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setShowLogoutModal(true)}
+                    className="bg-gradient-to-r from-red-500 to-pink-600 text-white font-semibold py-2 px-6 rounded-full shadow-lg hover:scale-105 transition-transform duration-200"
+                  >
+                    Logout
+                  </button>
+                </div>
+              )}
             </form>
           </div>
         </div>
