@@ -64,46 +64,36 @@ const InformationBulletin = () => {
             <h3 className="text-xl font-semibold px-3 py-2 text-blue-800 border-b border-blue-200 text-center">
               {card.title}
             </h3>
+
             <div className="relative flex-grow overflow-hidden group">
-              <div className="absolute inset-0 flex flex-col-reverse">
-                <div
-                  className={`${
-                    card.content.length === 0 ? "my-auto" : "animate-scroll p-2"
-                  }`}
-                >
-                  <ul className="space-y-2">
-                    {card.content.length === 0 ? (
-                      <li className="text-center text-gray-500 italic">
-                        No {card.title.toLowerCase()} for now.
-                      </li>
-                    ) : (
-                      card.content.map((item, idx) => (
-                        <li
-                          key={idx}
-                          className="hover:bg-blue-100 rounded py-1 px-2 transition-colors duration-200"
+              {card.content.length === 0 ? (
+                <div className="my-auto p-2 text-center text-gray-500 italic">
+                  No {card.title.toLowerCase()} for now.
+                </div>
+              ) : (
+                <div className="animate-scroll group-hover:paused-scroll">
+                  <ul className="space-y-2 p-2">
+                    {card.content.map((item, idx) => (
+                      <li
+                        key={idx}
+                        className="hover:bg-blue-100 rounded py-1 px-2 transition-colors duration-200"
+                      >
+                        <a
+                          href={item.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-gray-700 hover:text-blue-900 flex items-center w-full"
                         >
-                          <a
-                            href={item.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-gray-700 hover:text-blue-900 flex items-center w-full"
-                          >
-                            {item.name}
-                            <span className="ml-2 animated-label">NEW</span>
-                          </a>
-                        </li>
-                      ))
-                    )}
+                          {item.name}
+                          <span className="ml-2 animated-label">NEW</span>
+                        </a>
+                      </li>
+                    ))}
                   </ul>
                 </div>
-              </div>
+              )}
               <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-blue-50 to-transparent pointer-events-none"></div>
             </div>
-            {/* <div className="p-2 mt-auto">
-              <button className="w-full py-3 bg-blue-900 text-yellow-400 rounded text-lg hover:bg-yellow-400 hover:text-blue-900 transition-colors duration-300 font-medium">
-                {card.buttonText}
-              </button>
-            </div> */}
           </div>
         ))}
       </div>
@@ -111,9 +101,9 @@ const InformationBulletin = () => {
   );
 };
 
-// animation styling
+// animation CSS
 const style = `
-  @keyframes scroll {
+@keyframes scroll {
   0% {
     transform: translateY(100%);
   }
@@ -122,33 +112,14 @@ const style = `
   }
 }
 
-@keyframes gradient-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
 .animate-scroll {
-  animation: scroll 10s linear infinite;
-  overflow: hidden; /* Ensure the content doesn't spill out */
-}
-  
-
-
-.group:hover .animate-scroll {
-  animation-play-state: paused; /* Optional: ensure it runs continuously */
+  animation: scroll linear 20s infinite;
+  will-change: transform;
+  display: inline-block;
 }
 
-@media (pointer: coarse) {
-  .group:active .animate-scroll {
-    animation-play-state: paused;
-  }
-}
-
-@media (max-width: 768px) {
-  .animate-scroll {
-    animation-duration: 10s;
-  }
+.group-hover\\:paused-scroll:hover {
+  animation-play-state: paused;
 }
 
 .animated-label {
@@ -159,7 +130,14 @@ const style = `
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: gradient-shift 3s infinite linear;
-}`;
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+`;
 
 export default () => (
   <>
