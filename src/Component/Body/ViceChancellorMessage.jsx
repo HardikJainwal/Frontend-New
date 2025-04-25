@@ -47,7 +47,7 @@ const ViceChancellorMessage = () => {
           Our campuses foster a supportive and inclusive environment, encouraging you to explore, innovate, and lead with purpose.
         </p>
         <p>
-          Embrace the opportunities ahead, stay curious, and make the most of your journey with us.We are excited to support your aspirations and witness your growth at DSEU.
+          Embrace the opportunities ahead, stay curious, and make the most of your journey with us. We are excited to support your aspirations and witness your growth at DSEU.
         </p>
 
       </div>

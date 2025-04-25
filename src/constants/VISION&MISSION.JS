@@ -3,7 +3,7 @@ const vision = {
     name: "Vision",
     content: [
         "To set the standards for skilling and entrepreneurship education.",
-        "To lead the students at DSEU to experience personal transformation, who in turn become agents of bringing changes in the community.",
+        "To lead students at DSEU through a journey of personal transformation, empowering them to become agents of change in their communities.",
         "To become a leading partner in the sustainable growth of the industry and the country.",
     ],
 };
@@ -12,7 +12,7 @@ const mission = {
     id: 2,
     name: "Mission",
     content: [
-        "To accord dignity to all skills by emphasizing its teaching and learning.",
+        "To accord dignity to all skills by emphasizing their teaching and learning.",
 
         "To inculcate an entrepreneurial mindset for sustainable growth of the planet, the country, the society, the industry and the individual.",
 

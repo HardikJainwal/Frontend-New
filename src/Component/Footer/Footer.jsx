@@ -105,7 +105,7 @@ const Footer = () => {
                 href="/administration/administrative"
                 className="hover:text-blue-600"
               >
-                Administrative
+                Administrative Offices
               </a>
             </li>
             <li>

@@ -1,8 +1,8 @@
 const aboutTheUniversity = {
     info1: [
-        "The Delhi Skill and Entrepreneurship University (DSEU) was established in August 2020 by the Government of NCT of Delhi to equip students with world-class skill education to enable access to aspirational jobs and inculcate entrepreneurial mindset and entrepreneurship. DSEU aims to create a win-win for the youth and the industry by filling the existing gaps in skill training.",
+        "The Delhi Skill and Entrepreneurship University (DSEU) was established in August 2020 by the Government of NCT of Delhi to equip students with world-class skill education to enable access to aspirational jobs and inculcate entrepreneurial mindset and promote entrepreneurship. DSEU aims to create a win-win for the youth and the industry by filling the existing gaps in skill training.",
         "Building on the education philosophy of thinkers such as Mahatma Gandhi and Vinoba Bhave, DSEU aims to integrate the use of the hand, head, and heart for balanced living and engagement in lifelong learning. The focus will be on teaching both self-reliance for life-long independence and the wisdom towards nurturing and valuing interdependence.",
-        "Building on the education philosophy of thinkers such as Mahatma Gandhi and Vinoba Bhave, DSEU aims to integrate the use of the hand, head, and heart for balanced living and engagement in lifelong learning. The focus will be on teaching both self-reliance for life-long independence and the wisdom towards nurturing and valuing interdependence.",
+        
     ],
 
     objectives: [
