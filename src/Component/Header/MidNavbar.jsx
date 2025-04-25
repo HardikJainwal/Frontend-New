@@ -429,7 +429,7 @@ const ResponsiveHeader = () => {
                 Delhi Skill and Entrepreneurship University
               </div>
               <div className="text-gray-600">
-                Sector-9, Dwarka New Delhi-110077
+                Sector-9, Dwarka, New Delhi-110077
               </div>
             </div>
           </div>

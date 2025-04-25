@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import withAuthProtection from "./withAuthProtection";
 import { uploadPdf } from "../../utils/apiservice";
@@ -19,7 +19,8 @@ const AdminDashboard = () => {
   const [apply, setApply] = useState("");
   const [vacancy, setVacancy] = useState("");
   const [applyError, setApplyError] = useState("");
-  const [errorMessage, setErrorMesage] = useState("");
+
+  const fileInputRef = useRef(null);
 
   const queryClient = useQueryClient();
   const navigate = useNavigate();
@@ -101,6 +102,7 @@ const AdminDashboard = () => {
       const data = response?.data || response;
       queryClient.invalidateQueries({ queryKey: ["notices", data.section] });
       queryClient.invalidateQueries({ queryKey: ["notices", section] });
+      fileInputRef.current.value = "";     // clearing file name
       setName("");
       setSection("");
       setFile(null);
@@ -209,8 +211,17 @@ const AdminDashboard = () => {
             </label>
             <input
               type="file"
-              accept="application/pdf"
-              onChange={(e) => setFile(e.target.files[0])}
+              accept=".pdf"
+              ref={fileInputRef} 
+              onChange={(e) => {
+                const selectedFile = e.target.files[0];
+                if (selectedFile && selectedFile.type === "application/pdf") {
+                  setFile(selectedFile);
+                } else {
+                  toast.error("Please upload PDFs only");
+                  e.target.value = "";
+                }
+              }}
               className="w-full text-slate-500 font-medium text-base bg-gray-100 file:cursor-pointer cursor-pointer file:border-0 file:py-2.5 file:px-4 file:mr-4 file:bg-blue-400 file:hover:bg-orange-400 file:text-white rounded"
               required
             />
