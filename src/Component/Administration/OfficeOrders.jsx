@@ -3,12 +3,14 @@ import { FaDownload } from "react-icons/fa";
 import { useNoticesBySection } from "../../hooks/useNoticesBySection";
 import UploadModal from "../Admin/UploadModal";
 import ToggleButton from "../Reusable/ArchiveButton";
+import SearchAndUpload from "../Reusable/SearchAndUpload";
 
 const OfficeOrders = () => {
   const [archived, setArchived] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [orders, setOrders] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
 
   const token = sessionStorage.getItem("token");
   const currentRole = sessionStorage.getItem("currentRole");
@@ -22,7 +24,8 @@ const OfficeOrders = () => {
     "ad office orders",
     archived,
     1000,
-    1
+    1,
+    searchInput
   );
 
   useEffect(() => {
@@ -39,35 +42,30 @@ const OfficeOrders = () => {
     ? "Archived Office Orders"
     : "Latest Office Orders";
 
-  if (isLoading) {
-    return (
-      <div className="text-center py-6 text-gray-500 text-base">
-        Loading office orders...
-      </div>
-    );
-  }
-
   return (
     <div className="mb-10 mt-4">
-      <div className="flex flex-row items-center justify-between">
-        <h2 className="text-2xl font-semibold mb-4 text-center md:text-left text-[#333]">
+      <div className="flex flex-col md:flex-row items-center justify-between gap-2 mb-10 md:mb-3">
+        <h2 className="text-2xl font-semibold mb-2 md:mb-0 text-center md:text-left text-[#333]">
           {sectionTitle}
         </h2>
 
-        <div className="flex justify-end mb-4 md:mr-5 sm:mr-3">
-          {isAdmin && (
-            <button
-              className="cursor-pointer bg-blue-600 text-white px-4 py-2 rounded-full text-sm md:text-base hover:bg-blue-700 transition-colors duration-300 shadow-md"
-              onClick={() => setShowModal(true)}
-            >
-              + Upload PDF
-            </button>
-          )}
-        </div>
+        <SearchAndUpload
+          searchInput={searchInput}
+          setSearchInput={setSearchInput}
+          isAdmin={isAdmin}
+          handleShowModal={() => setShowModal(true)}
+          includeUpload={true}
+          containerClass={"flex flex-row w-full md:w-[70%] gap-2"}
+        />
       </div>
-      <hr className="mb-6 border-gray-300" />
 
-      {orders && orders.length > 0 ? (
+      <hr className="mb-10 border-gray-300 hidden md:block" />
+
+      {isLoading ? (
+        <div className="text-center py-6 text-gray-500 text-base">
+          Loading office orders...
+        </div>
+      ) : orders && orders.length > 0 ? (
         <div className="max-h-80 overflow-y-auto custom-scroll space-y-3">
           <ul className="mb-6 flex flex-col gap-5">
             {orders.map((order, index) => (

@@ -13,17 +13,6 @@ const ImportantForms = () => {
   const token = sessionStorage.getItem("token");
   const currentRole = sessionStorage.getItem("currentRole");
 
-  useEffect(() => {
-    if (currentRole === "Admin" && token) {
-      setIsAdmin(true);
-    }
-  }, [currentRole, token]);
-
-  const handleArchivedButton = (e) => {
-    e.preventDefault();
-    setArchived((prev) => !prev);
-  };
-
   const { data, isLoading } = useNoticesBySection(
     "ad important forms",
     archived,
@@ -32,10 +21,21 @@ const ImportantForms = () => {
   );
 
   useEffect(() => {
+    if (currentRole === "Admin" && token) {
+      setIsAdmin(true);
+    }
+  }, [currentRole, token]);
+
+  useEffect(() => {
     if (data) {
       setForms(data.data.notices);
-    } 
+    }
   }, [data]);
+
+  const handleArchivedButton = (e) => {
+    e.preventDefault();
+    setArchived((prev) => !prev);
+  };
 
   const sectionTitle = archived
     ? "Archived Important Forms"

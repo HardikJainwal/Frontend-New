@@ -3,12 +3,14 @@ import { FaDownload } from "react-icons/fa";
 import { useNoticesBySection } from "../../hooks/useNoticesBySection";
 import UploadModal from "../Admin/UploadModal";
 import ToggleButton from "../Reusable/ArchiveButton";
+import SearchAndUpload from "../Reusable/SearchAndUpload";
 
 const Circulars = () => {
   const [archived, setArchived] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [circulars, setCirculars] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
 
   const token = sessionStorage.getItem("token");
   const currentRole = sessionStorage.getItem("currentRole");
@@ -17,7 +19,8 @@ const Circulars = () => {
     "ad circulars",
     archived,
     1000,
-    1
+    1,
+    searchInput
   );
 
   useEffect(() => {
@@ -37,35 +40,30 @@ const Circulars = () => {
 
   const sectionTitle = archived ? "Archived Circulars" : "Latest Circulars";
 
-  if (isLoading) {
-    return (
-      <div className="text-center py-6 text-gray-500 text-base">
-        Loading circulars...
-      </div>
-    );
-  }
-
   return (
     <div className="mb-10 px-4 md:px-0">
-      <div className="flex flex-row items-center justify-between">
-        <h2 className="text-2xl font-semibold mb-4 text-center md:text-left text-[#333]">
+      <div className="flex flex-col md:flex-row items-center justify-between gap-2 mb-10 md:mb-3">
+        <h2 className="text-2xl font-semibold mb-2 md:mb-0 text-center md:text-left text-[#333]">
           {sectionTitle}
         </h2>
 
-        <div className="flex justify-end mb-4 md:mr-5 sm:mr-3">
-          {isAdmin && (
-            <button
-              className="cursor-pointer bg-blue-600 text-white px-4 py-2 rounded-full text-sm md:text-base hover:bg-blue-700 transition-colors duration-300 shadow-md"
-              onClick={() => setShowModal(true)}
-            >
-              + Upload PDF
-            </button>
-          )}
-        </div>
+        <SearchAndUpload
+          searchInput={searchInput}
+          setSearchInput={setSearchInput}
+          isAdmin={isAdmin}
+          handleShowModal={() => setShowModal(true)}
+          includeUpload={true}
+          containerClass={"flex flex-row w-full md:w-[70%] gap-2"}
+        />
       </div>
-      <hr className="mb-6 border-gray-300" />
 
-      {circulars && circulars.length > 0 ? (
+      <hr className="mb-6 border-gray-300 hidden md:block" />
+
+      {isLoading ? (
+        <div className="text-center py-6 text-gray-500 text-base">
+          Loading circulars...
+        </div>
+      ) : circulars && circulars.length > 0 ? (
         <ul className="space-y-4 max-h-[60vh] overflow-y-auto custom-scroll pr-1">
           {circulars.map((circular, index) => (
             <li

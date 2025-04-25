@@ -1,5 +1,7 @@
+// have to add buttons here to upload pdf
 import { useEffect, useState } from "react";
 import axios from "axios";
+import UploadModal from "../Admin/UploadModal";
 
 const InformationBulletin = () => {
   const [cards, setCards] = useState([
@@ -8,6 +10,18 @@ const InformationBulletin = () => {
     { title: "Important Links", content: [], buttonText: "Online Portal" },
     { title: "Notices", content: [], buttonText: "View Notices" },
   ]);
+  const [showModal, setShowModal] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [selectedCard, setSelectedCard] = useState(null);
+
+  const token = sessionStorage.getItem("token");
+  const currentRole = sessionStorage.getItem("currentRole");
+
+  useEffect(() => {
+    if (currentRole === "Admin" && token) {
+      setIsAdmin(true);
+    }
+  }, [currentRole, token]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -45,16 +59,21 @@ const InformationBulletin = () => {
     };
 
     fetchData();
-  }, []);
+  }, [cards]);
+
+  const handleUploadClick = (card) => {
+    setSelectedCard(card);
+    setShowModal(true);
+  };
 
   return (
-    <div id="information-bulletin" className="container mx-auto px-4 py-4">
+    <div className="container mx-auto px-4 py-4">
       <h2 className="text-4xl font-extrabold text-center text-blue-900 mb-8 mt-10 font-sans">
         Information Bulletin
         <div className="mt-2 mx-auto w-20 h-1 bg-blue-600 rounded"></div>
       </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         {cards.map((card, index) => (
           <div
             key={index}
@@ -65,14 +84,14 @@ const InformationBulletin = () => {
               {card.title}
             </h3>
 
-            <div className="relative flex-grow overflow-hidden group">
+            <div className="relative flex-grow overflow-hidden group p-4">
               {card.content.length === 0 ? (
                 <div className="my-auto p-2 text-center text-gray-500 italic">
-                  No {card.title.toLowerCase()} for now.
+                  No Notices available for now.
                 </div>
               ) : (
                 <div className="animate-scroll group-hover:paused-scroll">
-                  <ul className="space-y-2 p-2">
+                  <ul className="space-y-2">
                     {card.content.map((item, idx) => (
                       <li
                         key={idx}
@@ -92,56 +111,69 @@ const InformationBulletin = () => {
                   </ul>
                 </div>
               )}
-              <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-blue-50 to-transparent pointer-events-none"></div>
             </div>
+{/* 
+            {isAdmin && (
+              <div className="flex justify-center pb-4">
+                <button
+                  onClick={() => handleUploadClick(card)}
+                  className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors"
+                >
+                  Upload PDF
+                </button>
+              </div>
+            )} */}
           </div>
         ))}
       </div>
+
+      {showModal && selectedCard && (
+        <UploadModal
+          onClose={() => setShowModal(false)}
+          setShowModal={setShowModal}
+          section={selectedCard.title.toLowerCase().replace(/\s+/g, "")}
+          title={selectedCard.title}
+        />
+      )}
+
+      <style>{`
+        @keyframes scroll {
+          0% {
+            transform: translateY(100%);
+          }
+          100% {
+            transform: translateY(-100%);
+          }
+        }
+
+        .animate-scroll {
+          animation: scroll linear 20s infinite;
+          will-change: transform;
+          display: inline-block;
+        }
+
+        .group-hover\\:paused-scroll:hover {
+          animation-play-state: paused;
+        }
+
+        .animated-label {
+          font-size: 12px;
+          font-weight: bold;
+          background: linear-gradient(90deg, rgb(255, 0, 0), rgb(0, 255, 0), rgb(0, 0, 255), rgb(255, 0, 255));
+          background-size: 300%;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          animation: gradient-shift 3s infinite linear;
+        }
+
+        @keyframes gradient-shift {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+      `}</style>
     </div>
   );
 };
 
-// animation CSS
-const style = `
-@keyframes scroll {
-  0% {
-    transform: translateY(100%);
-  }
-  100% {
-    transform: translateY(-100%);
-  }
-}
-
-.animate-scroll {
-  animation: scroll linear 20s infinite;
-  will-change: transform;
-  display: inline-block;
-}
-
-.group-hover\\:paused-scroll:hover {
-  animation-play-state: paused;
-}
-
-.animated-label {
-  font-size: 12px;
-  font-weight: bold;
-  background: linear-gradient(90deg, rgb(255, 0, 0), rgb(0, 255, 0), rgb(0, 0, 255), rgb(255, 0, 255));
-  background-size: 300%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradient-shift 3s infinite linear;
-}
-
-@keyframes gradient-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-`;
-
-export default () => (
-  <>
-    <style>{style}</style>
-    <InformationBulletin />
-  </>
-);
+export default InformationBulletin;
