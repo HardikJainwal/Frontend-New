@@ -4,7 +4,7 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { deletePdf, getAllPdfs } from "../../utils/apiservice";
 import { QUERY_KEYS } from "../../utils/queryKeys";
 import { getSectionName } from "./adminConstant";
-import { Loader2, Plus, Trash } from "lucide-react";
+import { Trash, X } from "lucide-react";
 import { Pagination } from "../Reusable/Pagination";
 import DeleteConfirmModal from "./DeleteConfirmModal";
 
@@ -65,6 +65,12 @@ const ViewPdfs = () => {
     deleteMutation.mutate(id);
   };
 
+  const handleClearFilters = () => {
+    setEndDate("");
+    setStartDate("");
+    setSearchInput("");
+  };
+
   const notices = data?.data?.notices || [];
   const totalPages = data?.metadata?.totalPages || 1;
 
@@ -103,42 +109,51 @@ const ViewPdfs = () => {
             setCurrentPage(1);
           }}
           placeholder="Search by file name..."
-          className="flex-1 px-4 py-2 rounded-xl border-2 border-blue-300 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-300 shadow-sm"
+          className="flex-1 px-4 py-2 rounded-xl border-2 border-blue-300 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-300 shadow-sm w-full"
         />
 
-        <div className="flex items-center gap-2">
-          <label htmlFor="start-date" className="text-sm text-gray-600">
-            Start Date:
-          </label>
-          <input
-            type="date"
-            id="start-date"
-            value={startDate}
-            onChange={(e) => {
-              setStartDate(e.target.value);
-              setCurrentPage(1);
-            }}
-            className="border px-3 py-2 rounded-md text-sm shadow-sm"
-            max={new Date().toISOString().split("T")[0]}
-          />
+        <div className="flex flex-row gap-2">
+          <div className="flex items-center gap-2">
+            <label htmlFor="start-date" className="text-sm text-gray-600">
+              Start Date:
+            </label>
+            <input
+              type="date"
+              id="start-date"
+              value={startDate}
+              onChange={(e) => {
+                setStartDate(e.target.value);
+                setCurrentPage(1);
+              }}
+              className="border px-3 py-2 rounded-md text-sm shadow-sm"
+              max={new Date().toISOString().split("T")[0]}
+            />
+          </div>
+
+          <div className="flex items-center gap-2">
+            <label htmlFor="end-date" className="text-sm text-gray-600">
+              End Date:
+            </label>
+            <input
+              type="date"
+              id="end-date"
+              value={endDate}
+              onChange={(e) => {
+                setEndDate(e.target.value);
+                setCurrentPage(1);
+              }}
+              className="border px-3 py-2 rounded-md text-sm shadow-sm"
+              min={startDate}
+            />
+          </div>
         </div>
 
-        <div className="flex items-center gap-2">
-          <label htmlFor="end-date" className="text-sm text-gray-600">
-            End Date:
-          </label>
-          <input
-            type="date"
-            id="end-date"
-            value={endDate}
-            onChange={(e) => {
-              setEndDate(e.target.value);
-              setCurrentPage(1);
-            }}
-            className="border px-3 py-2 rounded-md text-sm shadow-sm"
-            min={startDate}
-          />
-        </div>
+        <button
+          onClick={handleClearFilters}
+          className="flex items-center gap-2 bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition duration-200 w-full justify-center md:w-fit"
+        >
+          <X size={16} /> Clear Filters
+        </button>
       </div>
 
       {isLoading ? (

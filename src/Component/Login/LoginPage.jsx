@@ -7,7 +7,6 @@ import LoginSuccessPopup from "./SucessPopUp";
 import { login } from "../../utils/apiservice";
 import { getFacutlyByEmail } from "../../utils/facultyApi";
 import { showErrorToast, showSuccessToast } from "../../utils/toasts";
-import toast from "react-hot-toast";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");

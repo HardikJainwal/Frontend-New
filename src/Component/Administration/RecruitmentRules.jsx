@@ -4,18 +4,21 @@ import { useNoticesBySection } from "../../hooks/useNoticesBySection";
 import HeadingText from "../Reusable/HeadingText";
 import ArchiveButton from "../Reusable/ArchiveButton";
 import UploadModal from "../Admin/UploadModal";
+import SearchAndUpload from "../Reusable/SearchAndUpload";
 
 const RecruitmentRules = () => {
   const [archived, setArchived] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
   const [rules, setRules] = useState([]);
 
   const { data, isLoading, error } = useNoticesBySection(
     "recruitment rules",
     archived,
     1000,
-    1
+    1,
+    searchInput
   );
 
   useEffect(() => {
@@ -44,15 +47,6 @@ const RecruitmentRules = () => {
     ? "Archived Recruitment Rules"
     : "Recruitment Rules";
 
-  if (isLoading) {
-    return (
-      <div className="text-center py-6 text-gray-500 text-base">
-        <div className="animate-spin w-6 h-6 border-4 border-t-transparent border-blue-500 rounded-full mx-auto mb-2"></div>
-        Loading recruitment rules...
-      </div>
-    );
-  }
-
   if (error) {
     return (
       <div className="text-center py-6 text-red-500 text-base">
@@ -68,7 +62,19 @@ const RecruitmentRules = () => {
         headingCN="text-3xl md:text-5xl font-bold mt-5 mb-1 text-center"
       />
 
-      {!rules || rules.length === 0 ? (
+      <SearchAndUpload
+        handleShowModal={() => setShowModal(true)}
+        isAdmin={isAdmin}
+        searchInput={searchInput}
+        setSearchInput={setSearchInput}
+      />
+
+      {isLoading ? (
+        <div className="text-center py-6 text-gray-500 text-base">
+          <div className="animate-spin w-6 h-6 border-4 border-t-transparent border-blue-500 rounded-full mx-auto mb-2"></div>
+          Loading recruitment rules...
+        </div>
+      ) : !rules || rules.length === 0 ? (
         <>
           <div className="mt-8 text-center text-slate-600">
             No rules available.
@@ -80,20 +86,8 @@ const RecruitmentRules = () => {
         </>
       ) : (
         <>
-          {/* Upload Button and the pop up form*/}
-          {isAdmin && (
-            <div className="flex justify-end w-[70%] mx-auto mt-5">
-              <button
-                className="cursor-pointer bg-blue-600 text-white px-4 py-2 rounded-full text-sm md:text-base hover:bg-blue-700 transition-colors duration-300 shadow-md"
-                onClick={() => setShowModal(true)}
-              >
-                + Upload PDF
-              </button>
-            </div>
-          )}
-
           <div className="flex items-center justify-center">
-            <ul className="w-[70%] space-y-4 max-h-[60vh] mt-7 overflow-y-auto custom-scroll pr-1">
+            <ul className="lg:w-[80%] w-[90%] space-y-4 max-h-[60vh] mt-7 overflow-y-auto custom-scroll pr-1">
               {rules.map((rule, index) => (
                 <li
                   key={index}
@@ -130,6 +124,7 @@ const RecruitmentRules = () => {
           onClose={() => setShowModal(false)}
           setShowModal={setShowModal}
           section={"recruitment rules"}
+          mannualArchive={archived}
         />
       )}
     </div>
