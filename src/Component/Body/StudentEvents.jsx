@@ -39,12 +39,7 @@ const videoData = [
     subheading: "",
     link: "https://www.youtube.com/watch?v=RV42xYACFZM&t=320s"
   },
-  {
-    thumbnail: thumbnail2,
-    title: "Women Works Programme (WWP) | Introduction | DSEU",
-    subheading: "",
-    link: "https://www.youtube.com/watch?v=0rb7BHbcfIM"
-  },
+  
   {
     thumbnail: thumbnail3,
     title: "DSEU Chetak Awards",
