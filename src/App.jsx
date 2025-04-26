@@ -101,6 +101,7 @@ import RecruitmentRules from "./Component/Administration/RecruitmentRules";
 import AnnualReport from "./Component/NavItems/AnnualReport";
 import AdministrationTemp from "./Component/Administration/page";
 import ViewPdfs from "./Component/Admin/ViewPDFs/ViewPdfs";
+import Tenders from "./Component/Tenders/Tenders";
 
 
 function App() {
@@ -217,6 +218,7 @@ function App() {
 
             <Route path="/Entrepreneurship" element={<Entrepreneurship />} />
 
+            <Route path="/tenders" element={<Tenders />} />
           </Route>
           
             <Route path="*" element={<NotFound />} />
