@@ -5,10 +5,9 @@ import { useNavigate } from "react-router-dom";
 const SearchModal = ({ isOpen, onClose, navItems }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
-  const [activeIndex, setActiveIndex] = useState(-1); // Changed to -1 to avoid default selection
+  const [activeIndex, setActiveIndex] = useState(-1); 
   const navigate = useNavigate();
 
-  // Default suggestions when the search query is empty
   const defaultSuggestions = [
     { name: "Undergraduate courses", path: "/Courses/ug" },
     { name: "Postgraduate courses", path: "/Courses/pg" },
