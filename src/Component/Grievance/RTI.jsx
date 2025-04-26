@@ -68,6 +68,7 @@ const RTI = () => {
 
   const sidebarItems = [
     { id: "introduction", label: "RTI Disclosure" },
+    { id: "names", label: "Names of authorities" },
     {
       id: "organization",
       label: "Appointment Letter of PIO, APIO and First Appellate Authority",
