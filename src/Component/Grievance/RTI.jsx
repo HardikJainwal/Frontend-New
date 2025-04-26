@@ -75,7 +75,7 @@ const RTI = () => {
 
   const NamesPage = () => (
     <div className="max-w-5xl mx-auto bg-white rounded-xl mt-[-25px] shadow-md p-6">
-      <h2 className="text-3xl font-bold text-blue-700 mb-8 border-b pb-2 text-center">
+      <h2 className="text-3xl font-bold text-blue-700 mb-8 border-b pb-2 text-left">
         Names of Authorities
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
