@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getProgramData } from "../../utils/apiservice";
 import { QUERY_KEYS } from "../../utils/queryKeys";
 import OrangeLoader from "../PageLoader/OrangeLoader";
+import { useEffect } from "react";
 
 const Program = () => {
   const { id } = useParams();
