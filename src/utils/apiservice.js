@@ -276,3 +276,21 @@ export const deletePdf = async (id) => {
     throw err;
   }
 };
+
+
+export const updatePdf = async (id, formData) => {
+  const token = sessionStorage.getItem("token");
+  try {
+    const response = await api.put(`notice/${id}`, formData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "multipart/form-data",
+      },
+    });
+
+    return response;
+  } catch (err) {
+    console.error(err.response);
+    throw err;
+  }
+};
