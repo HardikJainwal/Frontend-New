@@ -1,12 +1,8 @@
 import React from "react";
-import HeadingText from "../Reusable/HeadingText";
+
 import { Download } from "lucide-react";
 
 const data = [
-  {
-    text: "Guidelines for Condemnation",
-    path: "/statutes/Student Greivence.pdf"
-  },
   {
     text: "Delhi Skill and Entrepreneurship University First Statutes",
     path: "/statutes/Delhi Skill and Entrepreneurship University First Statutes.pdf"

@@ -149,7 +149,7 @@ const EmployeeForm = () => {
     
               <div className="col-span-1">
                 <label className="block mb-1">
-                  Campuses <span className="text-red-500">*</span>
+                  Campus <span className="text-red-500">*</span>
                 </label>
                 <select
                   name="campus"

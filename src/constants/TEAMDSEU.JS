@@ -87,7 +87,7 @@ const members = [
     id: 5,
     name: "Dr. Pankaj Lathar",
     src: pankajLathar,
-    designation: "Controller of Examination, Joint Director(public relation) & Chief Vigilence Officer",
+    designation: "Controller of Examination, Joint Director(Public Relation) & Chief vigilance Officer",
     category: "University Officers",
   },
   {

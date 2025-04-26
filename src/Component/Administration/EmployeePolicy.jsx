@@ -27,10 +27,6 @@ const tempData = [
         path: "/Employee_policies/Procedure for submission of Medical Bills for Re-imbursement.pdf",
       },
       {
-        text: "Professional Development Fund Guidelines – 22.06.2023 ",
-        path: "/Employee_policies/Professional Development Fund Guidelines.pdf",
-      },
-      {
         text: "Regarding Requirement of DGEHS Medical Card at DSEU Campuses – 18.01.2023",
         path: "/Employee_policies/Regarding Requirement of DGEHS Medical Card at DSEU Campuses.pdf",
       },
@@ -41,7 +37,7 @@ const tempData = [
     name: "IT Policies",
     points: [
       {
-        text: "Purchase and AMC of ComputersIT Equipment via GeM Portal & Hiring of Manpower on an Outsourcing Basis",
+        text: "Purchase and AMC of Computers/IT Equipment via GeM Portal & Hiring of Manpower on an Outsourcing Basis",
         path: "/IT_policies/Purchase and AMC of ComputersIT Equipment via GeM Portal & Hiring of Manpower on an Outsourcing Basis.pdf"
       }
     ],
