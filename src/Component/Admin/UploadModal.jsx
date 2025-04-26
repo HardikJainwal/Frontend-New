@@ -1,7 +1,10 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
-import { uploadPdf } from "../../utils/apiservice";
 import toast from "react-hot-toast";
+
+import { SESSION_EXPIRE } from "../../constants/LOCALES.JS";
+import { uploadPdf } from "../../utils/apiservice";
+import { useNavigate } from "react-router-dom";
 
 const UploadModal = ({
   title,
@@ -23,6 +26,7 @@ const UploadModal = ({
   const [vacancy, setVacancy] = useState("");
 
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
 
   const mutation = useMutation({
     mutationFn: (formData) => uploadPdf(formData),
@@ -38,11 +42,13 @@ const UploadModal = ({
       setShowModal(false);
     },
     onError: (error) => {
-      const errorMessage =
-        error?.response?.data?.message ||
-        error.message ||
-        "Upload failed. Please try again.";
-      toast.error(errorMessage);
+      if (error?.response?.data?.error) {
+        toast.error(error?.response?.data?.error);
+      } else {
+        toast.error(SESSION_EXPIRE || error?.message);
+        sessionStorage.clear();
+        navigate("/admin-login");
+      }
     },
   });
 

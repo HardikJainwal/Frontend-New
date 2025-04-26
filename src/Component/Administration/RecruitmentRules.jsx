@@ -67,6 +67,7 @@ const RecruitmentRules = () => {
         isAdmin={isAdmin}
         searchInput={searchInput}
         setSearchInput={setSearchInput}
+        includeUpload
       />
 
       {isLoading ? (

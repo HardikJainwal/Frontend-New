@@ -26,14 +26,14 @@ const JobListings = () => {
     } else {
       setNoticeData([]);
     }
-
   }, [currentRole, token, data, activeTab]);
 
   const getActiveData = () => {
-    if (!noticeData || noticeData.length === 0) {
-      return [];
-    }
-    return noticeData || [];
+    if (!noticeData || noticeData.length === 0) return [];
+
+    return [...noticeData].sort(
+      (a, b) => new Date(b.uploadedAt) - new Date(a.uploadedAt)
+    );
   };
 
   return (

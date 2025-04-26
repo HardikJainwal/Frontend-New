@@ -218,17 +218,19 @@ const ViewPdfs = () => {
                         >
                           View PDF
                         </a>
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setDeleteId(notice._id);
-                            setShowModal(true);
-                          }}
-                          className="text-red-600 hover:text-red-800 text-lg transition-colors pl-2"
-                          title="Delete"
-                        >
-                          <Trash className="min-h-4 min-w-4 hover:scale-105 text-red-400 hover:text-red-500" />
-                        </button>
+                        {notice.driveFileId && (
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setDeleteId(notice._id);
+                              setShowModal(true);
+                            }}
+                            className="text-red-600 hover:text-red-800 text-lg transition-colors pl-2"
+                            title="Delete"
+                          >
+                            <Trash className="min-h-4 min-w-4 hover:scale-105 text-red-400 hover:text-red-500" />
+                          </button>
+                        )}
                       </td>
                     </tr>
                   ))
