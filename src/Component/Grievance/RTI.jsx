@@ -1,18 +1,24 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import GrievanceForm from "./Redressal";
 import { rtiData } from "./rtiData";
+import { UserCircle } from "lucide-react"; 
 
 const RTI = () => {
   const [activeSection, setActiveSection] = useState("introduction");
   const [showGrievanceForm, setShowGrievanceForm] = useState(false);
+  const [showNamesPage, setShowNamesPage] = useState(false);
 
   const handleNavClick = (section) => {
     setActiveSection(section);
     if (section === "rules") {
       setShowGrievanceForm(true);
+      setShowNamesPage(false);
+    } else if (section === "names") {
+      setShowNamesPage(true);
+      setShowGrievanceForm(false);
     } else {
       setShowGrievanceForm(false);
+      setShowNamesPage(false);
     }
   };
 
@@ -39,7 +45,7 @@ const RTI = () => {
               </tr>
             </thead>
             <tbody>
-              {rtiData[activeSection].map((item, index) => (
+              {rtiData[activeSection]?.map((item, index) => (
                 <tr
                   key={index}
                   className="border-b hover:bg-blue-50 transition"
@@ -52,6 +58,7 @@ const RTI = () => {
                     <a
                       href={item.path}
                       target="_blank"
+                      rel="noopener noreferrer"
                       className="text-blue-600 hover:underline"
                     >
                       {item.document}
@@ -66,6 +73,39 @@ const RTI = () => {
     </div>
   );
 
+  const NamesPage = () => (
+    <div className="max-w-5xl mx-auto bg-white rounded-xl mt-[-25px] shadow-md p-6">
+      <h2 className="text-3xl font-bold text-blue-700 mb-8 border-b pb-2 text-center">
+        Names of Authorities
+      </h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {rtiData.names.map((person, index) => (
+          <div
+            key={index}
+            className="p-6 bg-blue-50 rounded-xl shadow-md hover:shadow-xl transition-transform transform hover:-translate-y-1"
+          >
+            <div className="flex items-center justify-center mb-4">
+              <UserCircle className="h-16 w-16 text-blue-700" />
+            </div>
+            <h3 className="text-xl font-semibold text-center text-blue-700 mb-1">
+              {person.title}
+            </h3>
+            <p className="text-center text-orange-400 font-medium text-base mb-1">
+              {person.designation}
+            </p>
+            {person.mail && (
+              <p className="text-center text-blue-700 text-sm">
+                {person.mail}
+              </p>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+  
+  
+
   const sidebarItems = [
     { id: "introduction", label: "RTI Disclosure" },
     { id: "names", label: "Names of authorities" },
@@ -74,19 +114,19 @@ const RTI = () => {
       label: "Appointment Letter of PIO, APIO and First Appellate Authority",
     },
     { id: "powers", label: "RTI Act, 2005" },
-
     { id: "norms", label: "Link to State RTI Portal" },
     { id: "rules", label: "Grievance Redressal Form" },
   ];
+
   return (
     <div className="flex flex-col md:flex-row">
-      {/* Side Navbar  for pc*/}
+      {/* Side Navbar */}
       <div className="w-96 md:w-72 h-[60%] bg-blue-50 md:p-5 rounded-xl shadow-md p-0 sm:p-1 mx-auto">
         <ul className="space-y-2">
           {sidebarItems.map((item) => (
             <li key={item.id}>
               <button
-                className={`w-full  text-left py-2.5 px-5 rounded-lg font-medium transition-all duration-200 ${
+                className={`w-full text-left py-2.5 px-5 rounded-lg font-medium transition-all duration-200 ${
                   activeSection === item.id &&
                   (item.id !== "rules" || showGrievanceForm)
                     ? "bg-blue-600 text-white shadow"
@@ -103,7 +143,13 @@ const RTI = () => {
 
       {/* Content Area */}
       <div className="ml-2 md:p-6 flex-1 mt-10 md:mt-0">
-        {showGrievanceForm ? <GrievanceForm /> : <RTIDataTable />}
+        {showGrievanceForm ? (
+          <GrievanceForm />
+        ) : showNamesPage ? (
+          <NamesPage />
+        ) : (
+          <RTIDataTable />
+        )}
       </div>
     </div>
   );

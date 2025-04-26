@@ -211,8 +211,14 @@ export const rtiData = {
 
   names: [
     {
-      title: "Names of authorities",
-
+      title: "Dr. Suman Dhawan",
+      designation: "Nodal Officer RTI and CPIO",
+      mail:"rti@dseu.ac.in"
+    },
+    {
+      title: "Dr. Gagan Dhawan",
+      designation: "First Appellate Authority",
+      mail:"rti@dseu.ac.in"
     }
   ]
 };
