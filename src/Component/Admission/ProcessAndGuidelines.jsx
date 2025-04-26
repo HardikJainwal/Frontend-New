@@ -1,4 +1,4 @@
-import guideline from '../../assets/processbanner.jpg';
+import guideline from '../../assets/processbanner.png';
 
 const ProcessAndGuidelines = () => {
   return (

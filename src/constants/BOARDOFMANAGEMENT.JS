@@ -25,14 +25,14 @@ const boardOfManagement = [
         id: 4,
         name: "Prof. J.P. Saini",
         designation: "Representative AICTE",
-        category: "Representative",
+        category: "Representatives",
         src: jpSaini,
     },
     {
         id: 5,
         name: "Prof. S. G. Deshmukh",
         designation: "Representative UGC",
-        category: "Representative",
+        category: "Representatives",
         src: deshmukh,
     },
     {
@@ -69,14 +69,14 @@ const boardOfManagement = [
         id: 11,
         name: "Ms. Nandini Paliwal",
         designation: "Secretary DTTE",
-        category: "Secretary",
+        category: "Secretaries",
         src: dttesecratory,
     },
     {
         id: 12,
         name: "Sh. Ashish Chandra Verma, IAS",
         designation: "Principal Secretary Finance",
-        category: "Secretary",
+        category: "Secretaries",
         src: principalSecratory,
     }
 ];
