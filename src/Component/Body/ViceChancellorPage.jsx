@@ -37,7 +37,7 @@ const ViceChancellorPage = () => {
             <h3 className="text-lg font-semibold text-blue-600 mb-2 uppercase tracking-wide">
               Profile Summary
             </h3>
-            <p className="leading-relaxed">{profileSummary}</p>
+            <p className="leading-relaxed text-justify">{profileSummary}</p>
           </section>
 
           {/* <section>
@@ -77,11 +77,11 @@ const ViceChancellorPage = () => {
             <h3 className="text-lg font-semibold text-blue-600 mb-2 uppercase tracking-wide">
               Academic Background
             </h3>
-            <p className="leading-relaxed">{academicBackground}</p>
+            <p className="leading-relaxed text-justify">{academicBackground}</p>
           </section>
 
           <section className="border-l-4 border-blue-500 pl-4">
-            <p className="text-base italic text-orange-400 font-medium">
+            <p className="text-base italic text-orange-400 font-medium text-justify">
               “{messageToStudents}”
             </p>
           </section>

@@ -60,7 +60,7 @@ const CampusPage = () => {
       ),
     },    
     courses: {
-      title: "Courses Offered",
+      title: "Programs Offered",
       content: <CampusCourses {...data} />,
     },
     labs: {

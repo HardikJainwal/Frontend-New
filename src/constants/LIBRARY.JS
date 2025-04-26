@@ -2,7 +2,7 @@ const Content = {
     id: 1,
     name: "Content",
     content: [
-        "The DSEU Library is designed to support learning, research, and the development of reading habits. Each campus has its own library, and these spaces are being improved to better meet the needs of today’s students. While technology makes information easily accessible, it has also led to a decline in reading. DSEU’s libraries aim to offer a balanced environment with both digital and print resources to encourage focused learning."
+        "The DSEU Library is designed to support learning, research, and the development of reading habits. Each campus has its own library, and these spaces are being improved to better meet the needs of today’s students. DSEU’s libraries aim to offer a balanced environment with both digital and print resources to encourage focused learning."
     ],
 };
 

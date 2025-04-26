@@ -35,26 +35,27 @@ const RegistararPage = () => {
             <h3 className="text-lg font-semibold text-blue-600 mb-2 uppercase tracking-wide">
               Profile Overview
             </h3>
-            <p className="leading-relaxed">{profileOverview}</p>
+            <p className="leading-relaxed text-justify">{profileOverview}</p>
           </section>
 
           <section>
             <h3 className="text-lg font-semibold text-blue-600 mb-2 uppercase tracking-wide">
               Career Highlights
             </h3>
-            <ul className="list-disc list-inside space-y-1">
+            <ul className="list-disc pl-5 space-y-3 text-justify">
               {careerHighlights.map((item, idx) => (
                 <li key={idx}>{item}</li>
               ))}
             </ul>
+
           </section>
 
           <section>
             <h3 className="text-lg font-semibold text-blue-600 mb-2 uppercase tracking-wide">
               Message
             </h3>
-        
-            <p className="text-base italic font-medium text-orange-400">
+
+            <p className="text-base italic font-medium text-orange-400 text-justify">
               “{message}”
             </p>
           </section>

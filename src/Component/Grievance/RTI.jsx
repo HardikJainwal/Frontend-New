@@ -73,7 +73,7 @@ const RTI = () => {
       label: "Appointment Letter of PIO, APIO and First Appellate Authority",
     },
     { id: "powers", label: "RTI Act, 2005" },
-    { id: "procedure", label: "DSEU University Act" },
+
     { id: "norms", label: "Link to State RTI Portal" },
     { id: "rules", label: "Grievance Redressal Form" },
   ];

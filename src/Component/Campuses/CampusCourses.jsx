@@ -14,11 +14,11 @@ const CampusCourses = ({ courses_offered }) => {
         ))
       ) : (
         <p className="text-gray-500 text-center mt-6">
-          No courses listed
+          No Programs listed
         </p>
       )}
     </div>
   );
 };
-
+ 
 export default CampusCourses;

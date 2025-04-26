@@ -35,7 +35,8 @@ const CampusByZone = () => {
       <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
         <div className="flex flex-col items-center mb-10 text-center">
           <h1 className="relative inline-block text-2xl sm:text-3xl md:text-4xl font-bold text-[#333] tracking-tight after:content-[''] after:block after:h-1 after:bg-orange-400 after:rounded-full after:mt-2 after:w-full hover:text-[#111]">
-            DSEU {zone?.charAt(0).toUpperCase() + zone?.slice(1)} Campuses
+          DSEU {zone?.split(" ").map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(" ")} Campuses
+
           </h1>
         </div>
 
