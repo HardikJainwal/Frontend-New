@@ -15,7 +15,7 @@ import {
   socialLinks,
   exploreLinks,
   quickLinks,
-} from "./FOOTER.JS";
+} from "./constant.js";
 
 const Footer = () => {
   const [showModal, setShowModal] = useState(false);
