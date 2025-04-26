@@ -4,8 +4,8 @@ const BoardOfManagement = () => {
   const sections = [
     { title: "Chairperson", category: "Chairperson" },
     { title: "Registrar", category: "Registrar" },
-    { title: "Representative", category: "Representative" },
-    { title: "Secretary", category: "Secretary" },
+    { title: "Representatives", category: "Representatives" },
+    { title: "Secretaries", category: "Secretaries" },
     { title: "Deans", category: "Deans" },
     { title: "HoD(s)", category: "HoD" },
   ];
