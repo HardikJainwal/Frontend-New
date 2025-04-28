@@ -8,6 +8,17 @@ import HodData from "./GetHodInfo";
 import HodInfoLoading from "../ShimmerUI/HodInfoLoading";
 import GetDepartmentByDesignation from "./GetDepartmentByDesignation";
 
+ const movePeopleToFront = (facultyArray, targetIds = []) => {
+  if (!facultyArray || !Array.isArray(facultyArray)) return facultyArray;
+  const priorityPeople = targetIds
+    .map((id) => facultyArray.find((member) => member._id === id))
+    .filter(Boolean); 
+  const remainingPeople = facultyArray.filter(
+    (member) => !targetIds.includes(member._id)
+  );
+  return [...priorityPeople, ...remainingPeople];
+};
+
 const primaryCategories = ["DSEU", "Deemed Deputation"];
 const subCategories = [
   "HOD",
@@ -33,17 +44,19 @@ const FacultyByDepartment = ({ deptId }) => {
     enabled: !!deptId,
   });
 
-  // useEffect(() => {
-  //   console.log(deptId);
-  //   console.log(faculty);
-  // }, [deptId, faculty]);
-
   if (hodLoading) {
     return <HodInfoLoading />;
   }
 
+  const importantIds = [
+    "67fcb6a3594afd76950ae3a0",
+    "67fcb6a3594afd76950ae422", 
+  ];
+  const modifiedFaculty = movePeopleToFront(faculty, importantIds);
+
   return (
     <div className="md:px-6 py-4 w-full flex flex-col">
+  
       <div className="flex justify-center mb-4">
         <div className="bg-gray-100 p-1 rounded-full flex shadow-md">
           {primaryCategories.map((category) => (
@@ -61,6 +74,7 @@ const FacultyByDepartment = ({ deptId }) => {
           ))}
         </div>
       </div>
+
 
       <div className="flex justify-center mb-6">
         <div className="md:bg-gray-100 p-1 rounded-full flex flex-wrap gap-1 md:gap-2 md:shadow-md">
@@ -80,22 +94,21 @@ const FacultyByDepartment = ({ deptId }) => {
         </div>
       </div>
 
+
       <div className="space-y-3 flex flex-col gap-2">
-        <div className="space-y-3 flex flex-col gap-2">
-          {activeSub === "HOD" ? (
-            hod ? (
-              <HodData hod={hod} />
-            ) : (
-              "Data not found."
-            )
+        {activeSub === "HOD" ? (
+          hod ? (
+            <HodData hod={hod} />
           ) : (
-            <GetDepartmentByDesignation
-              faculty={faculty}
-              designation={activeSub}
-              facultyType={activePrimary}
-            />
-          )}
-        </div>
+            "Data not found."
+          )
+        ) : (
+          <GetDepartmentByDesignation
+            faculty={modifiedFaculty}
+            designation={activeSub}
+            facultyType={activePrimary}
+          />
+        )}
       </div>
     </div>
   );
