@@ -17,8 +17,15 @@ const ArchivedJobPortal = () => {
   const [noticeData, setNoticeData] = useState([]);
   const [page, setPage] = useState(1); // for the page number
   const [totalPages, setTotalPages] = useState(3);
+  const [searchInput, setSearchInput] = useState("");
 
-  const { data, isLoading } = useNoticesBySection(category, true, 10, page);
+  const { data, isLoading } = useNoticesBySection(
+    category,
+    true,
+    10,
+    page,
+    searchInput
+  );
 
   const currentRole = sessionStorage.getItem("currentRole");
   const token = sessionStorage.getItem("token");
@@ -67,6 +74,18 @@ const ArchivedJobPortal = () => {
       </div>
 
       <main className="w-full max-w-6xl p-4">
+        <div className="flex flex-row w-full items-center justify-center gap-6 mt-5">
+          <label htmlFor={searchInput} className="whitespace-nowrap text-lg font-semibold hidden md:block">Enter PDF name: </label>
+
+          <input
+            type="text"
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
+            placeholder="Search by file name..."
+            className="w-full px-4 py-2 rounded-xl border-2 border-blue-300 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-300 shadow-sm"
+          />
+        </div>
+
         <div className="bg-white rounded-lg shadow p-6 mt-6">
           {isLoading ? (
             <div className="text-center p-4">Loading...</div>
