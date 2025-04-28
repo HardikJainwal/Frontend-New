@@ -152,7 +152,7 @@ const JobListings = () => {
                 {/* Archive Button */}
                 <div className="mt-4 text-right">
                   <Link
-                    href={`/recruitment/archive/${encodeURIComponent(
+                    to={`/recruitment/archive/${encodeURIComponent(
                       activeTab
                     )}`}
                     className="inline-block bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-700 transition-colors"
@@ -166,14 +166,14 @@ const JobListings = () => {
                 {tabs.find((tab) => tab.id === activeTab)?.empty ||
                   "No data available."}
                 <div className="mt-4 text-center">
-                  <a
-                    href={`/recruitment/archive/${encodeURIComponent(
+                  <Link
+                    to={`/recruitment/archive/${encodeURIComponent(
                       activeTab
                     )}`}
                     className="inline-block bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-700 transition-colors"
                   >
                     Archived
-                  </a>
+                  </Link>
                 </div>
               </div>
             )}

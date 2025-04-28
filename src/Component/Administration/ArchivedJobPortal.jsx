@@ -105,7 +105,7 @@ const ArchivedJobPortal = () => {
                     <th className="p-2 text-left border">Title</th>
                     <th className="p-2 text-left border">Notification</th>
 
-                    {category !== "results" && (
+                    {category !== "results" && category != "recruitments and notice" &&(
                       <th className="p-2 text-left border">No of Vacancies</th>
                     )}
                     {category === "results" ? (
@@ -140,7 +140,7 @@ const ArchivedJobPortal = () => {
                           Notice <FileText className="text-red-500" size={16} />
                         </a>
                       </td>
-                      {category !== "results" && (
+                      {category !== "results" && category != "recruitments and notice" && (
                         <td className="p-2 border">
                           {item.vacancies ? item.vacancies : "-"}
                         </td>
