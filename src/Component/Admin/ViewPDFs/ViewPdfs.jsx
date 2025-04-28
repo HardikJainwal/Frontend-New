@@ -5,6 +5,7 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { deletePdf, getAllPdfs } from "../../../utils/apiservice";
 import { QUERY_KEYS } from "../../../utils/queryKeys";
 
+import withAuthProtection from "../withAuthProtection";
 import DeleteConfirmModal from "../DeleteConfirmModal";
 import { Pagination } from "../../Reusable/Pagination";
 import FilterSection from "./FilterSection";
@@ -150,4 +151,4 @@ const ViewPdfs = () => {
   );
 };
 
-export default ViewPdfs;
+export default withAuthProtection(ViewPdfs);

@@ -86,7 +86,7 @@ const PdfTable = ({
                     )}
 
                     <button onClick={() => handleEditClick(notice)}>
-                      <Edit className="min-h-4 min-w-4 hover:scale-105 text-green-400 hover:text-green-500" />
+                      <Edit className="min-h-4 min-w-4 hover:scale-105 text-blue-400 hover:text-blue-500" />
                     </button>
                   </div>
                 </td>

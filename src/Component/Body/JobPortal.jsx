@@ -3,6 +3,7 @@ import { FileText } from "lucide-react";
 import { useNoticesBySection } from "../../hooks/useNoticesBySection";
 import { jobPortalTabs as tabs } from "../../constants/JOBPORTAL.JS";
 import UploadModal from "../Admin/UploadModal";
+import { Link } from "react-router-dom";
 
 const JobListings = () => {
   const [activeTab, setActiveTab] = useState("academic positions");
@@ -150,14 +151,14 @@ const JobListings = () => {
 
                 {/* Archive Button */}
                 <div className="mt-4 text-right">
-                  <a
+                  <Link
                     href={`/recruitment/archive/${encodeURIComponent(
                       activeTab
                     )}`}
                     className="inline-block bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-700 transition-colors"
                   >
                     Archived
-                  </a>
+                  </Link>
                 </div>
               </>
             ) : (

@@ -39,10 +39,10 @@ const Sport = () => {
         <img
           src={sports11}
           alt="Sports Banner"
-          className="w-full h-full object-contain brightness-75"
+          className="w-full h-full object-cover brightness-75"
         />
         <div className="absolute inset-0 flex items-center justify-center">
-          <h1 className="text-white text-2xl sm:text-4xl md:text-6xl font-semibold text-center drop-shadow-2xl px-2">
+          <h1 className="text-white text-3xl sm:text-4xl md:text-6xl font-semibold text-center drop-shadow-2xl px-2">
             {SPORTS.title}
           </h1>
         </div>
@@ -76,7 +76,7 @@ const Sport = () => {
           <img
             src={images[current]}
             alt={`Sports ${current + 1}`}
-            className="w-full md:h-[400px] h-[250px] md:object-fill object-cover transition-all duration-500"
+            className="w-full md:h-[400px] h-[250px] md:object-cover object-cover transition-all duration-500"
           />
 
       

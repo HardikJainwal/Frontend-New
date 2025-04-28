@@ -75,7 +75,12 @@ const ArchivedJobPortal = () => {
 
       <main className="w-full max-w-6xl p-4">
         <div className="flex flex-row w-full items-center justify-center gap-6 mt-5">
-          <label htmlFor={searchInput} className="whitespace-nowrap text-lg font-semibold hidden md:block">Enter PDF name: </label>
+          <label
+            htmlFor={searchInput}
+            className="whitespace-nowrap text-lg font-semibold hidden md:block"
+          >
+            Enter PDF name:{" "}
+          </label>
 
           <input
             type="text"
@@ -171,7 +176,7 @@ const ArchivedJobPortal = () => {
           )}
         </div>
 
-        {totalPages && totalPages > 1 && (
+        {noticeData.length > 0 && totalPages && totalPages > 1 && (
           <Pagination
             currentPage={page}
             totalPages={totalPages}

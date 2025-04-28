@@ -164,14 +164,20 @@ export const getAcademicCouncilNotices = async () => {
 
 // pdf through category such as circular, students, board of management etc.
 export const getPdfBySections = async (section, archived = false, limit, page, regex = "") => {
+  try {
+    const encodedRegex = encodeURIComponent(regex);
+
   if (archived) {
-    const res = await api.get(`/notice/archived?section=${section}&limit=${limit}&page=${page}&regex=${regex}`);
+    const res = await api.get(`/notice/archived?section=${section}&limit=${limit}&page=${page}&regex=${encodedRegex}`);
     return res.data;
   }
 
-  const res = await api.get(`/notice?section=${section}&limit=${limit}&page=${page}&regex=${regex}`);
+  const res = await api.get(`/notice?section=${section}&limit=${limit}&page=${page}&regex=${encodedRegex}`);
 
   return res.data;
+  } catch(error) {
+    console.error(error)
+  }
 };
 
 // for the search bar and date picker thingy
