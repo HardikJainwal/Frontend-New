@@ -9,6 +9,7 @@ import DSEUTEXTFINAL from "../../assets/DSEULogo/DSEUTEXTFINAL.svg";
 import Group24 from "../../assets/DSEULogo/Group24.svg";
 import Orange from "../../assets/DSEULogo/Orange.svg";
 import SearchModal from "./SearchModal";
+import { searchItems } from "./SearchItems";
 
 const carouselImages = [
   {
@@ -38,7 +39,9 @@ const navItems = [
       { name: "Vision and Mission", path: "/about-us/Vision-and-Mission" },
       { name: "History of DSEU", path: "/about-us/history" },
       {
-        name: "Annual Report", path: "/about-us/annualReport"},
+        name: "Annual Report",
+        path: "/about-us/annualReport",
+      },
     ],
   },
   {
@@ -502,6 +505,12 @@ const ResponsiveHeader = () => {
               </button>
             </div>
           </div>
+
+          <SearchModal
+            isOpen={isSearchOpen}
+            onClose={() => setIsSearchOpen(false)}
+            navItems={searchItems}
+          />
         </div>
 
         {/* Sidebar Navigation */}
@@ -677,7 +686,7 @@ const ResponsiveHeader = () => {
             <SearchModal
               isOpen={isSearchOpen}
               onClose={() => setIsSearchOpen(false)}
-              navItems={navItems}
+              navItems={searchItems}
             />
             <motion.button
               whileHover={{ scale: 1.1 }}
