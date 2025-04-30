@@ -23,7 +23,7 @@ const TeamDseu = () => {
   );
 
   useEffect(() => {
-    if (location.state?.focus === "Dean" && deanRef.current) {
+    if (location.state?.focus === "Deans" && deanRef.current) {
       deanRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   }, [location.state]);
@@ -38,7 +38,7 @@ const TeamDseu = () => {
 
           const isRegistrar = category.toLowerCase() === "registrar";
 
-          const sectionRef = category === "Dean" ? deanRef : null;
+          const sectionRef = category === "Deans" ? deanRef : null;
 
           return (
             <div key={category} ref={sectionRef} className="space-y-10">
