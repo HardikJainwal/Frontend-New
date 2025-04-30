@@ -9,7 +9,7 @@ import drGhanshyam from './drGhanysham.jpg';
 import gagandhawan from './gagandhawan.jpg';
 import girishKumar from './girishKumar.jpg';
 import janitVerma from './janitVerma.png';
-import kamnaSachdeva from './kamnaSachdeva.png'
+import kamnaSachdeva from './kamnaSachdeva.jpg'
 import kaushalSachdeva from './kaushalendarVarma.jpg';
 import kavitaKhanna from './kavitaKhanna.png';
 import kieraatSrivastava from './kieraatSrivastava.jpg';
