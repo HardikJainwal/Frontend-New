@@ -102,7 +102,8 @@ import AnnualReport from "./Component/NavItems/AnnualReport";
 import AdministrationTemp from "./Component/Administration/page";
 import ViewPdfs from "./Component/Admin/ViewPDFs/ViewPdfs";
 import Tenders from "./Component/Tenders/Tenders";
-
+import COE from './Component/Administration/COE';
+import COF from './Component/Administration/COF';
 
 function App() {
   return (
@@ -165,7 +166,8 @@ function App() {
             <Route path="/research/*" element={<ResearchDev />} />
             <Route path="/administration/vice-chancellor" element={<ViceChancellorPage />} />
             <Route path="/administration/chancellor" element={<ChancellorPage />} />
-            <Route path="/administration/recruitment-rules" element={<RecruitmentRules />} />
+            <Route path="/administration/coe" element={<COE />} />
+            <Route path="/administration/cof" element={<COF />} />
 
             {/* About us */}
             <Route path="/about-us/About-the-University" element={<About />} />
@@ -189,10 +191,13 @@ function App() {
             {/* Misc */}
             <Route path="/holiday-calendar" element={<HolidayCalendar />} />
             <Route path="/alumni" element={<AlumniSection />} />
-            <Route path="/recruitment" element={<JobPortal />} />
             <Route path="/recruitment/archive/:category" element={<ArchivedJobPortal />} />
             <Route path="/grievance-form" element={<GrievanceForm />} />
             <Route path="/placement" element={<Placement />} />
+
+            {/* Work with us */}              
+            <Route path="recruitment-rules" element={<RecruitmentRules />} />
+            <Route path="/recruitment" element={<JobPortal />} />
 
             {/* Amenities */}
             <Route path="/ncc" element={<Ncc />} />

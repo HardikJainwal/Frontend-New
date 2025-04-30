@@ -104,7 +104,8 @@ const navItems = [
       { name: "Chancellor", path: "/administration/chancellor" },
       { name: "Vice Chancellor", path: "/administration/vice-chancellor" },
       { name: "Registrar", path: "/registrar" },
-      { name: "Recruitment Rules", path: "/administration/recruitment-rules" },
+      { name: "COF", path: "/administration/cof" },
+      { name: "COE", path: "/administration/coe" },
     ],
   },
   {
@@ -125,7 +126,11 @@ const navItems = [
   },
   {
     name: "Work with us",
-    path: "/recruitment",
+    dropdownItems: [
+      { name: "Job Portal", path: "/recruitment",},
+      { name: "Recruitment Rules", path: "/recruitment-rules" },
+    ],
+    
   },
   {
     name: "Entrepreneurship",

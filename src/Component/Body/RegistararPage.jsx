@@ -8,7 +8,6 @@ const RegistararPage = () => {
     university,
     profileOverview,
     careerHighlights,
-    coreStrengths,
     message,
   } = REGISTRARINFO;
 
