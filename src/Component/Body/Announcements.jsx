@@ -1,6 +1,7 @@
 import { ExternalLink } from "lucide-react";
 import { useNoticesBySection } from "../../hooks/useNoticesBySection";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const AnnouncementStrip = () => {
   const [announcements, setAnnouncements] = useState([]);
@@ -40,6 +41,7 @@ const AnnouncementStrip = () => {
               key={index}
               href={announcement.fileLink}
               className="flex items-center hover:text-blue-800 transition-colors mx-4 text-blue-600"
+              target="_blank"
             >
               <ExternalLink className="w-4 h-4 mr-2" />
               <span>{announcement.fileName}</span>
