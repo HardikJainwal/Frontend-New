@@ -14,7 +14,7 @@ const StudentForm = () => {
         grievanceCategory: "",
         grievanceDescription: "",
         uploadDocument: "",
-        documentFile: null, // file store karne ke liye
+        documentFile: null, 
     });
 
     const handleChange = (e) => {
@@ -22,7 +22,7 @@ const StudentForm = () => {
         if (name === "documentFile") {
             setFormData((prevState) => ({
                 ...prevState,
-                documentFile: files[0], // sirf ek file lenge
+                documentFile: files[0],  
             }));
         } else {
             setFormData((prevState) => ({
@@ -40,7 +40,6 @@ const StudentForm = () => {
         }
         console.log("Student Form submitted:", formData);
 
-        // Yahan aap formData.documentFile ko backend ya server par bhej sakte ho
     };
 
     return (
@@ -50,13 +49,13 @@ const StudentForm = () => {
             </div>
 
             <form onSubmit={handleSubmit}>
-                {/* Personal Details Section */}
+
                 <div className="bg-blue-100 p-3 mb-6 rounded">
                     <h2 className="text-lg font-semibold">Personal Details</h2>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-                    {/* Full Name */}
+
                     <div className="col-span-1">
                         <label className="block mb-1">
                             Full Name <span className="text-red-500">*</span>
@@ -72,7 +71,7 @@ const StudentForm = () => {
                         />
                     </div>
 
-                    {/* Email */}
+
                     <div className="col-span-1">
                         <label className="block mb-1">
                             E-mail ID <span className="text-red-500">*</span>
@@ -88,7 +87,7 @@ const StudentForm = () => {
                         />
                     </div>
 
-                    {/* Mobile */}
+ 
                     <div className="col-span-1">
                         <label className="block mb-1">
                             Mobile No. <span className="text-red-500">*</span>
@@ -104,7 +103,7 @@ const StudentForm = () => {
                         />
                     </div>
 
-                    {/* Enrollment Number */}
+ 
                     <div className="col-span-1">
                         <label className="block mb-1">
                             Enrollment Number <span className="text-red-500">*</span>
@@ -120,7 +119,7 @@ const StudentForm = () => {
                         />
                     </div>
 
-                    {/* Department */}
+         
                     <div className="col-span-1">
                         <label className="block mb-1">
                             Department <span className="text-red-500">*</span>
@@ -141,7 +140,7 @@ const StudentForm = () => {
                         </select>
                     </div>
 
-                    {/* Program */}
+ 
                     <div className="col-span-1">
                         <label className="block mb-1">
                             Program <span className="text-red-500">*</span>
@@ -157,7 +156,7 @@ const StudentForm = () => {
                         />
                     </div>
 
-                    {/* Campus */}
+ 
                     <div className="col-span-1">
                         <label className="block mb-1">
                             Campus <span className="text-red-500">*</span>
@@ -182,14 +181,13 @@ const StudentForm = () => {
                         </select>
                     </div>
                 </div>
-
-                {/* Grievance Details Section */}
+ 
                 <div className="bg-blue-100 p-3 mb-6 rounded">
                     <h2 className="text-lg font-semibold">Grievance Details</h2>
                 </div>
 
                 <div className="mb-6">
-                    {/* Grievance Category */}
+            
                     <div className="mb-4">
                         <label className="block mb-1">
                             Grievance Category <span className="text-red-500">*</span>
@@ -209,7 +207,7 @@ const StudentForm = () => {
                         </select>
                     </div>
 
-                    {/* Grievance Description */}
+                 
                     <div className="mb-4">
                         <label className="block mb-1">
                             Grievance Description (maximum 150 words) <span className="text-red-500">*</span>
@@ -225,7 +223,7 @@ const StudentForm = () => {
                         ></textarea>
                     </div>
 
-                    {/* Want to Upload Document */}
+            
                     <div className="mb-4">
                         <label className="block mb-1">
                             Want to Upload Document? <span className="text-red-500">*</span>
@@ -243,7 +241,7 @@ const StudentForm = () => {
                         </select>
                     </div>
 
-                    {/* File Upload Input (jab user "yes" select kare) */}
+
                     {formData.uploadDocument === "yes" && (
                         <div className="mb-4">
                             <label className="block mb-1">
@@ -259,7 +257,7 @@ const StudentForm = () => {
                     )}
                 </div>
 
-                {/* Submit and Reset Buttons */}
+
                 <div className="flex justify-center space-x-4">
                     <button
                         type="submit"
