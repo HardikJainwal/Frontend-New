@@ -1,4 +1,4 @@
-import { abb, concentrix, daikin, hero, infosys, marutisuzuki, nokia, pl1, pl2, pl3, pl4, pl5, samsung, thoughtswork, acres, decathlon, fluor, indigo, max, shneider, sony, tata } from "../assets/placement";
+import { abb, concentrix, daikin, hero, infosys, marutisuzuki, nokia, pl1, pl2, pl3, pl4, pl5, samsung, thoughtswork, acres, decathlon, fluor, indigo, max, shneider, sony, tata, JLL, oracle,tcs, bluestar } from "../assets/placement";
 
 const invitationData = {
     id: "invitation",
@@ -52,92 +52,132 @@ const placementStats = [
     { title: "No. of Companies Participated", value: "165+", color: "text-gray-500" }
 ];
 
-const carouselImages = [
+const Diploma = [
     {
         id: "hero",
         src: hero,
-        data: "23 students selected at 3.65 LPA"
+        data: "23 students selected"
     },
     {
         id: "marutisuzuki",
         src: marutisuzuki,
-        data: "137 students selected at 4.45 LPA"
+        data: "137 students selected"
     },
     {
         id: "thoughtswork",
         src: thoughtswork,
-        data: "28 students selected at 3.5 LPA"
+        data: "28 students selected"
     },
     {
         id: "nokia",
         src: nokia,
-        data: "13 students selected at 3.5 LPA"
+        data: "13 students selected"
     },
     {
         id: "samsung",
         src: samsung,
-        data: "23 students selected at 3.36 LPA"
+        data: "23 students selected "
     },
     {
         id: "daikin",
         src: daikin,
-        data: "6 students selected at 4 LPA"
+        data: "6 students selected"
     },
     {
         id: "abb",
         src: abb,
-        data: "4 students selected at 4.5 LPA"
+        data: "4 students selected"
     },
     {
         id: "infosys",
         src: infosys,
-        data: "5 students selected at 3 LPA"
+        data: "5 students selected "
     },
     {
         id: "concentrix",
         src: concentrix,
-        data: "19 students selected at 3 LPA"
+        data: "19 students selected"
     },
     {
         id: "acres",
         src: acres,
-        data: "20 students selected for 1.8 + PPO"
+        data: "20 students selected"
     },
     {
         id: "decathlon",
         src: decathlon,
-        data: "3 students selected at 3.3 LPA"
+        data: "3 students selected "
     },
     {
         id: "fluor",
         src: fluor,
-        data: "13 students selected at 4.5 LPA"
+        data: "13 students selected "
     },
     {
         id: "tata",
         src: tata,
-        data: "44 students selected at 3.25 LPA"
+        data: "44 students selected "
     },
     {
         id: "indigo",
         src: indigo,
-        data: "64 students selected at 3.0  LPA"
+        data: "64 students selected"
     },
     {
         id: "max",
         src: max,
-        data: "5 students selected at 3.36 LPA"
+        data: "5 students selected "
     },
     {
         id: "shneider",
         src: shneider,
-        data: "5 students selected at 3.75  LPA"
+        data: "5 students selected"
     },
     {
         id: "sony",
         src: sony,
-        data: "32 students selected at 2.9  LPA"
+        data: "32 students selected"
     }
+
+]
+
+const UG = [
+    {
+        id: "oracle",
+        src: oracle,
+        data: "2 students selected"
+    },
+    {
+        id: "JLL",
+        src: JLL,
+        data: "6 students selected"
+    },
+    {
+        id: "daikin",
+        src: daikin,
+        data: "3 students selected"
+    },
+    {
+        id: "tcs",
+        src: tcs,
+        data: "27 students selected"
+    },
+    {
+        id: "infosys",
+        src: infosys,
+        data: "14 students selected"
+    },
+    {
+        id: "marutisuzuki",
+        src: marutisuzuki,
+        data: "3 students selected"
+    },
+    {
+        id: "bluestar",
+        src: bluestar,
+        data: "11 students selected"
+    },
+
 
 ]
 
@@ -149,4 +189,4 @@ const placementImages = [
     { id: "pl5", src: pl5 },
 ];
 
-export { invitationData, contacts, placementStats, carouselImages, placementImages };
+export { invitationData, contacts, placementStats, Diploma, placementImages, UG };

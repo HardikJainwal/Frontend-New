@@ -1,11 +1,20 @@
-import { FaPhoneAlt, FaEnvelope, } from "react-icons/fa";
+import { useState } from "react";
+import { FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 import { ArrowRightCircle } from "lucide-react";
 import PlacementCarousel from "./PlacementCarousel";
 import HeadingText from "../Reusable/HeadingText";
 
-import { placementStats, carouselImages, invitationData, contacts } from "../../constants/PLACEMENT.JS";
+import {
+  placementStats,
+  Diploma,
+  invitationData,
+  contacts,
+  UG,
+} from "../../constants/PLACEMENT.JS";
 
 const Placement = () => {
+  const [activeTab, setActiveTab] = useState("Diploma");
+
   return (
     <div className="w-4/5 mx-auto my-10 text-gray-800">
       {/* Invitation Section */}
@@ -26,14 +35,15 @@ const Placement = () => {
           <h2 className="text-2xl md:text-3xl font-bold text-gray-800">
             Placement Policy
           </h2>
-          <div className="w-16 h-1 bg-orange-500 mt-2"></div> {/* Orange underline */}
+          <div className="w-16 h-1 bg-orange-500 mt-2"></div>
         </div>
         <div className="mt-4">
           <p className="text-gray-600 leading-relaxed text-justify mb-4">
-            Our placement policy outlines the guidelines and procedures for student placements, ensuring a transparent and fair process. Access the detailed policy document below.
+            Our placement policy outlines the guidelines and procedures for student placements,
+            ensuring a transparent and fair process. Access the detailed policy document below.
           </p>
           <a
-            href="/Placement%20Policy%20DSEU%202024.pdf" // Updated path to match the file in public folder
+            href="/Placement%20Policy%20DSEU%202024.pdf"
             download
             className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors duration-300"
           >
@@ -98,7 +108,32 @@ const Placement = () => {
             ))}
           </div>
 
-          <PlacementCarousel images={carouselImages} />
+          {/* Modern Tabs */}
+          <div className="mt-10 flex justify-center gap-6">
+            {["Diploma", "UG"].map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`relative px-4 py-2 text-lg font-semibold transition-all duration-300
+                  ${activeTab === tab ? "text-blue-600" : "text-gray-500 hover:text-blue-600"}`}
+              >
+                {tab === "UG" ? "UG/PG" : tab}
+                {activeTab === tab && (
+                  <span className="absolute left-1/2 -bottom-1.5 h-[3px] w-10 -translate-x-1/2 rounded-full bg-blue-600 transition-all duration-300"></span>
+                )}
+              </button>
+            ))}
+          </div>
+
+          {/* Conditionally Rendered Carousels */}
+          <div className="mt-8 text-center">
+            {activeTab === "Diploma" && (
+              <PlacementCarousel heading="Diploma" images={Diploma} />
+            )}
+            {activeTab === "UG" && (
+              <PlacementCarousel heading="UG/PG" images={UG} />
+            )}
+          </div>
         </div>
       </div>
     </div>

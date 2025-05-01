@@ -15,6 +15,10 @@ import max from './max.png';
 import shneider from './shneider.png';
 import sony from './sony.png';
 import tata from './tata.png';
+import JLL from './JLL.webp';
+import oracle from './oracle.png';
+import tcs from './tcs.jpeg';
+import bluestar from './bluestar.webp';
 
 
 // placement imgaes
@@ -24,4 +28,4 @@ import pl3 from './placement3.jpg';
 import pl4 from './placement4.jpg';
 import pl5 from './placement5.jpg';
 
-export { abb, concentrix, daikin, hero, infosys, nokia, marutisuzuki, samsung, thoughtswork, acres, decathlon, fluor, indigo, max, shneider, sony, tata, pl1, pl2, pl3, pl4, pl5 };
+export { abb, concentrix, daikin, hero, infosys, nokia, marutisuzuki, samsung, thoughtswork, acres, decathlon, fluor, indigo, max, shneider, sony, tata, pl1, pl2, pl3, pl4, pl5, JLL, oracle, tcs, bluestar };

@@ -2,8 +2,9 @@ import Slider from "react-slick";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import HeadingText from "../Reusable/HeadingText";
 
-const PlacementCarousel = ({ images = [] }) => {
+const PlacementCarousel = ({ images = [], heading }) => {
   const CustomPrevArrow = ({ onClick }) => (
     <button
       onClick={onClick}
@@ -41,10 +42,8 @@ const PlacementCarousel = ({ images = [] }) => {
   };
 
   return (
-    <div className="w-full py-8 pt-20">
-      <h2 className="text-3xl font-bold text-center text-blue-900 mb-6">
-        Placement Highlights
-      </h2>
+    <div className="w-full py-8 pt-5">
+     
       <div className="relative px-4 md:px-8">
         {images.length > 0 ? (
           <Slider {...settings}>
