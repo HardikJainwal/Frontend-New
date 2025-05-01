@@ -11,25 +11,39 @@ const StudentForm = () => {
     mobile: "",
     enrollmentNumber: "",
     department: "",
-    course: "",
+    program: "",
     campus: "",
     grievanceCategory: "",
     grievanceDescription: "",
-    uploadDocument: "",
-    documentFile: null,
+    pdf: null,
   });
+  const [uploadDocument, setUploadDocument] = useState('');
 
   const mutation = useMutation({
     mutationFn: async (formPayload) => {
-      const res = await fetch("", {
+      const res = await fetch("https://dseu-backend.onrender.com/api/v1/studentGrievance", {
         method: "POST",
         body: formPayload,
       });
       if (!res.ok) throw new Error();
       return res.json();
+
     },
     onSuccess: () => {
       toast.success("Form submitted successfully!");
+      setFormData({
+        fullName: "",
+        email: "",
+        mobile: "",
+        enrollmentNumber: "",
+        department: "",
+        program: "",
+        campus: "",
+        grievanceCategory: "",
+        grievanceDescription: "",
+        pdf: null,
+      });
+      setUploadDocument('')
     },
     onError: () => {
       toast.error("Error. Please try again.");
@@ -38,14 +52,17 @@ const StudentForm = () => {
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-    if (name === "documentFile") {
-      setFormData((prev) => ({ ...prev, documentFile: files[0] }));
+    if (uploadDocument === "yes") {
+      setFormData((prev) => ({ ...prev, pdf: files[0] }));
     } else {
-      setFormData((prev) => ({ ...prev, [name]: value }));
+      setFormData((prev) => ({ ...prev, [name]: value,pdf:null}));
+      
     }
+    
   };
 
   const handleSubmit = (e) => {
+    console.log('hello')
     e.preventDefault();
     if (!/^\d{10}$/.test(formData.mobile)) {
       alert("Please enter a valid 10-digit mobile number.");
@@ -53,9 +70,20 @@ const StudentForm = () => {
     }
 
     const formPayload = new FormData();
-    Object.entries(formData).forEach(([key, value]) => {
-      if (value) formPayload.append(key, value);
-    });
+   
+
+    
+        formPayload.append('fullName', formData.fullName);
+        formPayload.append('email', formData.email);
+        formPayload.append('enrollmentNumber', formData.enrollmentNumber);
+        formPayload.append('mobile', formData.mobile);
+        formPayload.append('grievanceCategory', formData.grievanceCategory);
+        formPayload.append('department', formData.department);
+        formPayload.append('description', formData.grievanceDescription);
+       if( uploadDocument==='yes') formPayload.append('pdf', formData.pdf);
+        formPayload.append('program', formData.program);
+        formPayload.append('campus', formData.campus);
+
 
     mutation.mutate(formPayload);
   };
@@ -146,8 +174,8 @@ const StudentForm = () => {
       <label className="block mb-1">Course</label>
       <input
         type="text"
-        name="course"
-        value={formData.course}
+        name="program"
+        value={formData.program}
         onChange={handleChange}
         placeholder="Enter course"
         className="w-full p-2 border rounded"
@@ -166,7 +194,7 @@ const StudentForm = () => {
       >
         <option value="">--select--</option>
         {campusOptions.map((group) => (
-          <optgroup key={group.label} label={group.label}>
+          <optgroup key={group.label} label={group.label} >
             {group.options.map((option) => (
               <option key={option.value} value={option.value}>
                 {option.label}
@@ -216,23 +244,28 @@ const StudentForm = () => {
     <label className="block mb-1">Want to Upload Document?</label>
     <select
       name="uploadDocument"
-      value={formData.uploadDocument}
-      onChange={handleChange}
+      value={uploadDocument}
+      onChange={(e)=>{
+        setUploadDocument(e.target.value)     
+               
+        // setUploadDocument(()e.target.value)
+      }}
       className="w-full p-2 border rounded"
+      defaultValue={uploadDocument}
       required
     >
       <option selected disabled value="">--select--</option>
-      <option value="yes">Yes</option>
-      <option value="no">No</option>
-    </select>
+      <option value={'yes'}>Yes</option>
+      <option value={'no'}>No</option>
+    </select>d
   </div>
 
-  {formData.uploadDocument === "yes" && (
+  {uploadDocument === "yes" && (
     <div className="mb-4">
       <label className="block mb-1">Upload File</label>
       <input
         type="file"
-        name="documentFile"
+        name="pdf"
         onChange={handleChange}
         className="w-full p-2 border rounded"
       />
