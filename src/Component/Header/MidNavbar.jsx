@@ -117,7 +117,7 @@ const navItems = [
       { name: "Scholarship", path: "/amenities/Scholarship" },
       { name: "Internal Complaint Committee", path: "/amenities/ICC" },
       { name: "Anti-Ragging Cell", path: "amenities/Anti-Ragging" },
-      { name: "Equal Oppurtunity Cell", path: "/amenities/Equal-Opportunity" },
+      { name: "Equal Opportunity Cell", path: "/amenities/Equal-Opportunity" },
     ],
   },
   {
@@ -127,15 +127,15 @@ const navItems = [
   {
     name: "Work with us",
     dropdownItems: [
-      { name: "Job Portal", path: "/recruitment",},
+      { name: "Job Portal", path: "/recruitment" },
       { name: "Recruitment Rules", path: "/recruitment-rules" },
     ],
-    
   },
   {
     name: "Entrepreneurship",
     path: "/Entrepreneurship",
   },
+  
 ];
 
 //? for mobile view

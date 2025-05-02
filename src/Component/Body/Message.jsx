@@ -14,7 +14,7 @@ const leaders = [
   },
   {
     title: "Vice Chancellor's Desk",
-    name: "Prof Ashok Kumar Nagawat",
+    name: "Prof. Ashok Kumar Nagawat",
     image: VCsir,
     message:
       "Embrace the opportunities ahead, stay curious, and make the most of your journey with us. We are excited to support your aspirations and witness your growth at DSEU.",
