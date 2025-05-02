@@ -36,8 +36,10 @@ const COE = () => {
                 {member.name}
               </h1>
               <h2 className="text-base text-blue-500 mt-1">
-                {member.designation}
-              </h2>
+  {member.designation.split(/[,/|]/).map((item, index) => (
+    <div key={index}>{item.trim()}</div>
+  ))}
+</h2>
               <p className="text-sm italic text-gray-500 mt-1 text-center">
                 {member.university}
               </p>
