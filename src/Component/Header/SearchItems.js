@@ -20,7 +20,6 @@ export const searchItems = [
     { name: "Fee Refund Policy", path: "/admission/refund-policy" },
     { name: "Administrative Offices", path: "/administration/administrative" },
     { name: "Chancellor", path: "/administration/chancellor" },
-    { name: "Vice Chancellor", path: "/administration/vice-chancellor" },
     { name: "COF", path: "/administration/cof" },
     { name: "Controller of Finance", path: "/administration/cof" },
     { name: "COE", path: "/administration/coe" },
