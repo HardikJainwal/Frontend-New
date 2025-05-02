@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import { Search, X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const SearchModal = ({ isOpen, onClose, navItems }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
-  const [activeIndex, setActiveIndex] = useState(-1); 
+  const [facultyData, setFacultyData] = useState([]);
+  const [activeIndex, setActiveIndex] = useState(-1);
   const navigate = useNavigate();
 
   const defaultSuggestions = [
@@ -16,7 +18,7 @@ const SearchModal = ({ isOpen, onClose, navItems }) => {
 
   const flattenNavItems = () => {
     const flatItems = [];
-    navItems.forEach((item) => {
+    navItems?.forEach((item) => {
       if (item.path) {
         flatItems.push({ name: item.name, path: item.path });
       }
@@ -29,28 +31,46 @@ const SearchModal = ({ isOpen, onClose, navItems }) => {
     return flatItems;
   };
 
+
+  useEffect(() => {
+    if (isOpen) {
+      axios
+        .get("https://dseu-backend.onrender.com/api/v1/faculty?limit=500")
+        .then((res) => setFacultyData(res.data.data.faculty))
+        .catch((err) => console.error("Error fetching faculty data:", err));
+    }
+  }, [isOpen]);
+
   useEffect(() => {
     if (!isOpen) {
       setSearchQuery("");
       setSuggestions([]);
-      setActiveIndex(-1); // Reset to no selection
+      setActiveIndex(-1);
       return;
     }
 
     if (searchQuery.trim() === "") {
-      // Show default suggestions when query is empty
       setSuggestions(defaultSuggestions);
-      setActiveIndex(-1); // No suggestion selected by default
+      setActiveIndex(-1);
     } else {
-      // Filter navItems based on search query
-      const flatItems = flattenNavItems();
-      const filtered = flatItems.filter((item) =>
+      const navResults = flattenNavItems().filter((item) =>
         item.name.toLowerCase().includes(searchQuery.toLowerCase())
       );
-      setSuggestions(filtered);
-      setActiveIndex(-1); // Reset selection when query changes
+
+      const facultyResults = facultyData
+        .filter((f) => {
+          const fullName = `${f.salutation} ${f.firstname} ${f.surname}`.toLowerCase();
+          return fullName.includes(searchQuery.toLowerCase());
+        })
+        .map((f) => ({
+          name: `${f.salutation} ${f.firstname} ${f.surname}`.trim(),
+          path: `/faculty/${f._id}`,
+        }));
+
+      setSuggestions([...navResults, ...facultyResults]);
+      setActiveIndex(-1);
     }
-  }, [searchQuery, isOpen]);
+  }, [searchQuery, isOpen, facultyData]);
 
   const handleKeyDown = (e) => {
     if (e.key === "ArrowDown") {
@@ -62,17 +82,20 @@ const SearchModal = ({ isOpen, onClose, navItems }) => {
     } else if (e.key === "Enter") {
       if (suggestions.length > 0 && activeIndex >= 0) {
         navigate(suggestions[activeIndex].path);
-        setSearchQuery("");
-        setSuggestions([]);
-        onClose();
+        resetModal();
       }
     }
   };
 
   const handleSuggestionClick = (path) => {
     navigate(path);
+    resetModal();
+  };
+
+  const resetModal = () => {
     setSearchQuery("");
     setSuggestions([]);
+    setActiveIndex(-1);
     onClose();
   };
 
@@ -113,7 +136,9 @@ const SearchModal = ({ isOpen, onClose, navItems }) => {
                 <div
                   key={index}
                   className={`px-6 py-3 cursor-pointer text-gray-700 ${
-                    index === activeIndex ? "bg-blue-100 font-medium" : "hover:bg-blue-50"
+                    index === activeIndex
+                      ? "bg-blue-100 font-medium"
+                      : "hover:bg-blue-50"
                   }`}
                   onClick={() => handleSuggestionClick(suggestion.path)}
                 >
