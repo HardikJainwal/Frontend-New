@@ -10,7 +10,8 @@ const leaders = [
     image: DG,
     message:
       "As you embark on this transformative journey, I encourage you to engage fully, explore new horizons, and harness the resources available to shape your future.",
-    link: "/chancellor",
+    link: "https://lg.delhi.gov.in/lg-profile",
+    newPage: true,
   },
   {
     title: "Vice Chancellor's Desk",
@@ -19,6 +20,7 @@ const leaders = [
     message:
       "Embrace the opportunities ahead, stay curious, and make the most of your journey with us. We are excited to support your aspirations and witness your growth at DSEU.",
     link: "/vice-chancellor",
+    newPage: false,
   },
 ];
 
@@ -59,6 +61,7 @@ const Message = () => {
 
                 <div>
                   <a
+                    target={leader.newPage ? '_blank' : '_self'}
                     href={leader.link}
                     rel="noopener noreferrer"
                     className="px-4 py-2 bg-white text-blue-700 font-semibold rounded-md inline-flex items-center space-x-2 hover:bg-gray-100 transition-colors"

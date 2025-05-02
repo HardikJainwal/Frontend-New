@@ -66,7 +66,7 @@ const members = [
   },
   {
     id: 2,
-    name: "Prof. (Dr.) Ashok Kumar Nagawat",
+    name: "Prof. Ashok Kumar Nagawat",
     src: vicechancellor,
     designation: "Vice-Chancellor",
     category: "Vice Chancellor",
@@ -87,28 +87,28 @@ const members = [
   },
   {
     id: 5,
-    name: "Prof. (Dr.) Gagan Dhawan",
+    name: "Prof. Gagan Dhawan",
     src: gagandhawan,
     designation: "Faculty of Allied Medical Sciences and Healthcare Skills",
     category: "Deans",
   },
   {
     id: 6,
-    name: "Prof. (Dr.) Girish Kumar Sharma",
+    name: "Prof. Girish Kumar Sharma",
     src: girishKumar,
     designation: "Research",
     category: "Deans",
   },
   {
     id: 7,
-    name: "Prof. (Dr.) Kamna Sachdeva",
+    name: "Prof. Kamna Sachdeva",
     src: kamnaSachdeva,
     designation: "Faculty of Converging Science and Technology Skills",
     category: "Deans",
   },
   {
     id: 8,
-    name: "Prof. (Dr.) Shruti Tripathi",
+    name: "Prof. Shruti Tripathi",
     src: shrutiTripathi,
     designation: "Faculty of Business, Finance and Managerial Skills",
     category: "Deans",
@@ -164,7 +164,7 @@ const members = [
   },
   {
     id: 16,
-    name: "Prof. Dr. N. Jena",
+    name: "Prof. N. Jena",
     src: dnJena,
     designation: "Campus Director - DSEU Pusa II Campus",
     category: "Campus Directors",
@@ -183,7 +183,7 @@ const members = [
     designation: "Campus Director - DSEU Dwarka Campus",
     category: "Campus Directors",
   },
-  
+
   {
     id: 19,
     name: "Mr. Porusu Ramanaiah",
@@ -228,7 +228,7 @@ const members = [
   },
   {
     id: 25,
-    name: "Prof. (Dr.) Shruti Tripathi",
+    name: "Prof. Shruti Tripathi",
     src: shrutiTripathi,
     designation: "Campus Director - Kasturba DSEU Campus",
     category: "Campus Directors",
@@ -248,17 +248,17 @@ const members = [
     category: "Campus Directors",
   },
   {
+    id: 34,
+    name: "Kireet Kant Srivastava",
+    src: kieraatSrivastava,
+    designation: "Executive Engineer (Civil)",
+    category: "Officers",
+  },
+  {
     id: 28,
     name: "Mukesh Kumar Gupta",
     src: mukeshKumarGupta,
     designation: "OSD (Legal/RTI)",
-    category: "Officers",
-  },
-  {
-    id: 29,
-    name: "Shivam Gupta",
-    src: shivamGupta,
-    designation: "OSD IT and Process Automation & Nodal officer Samarth ERP",
     category: "Officers",
   },
   {
@@ -276,13 +276,6 @@ const members = [
     category: "Officers",
   },
   {
-    id: 32,
-    name: "Dr. Surender Kumar Sharma",
-    src: surrendarKumarSharma,
-    designation: "Assistant Registrar",
-    category: "Officers",
-  },
-  {
     id: 33,
     name: "Dr. Ruchika Singh",
     src: ruchikaSingh,
@@ -290,18 +283,18 @@ const members = [
     category: "Officers",
   },
   {
-    id: 34,
-    name: "Kireet Kant Srivastava",
-    src: kieraatSrivastava,
-    designation: "Executive Engineer (Civil)",
+    id: 29,
+    name: "Mr. Shivam Gupta",
+    src: shivamGupta,
+    designation: "OSD IT and Process Automation & Nodal officer Samarth ERP",
     category: "Officers",
   },
   {
-    id: 35,
-    name: "Veena Upadhyay",
-    src: veenaUpadhay,
-    designation: "Senior Accounts Officer",
-    category: "Accounts Officers",
+    id: 32,
+    name: "Dr. Surender Kumar Sharma",
+    src: surrendarKumarSharma,
+    designation: "Assistant Registrar",
+    category: "Officers",
   },
   {
     id: 36,
@@ -311,35 +304,42 @@ const members = [
     category: "Accounts Officers",
   },
   {
-    id: 37,
-    name: "Dr. Ravinder Jhorar",
-    src: ravinderJohar,
-    category: "Training and Placement Officers",
+    id: 35,
+    name: "Mrs. Veena Upadhyay",
+    src: veenaUpadhay,
+    designation: "Senior Accounts Officer",
+    category: "Accounts Officers",
   },
   {
     id: 38,
-    name: "Ahmad Omair",
+    name: "Mr. Ahmad Omair",
     src: ahmadOmair,
     category: "Training and Placement Officers",
   },
   {
-    id: 39,
-    name: "Niharika Pandey",
-    src: niharikaPandey,
+    id: 41,
+    name: "Mr. Agrim Tomar",
+    src: agrimTomar,
     category: "Training and Placement Officers",
   },
   {
     id: 40,
-    name: "Kaushalender Varma",
+    name: "Mr. Kaushalender Varma",
     src: kaushalSachdeva,
     category: "Training and Placement Officers",
   },
   {
-    id: 41,
-    name: "Agrim Tomar",
-    src: agrimTomar,
+    id: 39,
+    name: "Ms. Niharika Pandey",
+    src: niharikaPandey,
     category: "Training and Placement Officers",
   },
+  {
+    id: 37,
+    name: "Dr. Ravinder Jhorar",
+    src: ravinderJohar,
+    category: "Training and Placement Officers",
+  }
 ];
 
 export { members };

@@ -11,13 +11,13 @@ const boardOfManagement = [
     {
         id: 2,
         name: "Mr. Vivek Agarwal",
-        designation: "Registrar",
+        designation: "Member Secretary",
         category: "Registrar",
         src: vivekAggrawal,
     },
     {
         id: 3,
-        name: "Prof. (Dr.) Gagan Dhawan",
+        name: "Prof. Gagan Dhawan",
         category: "Deans",
         src: registarar,
     },
@@ -42,16 +42,23 @@ const boardOfManagement = [
         src: girishKumar,
     },
     {
+        id: 8,
+        name: "Prof. Kamna Sachdeva",
+        category: "Deans",
+        src: kamnaSachdeva,
+    },
+    {
         id: 7,
         name: "Prof. Vibhakar Shrimali",
         category: "Deans",
         src: vibhakarShrimali,
     },
+
     {
-        id: 8,
-        name: "Prof. Kamna Sachdeva",
-        category: "Deans",
-        src: kamnaSachdeva,
+        id: 10,
+        name: "Prof. N Jena",
+        category: "HoD",
+        src: njena,
     },
     {
         id: 9,
@@ -60,10 +67,11 @@ const boardOfManagement = [
         src: shrutiTripathi,
     },
     {
-        id: 10,
-        name: "Prof. N Jena",
-        category: "HoD",
-        src: njena,
+        id: 12,
+        name: "Sh. Ashish Chandra Verma, IAS",
+        designation: "Principal Secretary Finance",
+        category: "Secretaries",
+        src: principalSecratory,
     },
     {
         id: 11,
@@ -71,13 +79,6 @@ const boardOfManagement = [
         designation: "Secretary DTTE",
         category: "Secretaries",
         src: dttesecratory,
-    },
-    {
-        id: 12,
-        name: "Sh. Ashish Chandra Verma, IAS",
-        designation: "Principal Secretary Finance",
-        category: "Secretaries",
-        src: principalSecratory,
     }
 ];
 
