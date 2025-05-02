@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowRightCircle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import HeadingText from "../Reusable/HeadingText";
 import { iccData } from "../../constants/ICC.JS";
 
@@ -43,7 +43,7 @@ const ICC = () => {
               key={index}
               className="flex items-start gap-3 list-none text-justify p-4 bg-white rounded-2xl shadow-md"
             >
-              <ArrowRightCircle className="text-blue-500 w-5 h-5 mt-1" />
+              <ArrowRight className="text-blue-500 w-5 h-5 mt-1" />
               <span>{point}</span>
             </li>
           ))}

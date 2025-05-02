@@ -1,8 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { BarChart2, BookOpen, FileText } from "lucide-react";
+import { BarChart2, BookOpen, FileText, ArrowRight } from "lucide-react"; // <-- Updated import
 import HeadingText from "../Reusable/HeadingText";
-import { ArrowRightCircle } from "lucide-react";
 
 const IQAC = () => {
   return (
@@ -28,37 +27,33 @@ const IQAC = () => {
           </p>
         </motion.div>
 
-
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mt-10"
         >
-
           <h4 className="text-xl md:text-2xl font-bold text-center text-gray-800 border-b-4 border-orange-400 pb-3 shadow-sm w-fit mb-4">Objectives of IQAC</h4>
 
           <ul className="space-y-3 text-sm md:text-base text-gray-700">
             <li className="flex items-start gap-2">
-              <ArrowRightCircle className="text-blue-500 w-5 h-5 mt-1" />
+              <ArrowRight className="text-blue-600 w-5 h-5 mt-1" />
               <span>To ensure continuous improvement in academic and administrative processes.</span>
             </li>
             <li className="flex items-start gap-2">
-              <ArrowRightCircle className="text-blue-500 w-5 h-5 mt-1" />
+              <ArrowRight className="text-blue-600 w-5 h-5 mt-1" />
               <span>To promote innovative practices for holistic development.</span>
             </li>
             <li className="flex items-start gap-2">
-              <ArrowRightCircle className="text-blue-500 w-5 h-5 mt-1" />
+              <ArrowRight className="text-blue-600 w-5 h-5 mt-1" />
               <span>To encourage feedback mechanisms and data-driven decision making.</span>
             </li>
             <li className="flex items-start gap-2">
-              <ArrowRightCircle className="text-blue-500 w-5 h-5 mt-1" />
+              <ArrowRight className="text-blue-600 w-5 h-5 mt-1" />
               <span>To maintain institutional quality benchmarks and best practices.</span>
             </li>
           </ul>
-
         </motion.div>
-
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -90,9 +85,7 @@ const IQAC = () => {
               </p>
             </div>
           </div>
-
         </motion.div>
-
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -102,16 +95,14 @@ const IQAC = () => {
         >
           <h4 className="text-xl md:text-2xl font-bold text-center text-gray-800 border-b-4 border-orange-400 pb-3 shadow-sm w-fit mb-4">Contact IQAC</h4>
           <p className="text-sm md:text-base text-gray-700">
-            For queries, suggestions, or collaborations, reach out to the head of the committee –{' '}
+            For queries, suggestions, or collaborations, reach out to the head of the committee –{" "}
             <a
               href="https://dseuacin-one.vercel.app/faculty/67fcb6a3594afd76950ae309"
-              className="text-blue-500 hover:text-blue-700  font-regular"
+              className="text-blue-500 hover:text-blue-700 font-regular"
             >
               <span className="inline-block hover:underline">Prof. Kamna Sachdeva</span>
             </a>
           </p>
-
-
         </motion.div>
       </div>
     </div>

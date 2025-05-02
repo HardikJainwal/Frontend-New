@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowRightCircle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import HeadingText from "../Reusable/HeadingText";
 import { antiRagging } from "../../constants/ANTIRAGGING.JS";
 
@@ -43,7 +43,7 @@ const AntiRagging = () => {
               key={index}
               className="flex items-start gap-3 list-none text-justify p-4 bg-white rounded-2xl shadow-md"
             >
-              <ArrowRightCircle className="text-red-500 w-5 h-5 mt-1" />
+              <ArrowRight className="text-red-500 w-5 h-5 mt-1" />
               <span>{point}</span>
             </li>
           ))}
@@ -69,7 +69,7 @@ const AntiRagging = () => {
               key={index}
               className="flex items-start gap-3 list-none text-justify p-4 bg-white rounded-2xl shadow-md"
             >
-              <ArrowRightCircle className="text-green-500 w-5 h-5 mt-1" />
+              <ArrowRight className="text-green-500 w-5 h-5 mt-1" />
               <span>{action}</span>
             </li>
           ))}
@@ -93,7 +93,7 @@ const AntiRagging = () => {
               transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
               className="flex items-center gap-2"
             >
-              <ArrowRightCircle className="text-blue-500 w-5 h-5" />
+              <ArrowRight className="text-blue-500 w-5 h-5" />
               <a
                 href={pdf.url}
                 target="_blank"
