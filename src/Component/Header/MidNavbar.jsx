@@ -104,8 +104,8 @@ const navItems = [
       { name: "Chancellor", path: "/administration/chancellor" },
       { name: "Vice Chancellor", path: "/administration/vice-chancellor" },
       { name: "Registrar", path: "/registrar" },
-      { name: "COF", path: "/administration/cof" },
-      { name: "COE", path: "/administration/coe" },
+      { name: "Controller of Finance", path: "/administration/cof" },
+      { name: "Controller of Examination", path: "/administration/coe" },
     ],
   },
   {

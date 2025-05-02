@@ -3,7 +3,7 @@ import cofImage from "../../assets/team-dseu/gagandhawan.jpg";
 export const teamData = [
   {
     name: "Prof. (Dr.) Gagan Dhawan",
-    designation: "Controller Of Finance",
+    designation: "Controller of Finance",
     university: "Delhi Skill and Entrepreneurship University (DSEU)",
     image: cofImage,
     academicBackground:
