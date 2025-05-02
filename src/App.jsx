@@ -101,7 +101,7 @@ import RecruitmentRules from "./Component/Administration/RecruitmentRules";
 import AnnualReport from "./Component/NavItems/AnnualReport";
 import AdministrationTemp from "./Component/Administration/page";
 import ViewPdfs from "./Component/Admin/ViewPDFs/ViewPdfs";
-import Tenders from "./Component/Tenders/Tenders";
+import Tenders from "./Component/Tenders/Tenders.jsx";
 import COE from './Component/Administration/COE';
 import COF from './Component/Administration/COF';
 
