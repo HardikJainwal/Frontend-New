@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { BarChart2, BookOpen, FileText, ArrowRight } from "lucide-react"; // <-- Updated import
+import { BarChart2, BookOpen, FileText, ChevronRight } from "lucide-react"; // Changed from ArrowRight to ChevronRight
 import HeadingText from "../Reusable/HeadingText";
 
 const IQAC = () => {
@@ -36,20 +36,29 @@ const IQAC = () => {
           <h4 className="text-xl md:text-2xl font-bold text-center text-gray-800 border-b-4 border-orange-400 pb-3 shadow-sm w-fit mb-4">Objectives of IQAC</h4>
 
           <ul className="space-y-3 text-sm md:text-base text-gray-700">
-            <li className="flex items-start gap-2">
-              <ArrowRight className="text-blue-600 w-5 h-5 mt-1" />
+            {/* Modern styled list items with gradient arrow indicators */}
+            <li className="flex items-start">
+              <div className="flex-shrink-0 h-6 w-6 mt-0.5 mr-2 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center text-white">
+                <ChevronRight className="w-4 h-4" />
+              </div>
               <span>To ensure continuous improvement in academic and administrative processes.</span>
             </li>
-            <li className="flex items-start gap-2">
-              <ArrowRight className="text-blue-600 w-5 h-5 mt-1" />
+            <li className="flex items-start">
+              <div className="flex-shrink-0 h-6 w-6 mt-0.5 mr-2 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center text-white">
+                <ChevronRight className="w-4 h-4" />
+              </div>
               <span>To promote innovative practices for holistic development.</span>
             </li>
-            <li className="flex items-start gap-2">
-              <ArrowRight className="text-blue-600 w-5 h-5 mt-1" />
+            <li className="flex items-start">
+              <div className="flex-shrink-0 h-6 w-6 mt-0.5 mr-2 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center text-white">
+                <ChevronRight className="w-4 h-4" />
+              </div>
               <span>To encourage feedback mechanisms and data-driven decision making.</span>
             </li>
-            <li className="flex items-start gap-2">
-              <ArrowRight className="text-blue-600 w-5 h-5 mt-1" />
+            <li className="flex items-start">
+              <div className="flex-shrink-0 h-6 w-6 mt-0.5 mr-2 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center text-white">
+                <ChevronRight className="w-4 h-4" />
+              </div>
               <span>To maintain institutional quality benchmarks and best practices.</span>
             </li>
           </ul>
@@ -101,6 +110,7 @@ const IQAC = () => {
               className="text-blue-500 hover:text-blue-700 font-regular"
             >
               <span className="inline-block hover:underline">Prof. Kamna Sachdeva</span>
+            
             </a>
           </p>
         </motion.div>

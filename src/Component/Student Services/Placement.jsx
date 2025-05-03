@@ -1,8 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 import { ArrowRightCircle } from "lucide-react";
 import PlacementCarousel from "./PlacementCarousel";
 import HeadingText from "../Reusable/HeadingText";
+import Carousel1 from "../../assets/alumni/Carousel1.jpeg"
+import Carousel2 from "../../assets/alumni/Carousel2.jpeg"
+import Carousel3 from "../../assets/alumni/Carousel3.jpeg"
+import Carousel4 from "../../assets/alumni/Carousel4.jpeg"
+import Carousel5 from "../../assets/alumni/Carousel5.jpeg"
+import Carousel6 from "../../assets/alumni/Carousel6.jpeg"
+import Carousel7 from "../../assets/alumni/Carousel7.jpeg"
+import Carousel8 from "../../assets/alumni/Carousel8.jpeg"
+import Carousel9 from "../../assets/alumni/Carousel9.jpeg"
+import Carousel10 from "../../assets/alumni/Carousel10.jpeg"
+import Carousel11 from "../../assets/alumni/Carousel11.jpeg"
+import Carousel12 from "../../assets/alumni/Carousel12.jpeg"
+
+
 
 import {
   placementStats,
@@ -11,6 +25,114 @@ import {
   contacts,
   UG,
 } from "../../constants/PLACEMENT.JS";
+
+// Import or define the ImageCarousel component
+const ImageCarousel = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  
+  // Images array
+  const images = [
+    { id: 1, src: Carousel1, alt: "Carousel Image 1" },
+    { id: 2, src: Carousel2, alt: "Carousel Image 2" },
+    { id: 3, src: Carousel3, alt: "Carousel Image 3" },
+    { id: 4, src: Carousel4, alt: "Carousel Image 4" },
+    { id: 5, src: Carousel5, alt: "Carousel Image 5" },
+    { id: 6, src: Carousel6, alt: "Carousel Image 6" },
+    { id: 7, src: Carousel7, alt: "Carousel Image 7" },
+    { id: 8, src: Carousel8, alt: "Carousel Image 8" },
+    { id: 9, src: Carousel9, alt: "Carousel Image 9" },
+    { id: 10, src: Carousel10, alt: "Carousel Image 10" },
+    { id: 11, src: Carousel11, alt: "Carousel Image 11" },
+    { id: 12, src: Carousel12, alt: "Carousel Image 12" },
+  ];
+
+  // Auto slide every 3 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => 
+        prevIndex + 1 >= images.length - 3 ? 0 : prevIndex + 1
+      );
+    }, 3000);
+    
+    return () => clearInterval(interval);
+  }, [images.length]);
+
+  // Manual navigation
+  const goToSlide = (index) => {
+    setCurrentIndex(index);
+  };
+
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) => 
+      prevIndex + 1 >= images.length - 3 ? 0 : prevIndex + 1
+    );
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prevIndex) => 
+      prevIndex - 1 < 0 ? images.length - 4 : prevIndex - 1
+    );
+  };
+
+  return (
+    <div className="w-full my-10 mt-10">
+      <h2 className="text-3xl font-bold text-center mb-6 mt-10">Our Alumni Success</h2>
+      
+      {/* Carousel container */}
+      <div className="relative w-full">
+        {/* Main carousel */}
+        <div className="overflow-hidden relative">
+          <div 
+            className="flex transition-transform duration-500 ease-in-out"
+            style={{ transform: `translateX(-${currentIndex * 25}%)` }}
+          >
+            {images.map((image) => (
+              <div key={image.id} className="w-1/4 flex-shrink-0 px-2">
+                <img 
+                  src={image.src} 
+                  alt={image.alt}
+                  className="w-full h-64 object-cover rounded-lg shadow-md" 
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+        
+        {/* Navigation buttons */}
+        <button 
+          onClick={prevSlide}
+          className="absolute left-0 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full shadow-md text-blue-600 hover:bg-white"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        
+        <button 
+          onClick={nextSlide}
+          className="absolute right-0 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full shadow-md text-blue-600 hover:bg-white"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+      
+      {/* Indicators */}
+      <div className="flex justify-center mt-4 space-x-2">
+        {Array.from({ length: images.length - 3 }).map((_, index) => (
+          <button
+            key={index}
+            onClick={() => goToSlide(index)}
+            className={`w-3 h-3 rounded-full ${
+              currentIndex === index ? "bg-blue-600" : "bg-gray-300"
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
 
 const Placement = () => {
   const [activeTab, setActiveTab] = useState("Diploma");
@@ -88,6 +210,9 @@ const Placement = () => {
             </div>
           ))}
         </div>
+
+        {/* Alumni Image Carousel */}
+        <ImageCarousel />
 
         {/* Placement Statistics Section */}
         <div className="mt-16">
