@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowRightCircle } from "lucide-react";
+import { ChevronRight } from "lucide-react"; // Changed from ArrowRightCircle
 import HeadingText from "../Reusable/HeadingText";
 import { eocData } from "../../constants/EOC.JS";
 
@@ -44,7 +44,10 @@ const EqualOpportunity = () => {
               key={index}
               className="flex items-start gap-3 list-none text-justify p-4 bg-white rounded-2xl shadow-md"
             >
-              <ArrowRightCircle className="text-blue-500 w-5 h-5 mt-1" />
+              {/* Modern styled arrow indicator - same as previous components */}
+              <div className="flex-shrink-0 h-6 w-6 mt-1 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center text-white shadow-md">
+                <ChevronRight className="w-4 h-4" />
+              </div>
               <span>{point}</span>
             </li>
           ))}
