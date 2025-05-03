@@ -6,10 +6,10 @@ export const teamData = [
     designation: "Controller of Finance",
     university: "Delhi Skill and Entrepreneurship University (DSEU)",
     image: cofImage,
-    academicBackground:
-      "Prof. Dhawan holds a Ph.D. in Biomedical Sciences from CSIR-IGIB, a Master’s in Bioinformatics from the University of Edinburgh, and an Executive MBA in Strategic Leadership. He completed his MSc and BSc (Hons) from the University of Delhi and has served as a visiting scientist in the UK, France, and the USA.",
+    // academicBackground:
+    //   "Prof. Dhawan holds a Ph.D. in Biomedical Sciences from CSIR-IGIB, a Master’s in Bioinformatics from the University of Edinburgh, and an Executive MBA in Strategic Leadership. He completed his MSc and BSc (Hons) from the University of Delhi and has served as a visiting scientist in the UK, France, and the USA.",
     profileSummary: `
-      Prof. (Dr.) Gagan Dhawan is a seasoned academic and researcher in biomedical sciences, with extensive experience in drug discovery, computational biology, and higher education. He has received prestigious fellowships including the CSIR Catch Them Young Award, Universitas 21, UGC-Raman Fellowship, and Strada Emerging Leaders Scholarship. He has taught at the University of Delhi and served as adjunct faculty in the USA. His work focuses on interdisciplinary research and education, with notable contributions to national and international institutions.
+      Prof. Dr. Gagan Dhawan completed his graduation and post-graduation at the University of Delhi, India. He received the Universitas 21 Fellowship for a Master’s in Bioinformatics at the University of Edinburgh, UK, and the UGC-Raman Award for postdoctoral research at the University of Massachusetts, Boston, USA. He is a Fellow of the Indian Chemical Society (FICS), Chartered Chemist (CChem), and Fellow of the Royal Society of Chemistry (FRSC), UK. Recognized for teaching excellence, he received the Meritorious Teacher Award (2014) and INSA Teachers Award (2020). His research focuses on novel small-molecule inhibitors and natural polymer based smart self-assembled nanostructures for biomedical applications.
     `,
     messageToStudents:
       "True education goes beyond books—it instills the skills, confidence, and mindset needed to create real change. At DSEU, we strive to equip every learner to face challenges boldly and contribute meaningfully to society.",
@@ -53,14 +53,14 @@ const COF = () => {
               </p>
             </section>
 
-            <section>
+            {/* <section>
               <h3 className="text-lg font-semibold text-blue-600 mb-2 uppercase tracking-wide">
                 Academic Background
               </h3>
               <p className="leading-relaxed text-justify">
                 {member.academicBackground}
               </p>
-            </section>
+            </section> */}
 
             <section className="border-l-4 border-blue-500 pl-4">
               <p className="text-base italic text-orange-400 font-medium text-justify">
