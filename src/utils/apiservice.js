@@ -20,7 +20,7 @@ export const getDepartments = async () => {
 
 export const getFaculties = async () => {
   try {
-    const response = await api.get("/faculty?limit=432", {
+    const response = await api.get("/faculty?limit=1000", {
       headers: getAuthHeaders(),
     });
     return response.data.data.faculty;
@@ -33,7 +33,11 @@ export const getFaculties = async () => {
 export const getFacultyByDepartment = async (id) => {
   try {
     const faculties = await getFaculties();
-    return faculties.filter((faculty) => faculty.dept_id && faculty.dept_id._id === id);
+    const filteredFaculties = faculties.filter((faculty) => faculty.dept_id && faculty.dept_id._id === id);
+
+    return filteredFaculties.sort((a, b) => (
+      a.firstname.localeCompare(b.firstname)
+    ));
   } catch (error) {
     console.error("Error filtering faculty by department:", error.response?.data || error.message);
     throw error;
@@ -167,15 +171,15 @@ export const getPdfBySections = async (section, archived = false, limit, page, r
   try {
     const encodedRegex = encodeURIComponent(regex);
 
-  if (archived) {
-    const res = await api.get(`/notice/archived?section=${section}&limit=${limit}&page=${page}&regex=${encodedRegex}`);
+    if (archived) {
+      const res = await api.get(`/notice/archived?section=${section}&limit=${limit}&page=${page}&regex=${encodedRegex}`);
+      return res.data;
+    }
+
+    const res = await api.get(`/notice?section=${section}&limit=${limit}&page=${page}&regex=${encodedRegex}`);
+
     return res.data;
-  }
-
-  const res = await api.get(`/notice?section=${section}&limit=${limit}&page=${page}&regex=${encodedRegex}`);
-
-  return res.data;
-  } catch(error) {
+  } catch (error) {
     console.error(error)
   }
 };
@@ -210,7 +214,7 @@ export const getAllPdfs = async (
 export const getCampusByZone = async (zoneName) => {
   const res = await api.get('/campus', {
     params: { zone: zoneName }
-  })
+  });
 
   return res.data;
 }

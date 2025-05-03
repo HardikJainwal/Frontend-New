@@ -38,7 +38,6 @@ const VisionMission = () => {
             {section.content.map((paragraph, index) => (
               <div key={index} className="flex items-start gap-3 text-gray-700">
                 <div className="w-2 h-2 mt-2 rounded-full bg-blue-500 shrink-0" />
-
                 <p className="text-sm md:text-base leading-snug">{paragraph}</p>
               </div>
             ))}

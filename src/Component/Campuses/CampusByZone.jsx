@@ -10,14 +10,6 @@ const CampusByZone = () => {
   const { zone } = useParams();
   const navigate = useNavigate();
 
-  const {data: temp} = useQuery({
-    queryFn: () => getPdfBySections("academic council"),
-  })
-
-  useEffect(() => {
-    console.log(temp);
-  }, [temp]);
-
   const { data, isLoading } = useQuery({
     queryFn: () => getCampusByZone(zone),
     queryKey: [QUERY_KEYS.GET_CAMPUS_BY_ZONE, zone],
@@ -28,7 +20,10 @@ const CampusByZone = () => {
     return <OrangeLoader />;
   }
 
-  const campuses = data?.data?.campuses || [];
+  // const campuses = data?.data?.campuses || [];
+  const campuses = data?.data?.campuses.sort((a, b) => (
+    a.name.localeCompare(b.name)
+  )) || [];
 
   return (
     <div className="flex justify-center items-center bg-gray-50 min-h-[50vh]">
