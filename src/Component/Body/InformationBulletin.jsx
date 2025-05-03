@@ -61,11 +61,6 @@ const InformationBulletin = () => {
     fetchData();
   }, [cards]);
 
-  const handleUploadClick = (card) => {
-    setSelectedCard(card);
-    setShowModal(true);
-  };
-
   return (
     <div className="container mx-auto px-4 py-4">
       <h2 className="text-4xl font-extrabold text-center text-blue-900 mb-8 mt-10 font-sans">
@@ -112,17 +107,6 @@ const InformationBulletin = () => {
                 </div>
               )}
             </div>
-{/* 
-            {isAdmin && (
-              <div className="flex justify-center pb-4">
-                <button
-                  onClick={() => handleUploadClick(card)}
-                  className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors"
-                >
-                  Upload PDF
-                </button>
-              </div>
-            )} */}
           </div>
         ))}
       </div>

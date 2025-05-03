@@ -20,8 +20,17 @@ const AnnouncementStrip = () => {
   }, [data]);
 
   if (isLoading) {
-    return <div>Loading..</div>;
+    return (
+      <div className="flex items-center justify-center h-12 bg-white border-y border-gray-200 w-full">
+        <div className="flex space-x-1">
+          <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce [animation-delay:-0.3s]"></div>
+          <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce [animation-delay:-0.15s]"></div>
+          <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce"></div>
+        </div>
+      </div>
+    );
   }
+  
 
   if (!announcements) {
     return <p>No announcements as of now.</p>;
