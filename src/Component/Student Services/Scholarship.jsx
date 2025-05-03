@@ -14,7 +14,7 @@ const Scholarship = () => {
         >
           <HeadingText
             heading="Scholarship"
-            headingCN="text-3xl md:text-5xl font-extrabold text-center mb-4 text-gray-900"
+            headingCN="text-3xl md:text-5xl font-extrabold text-center mb-2 text-gray-900"
           />
           <p className="text-sm md:text-lg text-gray-600 mt-4 md:mt-6 text-justify leading-relaxed">
             {data.introduction}
@@ -27,7 +27,7 @@ const Scholarship = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h3 className="text-xl md:text-2xl font-bold text-center text-gray-800 border-b-4 border-orange-400 pb-3 shadow-sm md:w-fit mb-1">
+          <h3 className="text-xl md:text-2xl font-bold text-center text-gray-800 border-b-4 border-orange-400 pb-3 shadow-sm w-fit mb-1">
           Scholarship Philosophy
         </h3>
           <p className="text-sm md:text-lg text-gray-600 mt-4 md:mt-6 text-justify leading-relaxed">
@@ -41,7 +41,7 @@ const Scholarship = () => {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="mt-10"
         >
-          <h3 className="text-xl md:text-2xl font-bold text-center text-gray-800 border-b-4 border-orange-400 pb-3 shadow-sm md:w-fit mb-1">
+          <h3 className="text-xl md:text-2xl font-bold text-center text-gray-800 border-b-4 border-orange-400 pb-3 shadow-sm w-fit mb-1">
           Scholarship Opportunities
         </h3>
 
