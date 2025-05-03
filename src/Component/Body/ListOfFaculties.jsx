@@ -15,7 +15,10 @@ export default function ListOfFaculties() {
       .get("https://dseu-backend.onrender.com/api/v1/departmentSchools")
       .then((response) => {
         if (response.data?.data?.departmentSchools) {
-          setDepartments(response.data.data.departmentSchools);
+          const sortedDepartments = response.data.data.departmentSchools.sort((a, b) =>
+            a.name.localeCompare(b.name)
+          );
+          setDepartments(sortedDepartments);
         } else {
           console.error("Unexpected API response format:", response.data);
           setError("Unexpected data format");
