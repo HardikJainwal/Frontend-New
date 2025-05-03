@@ -1,8 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ChevronRight } from "lucide-react"; // Changed from ArrowRightCircle
+import { ChevronRight } from "lucide-react"; 
 import HeadingText from "../Reusable/HeadingText";
 import { eocData } from "../../constants/EOC.JS";
+
 
 const EqualOpportunity = () => {
   return (
@@ -52,6 +53,7 @@ const EqualOpportunity = () => {
             </li>
           ))}
         </motion.ul>
+
 
         <motion.p
           initial={{ opacity: 0, y: 30 }}
