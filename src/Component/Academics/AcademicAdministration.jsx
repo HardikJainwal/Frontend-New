@@ -1,5 +1,5 @@
 import React from 'react';
-import flowchart from "../../assets/FLOWCHART.png";
+import flowchart from "../../assets/flowchartfinal.png";
 
 export const AcademicAdministration = () => {
   return (
@@ -7,7 +7,7 @@ export const AcademicAdministration = () => {
       <img
         src={flowchart}
         alt="Flowchart"
-        className="w-full max-w-xl h-auto object-contain  -mt-14"
+        className="w-full max-w-2xl h-auto object-contain  -mt-14"
       />
     </div>
   );

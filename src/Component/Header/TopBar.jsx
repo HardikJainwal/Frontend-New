@@ -21,49 +21,57 @@ const TopBar = () => {
 
   return (
     <>
-      <div className="flex flex-row justify-end my-2 md:my-4 md:mr-16 items-center text-[0.6rem] md:text-md">
+      <div className="flex flex-row justify-center md:justify-end my-2 md:my-4 md:mr-16 items-center text-[0.55rem] md:text-md space-x-0.5 md:space-x-1 px-2 md:px-0">
         <Link
           to="/tenders"
-          className="border-blue-500 border-l-2 px-1 md:px-4 hover:underline hover:text-[#1b1b1b] whitespace-nowrap text-[0.6rem] md:text-[1rem]"
+          className="relative px-0.5 md:px-1 py-1 text-[0.55rem] md:text-[1rem] text-white transition-transform duration-300 group whitespace-nowrap"
         >
-          Tenders
+          <span className="bg-blue-600 px-1 md:px-3 py-1.5 rounded-md group-hover:bg-blue-500 group-hover:scale-105 transition-all duration-300">Tenders</span>
+          <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-[#0073e6] to-[#005bb5] group-hover:w-[80%] group-hover:left-[10%] transition-all duration-300"></span>
         </Link>
 
         <Link
           to="/admin-login"
-          className="border-blue-500 border-l-2 px-1 md:px-4 hover:underline hover:text-[#1b1b1b] whitespace-nowrap text-[0.6rem] md:text-[1rem]"
+          className="relative px-0.5 md:px-1 py-1 text-[0.55rem] md:text-[1rem] text-white transition-transform duration-300 group whitespace-nowrap"
         >
-          Admin Login
+          <span className="bg-blue-600 px-1 md:px-3 py-1.5 rounded-md group-hover:bg-blue-500 group-hover:scale-105 transition-all duration-300">Admin Login</span>
+          <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-[#0073e6] to-[#005bb5] group-hover:w-[80%] group-hover:left-[10%] transition-all duration-300"></span>
         </Link>
 
         <div
           onClick={openModal}
-          className="relative group border-blue-500 border-l-2 border-r-2 px-1 md:px-4 hover:underline hover:text-[#1b1b1b] cursor-pointer whitespace-nowrap text-[0.6rem] md:text-[1rem]"
+          className="relative px-0.5 md:px-1 py-1 text-[0.55rem] md:text-[1rem] text-white transition-transform duration-300 group cursor-pointer whitespace-nowrap"
         >
-          Faculty Login
+          <span className="bg-blue-600 px-1 md:px-3 py-1.5 rounded-md group-hover:bg-blue-500 group-hover:scale-105 transition-all duration-300">Faculty Login</span>
+          <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-[#0073e6] to-[#005bb5] group-hover:w-[80%] group-hover:left-[10%] transition-all duration-300"></span>
         </div>
 
         <a
           href={studentLoginSamarth}
           target="_blank"
           rel="noopener noreferrer"
-          className="border-blue-500 border-r-2 px-1 md:px-4 hover:underline hover:text-[#1b1b1b] whitespace-nowrap text-[0.6rem] md:text-[1rem]"
+          className="relative px-0.5 md:px-1 py-1 text-[0.55rem] md:text-[1rem] text-white transition-transform duration-300 group whitespace-nowrap"
         >
-          Student Login
+          <span className="bg-blue-600 px-1 md:px-3 py-1.5 rounded-md group-hover:bg-blue-500 group-hover:scale-105 transition-all duration-300">Student Login</span>
+          <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-[#0073e6] to-[#005bb5] group-hover:w-[80%] group-hover:left-[10%] transition-all duration-300"></span>
         </a>
 
         <Link
           to="/grievance-form"
-          className="border-l-2 px-1 md:px-4 hover:underline hover:text-[#1b1b1b] whitespace-nowrap text-[0.6rem] md:text-[1rem]"
+          className="relative px-0.5 md:px-1 py-1 text-[0.55rem] md:text-[1rem] text-white transition-transform duration-300 group whitespace-nowrap"
         >
-          Grievance form <span className="hidden md:inline">& RTI</span>
+          <span className="bg-blue-600 px-1 md:px-3 py-1.5 rounded-md group-hover:bg-blue-500 group-hover:scale-105 transition-all duration-300">
+            Grievance form <span className="hidden md:inline">& RTI</span>
+          </span>
+          <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-[#0073e6] to-[#005bb5] group-hover:w-[80%] group-hover:left-[10%] transition-all duration-300"></span>
         </Link>
 
         <Link
-          to="alumni"
-          className="px-1 border-blue-500 border-l-2 md:px-4 hover:underline hover:text-[#1b1b1b] whitespace-nowrap text-[0.6rem] md:text-[1rem]"
+          to="/alumni"
+          className="relative px-0.5 md:px-1 py-1 text-[0.55rem] md:text-[1rem] text-white transition-transform duration-300 group whitespace-nowrap"
         >
-          Alumni
+          <span className="bg-blue-600 px-1 md:px-3 py-1.5 rounded-md group-hover:bg-blue-500 group-hover:scale-105 transition-all duration-300">Alumni</span>
+          <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-[#0073e6] to-[#005bb5] group-hover:w-[80%] group-hover:left-[10%] transition-all duration-300"></span>
         </Link>
       </div>
 
