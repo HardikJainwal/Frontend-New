@@ -1,637 +1,322 @@
-// import React, { useState, useEffect } from 'react';
-// import { ChevronDown, Search, X } from 'lucide-react';
-// import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown, Search } from "lucide-react";
+import SearchModal from "./SearchModal";
+import { searchItems } from "./SearchItems";
 
-// const navItems = [
-//     {
-//         name: 'Home',
-//         path: '/',
-//         isHome: true,
-//       },
-//       {
-//         name: 'About Us',
-//         path: '/about-us',
-//         dropdownItems: [
-//           {
-//             name: 'DSEU Memoir',
-//             path: '/about-us/DSEU-Memoir',
-//             dropdownItems: [
-//               { name: 'Convocation', path: '/about-us/DSEU-Memoir/Convocation' },
-//               { name: 'Former VCs', path: '/about-us/DSEU-Memoir/Former-VCs' },
-//             ],
-//           },
-//           {
-//             name: 'University Calendar',
-//             path: '/about-us/University-Calendar',
-//           },
-//           // {
-//           //   name: 'VC Message and Videos',
-//           //   path: '/about-us/VC-Message-and-Videos',
-//           // },
-//           {
-//             name: 'Vision and Mission',
-//             path: '/about-us/Vision-and-Mission',
-//           },
-//           {
-//             name: 'Annual Report',
-//             path: '/about-us/Annual-Report',
-//             dropdownItems: [
-//               { name: 'Year-wise', path: '/about-us/Annual-Report/Year-wise' },
-//             ],
-//           },
-//           {
-//             name: 'Governing Bodies',
-//             path: '/about-us/Governing-Bodies',
-//           },
-//           {
-//             name: 'Handbook (Brochure)',
-//             path: '/about-us/Handbook',
-//           },
-//           {
-//             name: 'About the College',
-//             path: '/about-us/About-the-College',
-//             dropdownItems: [
-//               { name: 'Disabled Friendliness', path: '/about-us/About-the-College/Disabled-Friendliness' },
-//               { name: 'Green Policy', path: '/about-us/About-the-College/Green-Policy' },
-//               { name: 'E-Governance', path: '/about-us/About-the-College/E-Governance' },
-//             ],
-//           },
-//           {
-//             name: 'Policy',
-//             path: '/about-us/Policy',
-//           },
-//         ],
-//       },
-//       {
-//         name: 'Academics',
-//         path: '/academics',
-//         dropdownItems: [
-//           { name: 'Programs', path: '/academics/programs' },
-//           { name: 'Departments', path: '/academics/departments' },
-//           { name: 'Faculty', path: '/academics/faculty' },
-//         ],
-//       },
-//       {
-//         name: 'Campuses',
-//         path: '/campus',
-//         dropdownItems: [
-//           { name: 'North', path: '/campus/north' },
-//           { name: 'South', path: '/campus/south' },
-//           { name: 'East', path: '/campus/east' },
-//           { name: 'West', path: '/campus/west' },
-//         ],
-//       },
-//       {
-//         name: 'Courses',
-//         path: '/courses',
-//         dropdownItems: [
-//           { name: 'Under Graduate', path: '/Courses/UG' },
-//           { name: 'Post Graduate', path: '/Courses/PG' },
-//           { name: 'Diploma', path: '/Courses/Diploma' },
-//         ],
-//       },
-    
-//       {
-//         name: 'Admission',
-//         path: '/admission',
-//         dropdownItems: [
-//           { name: 'Facilities', path: '/admission/facilities' },
-//           { name: 'Partners', path: '/admission/partners' },
-//           { name: 'Events', path: '/admission/events' },
-//         ],
-//       },
-//       {
-//         name: 'Administration',
-//         path: '/administration',
-//         dropdownItems: [
-//           { name: 'Administrative', path: '/administration/administrative' },
-//           { name: 'Events', path: '/administration/events' },
-//           { name: 'Calendar', path: '/administration/calendar' },
-//         ],
-//       },
-//       {
-//         name: 'Amenities',
-//         path: '/amenities',
-//         dropdownItems: [
-//           { name: 'Awards', path: '/amenities/awards' },
-//           { name: 'Honors', path: '/amenities/honors' },
-//           { name: 'Rankings', path: '/amenities/rankings' },
-//         ],
-//       },
-//       {
-//         name: 'Alumni',
-//         path: '/alumni',
-//       },
-//       {
-//         name: 'Entrepreneurship',
-//         path: '/entrepreneurship',
-//         dropdownItems: [
-//           { name: 'About', path: '/entrepreneurship/about' },
-//           { name: 'Leadership', path: '/entrepreneurship/leadership' },
-//           { name: 'Contact', path: '/entrepreneurship/contact' },
-//         ],
-//       },
-// ];
+const navItems = [
+  {
+    name: "Home",
+    path: "/",
+    isHome: true,
+  },
+  {
+    name: "About Us",
+    dropdownItems: [
+      { name: "About the University", path: "/about-us/About-the-University" },
+      { name: "Vision and Mission", path: "/about-us/Vision-and-Mission" },
+      { name: "History of DSEU", path: "/about-us/history" },
+      {
+        name: "Annual Report",
+        path: "/about-us/annualReport",
+      },
+    ],
+  },
+  {
+    name: "Academics",
+    dropdownItems: [
+      { name: "Faculties & Department", path: "/academics/faculty" },
+      {
+        name: "Academic Administration",
+        path: "/academics/academicAdministration",
+      },
+      { name: "Academic Regulations", path: "/academics/regulations" },
+      { name: "Academic Calendar", path: "/academics/academic-calendar" },
+      { name: "Academic Collaboration", path: "/academics/collaboration" },
+      {
+        name: "Internal Quality Assurance Cell (IQAC)",
+        path: "/academics/IQAC",
+      },
+      { name: "Library", path: "/amenities/Library" },
+    ],
+  },
+  {
+    name: "Campuses",
+    dropdownItems: [
+      { name: "Central", path: "/campus/zone/central zone" },
+      { name: "North", path: "/campus/zone/north zone" },
+      { name: "South", path: "/campus/zone/south zone" },
+      { name: "East", path: "/campus/zone/east zone" },
+      { name: "West", path: "/campus/zone/west zone" },
+    ],
+  },
+  {
+    name: "Admission",
+    dropdownItems: [
+      {
+        name: "Admission Portal",
+        path: "/",
+      },
+      {
+        name: "Information Bulletin",
+        path: "",
+      },
+      {
+        name: "Process and guidelines",
+        path: "/admission/process-and-guidelines",
+      },
+      {
+        name: "Fee Refund Policy",
+        path: "/admission/refund-policy",
+      },
+    ],
+  },
+  {
+    name: "Administration",
+    dropdownItems: [
+      {
+        name: "Administrative Offices",
+        path: "/administration/administrative",
+      },
+      { name: "Chancellor", path: "/administration/chancellor" },
+      { name: "Vice Chancellor", path: "/administration/vice-chancellor" },
+      { name: "Registrar", path: "/registrar" },
+      { name: "Controller of Finance", path: "/administration/cof" },
+      { name: "Controller of Examination", path: "/administration/coe" },
+    ],
+  },
+  {
+    name: "Student Life",
+    dropdownItems: [
+      { name: "NCC/NSS", path: "/ncc" },
+      { name: "Sports", path: "/amenities/Sports" },
+      { name: "Scholarship", path: "/amenities/Scholarship" },
+      { name: "Internal Complaint Committee", path: "/amenities/ICC" },
+      { name: "Anti-Ragging Cell", path: "amenities/Anti-Ragging" },
+      { name: "Equal Opportunity Cell", path: "/amenities/Equal-Opportunity" },
+    ],
+  },
+  {
+    name: "T & P Cell",
+    path: "/placement",
+  },
+  {
+    name: "Work with us",
+    dropdownItems: [
+      { name: "Job Portal", path: "/recruitment" },
+      { name: "Recruitment Rules", path: "/recruitment-rules" },
+    ],
+  },
+  {
+    name: "Entrepreneurship",
+    path: "/Entrepreneurship",
+  },
+];
 
-// const SearchModal = ({ isOpen, onClose }) => {
-//   const [searchQuery, setSearchQuery] = useState('');
+const DesktopNavBar = ({ setIsSearchOpen }) => {
+  const [openDropdown, setOpenDropdown] = useState(null);
+  const [openNestedDropdown, setOpenNestedDropdown] = useState(null);
 
-//   useEffect(() => {
-//     if (isOpen) {
-//       document.body.style.overflow = 'hidden';
-//     }
-//     return () => {
-//       document.body.style.overflow = 'unset';
-//     };
-//   }, [isOpen]);
+  const handleItemHover = (itemName) => {
+    setOpenDropdown(itemName);
+    if (itemName === null) {
+      setOpenNestedDropdown(null);
+    }
+  };
 
-//   if (!isOpen) return null;
+  const handleNestedHover = (itemName) => {
+    setOpenNestedDropdown(itemName);
+  };
 
-//   return (
-//     <div className="fixed inset-0 z-50">
-//       <div
-//         className="absolute inset-0 bg-white/80 backdrop-blur-sm"
-//         onClick={onClose}
-//       />
-//       <div className="relative w-full max-w-4xl mx-auto mt-20">
-//         <div className="bg-white rounded-2xl shadow-2xl">
-//           <div className="flex items-center p-4 border-b">
-//             <Search className="w-6 h-6 text-gray-400" />
-//             <input
-//               type="text"
-//               placeholder="Search for anything..."
-//               className="flex-1 px-4 py-2 text-lg focus:outline-none"
-//               value={searchQuery}
-//               onChange={(e) => setSearchQuery(e.target.value)}
-//               autoFocus
-//             />
-//             <button
-//               onClick={onClose}
-//               className="p-2 hover:bg-gray-100 rounded-full"
-//             >
-//               <X className="w-6 w-6 text-gray-500" />
-//             </button>
-//           </div>
-//           {searchQuery && (
-//             <div className="p-4">
-//               <h3 className="text-sm font-medium text-gray-500">
-//                 Search Results
-//               </h3>
-//               <div className="mt-2">
-//                 <div className="p-3 hover:bg-gray-50 rounded-lg cursor-pointer">
-//                   <h4 className="font-medium">Sample Result 1</h4>
-//                 </div>
-//               </div>
-//             </div>
-//           )}
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
+  const dropdownVariants = {
+    hidden: { opacity: 0, y: -5, height: 0 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      height: "auto",
+      transition: {
+        duration: 0.2,
+        staggerChildren: 0.05,
+      },
+    },
+    exit: {
+      opacity: 0,
+      y: -5,
+      height: 0,
+      transition: { duration: 0.15 },
+    },
+  };
 
-// const BottomNavbar = () => {
-//   const [openDropdown, setOpenDropdown] = useState(null);
-//   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-//   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const itemVariants = {
+    hidden: { opacity: 0, x: -10 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.2 },
+    },
+  };
 
-//   return (
-//     <div className="bg-blue-100 shadow-lg shadow-blue-500/50 rounded-3xl w-[96%] mx-auto mb-5">
-//       <nav className="w-full max-w-7xl mx-auto relative">
-//         <div className="relative h-16 px-6">
-//           {/* Desktop Navigation */}
-//           <div className="hidden lg:flex justify-between items-center h-full">
-//             <div className="flex items-center space-x-8">
-//               {navItems.map((item) => (
-//                 <div
-//                   key={item.name}
-//                   className="relative group"
-//                   onMouseEnter={() => setOpenDropdown(item.name)}
-//                   onMouseLeave={() => setOpenDropdown(null)}
-//                 >
-//                   <Link
-//                     to={item.path}
-//                     className="group inline-flex items-center text-sm font-medium text-[#005CB9]"
-//                   >
-//                     {item.name}
-//                     {item.dropdownItems && (
-//                       <ChevronDown className="ml-0.5 h-3 w-3" />
-//                     )}
-//                   </Link>
-//                   {item.dropdownItems && openDropdown === item.name && (
-//                     <div className="absolute top-full left-0 bg-white shadow-lg rounded-md py-2 min-w-[180px] z-50">
-//                       {item.dropdownItems.map((subItem) => (
-//                         <Link
-//                           key={subItem.name}
-//                           to={subItem.path}
-//                           className="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100"
-//                         >
-//                           {subItem.name}
-//                         </Link>
-//                       ))}
-//                     </div>
-//                   )}
-//                 </div>
-//               ))}
-//             </div>
-//             <button
-//               onClick={() => setIsSearchOpen(true)}
-//               className="text-[#005CB9] hover:text-blue-900 p-2"
-//             >
-//               <Search className="h-5 w-5" />
-//             </button>
-//           </div>
+  return (
+    <div className="hidden md:block bg-gradient-to-r from-blue-50 to-blue-100 shadow-lg shadow-blue-500/30 rounded-3xl w-[96%] mx-auto my-4 sticky top-0 z-50">
+      <nav className="max-w-7xl mx-auto">
+        <div className="flex justify-between items-center h-16">
+          <div className="flex items-center space-x-5">
+            {navItems.map((item) => (
+              <div
+                key={item.name}
+                className="relative group"
+                onMouseEnter={() => handleItemHover(item.name)}
+                onMouseLeave={() => handleItemHover(null)}
+              >
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                >
+                  <Link
+                    to={item.path || "#"}
+                    className="group inline-flex items-center text-base font-medium text-[#005CB9] hover:text-blue-800 whitespace-nowrap relative lg:px-1 py-1"
+                  >
+                    {item.name}
+                    {item.dropdownItems && (
+                      <ChevronDown
+                        className={`ml-0.5 h-3 w-3 transition-transform duration-300 ${
+                          openDropdown === item.name ? "rotate-180" : ""
+                        }`}
+                      />
+                    )}
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-500 group-hover:w-full transition-all duration-300"></span>
+                  </Link>
+                </motion.div>
 
-//           {/* Mobile Menu */}
-//           {isMobileMenuOpen && (
-//             <div className="fixed inset-0 top-24 bg-white z-50 lg:hidden overflow-y-auto">
-//               <div className="flex flex-col p-6 space-y-4">
-//                 {navItems.map((item) => (
-//                   <div key={item.name} className="flex flex-col">
-//                     <Link
-//                       to={item.path}
-//                       className="text-sm font-medium text-gray-800"
-//                       onClick={() => setIsMobileMenuOpen(false)}
-//                     >
-//                       {item.name}
-//                     </Link>
-//                     {item.dropdownItems && (
-//                       <div className="ml-4 mt-2 space-y-2">
-//                         {item.dropdownItems.map((subItem) => (
-//                           <Link
-//                             key={subItem.name}
-//                             to={subItem.path}
-//                             className="text-sm text-gray-600"
-//                             onClick={() => setIsMobileMenuOpen(false)}
-//                           >
-//                             {subItem.name}
-//                           </Link>
-//                         ))}
-//                       </div>
-//                     )}
-//                   </div>
-//                 ))}
-//                 <button
-//                   onClick={() => {
-//                     setIsSearchOpen(true);
-//                     setIsMobileMenuOpen(false);
-//                   }}
-//                   className="flex items-center text-sm text-gray-800"
-//                 >
-//                   <Search className="h-5 w-5 mr-2" />
-//                   Search
-//                 </button>
-//               </div>
-//             </div>
-//           )}
-//         </div>
-//       </nav>
-//       <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
-//     </div>
-//   );
-// };
+                <AnimatePresence>
+                  {item.dropdownItems && openDropdown === item.name && (
+                    <motion.div
+                      variants={dropdownVariants}
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                      className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 bg-white rounded-lg shadow-xl min-w-[240px] z-50 overflow-hidden backdrop-blur-sm bg-white/90"
+                    >
+                      <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-3 rounded-t-lg relative overflow-hidden">
+                        <div className="absolute inset-0 bg-blue-600 opacity-20">
+                          <div
+                            className="w-full h-full"
+                            style={{
+                              backgroundImage:
+                                "radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px)",
+                              backgroundSize: "15px 15px",
+                            }}
+                          ></div>
+                        </div>
+                        <h3 className="text-center font-semibold relative z-10">
+                          {item.name}
+                        </h3>
+                      </div>
 
-// export default BottomNavbar;
+                      <div className="p-2">
+                        {item.dropdownItems.map((subItem, idx) => (
+                          <motion.div
+                            key={subItem.name}
+                            variants={itemVariants}
+                            className="relative group/item"
+                            onMouseEnter={() => handleNestedHover(subItem.name)}
+                            onMouseLeave={() =>
+                              subItem.dropdownItems
+                                ? null
+                                : handleNestedHover(null)
+                            }
+                          >
+                            <Link
+                              to={subItem.path || "#"}
+                              className="block px-4 py-3 my-1 text-gray-700 hover:text-blue-700 rounded-md transition-all duration-200 hover:bg-blue-50 relative overflow-hidden group-hover/item:pl-6"
+                            >
+                              <span className="absolute left-0 top-0 h-full w-1 bg-blue-500 transform -translate-x-full group-hover/item:translate-x-0 transition-transform duration-200"></span>
+                              <span className="flex items-center justify-between">
+                                <span>{subItem.name}</span>
+                                {subItem.dropdownItems && (
+                                  <ChevronDown
+                                    className={`inline-block ml-2 h-4 w-4 transition-transform duration-300 ${
+                                      openNestedDropdown === subItem.name
+                                        ? "rotate-180"
+                                        : "rotate-270"
+                                    }`}
+                                  />
+                                )}
+                              </span>
+                            </Link>
 
+                            <AnimatePresence>
+                              {subItem.dropdownItems &&
+                                openNestedDropdown === subItem.name && (
+                                  <motion.div
+                                    initial={{ opacity: 0, x: 20, width: 0 }}
+                                    animate={{
+                                      opacity: 1,
+                                      x: 0,
+                                      width: "auto",
+                                    }}
+                                    exit={{ opacity: 0, x: 20, width: 0 }}
+                                    transition={{ duration: 0.2 }}
+                                    className="absolute left-full top-0 mt-0 bg-white/95 backdrop-blur-sm shadow-lg rounded-lg min-w-[220px] overflow-hidden"
+                                    style={{
+                                      boxShadow:
+                                        "0 10px 25px -5px rgba(59, 130, 246, 0.5)",
+                                      transform: "translateX(0)",
+                                      left: "100%",
+                                      zIndex: 60,
+                                    }}
+                                  >
+                                    <div className="bg-gradient-to-r from-blue-500 to-blue-700 text-white p-2 rounded-t-lg">
+                                      <h4 className="text-center font-medium text-sm">
+                                        {subItem.name}
+                                      </h4>
+                                    </div>
 
+                                    <div className="p-2">
+                                      {subItem.dropdownItems.map(
+                                        (nestedItem, idx) => (
+                                          <motion.div
+                                            key={nestedItem.name}
+                                            initial={{ opacity: 0, y: 10 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            transition={{ delay: idx * 0.05 }}
+                                          >
+                                            <Link
+                                              to={nestedItem.path}
+                                              className="block px-4 py-2 text-gray-700 hover:text-blue-600 rounded-md hover:bg-blue-50 transition-all duration-200 my-1 border-l-2 border-transparent hover:border-blue-400"
+                                            >
+                                              {nestedItem.name}
+                                            </Link>
+                                          </motion.div>
+                                        )
+                                      )}
+                                    </div>
+                                  </motion.div>
+                                )}
+                            </AnimatePresence>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            ))}
+          </div>
 
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setIsSearchOpen(true)}
+            className="text-[#005CB9] hover:text-blue-900 rounded-full hover:bg-blue-100 transition-colors duration-300 lg:pl-10"
+          >
+            <Search className="h-5 w-5" />
+          </motion.button>
+        </div>
+      </nav>
+    </div>
+  );
+};
 
-
-
-
-
-
-
-
-// import React, { useState } from 'react';
-// import { Link } from 'react-router-dom';
-// import { Search, Menu, ChevronDown, X } from 'lucide-react';
-// import { FaMapMarkerAlt } from 'react-icons/fa';
-// import Vector from '../../assets/DSEULogo/Vector.svg'
-
-// const navItems = [
-//   {
-//       name: 'Home',
-//       path: '/',
-//       isHome: true,
-//     },
-//     {
-//       name: 'About Us',
-//       path: '/about-us',
-//       dropdownItems: [
-//         {
-//           name: 'DSEU Memoir',
-//           path: '/about-us/DSEU-Memoir',
-//           dropdownItems: [
-//             { name: 'Convocation', path: '/about-us/DSEU-Memoir/Convocation' },
-//             { name: 'Former VCs', path: '/about-us/DSEU-Memoir/Former-VCs' },
-//           ],
-//         },
-//         {
-//           name: 'University Calendar',
-//           path: '/about-us/University-Calendar',
-//         },
-//         // {
-//         //   name: 'VC Message and Videos',
-//         //   path: '/about-us/VC-Message-and-Videos',
-//         // },
-//         {
-//           name: 'Vision and Mission',
-//           path: '/about-us/Vision-and-Mission',
-//         },
-//         {
-//           name: 'Annual Report',
-//           path: '/about-us/Annual-Report',
-//           dropdownItems: [
-//             { name: 'Year-wise', path: '/about-us/Annual-Report/Year-wise' },
-//           ],
-//         },
-//         {
-//           name: 'Governing Bodies',
-//           path: '/about-us/Governing-Bodies',
-//         },
-//         {
-//           name: 'Handbook (Brochure)',
-//           path: '/about-us/Handbook',
-//         },
-//         {
-//           name: 'About the College',
-//           path: '/about-us/About-the-College',
-//           dropdownItems: [
-//             { name: 'Disabled Friendliness', path: '/about-us/About-the-College/Disabled-Friendliness' },
-//             { name: 'Green Policy', path: '/about-us/About-the-College/Green-Policy' },
-//             { name: 'E-Governance', path: '/about-us/About-the-College/E-Governance' },
-//           ],
-//         },
-//         {
-//           name: 'Policy',
-//           path: '/about-us/Policy',
-//         },
-//       ],
-//     },
-//     {
-//       name: 'Academics',
-//       path: '/academics',
-//       dropdownItems: [
-//         { name: 'Programs', path: '/academics/programs' },
-//         { name: 'Departments', path: '/academics/departments' },
-//         { name: 'Faculty', path: '/academics/faculty' },
-//       ],
-//     },
-//     {
-//       name: 'Campuses',
-//       path: '/campus',
-//       dropdownItems: [
-//         { name: 'North', path: '/campus/north' },
-//         { name: 'South', path: '/campus/south' },
-//         { name: 'East', path: '/campus/east' },
-//         { name: 'West', path: '/campus/west' },
-//       ],
-//     },
-//     {
-//       name: 'Courses',
-//       path: '/courses',
-//       dropdownItems: [
-//         { name: 'Under Graduate', path: '/Courses/UG' },
-//         { name: 'Post Graduate', path: '/Courses/PG' },
-//         { name: 'Diploma', path: '/Courses/Diploma' },
-//       ],
-//     },
-  
-//     {
-//       name: 'Admission',
-//       path: '/admission',
-//       dropdownItems: [
-//         { name: 'Facilities', path: '/admission/facilities' },
-//         { name: 'Partners', path: '/admission/partners' },
-//         { name: 'Events', path: '/admission/events' },
-//       ],
-//     },
-//     {
-//       name: 'Administration',
-//       path: '/administration',
-//       dropdownItems: [
-//         { name: 'Administrative', path: '/administration/administrative' },
-//         { name: 'Events', path: '/administration/events' },
-//         { name: 'Calendar', path: '/administration/calendar' },
-//       ],
-//     },
-//     {
-//       name: 'Amenities',
-//       path: '/amenities',
-//       dropdownItems: [
-//         { name: 'Awards', path: '/amenities/awards' },
-//         { name: 'Honors', path: '/amenities/honors' },
-//         { name: 'Rankings', path: '/amenities/rankings' },
-//       ],
-//     },
-//     {
-//       name: 'Alumni',
-//       path: '/alumni',
-//     },
-//     {
-//       name: 'Entrepreneurship',
-//       path: '/entrepreneurship',
-//       dropdownItems: [
-//         { name: 'About', path: '/entrepreneurship/about' },
-//         { name: 'Leadership', path: '/entrepreneurship/leadership' },
-//         { name: 'Contact', path: '/entrepreneurship/contact' },
-//       ],
-//     },
-// ];
-
-// const SearchModal = ({ isOpen, onClose }) => {
-//   const [searchQuery, setSearchQuery] = useState('');
-
-//   if (!isOpen) return null;
-
-//   return (
-//     <div className="fixed inset-0 z-50">
-//       <div className="absolute inset-0 bg-white/80 backdrop-blur-sm" onClick={onClose} />
-//       <div className="relative w-full max-w-4xl mx-auto mt-20">
-//         <div className="bg-white rounded-2xl shadow-2xl">
-//           <div className="flex items-center p-4 border-b">
-//             <Search className="w-6 h-6 text-gray-400" />
-//             <input
-//               type="text"
-//               placeholder="Search for anything..."
-//               className="flex-1 px-4 py-2 text-lg focus:outline-none"
-//               value={searchQuery}
-//               onChange={(e) => setSearchQuery(e.target.value)}
-//               autoFocus
-//             />
-//             <button onClick={onClose} className="p-2 hover:bg-gray-100 rounded-full">
-//               <X className="w-6 h-6 text-gray-500" />
-//             </button>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// const ResponsiveHeader = () => {
-//   const [openDropdown, setOpenDropdown] = useState(null);
-//   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-//   const [isSearchOpen, setIsSearchOpen] = useState(false);
-//   const [mobileExpandedItems, setMobileExpandedItems] = useState([]);
-
-//   const toggleMobileItem = (itemName) => {
-//     setMobileExpandedItems(prev => 
-//       prev.includes(itemName) 
-//         ? prev.filter(item => item !== itemName)
-//         : [...prev, itemName]
-//     );
-//   };
-
-//   return (
-//     <div className="w-full">
-//       {/* Top Header - Desktop Only */}
-//       <div className="hidden md:block bg-white py-4">
-//         <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
-//           <div className="flex items-center space-x-3">
-//             <Link to="/" className="flex-shrink-0">
-//             <img src={Vector} alt="DSEU Logo" className="h-16" />
-
-//             </Link>
-//             <div className="text-blue-900">
-//               <div className="text-xl font-semibold">दिल्ली कौशल एवं</div>
-//               <div className="text-xl font-semibold">उद्यमिता विश्वविद्यालय</div>
-//               <div className="text-orange-500 font-medium">राष्ट्रीय राजधानी क्षेत्र दिल्ली सरकार</div>
-//             </div>
-//           </div>
-
-//           <div className="flex items-center space-x-2">
-//             <FaMapMarkerAlt className="text-4xl text-orange-500" />
-//             <div>
-//               <div className="font-medium">Delhi Skill and Entrepreneurship University</div>
-//               <div className="text-gray-600">Sector-9, Dwarka, New Delhi-110077</div>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-
-//       {/* Mobile Header */}
-//       <div className="md:hidden bg-white shadow-md rounded-b-3xl">
-//         <div className="px-4 py-3 flex justify-between items-center">
-//           <Link to="/" className="flex items-center space-x-2">
-//             <img src="/dseu-logo.png" alt="DSEU Logo" className="h-12" />
-//             <div>
-//               <div className="text-sm font-semibold text-blue-900">दिल्ली कौशल एवं</div>
-//               <div className="text-sm font-semibold text-blue-900">उद्यमिता विश्वविद्यालय</div>
-//               <div className="text-xs text-orange-500">राष्ट्रीय राजधानी क्षेत्र दिल्ली सरकार</div>
-//             </div>
-//           </Link>
-
-//           <div className="flex items-center space-x-4">
-//             <button onClick={() => setIsSearchOpen(true)} className="text-blue-600">
-//               <Search className="h-6 w-6" />
-//             </button>
-//             <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-blue-600">
-//               <Menu className="h-6 w-6" />
-//             </button>
-//           </div>
-//         </div>
-//       </div>
-
-//       {/* Navigation Bar - Desktop */}
-//       <div className="hidden md:block">
-//         <div className="bg-blue-100 shadow-lg shadow-blue-500/50 rounded-3xl w-[96%] mx-auto my-4">
-//           <nav className="max-w-7xl mx-auto px-6">
-//             <div className="flex justify-between items-center h-16">
-//               <div className="flex items-center space-x-8">
-//                 {navItems.map((item) => (
-//                   <div
-//                     key={item.name}
-//                     className="relative group"
-//                     onMouseEnter={() => setOpenDropdown(item.name)}
-//                     onMouseLeave={() => setOpenDropdown(null)}
-//                   >
-//                     <Link
-//                       to={item.path}
-//                       className="group inline-flex items-center text-sm font-medium text-[#005CB9]"
-//                     >
-//                       {item.name}
-//                       {item.dropdownItems && (
-//                         <ChevronDown className="ml-0.5 h-3 w-3" />
-//                       )}
-//                     </Link>
-//                     {item.dropdownItems && openDropdown === item.name && (
-//                       <div className="absolute top-full left-0 bg-white shadow-lg rounded-md py-2 min-w-[180px] z-50">
-//                         {item.dropdownItems.map((subItem) => (
-//                           <Link
-//                             key={subItem.name}
-//                             to={subItem.path}
-//                             className="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100"
-//                           >
-//                             {subItem.name}
-//                           </Link>
-//                         ))}
-//                       </div>
-//                     )}
-//                   </div>
-//                 ))}
-//               </div>
-//               <button onClick={() => setIsSearchOpen(true)} className="text-[#005CB9] hover:text-blue-900 p-2">
-//                 <Search className="h-5 w-5" />
-//               </button>
-//             </div>
-//           </nav>
-//         </div>
-//       </div>
-
-//       {/* Mobile Menu */}
-//       {isMobileMenuOpen && (
-//         <div className="fixed inset-0 z-50 bg-white">
-//           <div className="pt-20 px-6">
-//             <div className="flex flex-col space-y-4">
-//               {navItems.map((item) => (
-//                 <div key={item.name} className="flex flex-col">
-//                   <div className="flex items-center justify-between">
-//                     <Link
-//                       to={item.path}
-//                       className="text-blue-600 text-lg"
-//                       onClick={() => !item.dropdownItems && setIsMobileMenuOpen(false)}
-//                     >
-//                       {item.name}
-//                     </Link>
-//                     {item.dropdownItems && (
-//                       <button
-//                         onClick={() => toggleMobileItem(item.name)}
-//                         className="p-2"
-//                       >
-//                         <ChevronDown
-//                           className={`w-5 h-5 transform transition-transform ${
-//                             mobileExpandedItems.includes(item.name) ? 'rotate-180' : ''
-//                           }`}
-//                         />
-//                       </button>
-//                     )}
-//                   </div>
-//                   {item.dropdownItems && mobileExpandedItems.includes(item.name) && (
-//                     <div className="ml-4 mt-2 space-y-2">
-//                       {item.dropdownItems.map((subItem) => (
-//                         <Link
-//                           key={subItem.name}
-//                           to={subItem.path}
-//                           className="block text-gray-600 py-2"
-//                           onClick={() => setIsMobileMenuOpen(false)}
-//                         >
-//                           {subItem.name}
-//                         </Link>
-//                       ))}
-//                     </div>
-//                   )}
-//                 </div>
-//               ))}
-//             </div>
-//           </div>
-//         </div>
-//       )}
-
-//       <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
-//     </div>
-//   );
-// };
-
-// export default ResponsiveHeader;
+export default DesktopNavBar;
