@@ -16,8 +16,6 @@ import Carousel10 from "../../assets/alumni/Carousel10.jpeg"
 import Carousel11 from "../../assets/alumni/Carousel11.jpeg"
 import Carousel12 from "../../assets/alumni/Carousel12.jpeg"
 
-
-
 import {
   placementStats,
   Diploma,
@@ -26,7 +24,7 @@ import {
   UG,
 } from "../../constants/PLACEMENT.JS";
 
-// Import or define the ImageCarousel component
+// Responsive Image Carousel component
 const ImageCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   
@@ -46,16 +44,45 @@ const ImageCarousel = () => {
     { id: 12, src: Carousel12, alt: "Carousel Image 12" },
   ];
 
+  // State to track viewport width
+  const [slidesPerView, setSlidesPerView] = useState(4);
+  
+  // Update slides per view based on screen size
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 640) {
+        setSlidesPerView(1); // Mobile: 1 slide
+      } else if (window.innerWidth < 768) {
+        setSlidesPerView(2); // Small tablets: 2 slides
+      } else if (window.innerWidth < 1024) {
+        setSlidesPerView(3); // Tablets: 3 slides
+      } else {
+        setSlidesPerView(4); // Desktop: 4 slides
+      }
+    };
+    
+    // Set initial value
+    handleResize();
+    
+    // Add resize listener
+    window.addEventListener('resize', handleResize);
+    
+    // Cleanup
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   // Auto slide every 3 seconds
   useEffect(() => {
+    const maxIndex = images.length - slidesPerView;
+    
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => 
-        prevIndex + 1 >= images.length - 3 ? 0 : prevIndex + 1
+        prevIndex >= maxIndex ? 0 : prevIndex + 1
       );
     }, 3000);
     
     return () => clearInterval(interval);
-  }, [images.length]);
+  }, [images.length, slidesPerView]);
 
   // Manual navigation
   const goToSlide = (index) => {
@@ -63,20 +90,25 @@ const ImageCarousel = () => {
   };
 
   const nextSlide = () => {
+    const maxIndex = images.length - slidesPerView;
     setCurrentIndex((prevIndex) => 
-      prevIndex + 1 >= images.length - 3 ? 0 : prevIndex + 1
+      prevIndex >= maxIndex ? 0 : prevIndex + 1
     );
   };
 
   const prevSlide = () => {
+    const maxIndex = images.length - slidesPerView;
     setCurrentIndex((prevIndex) => 
-      prevIndex - 1 < 0 ? images.length - 4 : prevIndex - 1
+      prevIndex <= 0 ? maxIndex : prevIndex - 1
     );
   };
 
+  // Calculate width percentage based on slides per view
+  const slideWidth = 100 / slidesPerView;
+
   return (
-    <div className="w-full my-10 mt-10">
-      <h2 className="text-3xl font-bold text-center mb-6 mt-10">Our Alumni Success</h2>
+    <div className="w-full my-10 mt-10 px-4 md:px-0">
+      <h2 className="text-2xl md:text-3xl font-bold text-center mb-6 mt-10">Our Alumni Success</h2>
       
       {/* Carousel container */}
       <div className="relative w-full">
@@ -84,49 +116,56 @@ const ImageCarousel = () => {
         <div className="overflow-hidden relative">
           <div 
             className="flex transition-transform duration-500 ease-in-out"
-            style={{ transform: `translateX(-${currentIndex * 25}%)` }}
+            style={{ transform: `translateX(-${currentIndex * slideWidth}%)` }}
           >
             {images.map((image) => (
-              <div key={image.id} className="w-1/4 flex-shrink-0 px-2">
+              <div 
+                key={image.id} 
+                className="flex-shrink-0 px-1 md:px-2"
+                style={{ width: `${slideWidth}%` }}
+              >
                 <img 
                   src={image.src} 
                   alt={image.alt}
-                  className="w-full h-64 object-cover rounded-lg shadow-md" 
+                  className="w-full h-48 sm:h-56 md:h-64 object-cover rounded-lg shadow-md" 
                 />
               </div>
             ))}
           </div>
         </div>
         
-        {/* Navigation buttons */}
+        {/* Navigation buttons - hidden on smaller screens */}
         <button 
           onClick={prevSlide}
-          className="absolute left-0 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full shadow-md text-blue-600 hover:bg-white"
+          className="absolute left-0 top-1/2 -translate-y-1/2 bg-white/80 p-1 md:p-2 rounded-full shadow-md text-blue-600 hover:bg-white"
+          aria-label="Previous slide"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
         </button>
         
         <button 
           onClick={nextSlide}
-          className="absolute right-0 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full shadow-md text-blue-600 hover:bg-white"
+          className="absolute right-0 top-1/2 -translate-y-1/2 bg-white/80 p-1 md:p-2 rounded-full shadow-md text-blue-600 hover:bg-white"
+          aria-label="Next slide"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
         </button>
       </div>
       
-      {/* Indicators */}
-      <div className="flex justify-center mt-4 space-x-2">
-        {Array.from({ length: images.length - 3 }).map((_, index) => (
+      {/* Indicators - responsive sizing */}
+      <div className="flex justify-center mt-4 space-x-1 md:space-x-2">
+        {Array.from({ length: Math.max(1, images.length - slidesPerView + 1) }).map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`w-3 h-3 rounded-full ${
+            className={`w-2 h-2 md:w-3 md:h-3 rounded-full ${
               currentIndex === index ? "bg-blue-600" : "bg-gray-300"
             }`}
+            aria-label={`Go to slide ${index + 1}`}
           />
         ))}
       </div>
