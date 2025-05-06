@@ -98,7 +98,7 @@ const CampusPage = () => {
 
       <div className="flex flex-col lg:flex-row gap-6">
         {/* Tabs */}
-        <div className="w-full lg:w-64 shrink-0 md:sticky top-24 self-start">
+        <div className="w-full lg:w-64 shrink-0 lg:sticky top-24 self-start">
           <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
             {Object.entries(content).map(([key, { title }]) => (
               <button
