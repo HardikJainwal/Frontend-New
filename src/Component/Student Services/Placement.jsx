@@ -193,10 +193,9 @@ const Placement = () => {
       {/* Placement Policy Section */}
       <div className="mb-12">
         <div className="flex flex-col">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-800">
+          <h2 className="text-xl md:text-2xl font-bold text-center text-gray-800 border-b-4 border-orange-400 pb-3 shadow-sm w-fit mb-2">
             Placement Policy
           </h2>
-          <div className="w-16 h-1 bg-orange-500 mt-2"></div>
         </div>
         <div className="mt-4">
           <p className="text-gray-600 leading-relaxed text-justify mb-4">
