@@ -1,19 +1,21 @@
 import TopStories from './TopStories';
 import ProgramEvents from './ProgramEvents';
-import bannerImage from "../../assets/Image8.png"; 
+import bannerImage from "../../assets/pic1.jpg";
 import alumni from '../../assets/alumni/alumni.png';
 
 const AlumniSection = () => {
   return (
     <>
-      <div
-        className="relative bg-cover bg-center h-[70vh] flex flex-col justify-center items-center text-white text-center p-4"
-        style={{ backgroundImage: `url(${bannerImage})` }}
-      >
-        <h1 className="text-6xl font-bold mb-2 tracking-wide uppercase">Welcome Home!</h1>
-        <p className="text-2xl font-bold">Strengthening Our Alumni Legacy</p>
+      <div className="relative bg-cover bg-center h-[70vh] flex flex-col justify-center items-center text-white text-center p-4" style={{ backgroundImage: `url(${bannerImage})` }}>
+       
+        <div className="absolute inset-0 bg-black bg-opacity-50 z-0"></div>
+
+     
+        <h1 className="relative z-10 text-6xl font-bold mb-2 tracking-wide uppercase">Welcome Home!</h1>
+        <p className="relative z-10 text-2xl font-bold">Strengthening Our Alumni Legacy</p>
       </div>
-  
+
+
       <section className="flex flex-col lg:flex-row items-center justify-between p-10 pb-16 bg-gray-50 flex-wrap">
         <div className="flex-1 min-w-[300px] ml-24 mb-8 lg:mb-0">
           <h2 className="text-5xl font-bold text-[#003e70] mb-8">Strengthening Our Alumni Legacy</h2>
