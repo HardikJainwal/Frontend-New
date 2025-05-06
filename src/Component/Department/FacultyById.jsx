@@ -1,16 +1,17 @@
 import { useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useParams, useNavigate } from "react-router-dom";
-import { User, FileText, LogOut } from "lucide-react";
+import { User, FileText, LogOut, ChevronLeft } from "lucide-react";
+
+import { getFacultyById } from "../../utils/apiservice";
+import { addResearch } from "../../utils/facultyApi";
 
 import TabBtn from "../Reusable/TabBtn";
 import FacultyInfoLoading from "../ShimmerUI/FacultyInfoLoading";
-import { getFacultyById } from "../../utils/apiservice";
 import EditOverviewModal from "./Modals/EditOverviewModal";
 import AddResearchModal from "./Modals/AddResearchModal";
 import ResearchTab from "./Tabs/ResearchTab";
 import PublicationsTab from "./Tabs/PublicationsTab";
-import { addResearch } from "../../utils/facultyApi";
 
 const FacultyById = () => {
   const queryClient = useQueryClient();
@@ -18,7 +19,11 @@ const FacultyById = () => {
   const loggedEmail = sessionStorage.getItem("email");
   const { id } = useParams();
 
-  const { data: faculty, isLoading, error } = useQuery({
+  const {
+    data: faculty,
+    isLoading,
+    error,
+  } = useQuery({
     queryKey: ["getFacultyById", id],
     queryFn: () => getFacultyById(id),
     enabled: !!id,
@@ -76,6 +81,15 @@ const FacultyById = () => {
 
   return (
     <div className="p-3 md:p-4 lg:p-6 md:mx-20 mt-10 mb-16">
+      <button
+        onClick={() => navigate(-1)}
+        className="ml-3 mb-4 px-4 py-2 bg-blue-500 text-gray-100 rounded transition-colors text-sm flex flex-row items-center justify-center hover:text-blue-500 hover:bg-gray-100 hover:shadow-sm hover:shadow-blue-400
+        hover:scale-[1.01]"
+      >
+        <ChevronLeft />
+         Back
+      </button>
+
       <div className="flex flex-col md:flex-row gap-10">
         <div className="flex flex-col items-center md:items-start gap-4 md:min-w-[300px] sm:min-w-[250px]">
           <h2 className="text-2xl font-bold block md:hidden">

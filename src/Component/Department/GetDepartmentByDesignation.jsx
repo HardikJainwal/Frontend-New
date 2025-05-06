@@ -1,6 +1,6 @@
 // get faculty by department
 
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const GetDepartmentByDesignation = ({ faculty, designation, facultyType }) => {
   const navigate = useNavigate();
@@ -19,17 +19,19 @@ const GetDepartmentByDesignation = ({ faculty, designation, facultyType }) => {
 
   if (!filteredFaculty || totalFaculty === 0) {
     return (
-      <div className="text-center text-gray-500 py-6">No data available.</div>
+      <div className="text-center text-gray-500 py-6">
+        {designation} from {facultyType} not avaliable.
+      </div>
     );
   }
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {filteredFaculty.map((person) => (
-        <div
+        <Link
           key={person._id}
+          to={`/faculty/${person._id}`}
           className="bg-gray-50 p-4 py-6 rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg hover:scale-[1.01] hover:cursor-pointer hover:shadow-blue-300 transition duration-300"
-          onClick={() => navigate(`/faculty/${person?._id}`, "_blank")}
         >
           <img
             src={person.photo}
@@ -47,7 +49,7 @@ const GetDepartmentByDesignation = ({ faculty, designation, facultyType }) => {
               {person.email}
             </div>
           </div>
-        </div>
+        </Link>
       ))}
     </div>
   );
