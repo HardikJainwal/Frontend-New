@@ -108,7 +108,7 @@ const CarouselSection = () => {
       </div>
 
       {/* Mobile Carousel */}
-      <div className="block md:hidden px-4">
+      <div className="block md:hidden px-7">
         <Slider {...mobileSettings}>
           {campuses.map((campus) => (
             <div key={campus._id} className="px-2">
