@@ -14,9 +14,12 @@ const AnnouncementStrip = () => {
 
   useEffect(() => {
     if (data) {
-      setAnnouncements(data.data.notices);
+      if (data.data && Array.isArray(data.data.notices)) {
+        setAnnouncements(data.data.notices);
+      } else {
+        setAnnouncements([]);
+      }
     }
-    console.log(data);
   }, [data]);
 
   if (isLoading) {
@@ -30,9 +33,8 @@ const AnnouncementStrip = () => {
       </div>
     );
   }
-  
 
-  if (!announcements) {
+  if (!announcements || announcements.length === 0) {
     return <p>No announcements as of now.</p>;
   }
 
@@ -80,18 +82,16 @@ const style = `
     animation: marquee 35s linear infinite;
   }
 
-  /* Pause animation on hover */
   .animate-marquee:hover {
     animation-play-state: paused;
   }
 
-  /* New badge styles with color animation */
   @keyframes newBadgeColorChange {
-    0% { color: #ff6347; } /* Tomato */
-    25% { color: #ffa500; } /* Orange */
-    50% { color: #32cd32; } /* Lime Green */
-    75% { color: #1e90ff; } /* Dodger Blue */
-    100% { color: #ff6347; } /* Tomato */
+    0% { color: #ff6347; }
+    25% { color: #ffa500; }
+    50% { color: #32cd32; }
+    75% { color: #1e90ff; }
+    100% { color: #ff6347; }
   }
 
   .new-badge {
