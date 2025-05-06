@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 
-import loginimage from "../../assets/Image8.png";
+import loginimage from "../../assets/pic5.jpg";
 import LoginSuccessPopup from "./SucessPopUp";
 import { login } from "../../utils/apiservice";
 import { getFacutlyByEmail } from "../../utils/facultyApi";

@@ -42,7 +42,7 @@ const HistoryDSEU = () => {
           </li>
         </ul>
 
-        <p className="text-gray-600 mb-4">
+        <p className="text-gray-600 mb-5">
           The posts of these institutes were also transferred to DSEU. Further,
           the teaching and technical staff serving at these institutes were put
           on Deemed Deputation (Foreign service). The right to use premises and
@@ -55,7 +55,7 @@ const HistoryDSEU = () => {
         </p>
 
         {/* Concept Section */}
-        <h2 className="text-2xl font-semibold mt-6 mb-4">Concept of DSEU</h2>
+        <h2 className="text-xl md:text-2xl font-bold text-center text-gray-800 border-b-4 border-orange-400 pb-3 shadow-sm w-fit mb-4">Concept of DSEU</h2>
         <p className="text-gray-600 mb-4">
           Delhi Skill and Entrepreneurship University (DSEU) is a landmark
           initiative by the Government of the National Capital Territory (NCT)
