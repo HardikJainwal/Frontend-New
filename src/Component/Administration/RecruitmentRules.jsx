@@ -35,8 +35,7 @@ const RecruitmentRules = () => {
     if (currentRole === "Admin" && token) {
       setIsAdmin(true);
     }
-    console.log(rules);
-  }, [currentRole, token, rules]);
+  }, [currentRole, token]);
 
   const handleArchivedButton = (e) => {
     e.preventDefault();

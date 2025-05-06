@@ -118,7 +118,7 @@ const CampusPage = () => {
 
         {/* Tab content */}
         <div className="flex-1">
-          <div className="p-6 text-gray-700 leading-relaxed">
+          <div className="p-6 text-gray-700 leading-relaxed text-justify">
             {content[activeTab].content}
           </div>
         </div>

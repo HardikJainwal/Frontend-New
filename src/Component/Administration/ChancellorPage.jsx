@@ -19,7 +19,7 @@ const ChancellorPage = () => {
             <p className="text-blue-600 font-medium mt-1">
               Hon'ble Chancellor & Lt. Governor
             </p>
-            <p className="mt-4 text-gray-700 text-sm md:text-base leading-relaxed">
+            <p className="mt-4 text-gray-700 text-sm md:text-base leading-relaxed text-justify">
               Shri Vinai Kumar Saxena took over as the 22nd Hon'ble Lt.
               Governor, Government of N.C.T. of Delhi. He has served as Chairman
               of Khadi and Village Industries Commission, an Organization under
