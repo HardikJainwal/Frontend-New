@@ -48,24 +48,21 @@ const FacultyByDepartment = ({ deptId }) => {
     return <HodInfoLoading />;
   }
 
-  const importantIds = [
-    "67fcb6a3594afd76950ae3a0",
-    "67fcb6a3594afd76950ae422",
-  ];
+  const importantIds = ["67fcb6a3594afd76950ae3a0", "67fcb6a3594afd76950ae422"];
   const modifiedFaculty = movePeopleToFront(faculty, importantIds);
 
   return (
     <div className="md:px-6 py-4 w-full flex flex-col">
-
       <div className="flex justify-center mb-4">
         <div className="bg-gray-100 p-1 rounded-full flex shadow-md">
           {primaryCategories.map((category) => (
             <button
               key={category}
-              className={`px-5 py-2 text-sm font-medium rounded-full transition-all duration-300 ${activePrimary === category
+              className={`px-5 py-2 text-sm font-medium rounded-full transition-all duration-300 ${
+                activePrimary === category
                   ? "bg-blue-600 text-white shadow-md scale-105"
                   : "bg-transparent text-gray-700 hover:bg-gray-200"
-                }`}
+              }`}
               onClick={() => setActivePrimary(category)}
             >
               {category}
@@ -74,16 +71,16 @@ const FacultyByDepartment = ({ deptId }) => {
         </div>
       </div>
 
-
       <div className="flex justify-center mb-6">
         <div className="md:bg-gray-100 p-1 rounded-full flex flex-wrap gap-1 md:gap-2 md:shadow-md">
           {subCategories.map((category) => (
             <button
               key={category}
-              className={`px-[0.3rem] md:px-4 py-2 text-xs md:text-sm font-medium md:rounded-full rounded-lg transition-all duration-300 ${activeSub === category
+              className={`px-[0.3rem] md:px-4 py-2 text-xs md:text-sm font-medium md:rounded-full rounded-lg transition-all duration-300 ${
+                activeSub === category
                   ? "bg-orange-500 text-white shadow-md scale-105"
                   : "bg-transparent text-gray-700 hover:bg-gray-200"
-                }`}
+              }`}
               onClick={() => setActiveSub(category)}
             >
               {category}
@@ -92,17 +89,17 @@ const FacultyByDepartment = ({ deptId }) => {
         </div>
       </div>
 
-
       <div className="space-y-3 flex flex-col gap-2">
         {activeSub === "HOD" ? (
-          hod ? (
-            hod.faculty_type?.toLowerCase() === activePrimary.toLowerCase() ? (
-              <HodData hod={hod} />
-            ) : (
-              "Data not found."
-            )
+          hod &&
+          hod.faculty_type?.toLowerCase() === activePrimary.toLowerCase() ? (
+            <HodData hod={hod} />
           ) : (
-            "Data not found."
+            <p className="text-center text-gray-500 py-6">
+              {activePrimary === "DSEU"
+                ? "No HOD from DSEU found for this department."
+                : "Data not available as of now."}
+            </p>
           )
         ) : (
           <GetDepartmentByDesignation
@@ -111,7 +108,6 @@ const FacultyByDepartment = ({ deptId }) => {
             facultyType={activePrimary}
           />
         )}
-
       </div>
     </div>
   );

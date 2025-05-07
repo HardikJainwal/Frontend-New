@@ -1,11 +1,18 @@
 import { useEffect, useState } from "react";
 import { useNoticesBySection } from "../../hooks/useNoticesBySection";
-import OrangeLoader from "../PageLoader/OrangeLoader";
+import StatutoryBodiesLoading from "../ShimmerUI/StatutoryBodiesLoading";
+import { Plus } from "lucide-react";
+import UploadModal from "../Admin/UploadModal";
 
 const StatutoryBodiesComponent = () => {
   const [activeMainTab, setActiveMainTab] = useState("university court");
   const [activeSectionTab, setActiveSectionTab] = useState("members");
   const [pdfs, setPdfs] = useState([]);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
+  const currentRole = sessionStorage.getItem("currentRole");
+  const token = sessionStorage.getItem("token");
 
   const sectionToFetch =
     activeSectionTab === "members" ? `member ${activeMainTab}` : activeMainTab;
@@ -16,6 +23,12 @@ const StatutoryBodiesComponent = () => {
     "academic council": "Academic Council",
     "finance comittee": "Finance Committee",
   };
+
+  useEffect(() => {
+    if (currentRole === "Admin" && token) {
+      setIsAdmin(true);
+    }
+  }, [currentRole, token]);
 
   const { data, isLoading, error } = useNoticesBySection(
     sectionToFetch,
@@ -32,7 +45,9 @@ const StatutoryBodiesComponent = () => {
     }
   }, [data]);
 
-  if (isLoading) return <OrangeLoader />;
+  if (isLoading) {
+    return <StatutoryBodiesLoading />;
+  }
 
   if (error)
     return (
@@ -67,31 +82,45 @@ const StatutoryBodiesComponent = () => {
       </div>
 
       {/* SUB TABS: Members | Minutes */}
-      <div className="flex justify-center mb-6 border-b text-lg">
-        <button
-          className={`px-6 py-3 font-medium ${
-            activeSectionTab === "members"
-              ? "border-b-2 border-blue-700 text-blue-900"
-              : "text-gray-500"
-          }`}
-          onClick={() => setActiveSectionTab("members")}
-        >
-          Members
-        </button>
-        <button
-          className={`px-6 py-3 font-medium ${
-            activeSectionTab === "minutes"
-              ? "border-b-2 border-blue-700 text-blue-900"
-              : "text-gray-500"
-          }`}
-          onClick={() => setActiveSectionTab("minutes")}
-        >
-          Minutes of Meeting
-        </button>
+      <div className="md:relative mb-6 border-b text-lg flex flex-col">
+        <div className="flex justify-center">
+          <button
+            className={`px-6 py-3 font-medium ${
+              activeSectionTab === "members"
+                ? "border-b-2 border-blue-700 text-blue-900"
+                : "text-gray-500"
+            }`}
+            onClick={() => setActiveSectionTab("members")}
+          >
+            Members
+          </button>
+          <button
+            className={`px-6 py-3 font-medium ${
+              activeSectionTab === "minutes"
+                ? "border-b-2 border-blue-700 text-blue-900"
+                : "text-gray-500"
+            }`}
+            onClick={() => setActiveSectionTab("minutes")}
+          >
+            Minutes of Meeting
+          </button>
+        </div>
+
+        {isAdmin && (
+          <div
+            onClick={() => setShowModal(true)}
+            className="md:absolute right-0 top-[-10%] my-3 mx-auto
+          "
+          >
+            <button className="flex flex-row items-center gap-1 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">
+              Upload <Plus size={18} />
+            </button>
+          </div>
+        )}
       </div>
 
       {/* PDF LISTING */}
-      <div className="bg-white rounded-lg shadow-sm mt-2">
+      <div className="bg-white rounded-lg shadow-sm mt-2 max-h-[400px] overflow-y-auto">
         {pdfs.length > 0 ? (
           <div className="space-y-4">
             {pdfs.map((file) => (
@@ -121,6 +150,15 @@ const StatutoryBodiesComponent = () => {
           </div>
         )}
       </div>
+
+      {showModal && (
+        <UploadModal
+          title={sectionToFetch.toLocaleUpperCase()}
+          onClose={() => setShowModal(false)}
+          section={sectionToFetch}
+          setShowModal={setShowModal}
+        />
+      )}
     </div>
   );
 };

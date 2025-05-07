@@ -1,11 +1,10 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import withAuthProtection from "./withAuthProtection";
 import { uploadPdf } from "../../utils/apiservice";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { DesktopNav, MobileNav, navTabs as tabs } from "./AdminNavBar";
-import { configs } from "@eslint/js";
 import { SESSION_EXPIRE } from "../../constants/LOCALES.JS";
 
 const AdminDashboard = () => {
@@ -24,6 +23,14 @@ const AdminDashboard = () => {
 
   const queryClient = useQueryClient();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (file && file.size > 50 * 1024 * 1024) {
+      toast.error("File size cannot exceed 50 MB.");
+      fileInputRef.current.value = "";
+      setFile(null);
+    }
+  }, [file]);
 
   const urlPattern =
     /^(https?:\/\/)?([a-z0-9]+[.])+(com|org|net|gov|edu|io)(\/[a-z0-9#]+\/?)*$/i;
@@ -102,7 +109,7 @@ const AdminDashboard = () => {
       const data = response?.data || response;
       queryClient.invalidateQueries({ queryKey: ["notices", data.section] });
       queryClient.invalidateQueries({ queryKey: ["notices", section] });
-      fileInputRef.current.value = "";     // clearing file name
+      fileInputRef.current.value = ""; // clearing file name
       setName("");
       setSection("");
       setFile(null);
@@ -212,7 +219,7 @@ const AdminDashboard = () => {
             <input
               type="file"
               accept=".pdf"
-              ref={fileInputRef} 
+              ref={fileInputRef}
               onChange={(e) => {
                 const selectedFile = e.target.files[0];
                 if (selectedFile && selectedFile.type === "application/pdf") {

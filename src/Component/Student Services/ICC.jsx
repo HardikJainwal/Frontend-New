@@ -43,7 +43,7 @@ const ICC = () => {
               key={index}
               className="flex items-start gap-3 list-none text-justify p-4 bg-white rounded-2xl shadow-md"
             >
-              
+              {/* Modern styled arrow indicator */}
               <div className="flex-shrink-0 h-6 w-6 mt-1 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center text-white shadow-md">
                 <ChevronRight className="w-4 h-4" />
               </div>

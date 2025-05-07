@@ -23,7 +23,7 @@ const EmployeeForm = () => {
     if (type === "file") {
       setFormData((prevState) => ({
         ...prevState,
-        [name]: files[0], // Store the first selected file
+        [name]: files[0],
       }));
     } else {
       setFormData((prevState) => ({
@@ -31,6 +31,22 @@ const EmployeeForm = () => {
         [name]: value,
       }));
     }
+  };
+
+  const handleReset = () => {
+    setFormData({
+      fullName: "",
+      email: "",
+      mobile: "",
+      employeeId: "",
+      department: "",
+      designation: "",
+      campus: "",
+      grievanceCategory: "",
+      grievanceDescription: "",
+      uploadDocument: "",
+      documentFile: null,
+    });
   };
 
   const handleSubmit = (e) => {
@@ -46,21 +62,20 @@ const EmployeeForm = () => {
   };
 
   return (
-    <div className="lg:mx-[20vh] sm:mx-[20px] mx-[4vh]">
-      <div className="bg-blue-600 text-white text-center p-4 text-2xl font-bold mb-6 rounded">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="bg-blue-600 text-white text-center p-4 text-2xl font-bold mb-8 rounded-lg shadow-md">
         Employee Grievance Form
       </div>
 
-      <form onSubmit={handleSubmit}>
-  
-        <div className="bg-blue-100 p-3 mb-6 rounded">
-          <h2 className="text-lg font-semibold">Personal Details</h2>
+      <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md">
+        {/* Personal Details Section */}
+        <div className="bg-blue-100 p-4 mb-6 rounded-lg">
+          <h2 className="text-lg font-semibold text-blue-800">Personal Details</h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-        
-          <div className="col-span-1">
-            <label className="block mb-1">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+          <div className="space-y-2">
+            <label className="block text-sm font-medium text-gray-700">
               Full Name <span className="text-red-500">*</span>
             </label>
             <input
@@ -69,21 +84,20 @@ const EmployeeForm = () => {
               value={formData.fullName}
               onChange={handleChange}
               placeholder="Enter Full Name"
-              className="w-full p-2 border rounded"
+              className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               required
             />
           </div>
 
-   
-          <div className="col-span-1">
-            <label className="block mb-1">
+          <div className="space-y-2">
+            <label className="block text-sm font-medium text-gray-700">
               Designation <span className="text-red-500">*</span>
             </label>
             <select
               name="designation"
               value={formData.designation}
               onChange={handleChange}
-              className="w-full p-2 border rounded"
+              className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               required
             >
               <option value="">--select--</option>
@@ -95,9 +109,8 @@ const EmployeeForm = () => {
             </select>
           </div>
 
-     
-          <div className="col-span-1">
-            <label className="block mb-1">
+          <div className="space-y-2">
+            <label className="block text-sm font-medium text-gray-700">
               E-mail ID <span className="text-red-500">*</span>
             </label>
             <input
@@ -106,13 +119,13 @@ const EmployeeForm = () => {
               value={formData.email}
               onChange={handleChange}
               placeholder="Enter your active Email-ID"
-              className="w-full p-2 border rounded"
+              className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               required
             />
           </div>
 
-          <div className="col-span-1">
-            <label className="block mb-1">
+          <div className="space-y-2">
+            <label className="block text-sm font-medium text-gray-700">
               Mobile No. <span className="text-red-500">*</span>
             </label>
             <input
@@ -121,14 +134,13 @@ const EmployeeForm = () => {
               value={formData.mobile}
               onChange={handleChange}
               placeholder="Enter your 10 digit number"
-              className="w-full p-2 border rounded"
+              className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               required
             />
           </div>
 
-
-          <div className="col-span-1">
-            <label className="block mb-1">
+          <div className="space-y-2">
+            <label className="block text-sm font-medium text-gray-700">
               Employee ID <span className="text-red-500">*</span>
             </label>
             <input
@@ -137,21 +149,20 @@ const EmployeeForm = () => {
               value={formData.employeeId}
               onChange={handleChange}
               placeholder="Enter your Employee ID"
-              className="w-full p-2 border rounded"
+              className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               required
             />
           </div>
 
- 
-          <div className="col-span-1">
-            <label className="block mb-1">
+          <div className="space-y-2">
+            <label className="block text-sm font-medium text-gray-700">
               Department <span className="text-red-500">*</span>
             </label>
             <select
               name="department"
               value={formData.department}
               onChange={handleChange}
-              className="w-full p-2 border rounded"
+              className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               required
             >
               <option value="">--select--</option>
@@ -163,16 +174,15 @@ const EmployeeForm = () => {
             </select>
           </div>
 
-
-          <div className="col-span-1">
-            <label className="block mb-1">
+          <div className="space-y-2">
+            <label className="block text-sm font-medium text-gray-700">
               Campus <span className="text-red-500">*</span>
             </label>
             <select
               name="campus"
               value={formData.campus}
               onChange={handleChange}
-              className="w-full p-2 border rounded"
+              className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               required
             >
               <option value="">--select--</option>
@@ -189,22 +199,21 @@ const EmployeeForm = () => {
           </div>
         </div>
 
-  
-        <div className="bg-blue-100 p-3 mb-6 rounded">
-          <h2 className="text-lg font-semibold">Grievance Details</h2>
+        {/* Grievance Details Section */}
+        <div className="bg-blue-100 p-4 mb-6 rounded-lg">
+          <h2 className="text-lg font-semibold text-blue-800">Grievance Details</h2>
         </div>
 
-        <div className="mb-6">
-     
-          <div className="mb-4">
-            <label className="block mb-1">
+        <div className="space-y-6 mb-6">
+          <div className="space-y-2">
+            <label className="block text-sm font-medium text-gray-700">
               Grievance Category <span className="text-red-500">*</span>
             </label>
             <select
               name="grievanceCategory"
               value={formData.grievanceCategory}
               onChange={handleChange}
-              className="w-full p-2 border rounded"
+              className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               required
             >
               <option value="">--select--</option>
@@ -217,9 +226,8 @@ const EmployeeForm = () => {
             </select>
           </div>
 
-   
-          <div className="mb-4">
-            <label className="block mb-1">
+          <div className="space-y-2">
+            <label className="block text-sm font-medium text-gray-700">
               Grievance Description (maximum 150 words) <span className="text-red-500">*</span>
             </label>
             <textarea
@@ -227,22 +235,22 @@ const EmployeeForm = () => {
               value={formData.grievanceDescription}
               onChange={handleChange}
               placeholder="Write in brief of your grievance."
-              className="w-full p-2 border rounded h-32"
+              className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 h-32"
               maxLength="150"
               required
             ></textarea>
+            <p className="text-xs text-gray-500">Maximum 150 characters</p>
           </div>
 
-      
-          <div className="mb-4">
-            <label className="block mb-1">
+          <div className="space-y-2">
+            <label className="block text-sm font-medium text-gray-700">
               Want to Upload Document? <span className="text-red-500">*</span>
             </label>
             <select
               name="uploadDocument"
               value={formData.uploadDocument}
               onChange={handleChange}
-              className="w-full p-2 border rounded"
+              className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               required
             >
               <option value="">--select--</option>
@@ -252,47 +260,33 @@ const EmployeeForm = () => {
           </div>
 
           {formData.uploadDocument === "yes" && (
-            <div className="mb-4">
-              <label className="block mb-1">
+            <div className="space-y-2">
+              <label className="block text-sm font-medium text-gray-700">
                 Upload Document <span className="text-red-500">*</span>
               </label>
               <input
                 type="file"
                 name="documentFile"
                 onChange={handleChange}
-                className="w-full p-2 border rounded"
+                className="w-full p-2 border border-gray-300 rounded-md file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
                 required
               />
             </div>
           )}
         </div>
 
- 
-        <div className="flex justify-center space-x-4">
+        {/* Form Buttons */}
+        <div className="flex justify-center space-x-4 mt-8">
           <button
             type="submit"
-            className="bg-green-600 hover:bg-green-700 text-white py-2 px-6 rounded"
+            className="bg-green-600 hover:bg-green-700 text-white py-2 px-6 rounded-md shadow-sm transition duration-200 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
           >
             Submit
           </button>
           <button
-            type="reset"
-            className="bg-red-600 hover:bg-red-700 text-white py-2 px-6 rounded"
-            onClick={() => {
-              setFormData({
-                fullName: "",
-                email: "",
-                mobile: "",
-                employeeId: "",
-                department: "",
-                designation: "",
-                campus: "",
-                grievanceCategory: "",
-                grievanceDescription: "",
-                uploadDocument: "",
-                documentFile: null,
-              });
-            }}
+            type="button"
+            onClick={handleReset}
+            className="bg-red-600 hover:bg-red-700 text-white py-2 px-6 rounded-md shadow-sm transition duration-200 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
           >
             Reset
           </button>
