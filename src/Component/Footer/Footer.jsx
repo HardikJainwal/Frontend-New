@@ -1,15 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   faPhone,
   faEnvelope,
   faGlobe,
   faMapMarkerAlt,
 } from "@fortawesome/free-solid-svg-icons";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PopUpModal from "./PopUpModal";
 import dseulogo from "../../assets/dseulogofullnew.svg";
-
 import {
   locationLink,
   socialLinks,
@@ -19,28 +17,54 @@ import {
 
 const Footer = () => {
   const [showModal, setShowModal] = useState(false);
+  const [visitorCount, setVisitorCount] = useState(0);
+
+  // Simulate fetching or incrementing visitor count with animation
+  useEffect(() => {
+    const storedCount = localStorage.getItem("visitorCount") || 0;
+    const newCount = parseInt(storedCount) + 1;
+    localStorage.setItem("visitorCount", newCount);
+
+    // Animate counter
+    let start = 0;
+    const end = newCount;
+    const duration = 2000; // 2 seconds
+    const increment = end / (duration / 50);
+
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= end) {
+        setVisitorCount(end);
+        clearInterval(timer);
+      } else {
+        setVisitorCount(Math.floor(start));
+      }
+    }, 50);
+
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <footer
-      className="bg-white text-black py-8 border-t-4 border-gray-300 shadow-md"
+      className="bg-blue-50 text-black py-12 border-t-2 border-blue-300 shadow-lg"
       style={{ fontFamily: "'Inter', sans-serif" }}
     >
-      <div className="max-w-6xl mx-auto px-4 flex flex-wrap justify-between items-start">
-        <div className="w-full md:w-1/3 text-center md:text-left mb-6 md:mb-0">
+      <div className="max-w-7xl mx-auto px-6 flex flex-wrap justify-between items-start">
+        <div className="w-full md:w-1/3 text-center md:text-left mb-8 md:mb-0">
           <img
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             src={dseulogo}
             alt="DSEU Logo"
-            className="mx-auto md:mx-0 mb-4 w-50 h-20 cursor-pointer"
+            className="mx-auto md:mx-0 mb-6 w-60 h-24 cursor-pointer"
           />
           <p
-            className="text-sm leading-5 my-1 hover:bg-gray-100 p-1 py-2 hover:cursor-pointer hover:rounded-lg transition"
+            className="text-base leading-6 my-2 hover:bg-blue-100 p-2 py-3 hover:cursor-pointer hover:rounded-lg transition"
             onClick={() => window.open(locationLink)}
           >
             <FontAwesomeIcon
               icon={faMapMarkerAlt}
-              className="mr-2"
-              style={{ color: "#005CB9" }}
+              className="mr-3"
+              style={{ color: "#1E40AF", fontSize: "1.25rem" }}
             />
             <span className="text-black">
               Delhi Skill and Entrepreneurship University,
@@ -48,41 +72,41 @@ const Footer = () => {
               Sector-9, Dwarka, New Delhi- 110077
             </span>
           </p>
-          <p className="mt-4 text-sm">
+          <p className="mt-6 text-base">
             <FontAwesomeIcon
               icon={faPhone}
-              className="mr-2"
-              style={{ color: "#005CB9" }}
+              className="mr-3"
+              style={{ color: "#1E40AF", fontSize: "1.25rem" }}
             />
             011-2659-7135
             <br />
             <FontAwesomeIcon
               icon={faEnvelope}
-              className="mr-2"
-              style={{ color: "#005CB9" }}
+              className="mr-3"
+              style={{ color: "#1E40AF", fontSize: "1.25rem" }}
             />
             helpdesk@dseu.ac.in
             <br />
             <FontAwesomeIcon
               icon={faGlobe}
-              className="mr-2"
-              style={{ color: "#005CB9" }}
+              className="mr-3"
+              style={{ color: "#1E40AF", fontSize: "1.25rem" }}
             />
-            <a href="https://www.dseu.ac.in" className="text-blue-400">
+            <a href="https://www.dseu.ac.in" className="text-blue-600">
               www.dseu.ac.in
             </a>
           </p>
         </div>
 
         {/* Quick Links */}
-        <div className="w-full md:w-1/3 mb-6 md:mb-0 md:pl-4">
-          <h3 className="text-lg font-semibold border-b-2 border-orange-400 hover:border-blue-500 inline-block mb-4 transition-colors">
+        <div className="w-full md:w-1/3 mb-8 md:mb-0 md:pl-6">
+          <h3 className="text-xl font-bold border-b-2 border-blue-400 inline-block mb-6">
             Quick Links
           </h3>
-          <ul className="space-y-2">
+          <ul className="space-y-3">
             {quickLinks.map((link, i) => (
               <li key={i}>
-                <a href={link.href} className="hover:text-blue-600">
+                <a href={link.href} className="text-base hover:text-blue-600">
                   {link.name}
                 </a>
               </li>
@@ -91,20 +115,43 @@ const Footer = () => {
         </div>
 
         <div className="w-full md:w-1/3">
-          <h3 className="text-lg font-semibold border-b-2 border-orange-400 inline-block mb-4 hover:border-blue-500">
-            Explore
-          </h3>
-          <ul className="space-y-2">
+          <div className="flex justify-between items-center mb-6">
+            <h3 className="text-xl font-bold border-b-2 border-blue-400 inline-block">
+              Explore
+            </h3>
+            <div className="bg-blue-200 text-black px-6 py-3 rounded-lg shadow-md">
+              <div className="flex items-center space-x-3">
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
+                  ></path>
+                </svg>
+                <span className="font-bold text-lg">
+                  {visitorCount.toLocaleString()} Visitors
+                </span>
+              </div>
+            </div>
+          </div>
+          <ul className="space-y-3">
             {exploreLinks.map((link, i) => (
               <li key={i}>
-                <a href={link.href} className="hover:text-blue-600">
+                <a href={link.href} className="text-base hover:text-blue-600">
                   {link.name}
                 </a>
               </li>
             ))}
             <li className="flex items-center">
-              <span className="hover:text-blue-600 mr-3">Connect with Us</span>
-              <div className="flex space-x-3">
+              <span className="text-base hover:text-blue-600 mr-4">Connect with Us</span>
+              <div className="flex space-x-4">
                 {socialLinks.map((item, i) =>
                   !item.modal ? (
                     <a
@@ -116,7 +163,7 @@ const Footer = () => {
                     >
                       <FontAwesomeIcon
                         icon={item.icon}
-                        style={{ color: item.color, fontSize: "20px" }}
+                        style={{ color: item.color, fontSize: "24px" }}
                       />
                     </a>
                   ) : (
@@ -124,7 +171,7 @@ const Footer = () => {
                       <div onClick={() => setShowModal(true)}>
                         <FontAwesomeIcon
                           icon={item.icon}
-                          style={{ color: item.color, fontSize: "20px" }}
+                          style={{ color: item.color, fontSize: "24px" }}
                         />
                       </div>
                       {showModal && (
