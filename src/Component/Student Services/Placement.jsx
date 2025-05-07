@@ -24,11 +24,11 @@ import {
   UG,
 } from "../../constants/PLACEMENT.JS";
 
-// Responsive Image Carousel component
+
 const ImageCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   
-  // Images array
+
   const images = [
     { id: 1, src: Carousel1, alt: "Carousel Image 1" },
     { id: 2, src: Carousel2, alt: "Carousel Image 2" },
@@ -44,34 +44,34 @@ const ImageCarousel = () => {
     { id: 12, src: Carousel12, alt: "Carousel Image 12" },
   ];
 
-  // State to track viewport width
+
   const [slidesPerView, setSlidesPerView] = useState(4);
   
-  // Update slides per view based on screen size
+
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 640) {
-        setSlidesPerView(1); // Mobile: 1 slide
+        setSlidesPerView(1);
       } else if (window.innerWidth < 768) {
-        setSlidesPerView(2); // Small tablets: 2 slides
+        setSlidesPerView(2); 
       } else if (window.innerWidth < 1024) {
-        setSlidesPerView(3); // Tablets: 3 slides
+        setSlidesPerView(3);
       } else {
-        setSlidesPerView(4); // Desktop: 4 slides
+        setSlidesPerView(4); 
       }
     };
     
-    // Set initial value
+
     handleResize();
     
-    // Add resize listener
+   
     window.addEventListener('resize', handleResize);
     
-    // Cleanup
+   
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Auto slide every 3 seconds
+
   useEffect(() => {
     const maxIndex = images.length - slidesPerView;
     
@@ -84,7 +84,7 @@ const ImageCarousel = () => {
     return () => clearInterval(interval);
   }, [images.length, slidesPerView]);
 
-  // Manual navigation
+  
   const goToSlide = (index) => {
     setCurrentIndex(index);
   };
@@ -103,16 +103,15 @@ const ImageCarousel = () => {
     );
   };
 
-  // Calculate width percentage based on slides per view
   const slideWidth = 100 / slidesPerView;
 
   return (
     <div className="w-full my-10 mt-10 px-4 md:px-0">
       <h2 className="text-2xl md:text-3xl font-bold text-center mb-6 mt-10">Our Alumni Success</h2>
       
-      {/* Carousel container */}
+
       <div className="relative w-full">
-        {/* Main carousel */}
+
         <div className="overflow-hidden relative">
           <div 
             className="flex transition-transform duration-500 ease-in-out"
@@ -133,8 +132,7 @@ const ImageCarousel = () => {
             ))}
           </div>
         </div>
-        
-        {/* Navigation buttons - hidden on smaller screens */}
+
         <button 
           onClick={prevSlide}
           className="absolute left-0 top-1/2 -translate-y-1/2 bg-white/80 p-1 md:p-2 rounded-full shadow-md text-blue-600 hover:bg-white"
@@ -156,7 +154,7 @@ const ImageCarousel = () => {
         </button>
       </div>
       
-      {/* Indicators - responsive sizing */}
+
       <div className="flex justify-center mt-4 space-x-1 md:space-x-2">
         {Array.from({ length: Math.max(1, images.length - slidesPerView + 1) }).map((_, index) => (
           <button
@@ -178,7 +176,7 @@ const Placement = () => {
 
   return (
     <div className="w-4/5 mx-auto my-10 text-gray-800">
-      {/* Invitation Section */}
+
       <div className="mb-12">
         <HeadingText heading={"Invitation"} />
         <div className="mt-4 space-y-4">
@@ -190,7 +188,7 @@ const Placement = () => {
         </div>
       </div>
 
-      {/* Placement Policy Section */}
+
       <div className="mb-12">
         <div className="flex flex-col">
           <h2 className="text-xl md:text-2xl font-bold text-center text-gray-800 border-b-4 border-orange-400 pb-3 shadow-sm w-fit mb-2">
@@ -203,7 +201,7 @@ const Placement = () => {
             ensuring a transparent and fair process. Access the detailed policy document below.
           </p>
           <a
-            href="/Placement%20Policy%20DSEU%202024.pdf"
+            href="/placement/Placement%20Policy%20DSEU%202024.pdf"
             download
             className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors duration-300"
           >
@@ -213,7 +211,7 @@ const Placement = () => {
         </div>
       </div>
 
-      {/* Contact Details Section */}
+
       <div>
         <h2 className="text-2xl md:text-3xl font-bold">Contact Details</h2>
         <div className="flex flex-wrap gap-6 md:mt-6 mt-4">
@@ -249,10 +247,9 @@ const Placement = () => {
           ))}
         </div>
 
-        {/* Alumni Image Carousel */}
+
         <ImageCarousel />
 
-        {/* Placement Statistics Section */}
         <div className="mt-16">
           <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">
             Placement Statistics
@@ -271,7 +268,7 @@ const Placement = () => {
             ))}
           </div>
 
-          {/* Modern Tabs */}
+          
           <div className="mt-10 flex justify-center gap-6">
             {["Diploma", "UG"].map((tab) => (
               <button
@@ -288,7 +285,7 @@ const Placement = () => {
             ))}
           </div>
 
-          {/* Conditionally Rendered Carousels */}
+          
           <div className="mt-8 text-center">
             {activeTab === "Diploma" && (
               <PlacementCarousel heading="Diploma" images={Diploma} />
