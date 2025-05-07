@@ -302,3 +302,27 @@ export const updatePdf = async (id, formData) => {
     throw err;
   }
 };
+
+
+// mannually archive pdf
+export const archivePdf = async (id, archiveState) => {
+  const token = sessionStorage.getItem("token");
+
+  try {
+    const response = await api.patch(
+      `notice/${id}`,
+      { archive: archiveState },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    return response;
+  } catch (err) {
+    console.error(err.response);
+    throw err;
+  }
+};
