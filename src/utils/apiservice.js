@@ -136,9 +136,11 @@ export const getProgramData = async (id) => {
 // programs by level such as pg ug diploma
 export const getProgramsByLevel = async (level) => {
   const allPrograms = await getAllPrograms();
-  return allPrograms.filter(
+  const filteredPrograms = allPrograms.filter(
     (program) => program.programLevel?.toLowerCase() === level.toLowerCase()
   );
+
+  return filteredPrograms.sort((a, b) => a.name.localeCompare(b.name));
 };
 
 
