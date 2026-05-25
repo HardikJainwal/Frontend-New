@@ -1,5 +1,6 @@
 import { lazy } from "react";
 import { Route } from "react-router-dom";
+import ControllerofExamination from "../Component/Examination/ControllerofExamination";
 
 const AdministrationTemp = lazy(() => import("../Component/Administration/page"));
 const ChancellorPage = lazy(() => import("../Component/Administration/ChancellorPage"));
@@ -19,6 +20,15 @@ export const administrationRoutes = (
     <Route path="/administration/chancellor" element={<ChancellorPage />} />
     <Route path="/administration/coe" element={<COE />} />
     <Route path="/administration/cof" element={<COF />} />
+    <Route path="/examination/coe" element={<ControllerofExamination />} />
+
+    <Route path="/examination/controller" element={<UnderConstruction />} />
+    <Route path="/coming-soon" element={<UnderConstruction />} />
+    <Route path="/examination/results/diploma" element={<UnderConstruction />} />
+    <Route path="/examination/results/ug" element={<UnderConstruction />} />
+    <Route path="/examination/results/pg" element={<UnderConstruction />} />
+    <Route path="/examination/results/phd" element={<UnderConstruction />} />
+    
   </>
 );
 

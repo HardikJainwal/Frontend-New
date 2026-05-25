@@ -11,7 +11,10 @@ const EventsAndActivities = lazy(() => import("../Body/StudentEvents"));
 const OurCampuses = lazy(() => import("../Body/OurCampuses"));
 const Socials = lazy(() => import("../Footer/Socials"));
 import StudyProgramsSection from "../Body/StudentProgram";
-import EventModel from "../EventModel/page";
+import EventModel from '../EventModel/page';
+import Diploma from '../EventModel/Diplomaadmission';
+import UgAdmission from "../EventModel/UgAdmission";
+import MergePopup from "../EventModel/MergePopup";
 
 const page = () => {
   return (
@@ -37,6 +40,9 @@ const page = () => {
       <News />
       <EventsAndActivities />
       {/* <EventModel /> */}
+      {/* <Diploma />
+      <UgAdmission /> */}
+      <MergePopup/>
     </>
   );
 };

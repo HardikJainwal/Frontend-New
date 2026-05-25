@@ -110,6 +110,13 @@
                 "supervisor_id": "DSEU/CSE/RS/0006",
                 "slug": "akhileshwar-prasad-agrawal"
             }
+            , {
+                "name": "Dr. Amit Ramesh Khaparde",
+                "designation": "Assistant Professor",
+                "supervisor_id": "DSEU/CSE/RS/0007",
+                "slug": "amit-ramesh-khaparde",
+                "hasData": true
+            }
         ]
     },
     "department_of_computer_science_and_applications": {
@@ -207,7 +214,8 @@
                 "name": "Dr. Pankaj Kumar Singh",
                 "designation": "Campus Director",
                 "supervisor_id": "DSEU/ME/RS/0002",
-                "slug": "pankaj-kumar-singh"
+                "slug": "pankaj-kumar-singh",
+                "hasData": true
             },
             {
                 "name": "Dr. Narayan Agrawal",
@@ -247,7 +255,8 @@
                 "name": "Dr. Anurag Dixit",
                 "designation": "Assistant Professor",
                 "supervisor_id": "DSEU/ME/RS/0008",
-                "slug": "anurag-dixit"
+                "slug": "anurag-dixit",
+                "hasData": true
             },
             {
                 "name": "Dr. Rishu Sharma",
@@ -353,10 +362,11 @@
                 "hasData": true
             },
             {
-                "name": "Dr. A Vamsi",
+                "name": "Dr. Anantabotla Vamsi",
                 "designation": "Assistant Professor",
                 "supervisor_id": "DSEU/AMS/RS/0002",
-                "slug": "a-vamsi"
+                "slug": "anantabotla-vamsi",
+                "hasData": true
             },
             {
                 "name": "Dr. B. Shanmugasundaram",

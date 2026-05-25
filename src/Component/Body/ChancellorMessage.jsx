@@ -1,5 +1,6 @@
 import React from "react";
-import DG from "../../assets/DG.jpg";
+// import DG from "../../assets/DG.jpg";
+import DG from "../../assets/shri_taranjit_singh_sandhu.jpeg";
 
 const ChancellorMessage = () => {
   return (
@@ -22,8 +23,11 @@ const ChancellorMessage = () => {
           />
         </div>
         <div className="text-center md:text-left">
-          <h3 className="text-2xl font-semibold text-gray-900 mb-1">
+          {/* <h3 className="text-2xl font-semibold text-gray-900 mb-1">
             Shri Vinai Kumar Saxena
+          </h3> */}
+          <h3 className="text-2xl font-semibold text-gray-900 mb-1">
+           Shri Taranjit Singh Sandhu
           </h3>
           <p className="text-blue-600 font-medium text-sm">
             Chancellor

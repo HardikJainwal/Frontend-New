@@ -16,6 +16,7 @@ import { aboutRoutes } from "./routes/AboutRoutes.jsx";
 import { admissionRoutes } from "./routes/AdmissionRoutes.jsx";
 import { miscRoutes } from "./routes/MiscRoutes.jsx";
 import { workWithUsRoutes } from "./routes/WorkWithUsRoutes.jsx";
+import { AssistantRegistrarRoutes } from "./routes/AssistantRegistrarRoutes.jsx";
 import { amenitiesRoutes } from "./routes/AmenitiesRoutes.jsx";
 import { otherRoutes } from "./routes/OtherRoutes.jsx";
 import { researchRoutes } from "./features/research/ResearchRoutes.jsx";
@@ -39,6 +40,7 @@ function App() {
             {admissionRoutes}
             {miscRoutes}
             {workWithUsRoutes}
+            {AssistantRegistrarRoutes}
             {amenitiesRoutes}
             {adminPanelRoutes}
             {resultRoutes}

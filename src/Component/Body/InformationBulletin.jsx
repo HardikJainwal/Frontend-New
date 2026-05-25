@@ -51,24 +51,36 @@ const InformationBulletin = () => {
   // Documents to inject manually (Admission section extras)
   const admissionManuals = [
     {
-      name: "The Spring Session admission Registration for year AY 2025-26 will be open soon."
+      name: "The Last Date for Registrations for Diploma(Technical) programs offered after 10th is Extended till 10th June 2026",
+      link: "https://admission-diploma.dseu.ac.in/",
     },
+    // {
+    //   name: "Registration for Diploma Programs(Technical) after 10th is starting from 4th May 2026.",
+    //   link: "https://admission-diploma.dseu.ac.in/",
+    // },
     {
-      name: "Refund form 2025 admissions",
-      link: "https://drive.google.com/file/d/1AQC5LFPX3j4B0hX7Ut1avU6n1qughj3z/view",
+      name: "Registrations for Admissions for Various Undergraduate Programs after 12th for AY 2026-27 will start from 18th May 2026",
+      link: "https://admission-ug.dseu.ac.in/",
     },
-    {
-      name: "Information Bulletin 2025",
-      link: "https://drive.google.com/file/d/16mO1wuwK40lwRe4uAz5_iDT5aqtqBFsY/view",
-    },
-    {
-      name: "Commencement of Classes for New Batch - Academic Session 2025-26",
-      link: "https://drive.google.com/file/d/1vc-p-RJUSlpxtyCs5d-QglEr6nxwoXsN/view",
-    },
-    {
-      name: "How to Pay Your Admission Fees Online (Step-by-Step Guide)",
-      link: "https://drive.google.com/file/d/1dV-ujr-aZGG4uNb20h229NpBM8McyC-F/view",
-    },
+    // {
+    //   name: "The Spring Session admission Registration for year AY 2025-26 will be open soon."
+    // },
+    // {
+    //   name: "Refund form 2025 admissions",
+    //   link: "https://drive.google.com/file/d/1AQC5LFPX3j4B0hX7Ut1avU6n1qughj3z/view",
+    // },
+    // {
+    //   name: "Information Bulletin 2025",
+    //   link: "https://drive.google.com/file/d/16mO1wuwK40lwRe4uAz5_iDT5aqtqBFsY/view",
+    // },
+    // {
+    //   name: "Commencement of Classes for New Batch - Academic Session 2025-26",
+    //   link: "https://drive.google.com/file/d/1vc-p-RJUSlpxtyCs5d-QglEr6nxwoXsN/view",
+    // },
+    // {
+    //   name: "How to Pay Your Admission Fees Online (Step-by-Step Guide)",
+    //   link: "https://drive.google.com/file/d/1dV-ujr-aZGG4uNb20h229NpBM8McyC-F/view",
+    // },
   ];
 
   if (data) {

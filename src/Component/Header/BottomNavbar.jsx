@@ -104,12 +104,15 @@ const navItems = [
     dropdownItems: [
       { name: "Job Portal", path: "/recruitment" },
       { name: "Recruitment Rules", path: "/recruitment-rules" },
+      { name: "Recruitment Results", path: "/DeputyRegistrarSignUp" },
+       { name: "Assistant Registrar Results", path: "/AssistantRegistrarSignUp" },
     ],
   },
   {
     name: "Entrepreneurship",
     path: "/Entrepreneurship",
   },
+  
 ];
 
 const DesktopNavBar = ({ setIsSearchOpen }) => {

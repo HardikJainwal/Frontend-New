@@ -3,6 +3,7 @@ import {
   faEnvelope,
   faGlobe,
   faMapMarkerAlt,
+  faPhone
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PopUpModal from "./PopUpModal";
@@ -57,8 +58,51 @@ const Footer = () => {
                 className="mr-3"
                 style={{ color: "#1E40AF", fontSize: "1.25rem" }}
               />
-              helpdesk@dseu.ac.in
+              helpdesk-admission@dseu.ac.in
               <br />
+
+                {/* Technical Support */}
+  <div className="flex items-start">
+    <FontAwesomeIcon
+      icon={faPhone}
+      className="mr-3 "
+      style={{ color: "#1E40AF", fontSize: "1.25rem" }}
+    />
+
+    <div className="text-black">
+      <span >
+        For Technical Queries:
+      </span>{" "}
+      <a
+        href="tel:+919218172974"
+        className="text-blue-600 hover:underline"
+      >
+        +91 9218172974
+      </a>
+    </div>
+  </div>
+
+  {/* Bank Queries */}
+  <div className="flex items-start">
+    <FontAwesomeIcon
+      icon={faPhone}
+      className="mr-3"
+      style={{ color: "#1E40AF", fontSize: "1.25rem" }}
+    />
+
+    <div className="text-black">
+      <span >
+        For Bank Related Issues:
+      </span>{" "}
+      <a
+        href="tel:+919218172973"
+        className="text-blue-600 hover:underline"
+      >
+        +91 9218172973
+      </a>
+    </div>
+  </div>
+
               <FontAwesomeIcon
                 icon={faGlobe}
                 className="mr-3"

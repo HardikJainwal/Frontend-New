@@ -1,13 +1,19 @@
-import cofImage from "../../assets/team-dseu/gagandhawan.jpg";
+import cofImage from "../../assets/team-dseu/pankajLathar.jpeg";
 
 export const teamData = [
   {
-    name: "Prof. (Dr.) Gagan Dhawan",
+    name: "Dr. Pankaj Lathar",
     designation: "Controller of Finance",
     university: "Delhi Skill and Entrepreneurship University",
     image: cofImage,
     profileSummary: `
-      Prof. Dr. Gagan Dhawan completed his graduation and post-graduation at the University of Delhi, India. He received the Universitas 21 Fellowship for a Master’s in Bioinformatics at the University of Edinburgh, UK, and the UGC-Raman Award for postdoctoral research at the University of Massachusetts, Boston, USA. He is a Fellow of the Indian Chemical Society (FICS), Chartered Chemist (CChem), and Fellow of the Royal Society of Chemistry (FRSC), UK. Recognized for teaching excellence, he received the Meritorious Teacher Award (2014) and INSA Teachers Award (2020). He serves as a Council Member at the National Commission for Allied and Healthcare Professions (NCAHP), under the Ministry of Health and Family Welfare, Government of India. His research focuses on novel small-molecule inhibitors and natural polymer based smart self-assembled nanostructures for biomedical applications.
+      Dr. Pankaj Lathar is a distinguished academician and administrator with more than 25 years of experience in higher education, academic governance, and institutional leadership. A specialist in Computer Science & Engineering with a doctoral qualification in the field, he has contributed extensively to teaching, research, training, and university administration.
+
+Over the years, Dr. Lathar has been actively engaged in promoting academic excellence, innovation in education, and student-centric development. His areas of interest include Cloud Computing, ICT-enabled Education, Life Skills, leadership development, and capacity building in higher education institutions. He has published research papers in reputed national and international journals and conferences, while also mentoring students, researchers, and faculty members across diverse academic domains.
+
+At Delhi Skill & Entrepreneurship University (DSEU), Dr. Lathar has held several important academic and administrative responsibilities, including Professor (Associate), Controller of Examinations, Chief Vigilance Officer (CVO), Campus Director, and Joint Director (Public Relations). Through these assignments, he has played a significant role in strengthening institutional systems, academic processes, examination governance, student engagement, and administrative coordination.
+
+Recently appointed as the Controller of Finance, DSEU, Dr. Lathar brings with him a strong blend of academic insight, administrative experience, and governance-oriented leadership. His extensive institutional experience and commitment towards transparency, accountability, and efficient financial administration are expected to further strengthen the university’s financial management and operational excellence.
     `,
     messageToStudents:
       "Education is more than knowledge; it's the ability to create change. DSEU empowers learners with the skills, confidence, and mindset to tackle challenges and shape a better society.",

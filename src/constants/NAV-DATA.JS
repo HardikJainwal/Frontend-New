@@ -51,55 +51,109 @@ export const navItems = [
   {
     name: "Admission",
     dropdownItems: [
+      // {
+      //   name: "Spring Admission",
+      //   path: "/admission/spring-admission"
+      // },
       {
         name: "Admission 2025-26",
         path: "/admission",
       },
       {
-        name: "Diploma Seat Allocation",
-        path: "/admission/result/diploma/round4",
+        name: "Admission 2026-27",
+        path: "/admission/2026-27",
+      },
+      // {
+      //   name: "Diploma Seat Allocation",
+      //   path: "/admission/result/diploma/round4",
+      // },
+      // {
+      //   name: "PG Seat Allocation",
+      //   path: "/admission/result/pg",
+      // },
+      // {
+      //   name: "UG Seat Allocation",
+      //   path: "/admission/result/ug/round2",
+      // },
+      // {
+      //   name: "Btech seat Allocation",
+      //   path: "/admission/result/btech/round2",
+      // },
+      // {
+      //   name: "Fee Refund Policy",
+      //   path: "https://drive.google.com/file/d/1AQC5LFPX3j4B0hX7Ut1avU6n1qughj3z/view",
+      // },
+      // {
+      //   name: "Information Bulletin",
+      //   path: "/admission/information-bulletin",
+      // },
+      // {
+      //   name: "Programs after 10th  ",
+      //   path: "https://dseuadm.samarth.edu.in/",
+      // },
+      // {
+      //   name: "Programs after 12th",
+      //   path: "https://dseuadm.samarth.edu.in/ug",
+      // },
+      // {
+      //   name: "Programs after Bachelor",
+      //   path: "https://dseuadm.samarth.edu.in/pg",
+      // },
+      // {
+      //   name: "Process and guidelines",
+      //   path: "/admission/process-and-guidelines",
+      // },
+    ],
+  },
+  {
+    name: "Examination",
+    dropdownItems: [
+     
+      {
+        name: "Controller of Examination",
+        path: "/examination/coe",
       },
       {
-        name: "PG Seat Allocation",
-        path: "/admission/result/pg",
+        name: "Examination Organistional Structure",
+        path: "/examination/controller",
       },
       {
-        name: "UG Seat Allocation",
-        path: "/admission/result/ug/round2",
+        name: "Notices",
+        path: "/coming-soon",
       },
       {
-        name: "Btech seat Allocation",
-        path: "/admission/result/btech/round2",
+        name: "Date Sheet",
+        path: "/coming-soon",
+      },
+     {
+      name: "Results",
+      
+      dropdownItems: [
+        { name: "Diploma", path: "/examination/results/diploma" },
+        { name: "UG", path: "/examination/results/ug" },
+        { name: "PG", path: "/examination/results/pg" },
+        { name: "Ph.D.", path: "/examination/results/phd" },
+      ],
+    },
+      {
+        name: "Portal",
+        path: "/coming-soon",
       },
       {
-        name: "Fee Refund Policy",
-        path: "https://drive.google.com/file/d/1AQC5LFPX3j4B0hX7Ut1avU6n1qughj3z/view",
+        name: "Regulations/Forms",
+        path: "/coming-soon",
       },
       {
-        name: "Information Bulletin",
-        path: "/admission/information-bulletin",
+        name: "Online fee services",
+        path: "/coming-soon",
       },
-      {
-        name: "Programs after 10th  ",
-        path: "https://dseuadm.samarth.edu.in/",
-      },
-      {
-        name: "Programs after 12th",
-        path: "https://dseuadm.samarth.edu.in/ug",
-      },
-      {
-        name: "Programs after Bachelor",
-        path: "https://dseuadm.samarth.edu.in/pg",
-      },
-      {
-        name: "Process and guidelines",
-        path: "/admission/process-and-guidelines",
-      },
+      
     ],
   },
   {
     name: "Administration",
     dropdownItems: [
+      
       {
         name: "Administrative Offices",
         path: "/administration/administrative",
@@ -107,8 +161,8 @@ export const navItems = [
       { name: "Chancellor", path: "/administration/chancellor" },
       { name: "Vice Chancellor", path: "/administration/vice-chancellor" },
       { name: "Registrar", path: "/registrar" },
-      { name: "Controller of Finance", path: "/administration/cof" },
       { name: "Controller of Examination", path: "/administration/coe" },
+      { name: "Controller of Finance", path: "/administration/cof" },
     ],
   },
   {
@@ -131,6 +185,8 @@ export const navItems = [
     dropdownItems: [
       { name: "Job Portal", path: "/recruitment" },
       { name: "Recruitment Rules", path: "/recruitment-rules" },
+      { name: "Recruitment Results", path: "/DeputyRegistrarSignUp" },
+       { name: "Assistant Registrar Results", path: "/AssistantRegistrarSignUp" },
     ],
   },
   {
@@ -154,6 +210,7 @@ export const navItems = [
     name: "Entrepreneurship",
     path: "/Entrepreneurship",
   },
+   
 ];
 
 export const carouselImages = [

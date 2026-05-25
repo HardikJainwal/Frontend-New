@@ -103,7 +103,7 @@ const StudentForm = () => {
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="bg-blue-600 text-white text-center p-4 text-2xl font-bold mb-8 rounded-lg shadow-md">
-        Student Grievance Form
+        {/* Student Grievance Form */}
       </div>
 
       <form

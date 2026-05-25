@@ -1,5 +1,92 @@
 {
-    "gagan-dhawan": {
+   "akshay-kumar": {
+    "slug": "akshay-kumar",
+    "basic_info": {
+      "full_name": "Dr. Akshay Kumar",
+      "designation": "Associate Campus Director / Assistant Professor",
+      "faculty": "Faculty of Language and Communication Skills",
+      "department": "Department of Spanish",
+      "official_email": "akshay.kumar@dseu.ac.in",
+      "contact_number": "",
+      "office_address": "Delhi Skill and Entrepreneurship University (DSEU), Siri Fort Campus, New Delhi - 110049"
+    },
+    "academic_background": {
+      "highest_qualification": "Ph.D. in Spanish (2022)",
+      "alma_mater": "Jawaharlal Nehru University, New Delhi - 110067",
+      "experience_years": "More than 7.5 years",
+      "other_qualifications": "M.Phil. in Spanish (2016)\nM.A. in Spanish (2014)\nB.A. in Spanish (2012)\nJawaharlal Nehru University, New Delhi - 110067"
+    },
+    "research_profile": {
+      "broad_research_areas": "Ibero-American Language, Literature, Culture and History",
+      "specific_research_interests": "Spanish Language, Literature and History\nLatin American Literature and History\nTranslation and Foreign Language Teachings",
+      "publications_last_5_years": "02 peer-reviewed publications",
+      "patents": "Nil",
+      "projects": "Nil",
+      "collaborations": ""
+    },
+    "phd_supervision": {
+      "phd_students_supervised": "Completed: Nil\nOngoing: To be updated",
+      "masters_dissertations_guided": ""
+    },
+    "administrative_roles": {
+      "boards_committees": "Associate Campus Director, DSEU, Siri Fort Campus\nHead of Department, Department of Spanish\nAssistant Professor, Department of Spanish\nConvener, Board of Studies (Spanish)\nAdministrative Officer\nAcademic In-Charge\nStore Officer\nSecurity and Sanitation Officer\nAPIO\n\nPrevious Roles:\nProgram Anchor – Department of Spanish, DSEU Siri Fort Campus\nPWD Civil In-Charge\nPublic Information Officer (PIO)\n\nAcademic & Professional Responsibilities:\nConvener, Board of Studies (BoS) Spanish, Delhi Skill and Entrepreneurship University\nMember, Board of Studies (BoS), German, DSEU\nMember, Board of Studies (BoS), French, DSEU",
+      "professional_memberships": ""
+    },
+    "awards_honors": {
+      "awards": "Award of appreciation for diligent efforts as a foreign language teacher at Matreyi College, University of Delhi"
+    },
+    "web_links": {
+      "faculty_profile_page": "",
+      "google_scholar": "",
+      "researchgate_orcid_scopus": "",
+      "linkedin": ""
+    },
+    "photo_url": "/images/supervisors/akshay-kumar.jpg"
+  },
+  "anantabotla-vamsi": {
+    "slug": "anantabotla-vamsi",
+    "basic_info": {
+      "full_name": "Dr. Anantabotla Vamsi Mohan",
+      "designation": "Associate Campus Director / Lecturer",
+      "faculty": "Faculty of Allied Medical Science",
+      "department": "Medical Laboratory Science",
+      "official_email": "anantabotla.vamsimohan@dseu.ac.in",
+      "contact_number": "",
+      "office_address": "Delhi Skill and Entrepreneurship University (DSEU), Dwarka Campus, New Delhi"
+    },
+    "academic_background": {
+      "highest_qualification": "Ph.D. (Medical Microbiology)",
+      "alma_mater": "Jawaharlal Institute of Postgraduate Medical Education and Research (JIPMER), Puducherry (2020)",
+      "experience_years": "6 years"
+    },
+    "research_profile": {
+      "broad_research_areas": "Medical Microbiology, Parasitology, Mycology, Infectious Diseases",
+      "specific_research_interests": "Medical microbiology with emphasis on parasitology, mycology, and infectious diseases,\n Malaria biology, epidemiology, and drug resistance in Plasmodium vivax and Plasmodium falciparum,\n Genetic diversity and population structure of malaria parasites,\n Host–pathogen interactions in parasitic and fungal infections,\n Laboratory-based diagnosis and surveillance of infectious diseases in public health settings",
+      "publications_last_5_years": "05 peer-reviewed publications",
+      "patents": "Nil",
+      "projects": "Doctoral research on genotyping of drug-resistance genes in Plasmodium vivax isolates from different regions of India",
+      "collaborations": ""
+    },
+    "phd_supervision": {
+      "phd_students_supervised": "Completed: Nil\n Ongoing: To be updated",
+      "masters_dissertations_guided": ""
+    },
+    "administrative_roles": {
+      "boards_committees": "Associate Campus Director, DSEU Dwarka Campus,\n Lecturer, Allied Medical Science,\n Former Branch In-Charge, Medical Laboratory Technology, DSEU Dwarka Campus,\n Programme Anchor – B. Optometry Programme,\n Member, Board of Studies (BoS), Delhi Skill and Entrepreneurship University,\n Member, Board of Studies (BoS), Assam Down Town University,\n External Member, School Research Committee, Mohan Babu University,\n External Examiner for various universities across Delhi NCR and other regions",
+      "professional_memberships": ""
+    },
+    "awards_honors": {
+      "awards": "Travel Grant Awardee – ASM Microbe 2019, San Francisco, USA"
+    },
+    "web_links": {
+      "faculty_profile_page": "",
+      "google_scholar": "",
+      "researchgate_orcid_scopus": "",
+      "linkedin": ""
+    },
+    "photo_url": "/images/supervisors/a-vamsi.jpg"
+  },
+  "gagan-dhawan": {
     "slug": "gagan-dhawan",
     "basic_info": {
       "full_name": "Prof. Dr. Gagan Dhawan",
@@ -819,6 +906,46 @@
     },
     "photo_url": "/images/supervisors/prabhakar-sharma.jpeg"
   },
+  "anurag-dixit": {
+    "slug": "anurag-dixit",
+    "basic_info": {
+      "full_name": "Dr Anurag Dixit",
+      "designation": "Lecturer",
+      "faculty": "Mechanical Engineering",
+      "department": "Mechanical Engineering",
+      "official_email": "anurag.dixit@dseu.ac.in",
+      "contact_number": "9310687812",
+      "office_address": "G.B Pant DSEU Campus, Okhla Phase III, New Delhi. 110020"
+    },
+    "academic_background": {
+      "highest_qualification": "Ph.D. (Mechanical Engineering), M.Tech. (Applied Mechanics),B.E. (Mechanical Engg.)",
+      "alma_mater": "Gautam Buddha University, Greater Noida, India. (2015)",
+      "experience_years": "17 Years"
+    },
+    "research_profile": {
+      "broad_research_areas": "Advance computational modelling techniques, Finite Element Analysis, Design Engg, Fracture Mechanics, Computer Aided Design and Engineering (CAD/CAE), Additive Manufacturing, Biodegradable Metallic Materials",
+      "specific_research_interests": "Advance computational modelling techniques, Finite Element Analysis, Design Engg, Fracture Mechanics, Computer Aided Design and Engineering (CAD/CAE), Additive Manufacturing, Biodegradable Metallic Materials.",
+      "publications_last_5_years": "20 SCI research papers",
+      "patents": "",
+      "projects": "Development & Characterization of Hybrid Woven Fabric Composites with their Modelling and Analysis. Role: Co-PI Funding Agency: DRDO, Govt. of India Amount: 35.5 Lacs. Status: Completed",
+      "collaborations": "DRDO Labs, University of Nottingham, MNIT Jaipur"
+    },
+    "phd_supervision": {
+      "phd_students_supervised": "01 Completed (2023)",
+      "masters_dissertations_guided": "5"
+    },
+    "administrative_roles": {
+      "boards_committees": "UGC/AICTE/DST",
+      "professional_memberships": "IEEE, IETE, APA"
+    },
+    "web_links": {
+      "faculty_profile_page": "https://dseu.ac.in/faculty/67fcb6a3594afd76950ae3fa",
+      "google_scholar": "https://dseu.ac.in/faculty/67fcb6a3594afd76950ae3fa",
+      "researchgate_orcid_scopus": "https://orcid.org/my-orcid?orcid=0000-0003-2469-8880",
+      "linkedin": ""
+    },
+    "photo_url": "/images/supervisors/anurag-dixit.jpg"
+  },
   "pramod-kumar-goyal": {
     "slug": "pramod-kumar-goyal",
     "basic_info": {
@@ -858,6 +985,46 @@
       "linkedin": ""
     },
     "photo_url": "/images/supervisors/pramod-kumar-goyal.png"
+  },
+  "amit-ramesh-khaparde": {
+    "slug": "amit-ramesh-khaparde",
+    "basic_info": {
+      "full_name": "Dr. Amit Ramesh Khaparde",
+      "designation": "Assistant Professor",
+      "faculty": "Engineering, & Technology ",
+      "department": "Computer Science Engineering",
+      "official_email": "amit.r.khaparde@dseu.ac.in ",
+      "contact_number": "",
+      "office_address": "Dept. Computer Science & Engg., G. B. Pant DSEU Campus"
+    },
+    "academic_background": {
+      "highest_qualification": "PhD",
+      "alma_mater": "Alma Mater (University & Year of Ph.D.) RTM Nagpur university , 2019",
+      "experience_years": "16 years"
+    },
+    "research_profile": {
+      "broad_research_areas": "AI, Renewable Energy, Public Policy, AI, ML",
+      "specific_research_interests": "Computational Intelligence, Machine Translation, AI Agents",
+      "publications_last_5_years": "06",
+      "patents": "",
+      "projects": "",
+      "collaborations": ""
+    },
+    "phd_supervision": {
+      "phd_students_supervised": "",
+      "masters_dissertations_guided": "03"
+    },
+    "administrative_roles": {
+      "boards_committees": "UGC/AICTE/DST",
+      "professional_memberships": "IEEE, IETE, APA"
+    },
+    "web_links": {
+      "faculty_profile_page": "",
+      "google_scholar": "https://scholar.google.com/citations?user=ur42DysAAAAJ&hl=en",
+      "researchgate_orcid_scopus": "https://orcid.org/0000-0002-3243-0705",
+      "linkedin": ""
+    },
+    "photo_url": "/images/supervisors/amit-ramesh-khaparde.jpg"
   },
   "vineet-kumar": {
     "slug": "vineet-kumar",
@@ -1018,6 +1185,46 @@
       "linkedin": ""
     },
     "photo_url": "/images/supervisors/dinesh-yadav.jpg"
+  },
+  "pankaj-kumar-singh": {
+    "slug": "pankaj-kumar-singh",
+    "basic_info": {
+      "full_name": "Dr. Pankaj Kumar Singh",
+      "designation": "Campus Director",
+      "faculty": "Mechanical",
+      "department": "Department of Mechanical engineering",
+      "official_email": "pankaj.singhps@dseu.ac.in",
+      "contact_number": "9911191733",
+      "office_address": "DSEU Wazirpur Campus"
+    },
+    "academic_background": {
+      "highest_qualification": "Ph.D (Mechanical Engineering)",
+      "alma_mater": "Ph.D (Mechanical Engineering)",
+      "experience_years": "20+ years"
+    },
+    "research_profile": {
+      "broad_research_areas": "Manufacturing, Material Science, Surface Engineering, Nano Materials, Advance Manufacturing Methods.",
+      "specific_research_interests": "Material Science, Surface Engineering, Nano Materials, Advanced Manufacturing Methods.",
+      "publications_last_5_years": "06",
+      "patents": "",
+      "projects": "",
+      "collaborations": ""
+    },
+    "phd_supervision": {
+      "phd_students_supervised": "02",
+      "masters_dissertations_guided": "01"
+    },
+    "administrative_roles": {
+      "boards_committees": "Membership in Boards/Committees (UGC/AICTE/DST etc.)",
+      "professional_memberships": "SAE"
+    },
+    "web_links": {
+      "faculty_profile_page": "",
+      "google_scholar": "",
+      "researchgate_orcid_scopus": "",
+      "linkedin": ""
+    },
+    "photo_url": "/images/supervisors/pankaj-kumar-singh.jpg"
   },
   "amit-singh-khokhar": {
     "slug": "amit-singh-khokhar",

@@ -53,6 +53,9 @@ import {
   rituSareen,
   shubhamChakraborty,
   sumanDhawan,
+  ranjitaBiswas,
+  shailendraSinghPariharIAS,
+  shri_taranjit_singh_sandhu
 } from "../assets/team-dseu";
 
 
@@ -60,11 +63,18 @@ import {
 const members = [
   {
     id: 1,
-    name: "Sh. Vinai Kumar Saxena",
-    src: chancellor,
+    name: "Shri Taranjit Singh Sandhu",
+    src: shri_taranjit_singh_sandhu,
     designation: "Hon'ble Chancellor & Lt. Governor",
     category: "Chancellor",
   },
+  // {
+  //   id: 1,
+  //   name: "Sh. Vinai Kumar Saxena",
+  //   src: chancellor,
+  //   designation: "Hon'ble Chancellor & Lt. Governor",
+  //   category: "Chancellor",
+  // },
   {
     id: 2,
     name: "Prof. Ashok Kumar Nagawat",
@@ -74,8 +84,8 @@ const members = [
   },
   {
     id: 3,
-    name: "Prof. Gagan Dhawan",
-    src: gagandhawan,
+    name: "Shri. Shailendra Singh Parihar,IAS",
+    src: shailendraSinghPariharIAS,
     designation: "Registrar",
     category: "Registrar",
   },
@@ -321,12 +331,12 @@ const members = [
     src: kaushalSachdeva,
     category: "Training and Placement Officers",
   },
-  {
-    id: 39,
-    name: "Ms. Niharika",
-    src: niharikaPandey,
-    category: "Training and Placement Officers",
-  },
+  // {
+  //   id: 39,
+  //   name: "Ms. Niharika",
+  //   src: niharikaPandey,
+  //   category: "Training and Placement Officers",
+  // },
   {
     id: 37,
     name: "Dr. Ravinder Jhorar",
@@ -354,10 +364,17 @@ const members = [
     designation: "Joint Director Public Relation",
     category: "Joint Director"
   },
+  // {
+  //   id: 44,
+  //   name: "Dr. Suman Dhawan",
+  //   src: sumanDhawan,
+  //   designation: "Joint Director Parternship",
+  //   category: "Joint Director"
+  // },
   {
     id: 44,
-    name: "Dr. Suman Dhawan",
-    src: sumanDhawan,
+    name: "Dr. Ranjita Biswas",
+    src: ranjitaBiswas,
     designation: "Joint Director Parternship",
     category: "Joint Director"
   },

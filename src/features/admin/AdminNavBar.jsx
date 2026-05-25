@@ -1,11 +1,4 @@
-import {
-  FileText,
-  Megaphone,
-  Users,
-  Briefcase,
-  Shield,
-  GitPullRequestCreateArrowIcon,
-} from "lucide-react";
+import { FileText, Megaphone, Users, Briefcase, Shield, GitPullRequestCreateArrowIcon } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 export const navTabs = [
@@ -37,8 +30,8 @@ export const navTabs = [
   {
     key: "research",
     label: "Research",
-    icon: GitPullRequestCreateArrowIcon,
-  },
+    icon: GitPullRequestCreateArrowIcon
+  }
 ];
 
 export const DesktopNav = ({ activeTab, handleTabChange }) => {

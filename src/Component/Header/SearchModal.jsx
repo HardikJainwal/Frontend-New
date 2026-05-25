@@ -112,7 +112,7 @@ const SearchModal = ({ isOpen, onClose, navItems }) => {
       <div className="relative w-full max-w-4xl mx-auto mt-20">
         <div className="bg-white rounded-2xl shadow-2xl">
           <div className="flex items-center p-4 border-b">
-            <Search className="w-6 h-6 text-gray-400" />
+            {/* <Search className="w-6 h-6 text-gray-400" /> */}
             <input
               type="text"
               placeholder="Search for anything..."

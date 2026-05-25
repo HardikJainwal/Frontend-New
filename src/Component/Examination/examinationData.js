@@ -8,14 +8,7 @@ export const examinationNav = [
     label: "Fee Links",
     key: "exam fee-link",
   },
-  {
-    label: "Examination Portal",
-    key: "exam-portal",
-    external: true,
-    to: "https://dseu.ac.in",
-  }
 ];
-
 
 // Demo content (as if fetched)
 export const examinationData = {

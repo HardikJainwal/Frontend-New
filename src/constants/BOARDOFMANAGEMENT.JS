@@ -1,4 +1,4 @@
-import { registarar, VC } from '../assets/advisory-board';
+import { registarar1,registarar, VC } from '../assets/advisory-board';
 import { jpSaini, deshmukh, girishKumar, vivekAggrawal, vibhakarShrimali, kamnaSachdeva, shrutiTripathi, dttesecratory, placeholder, njena, principalSecratory, rajivVerma, sectDtte } from '../assets/board-of-management/boardOfManagement';
 const boardOfManagement = [
     {
@@ -10,7 +10,7 @@ const boardOfManagement = [
     },
     {
         id: 2,
-        name: "Prof. Gagan Dhawan",
+        name: "Shri. Shailendra Singh Parihar,IAS",
         designation: "Member Secretary",
         category: "Registrar",
         src: registarar,
@@ -19,7 +19,7 @@ const boardOfManagement = [
         id: 3,
         name: "Prof. Gagan Dhawan",
         category: "Deans",
-        src: registarar,
+        src: registarar1,
     },
     {
         id: 4,

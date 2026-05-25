@@ -12,6 +12,12 @@ const regulations = [
         desc: "This regulation Covers CBCS, semester system, entry/exit options, and grading as per NEP 2020 at DSEU from 2024–25.",
     },
     {
+        id: "2B",
+        name: "Regulation 2B",
+        link: "/regulations/Regulation_2B.pdf",
+        desc: "Regulation 2B: Formal Notification under Sections 22(1) and 32 of the Delhi Skill and Entrepreneurship University Act, 2019 pursuant to the Approval of the Board of Management.",
+    },
+    {
         id: "3A",
         name: "Regulation 3A",
         link: "/regulations/Regulation_3A.pdf",

@@ -1,4 +1,4 @@
-import { gagandhawan } from "../../assets/team-dseu";
+import { shailendraSinghPariharIAS } from "../../assets/team-dseu";
 import { REGISTRARINFO } from "../../constants/REGISTRARINFO.JS";
 
 const RegistrarPage = () => {
@@ -10,9 +10,9 @@ const RegistrarPage = () => {
         {/* Image + Info Block */}
         <div className="w-full md:w-1/3 flex flex-col items-center md:items-start">
           <img
-            src={gagandhawan}
+            src={shailendraSinghPariharIAS}
             alt={name}
-            className="rounded-full shadow-md min-w-[250px] object-cover h-[300px]"
+            className="rounded-full shadow-md min-w-[300px] object-cover h-[300px]"
           />
           <div className="mt-4 text-center md:text-left">
             <h1 className="text-2xl md:text-[1.7rem] font-bold text-blue-600">{name}</h1>

@@ -1,10 +1,9 @@
-//? Includes the Programs by level
+// CoursesByLevel.jsx — Programs by level + Old Archive button
 
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate, useParams } from "react-router-dom";
 
 import OrangeLoader from "../PageLoader/OrangeLoader";
-
 import { getProgramsByLevel } from "../../utils/apiservice";
 import { QUERY_KEYS } from "../../utils/queryKeys";
 
@@ -52,21 +51,39 @@ const CoursesByLevel = () => {
     return <OrangeLoader />;
   }
 
+  const showArchive = programLevel?.toLowerCase() === "ug";
+
   return (
     <div className="min-h-screen p-6 mb-10">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-3xl font-bold text-blue-900 mb-4">
-          {programs[0]?.programLevel || "Programs"}
-        </h1>
 
+        {/* Header row */}
+        <div className="flex items-center justify-between flex-wrap gap-3 mb-6">
+          <h1 className="text-3xl font-bold text-blue-900">
+            {programs?.[0]?.programLevel || "Programs"}
+          </h1>
+
+          {/* Old Archive button — only for UG level */}
+          {showArchive && (
+            <button
+              onClick={() => navigate("/courses/ug/archive")}
+              className="flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-yellow-900 font-semibold text-sm px-4 py-2 rounded-lg shadow-sm transition-all duration-200 hover:shadow-md hover:-translate-y-0.5"
+            >
+              <span>🗂</span>
+              <span>Old Archive</span>
+            </button>
+          )}
+        </div>
+
+        {/* Program List */}
         <div className="space-y-4">
-          {programs.map((program, index) => (
+          {programs?.map((program, index) => (
             <div
               key={index}
-              className={`border-l-4 border-yellow-500 bg-white p-4 shadow-md rounded-md  ${
+              className={`border-l-4 border-yellow-500 bg-white p-4 shadow-md rounded-md ${
                 program.years && typeof program.years === "object"
                   ? "cursor-pointer hover:shadow-lg hover:scale-105 hover:bg-blue-50 transition-all duration-300"
-                  : "cursor-normal"
+                  : "cursor-default"
               }`}
               onClick={() => handleClick(program)}
             >

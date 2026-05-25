@@ -1,4 +1,4 @@
-import { Plus, FileSearch, LogOut } from "lucide-react";
+import { Plus, FileSearch, LogOut, FileUp } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 import withAuthProtection from "./withAuthProtection";
@@ -18,6 +18,12 @@ const dashboardItems = [
     label: "View all PDFs",
     path: "/admin/view-pdfs",
     icon: FileSearch,
+  },
+  {
+    id: "ar-registrar-upload",
+    label: "Upload AR Registrar Result",
+    path: "/admin/ar-registrar-upload",
+    icon: FileUp,
   },
 ];
 

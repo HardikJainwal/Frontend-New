@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "category": "Diploma",
+    "title": "Registration for Diploma Programs(Technical) after 10th is starting from 4th May 2026 - LIVE NOW",
+    "isNew": true,
+    "link": "https://admission-diploma.dseu.ac.in/"
+  },
+  {
+    "id": 2,
+    "category": "Diploma",
+    "title": "The Last Date for Registrations for Diploma(Technical) programs offered after 10th is Extended till 10th June 2026",
+    "isNew": true,
+    "link": "https://admission-diploma.dseu.ac.in/"
+  },
+  {
+    "id": 3,
+    "category": "UG",
+    "title": "Registrations for Admissions for Various Undergraduate Programs after 12th for AY 2026-27 will start from 18th May 2026",
+    "isNew": true,
+    "link": "https://admission-ug.dseu.ac.in/"
+  }
+
+]

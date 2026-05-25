@@ -25,11 +25,11 @@ const contacts = [
         contact: "8882513909",
         email: "ahmad.omair@dseu.ac.in"
     },
-    {
-        name: "Niharika Pandey, TPO, West Zone",
-        contact: "6393817508",
-        email: "niharika.pandey@dseu.ac.in"
-    },
+    // {
+    //     name: "Niharika Pandey, TPO, West Zone",
+    //     contact: "6393817508",
+    //     email: "niharika.pandey@dseu.ac.in"
+    // },
     {
         name: "Mr. Kaushlender Verma, TPO, North Zone",
         contact: "8076318138",

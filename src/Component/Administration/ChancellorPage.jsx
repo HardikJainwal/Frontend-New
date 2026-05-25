@@ -1,4 +1,4 @@
-import pic from "../../assets/DG.jpg";
+import pic from "../../assets/shri_taranjit_singh_sandhu.jpeg";
 
 const ChancellorPage = () => {
   return (
@@ -14,16 +14,16 @@ const ChancellorPage = () => {
           </div>
           <div className="md:w-2/3 p-6 md:p-10">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
-              Shri Vinai Kumar Saxena
+              Shri Taranjit Singh Sandhu
             </h2>
             <p className="text-blue-600 font-medium mt-1">
               Hon'ble Chancellor & Lt. Governor
             </p>
             <p className="mt-4 text-gray-700 text-sm md:text-base leading-relaxed text-justify">
-              Shri Vinai Kumar Saxena took over as the 22nd Hon'ble Lt.
+              {/* Shri Vinai Kumar Saxena took over as the 22nd Hon'ble Lt.
               Governor, Government of N.C.T. of Delhi. He has served as Chairman
               of Khadi and Village Industries Commission, an Organization under
-              the Ministry of Medium, Small and Micro Enterprise.
+              the Ministry of Medium, Small and Micro Enterprise. */}
             </p>
 
             <a href="https://lg.delhi.gov.in/lg-profile" target="_blank">

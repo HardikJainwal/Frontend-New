@@ -15,10 +15,19 @@ import activity18 from "/src/assets/Activities/Activities18.jpg";
 import activity19 from "../assets/Activities/Activities19.jpg";
 
 import thumbnail1 from "/src/assets/thumbnail/thumbnail1.jpg";
-import thumbnail3 from "/src/assets/thumbnail/thumbnail3.jpg";
-import thumbnail4 from "/src/assets/thumbnail/thumbnail4.jpg";
+// import thumbnail3 from "/src/assets/thumbnail/thumbnail3.jpg";
+// import thumbnail4 from "/src/assets/thumbnail/thumbnail4.jpg";
 import thumbnail5 from "/src/assets/thumbnail/thumbnail5.jpg";
 import thumbnail6 from "/src/assets/thumbnail/thumbnail6.jpg";
+import thumbnail7 from "/src/assets/thumbnail/thumbnail7.jpeg";
+import thumbnail8 from "/src/assets/thumbnail/thumbnail8.jpeg";
+
+import thumbnail9 from "/src/assets/thumbnail/thumbnail9.jpeg";
+import thumbnail10 from "/src/assets/thumbnail/thumbnail10.png";
+import thumbnail11 from "/src/assets/thumbnail/thumbnail11.jpeg";
+import thumbnail12 from "/src/assets/thumbnail/thumbnail12.jpeg";
+import thumbnail13 from "/src/assets/thumbnail/thumbnail13.jpeg";
+
 
 import admissionthumb from '../assets/thumbnail/admission.png';
 
@@ -37,11 +46,19 @@ export const allImages = [
 ];
 
 
+// export const priorityVideo = {
+//   thumbnail: admissionthumb,
+//   title: "DSEU Admission form filling steps",
+//   subheading: "",
+//   // link: "https://youtu.be/MB3TbJOf0S4",
+//   link: "https://youtu.be/u1HWWAdI_KE",
+// };
 export const priorityVideo = {
-  thumbnail: admissionthumb,
-  title: "DSEU Admission form filling steps",
+  thumbnail: thumbnail13,
+  title: "DDMorningShow",
   subheading: "",
-  link: "https://youtu.be/MB3TbJOf0S4",
+  // link: "https://youtu.be/MB3TbJOf0S4",
+  link: "https://www.youtube.com/watch?v=ifOHPMnZf78",
 };
 
 export const videoData = [
@@ -51,17 +68,29 @@ export const videoData = [
     subheading: "",
     link: "https://www.youtube.com/watch?v=RV42xYACFZM&t=320s",
   },
+  // {
+  //   thumbnail: thumbnail3,
+  //   title: "DSEU Chetak Awards",
+  //   subheading: "",
+  //   link: "https://www.youtube.com/watch?v=RfnC6ltc9pg",
+  // },
   {
-    thumbnail: thumbnail3,
-    title: "DSEU Chetak Awards",
+    thumbnail: thumbnail7,
+    title: "Disaster Management and Preparedness",
     subheading: "",
-    link: "https://www.youtube.com/watch?v=RfnC6ltc9pg",
+    link: "https://youtu.be/cYdYZaY_2mM?si=j-S-0J2vMACmLNr5",
   },
+  // {
+  //   thumbnail: thumbnail4,
+  //   title: "G20 Fashionista organised at DSEU",
+  //   subheading: "",
+  //   link: "https://www.youtube.com/watch?v=_2nZ5XGAzgg",
+  // },
   {
-    thumbnail: thumbnail4,
-    title: "G20 Fashionista organised at DSEU",
+    thumbnail: thumbnail8,
+    title: "Earthquake Awareness & Safety Guide",
     subheading: "",
-    link: "https://www.youtube.com/watch?v=_2nZ5XGAzgg",
+    link: "https://youtu.be/a7pgF9hQ2_0?si=vUptxVd8cgAyZrog",
   },
   {
     thumbnail: thumbnail5,
@@ -75,4 +104,35 @@ export const videoData = [
     subheading: "",
     link: "https://www.youtube.com/watch?v=Zwguntx_v68&ab_channel=DSEUTalks",
   },
+  {
+    thumbnail: thumbnail9,
+    title: "Landslide Awareness & Safety Guide",
+    subheading: "",
+    link: "https://youtu.be/1Sttx4Fdf_I?si=bARAexYHr34aDDh7",
+  },
+  {
+    thumbnail: thumbnail10,
+    title: "Flood Awareness & Safety Guide",
+    subheading: "",
+    link: "https://youtu.be/1Sttx4Fdf_I?si=bARAexYHr34aDDh7",
+  },
+  {
+    thumbnail: thumbnail11,
+    title: "Tsunami ",
+    subheading: "",
+    link: "https://youtu.be/pfuG6fxbVwo?si=MQd7ivNTyXTwDKHD",
+  },
+  {
+    thumbnail: thumbnail12,
+    title: "Cyclone",
+    subheading: "",
+    link: "https://youtu.be/GhQzqblLE_k?si=7d6XkM1SUn2_IA51",
+  },
+  // {
+  //   thumbnail: thumbnail13,
+  //   title: "DDMorningShow",
+  //   subheading: "",
+  //   link: "https://www.youtube.com/watch?v=ifOHPMnZf78",
+  // },
+
 ];

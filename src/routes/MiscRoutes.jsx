@@ -7,6 +7,7 @@ const ArchivedJobPortal = lazy(() => import("../Component/Administration/Archive
 const GrievanceForm = lazy(() => import("../Component/Grievance/Grievance"));
 const Placement = lazy(() => import("../Component/Student Services/Placement"));
 const LoginPage = lazy(() => import("../Component/Login/LoginPage"));
+const PrivacyPolicy = lazy(() => import("../Component/PrivacyPolicy/PrivacyPolicy"));
 
 export const miscRoutes = (
   <>
@@ -16,6 +17,7 @@ export const miscRoutes = (
     <Route path="/grievance-form" element={<GrievanceForm />} />
     <Route path="/placement" element={<Placement />} />
     <Route path="/logindseu" element={<LoginPage />} />
+    <Route path="/privacy-policy" element={<PrivacyPolicy />} />
   </>
 );
 
