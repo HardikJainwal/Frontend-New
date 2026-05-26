@@ -32,6 +32,42 @@
   }
 }
 
+/* Chatbot: isolated smooth scroll (avoids page scroll chaining on mobile) */
+.chatbot-messages {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+}
+
+body.chatbot-open {
+  overflow: hidden;
+  touch-action: none;
+}
+
+body.chatbot-open .chatbot-messages {
+  touch-action: pan-y;
+}
+
+/* Mobile: full-width sheet + keyboard-safe layout */
+@media (max-width: 767px) {
+  body.chatbot-open {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    right: 0;
+  }
+
+  .chatbot-sheet {
+    border-radius: 1.25rem 1.25rem 0 0;
+    border-bottom: none;
+    max-height: 100dvh;
+  }
+
+  .chatbot-messages {
+    scroll-behavior: auto;
+  }
+}
+
 
 /* DSEU color themed loading animation */
 @keyframes colorCycle {
