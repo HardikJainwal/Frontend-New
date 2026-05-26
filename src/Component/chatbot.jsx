@@ -28,6 +28,10 @@ function isMobileViewport() {
   return typeof window !== "undefined" && window.matchMedia(MOBILE_MQ).matches;
 }
 
+function shouldOpenOnDesktopLoad() {
+  return typeof window !== "undefined" && !isMobileViewport();
+}
+
 function getTime() {
   return new Date().toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit" });
 }
@@ -137,8 +141,8 @@ function Message({ msg }) {
 export default function Chatbot({ apiUrl }) {
   const chatApiUrl = apiUrl || import.meta.env.VITE_API_URL || DEFAULT_API_URL;
 
-  const [open, setOpen] = useState(false);
-  const [showNotif, setShowNotif] = useState(true);
+  const [open, setOpen] = useState(shouldOpenOnDesktopLoad);
+  const [showNotif, setShowNotif] = useState(() => !shouldOpenOnDesktopLoad());
   const [loading, setLoading] = useState(false);
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState([
@@ -247,13 +251,14 @@ export default function Chatbot({ apiUrl }) {
 
   const handleOpen = () => {
     setOpen((v) => {
-      if (!v) {
+      const next = !v;
+      if (next) {
         setShowNotif(false);
         if (!isMobileViewport()) {
           setTimeout(() => textareaRef.current?.focus(), 300);
         }
       }
-      return !v;
+      return next;
     });
   };
 
