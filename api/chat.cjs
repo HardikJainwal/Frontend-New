@@ -1,6 +1,6 @@
 /**
- * Vercel serverless proxy: POST /api/chat → HTTP chat backend
- * Keeps the browser on HTTPS while the upstream API stays on HTTP.
+ * Vercel serverless proxy (CommonJS for reliable deployment with "type": "module").
+ * POST /api/chat → http://65.2.21.144:8001/chat
  */
 
 const BACKEND_URL =
@@ -15,11 +15,11 @@ const CORS_HEADERS = {
   "Access-Control-Allow-Headers": "Content-Type",
 };
 
-function json(res, status, payload) {
+function sendJson(res, status, payload) {
   Object.entries(CORS_HEADERS).forEach(([key, value]) => {
     res.setHeader(key, value);
   });
-  res.setHeader("Content-Type", "application/json");
+  res.setHeader("Content-Type", "application/json; charset=utf-8");
   res.status(status).json(payload);
 }
 
@@ -32,7 +32,32 @@ function normalizeQuery(body) {
   return trimmed;
 }
 
-export default async function handler(req, res) {
+async function readJsonBody(req) {
+  if (req.body !== undefined && req.body !== null) {
+    if (typeof req.body === "string") {
+      try {
+        return JSON.parse(req.body);
+      } catch {
+        return null;
+      }
+    }
+    if (typeof req.body === "object") return req.body;
+  }
+
+  const chunks = [];
+  for await (const chunk of req) {
+    chunks.push(chunk);
+  }
+  const raw = Buffer.concat(chunks).toString("utf8");
+  if (!raw.trim()) return {};
+  try {
+    return JSON.parse(raw);
+  } catch {
+    return null;
+  }
+}
+
+module.exports = async function handler(req, res) {
   if (req.method === "OPTIONS") {
     Object.entries(CORS_HEADERS).forEach(([key, value]) => {
       res.setHeader(key, value);
@@ -42,12 +67,13 @@ export default async function handler(req, res) {
 
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST, OPTIONS");
-    return json(res, 405, { error: "Method not allowed. Use POST." });
+    return sendJson(res, 405, { error: "Method not allowed. Use POST." });
   }
 
-  const query = normalizeQuery(req.body);
+  const body = await readJsonBody(req);
+  const query = normalizeQuery(body);
   if (!query) {
-    return json(res, 400, {
+    return sendJson(res, 400, {
       error: 'Invalid request body. Expected JSON: { "query": "your question" }',
     });
   }
@@ -72,8 +98,8 @@ export default async function handler(req, res) {
     try {
       data = raw ? JSON.parse(raw) : {};
     } catch {
-      console.error("[api/chat] Non-JSON upstream response:", raw.slice(0, 200));
-      return json(res, 502, {
+      console.error("[api/chat] Non-JSON upstream:", raw.slice(0, 200));
+      return sendJson(res, 502, {
         error: "Chat service returned an invalid response.",
       });
     }
@@ -81,13 +107,12 @@ export default async function handler(req, res) {
     Object.entries(CORS_HEADERS).forEach(([key, value]) => {
       res.setHeader(key, value);
     });
-    res.setHeader("Content-Type", "application/json");
+    res.setHeader("Content-Type", "application/json; charset=utf-8");
     return res.status(upstream.status).json(data);
   } catch (err) {
     const isTimeout = err.name === "AbortError";
     console.error("[api/chat] Proxy error:", err.message);
-
-    return json(res, isTimeout ? 504 : 502, {
+    return sendJson(res, isTimeout ? 504 : 502, {
       error: isTimeout
         ? "Chat service timed out. Please try again."
         : "Unable to reach chat service. Please try again later.",
@@ -95,4 +120,4 @@ export default async function handler(req, res) {
   } finally {
     clearTimeout(timeoutId);
   }
-}
+};

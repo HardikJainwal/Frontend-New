@@ -29,8 +29,29 @@ function isMobileViewport() {
   return typeof window !== "undefined" && window.matchMedia(MOBILE_MQ).matches;
 }
 
+function isEmbeddedFrame() {
+  try {
+    return window.self !== window.top;
+  } catch {
+    return true;
+  }
+}
+
 function shouldOpenOnDesktopLoad() {
-  return typeof window !== "undefined" && !isMobileViewport();
+  return (
+    typeof window !== "undefined" &&
+    !isMobileViewport() &&
+    !isEmbeddedFrame()
+  );
+}
+
+function resolveChatApiUrl(pathOrUrl) {
+  const path = pathOrUrl || DEFAULT_API_URL;
+  if (/^https?:\/\//i.test(path)) return path;
+  if (typeof window !== "undefined") {
+    return new URL(path, window.location.origin).href;
+  }
+  return path;
 }
 
 function getTime() {
@@ -160,8 +181,9 @@ function Message({ msg }) {
  * @param {{ apiUrl?: string }} props
  */
 export default function Chatbot({ apiUrl }) {
-  const chatApiUrl =
-    apiUrl || import.meta.env.VITE_CHAT_API_URL || DEFAULT_API_URL;
+  const chatApiUrl = resolveChatApiUrl(
+    apiUrl || import.meta.env.VITE_CHAT_API_URL,
+  );
 
   const [open, setOpen] = useState(shouldOpenOnDesktopLoad);
   const [showNotif, setShowNotif] = useState(() => !shouldOpenOnDesktopLoad());
@@ -215,9 +237,11 @@ export default function Chatbot({ apiUrl }) {
 
   useEffect(() => {
     if (!open) {
-      document.body.classList.remove("chatbot-open");
-      document.body.style.top = "";
-      window.scrollTo(0, savedScrollYRef.current);
+      if (!isEmbeddedFrame()) {
+        document.body.classList.remove("chatbot-open");
+        document.body.style.top = "";
+        window.scrollTo(0, savedScrollYRef.current);
+      }
       if (panelRef.current) {
         panelRef.current.style.height = "";
         panelRef.current.style.maxHeight = "";
@@ -225,18 +249,22 @@ export default function Chatbot({ apiUrl }) {
       return;
     }
 
-    savedScrollYRef.current = window.scrollY;
-    document.body.classList.add("chatbot-open");
-    if (isMobileViewport()) {
-      document.body.style.top = `-${savedScrollYRef.current}px`;
+    if (!isEmbeddedFrame()) {
+      savedScrollYRef.current = window.scrollY;
+      document.body.classList.add("chatbot-open");
+      if (isMobileViewport()) {
+        document.body.style.top = `-${savedScrollYRef.current}px`;
+      }
     }
 
     const t = setTimeout(() => scrollMessagesToBottom(false), 80);
     return () => {
       clearTimeout(t);
-      document.body.classList.remove("chatbot-open");
-      document.body.style.top = "";
-      window.scrollTo(0, savedScrollYRef.current);
+      if (!isEmbeddedFrame()) {
+        document.body.classList.remove("chatbot-open");
+        document.body.style.top = "";
+        window.scrollTo(0, savedScrollYRef.current);
+      }
     };
   }, [open, scrollMessagesToBottom]);
 
@@ -304,9 +332,20 @@ export default function Chatbot({ apiUrl }) {
       try {
         const res = await fetch(chatApiUrl, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
           body: JSON.stringify({ query }),
         });
+
+        const contentType = res.headers.get("content-type") || "";
+        if (!contentType.includes("application/json")) {
+          throw new Error(
+            "Chat API returned HTML instead of JSON. Redeploy with /api/chat proxy.",
+          );
+        }
+
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
         setMessages((prev) => [
