@@ -2,7 +2,8 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import dseuLogo from "../assets/DSEULogo/DSEULOGOTHICK.svg";
 import dseuEmblem from "../assets/DSEULogo/Vector.svg";
 
-const DEFAULT_API_URL = "http://65.2.21.144:8001/chat";
+/** Same-origin proxy (Vercel /api/chat in prod, Vite dev proxy locally) */
+const DEFAULT_API_URL = "/api/chat";
 
 const QUICK_REPLIES = [
   { label: "📋 Diploma Programs", query: "Diploma programs kya hain?" },
@@ -33,7 +34,10 @@ function shouldOpenOnDesktopLoad() {
 }
 
 function getTime() {
-  return new Date().toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit" });
+  return new Date().toLocaleTimeString("en-IN", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
 }
 
 function renderMarkdown(text) {
@@ -43,15 +47,24 @@ function renderMarkdown(text) {
     .replace(/>/g, "&gt;");
 
   html = html.replace(/(\|.+\|\n?)+/g, (tableBlock) => {
-    const rows = tableBlock.trim().split("\n").filter((r) => r.trim());
+    const rows = tableBlock
+      .trim()
+      .split("\n")
+      .filter((r) => r.trim());
     let result = `<table class="${MD_TABLE}">`;
     rows.forEach((row, i) => {
       if (/^\|[\s\-|:]+\|$/.test(row.trim())) return;
-      const cells = row.split("|").filter((_, ci) => ci > 0 && ci < row.split("|").length - 1);
+      const cells = row
+        .split("|")
+        .filter((_, ci) => ci > 0 && ci < row.split("|").length - 1);
       const tag = i === 0 ? "th" : "td";
       const cellClass = tag === "th" ? MD_TH : MD_TD;
       result +=
-        "<tr>" + cells.map((c) => `<${tag} class="${cellClass}">${c.trim()}</${tag}>`).join("") + "</tr>";
+        "<tr>" +
+        cells
+          .map((c) => `<${tag} class="${cellClass}">${c.trim()}</${tag}>`)
+          .join("") +
+        "</tr>";
     });
     return result + "</table>";
   });
@@ -66,8 +79,14 @@ function renderMarkdown(text) {
     .replace(/\*(.*?)\*/g, "<em>$1</em>")
     .replace(/^- (.+)$/gm, `<li class="${MD_LI}">$1</li>`);
 
-  html = html.replace(/(<li class="[^"]*">.*<\/li>\n?)+/g, (b) => `<ul class="${MD_UL}">${b}</ul>`);
-  html = html.replace(/\n(?!<\/?(ul|ol|li|h[1-4]|hr|table|tr|th|td))/g, "<br/>");
+  html = html.replace(
+    /(<li class="[^"]*">.*<\/li>\n?)+/g,
+    (b) => `<ul class="${MD_UL}">${b}</ul>`,
+  );
+  html = html.replace(
+    /\n(?!<\/?(ul|ol|li|h[1-4]|hr|table|tr|th|td))/g,
+    "<br/>",
+  );
   html = html.replace(/(<\/(h[1-4]|ul|ol|hr|table)>)<br\/>/g, "$1");
   return html;
 }
@@ -126,7 +145,9 @@ function Message({ msg }) {
           }`}
           dangerouslySetInnerHTML={{ __html: renderMarkdown(msg.text) }}
         />
-        <div className={`mt-1 text-[10px] text-[#718096] ${isUser ? "text-right" : ""}`}>
+        <div
+          className={`mt-1 text-[10px] text-[#718096] ${isUser ? "text-right" : ""}`}
+        >
           {msg.time}
         </div>
       </div>
@@ -139,7 +160,8 @@ function Message({ msg }) {
  * @param {{ apiUrl?: string }} props
  */
 export default function Chatbot({ apiUrl }) {
-  const chatApiUrl = apiUrl || import.meta.env.VITE_API_URL || DEFAULT_API_URL;
+  const chatApiUrl =
+    apiUrl || import.meta.env.VITE_CHAT_API_URL || DEFAULT_API_URL;
 
   const [open, setOpen] = useState(shouldOpenOnDesktopLoad);
   const [showNotif, setShowNotif] = useState(() => !shouldOpenOnDesktopLoad());
@@ -226,7 +248,10 @@ export default function Chatbot({ apiUrl }) {
     if (!panel || !vv) return;
 
     const syncPanelToViewport = () => {
-      const keyboardGap = Math.max(0, window.innerHeight - vv.height - vv.offsetTop);
+      const keyboardGap = Math.max(
+        0,
+        window.innerHeight - vv.height - vv.offsetTop,
+      );
       const keyboardOpen = keyboardGap > 50;
       const sheetHeight = keyboardOpen
         ? vv.height - 8
@@ -289,7 +314,9 @@ export default function Chatbot({ apiUrl }) {
           {
             id: Date.now() + 1,
             role: "bot",
-            text: data.answer || "Maafi chahta hoon, jawab nahi mil pa raha. Dobara try karein.",
+            text:
+              data.answer ||
+              "Maafi chahta hoon, jawab nahi mil pa raha. Dobara try karein.",
             time: getTime(),
           },
         ]);
@@ -307,7 +334,7 @@ export default function Chatbot({ apiUrl }) {
         setLoading(false);
       }
     },
-    [input, loading, chatApiUrl]
+    [input, loading, chatApiUrl],
   );
 
   const handleKey = (e) => {
@@ -356,7 +383,13 @@ export default function Chatbot({ apiUrl }) {
           </span>
         )}
         {open ? (
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="white" className="max-sm:h-6 max-sm:w-6">
+          <svg
+            width="26"
+            height="26"
+            viewBox="0 0 24 24"
+            fill="white"
+            className="max-sm:h-6 max-sm:w-6"
+          >
             <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
           </svg>
         ) : (
@@ -386,13 +419,17 @@ export default function Chatbot({ apiUrl }) {
           aria-hidden
         />
 
-        <div className={`flex shrink-0 items-center gap-3 px-4 py-3 max-md:pt-1 md:px-[18px] md:py-3.5 ${GRADIENT}`}>
+        <div
+          className={`flex shrink-0 items-center gap-3 px-4 py-3 max-md:pt-1 md:px-[18px] md:py-3.5 ${GRADIENT}`}
+        >
           <div className="relative flex h-[42px] w-[42px] shrink-0 items-center justify-center overflow-hidden rounded-full border-2 border-white/50 bg-white p-1">
             <DseuLogo emblemOnly className="h-full w-auto" />
             <span className="absolute right-0 bottom-0 h-[11px] w-[11px] rounded-full border-2 border-[#005CB9] bg-green-400" />
           </div>
           <div className="min-w-0 flex-1">
-            <div className="text-sm font-semibold leading-tight text-white">DSEU Assistant</div>
+            <div className="text-sm font-semibold leading-tight text-white">
+              DSEU Assistant
+            </div>
             <div className="mt-0.5 flex items-center gap-1.5 text-[11px] text-white/80">
               <span className="h-1.5 w-1.5 animate-dseu-float rounded-full bg-green-400" />
               Online · AI-powered
@@ -404,7 +441,13 @@ export default function Chatbot({ apiUrl }) {
             onClick={handleOpen}
             aria-label="Close chat"
           >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="md:h-[18px] md:w-[18px]">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="md:h-[18px] md:w-[18px]"
+            >
               <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
             </svg>
           </button>
