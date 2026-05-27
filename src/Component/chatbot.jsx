@@ -3,7 +3,7 @@ import { useState, useRef, useEffect, useCallback } from "react";
 /** Same-origin proxy (Vercel /api/chat in prod, Vite dev proxy locally) */
 const DEFAULT_API_URL = "/api/chat";
 const CHATBOT_NAME = "Hunar";
-const HUNAR_ICON = "/hunar icon dseu.png";
+const HUNAR_ICON = "/Hunar.png";
 const MOBILE_TAGLINE = `I'm ${CHATBOT_NAME}! Ask about DSEU admissions, courses & fees.`;
 
 const QUICK_REPLIES = [
