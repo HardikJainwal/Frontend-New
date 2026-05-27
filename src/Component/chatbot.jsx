@@ -1,9 +1,10 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import dseuLogo from "../assets/DSEULogo/DSEULOGOTHICK.svg";
-import dseuEmblem from "../assets/DSEULogo/Vector.svg";
 
 /** Same-origin proxy (Vercel /api/chat in prod, Vite dev proxy locally) */
 const DEFAULT_API_URL = "/api/chat";
+const CHATBOT_NAME = "Hunar";
+const HUNAR_ICON = "/hunar icon dseu.png";
+const MOBILE_TAGLINE = `I'm ${CHATBOT_NAME}! Ask about DSEU admissions, courses & fees.`;
 
 const QUICK_REPLIES = [
   { label: "📋 Diploma Programs", query: "Diploma programs kya hain?" },
@@ -112,11 +113,11 @@ function renderMarkdown(text) {
   return html;
 }
 
-function DseuLogo({ className = "h-8 w-auto", emblemOnly = false }) {
+function HunarAvatar({ className = "h-8 w-8" }) {
   return (
     <img
-      src={emblemOnly ? dseuEmblem : dseuLogo}
-      alt="DSEU"
+      src={HUNAR_ICON}
+      alt={CHATBOT_NAME}
       className={`object-contain ${className}`}
     />
   );
@@ -154,7 +155,7 @@ function Message({ msg }) {
             <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z" />
           </svg>
         ) : (
-          <DseuLogo emblemOnly className="h-7 w-auto" />
+          <HunarAvatar className="h-7 w-7" />
         )}
       </div>
       <div>
@@ -177,7 +178,7 @@ function Message({ msg }) {
 }
 
 /**
- * Floating DSEU chat widget. Use on any page via embed script or React import.
+ * Hunar — DSEU AI chat widget. Use on any page via embed script or React import.
  * @param {{ apiUrl?: string }} props
  */
 export default function Chatbot({ apiUrl }) {
@@ -193,7 +194,7 @@ export default function Chatbot({ apiUrl }) {
     {
       id: 1,
       role: "bot",
-      text: "Namaste! 👋 Main DSEU ka AI Assistant hoon.\n\nAdmission, programs, fees, campuses — kuch bhi poochh sakte hain!",
+      text: `Namaste! 👋 Main **${CHATBOT_NAME}** hoon — DSEU ka AI assistant.\n\nAdmission, programs, fees, campuses — kuch bhi poochh sakte hain!`,
       time: getTime(),
     },
   ]);
@@ -401,40 +402,73 @@ export default function Chatbot({ apiUrl }) {
         />
       )}
 
-      <button
-        type="button"
-        className={`fixed z-[99999] flex touch-manipulation items-center justify-center rounded-full border-[3px] transition-[transform,box-shadow,opacity] duration-300 bottom-[max(1.25rem,env(safe-area-inset-bottom))] right-4 h-16 w-16 md:bottom-7 md:right-7 md:h-[72px] md:w-[72px] ${
+      <div
+        className={`fixed z-[99999] flex items-center gap-3 transition-opacity duration-300 bottom-[max(1.25rem,env(safe-area-inset-bottom))] right-2.5 max-md:max-w-[calc(100vw-0.75rem)] md:bottom-7 md:right-7 md:gap-0 ${
           open
-            ? `max-md:pointer-events-none max-md:scale-90 max-md:opacity-0 md:scale-105 md:opacity-100 border-transparent shadow-[0_8px_32px_rgba(0,92,185,0.55),0_0_0_4px_rgba(255,255,255,0.9)] ${GRADIENT}`
-            : "border-[#005CB9] bg-white opacity-100 shadow-[0_10px_28px_rgba(0,92,185,0.45),0_4px_12px_rgba(244,152,29,0.35),0_0_0_4px_rgba(255,255,255,0.95)] md:hover:scale-105 md:animate-dseu-float md:hover:animate-none"
+            ? "max-md:pointer-events-none max-md:animate-none max-md:opacity-0"
+            : "opacity-100 max-md:animate-dseu-float"
         }`}
-        onClick={handleOpen}
-        aria-label="Toggle DSEU chat"
-        aria-expanded={open}
-        tabIndex={open ? -1 : 0}
       >
         {!open && (
-          <span className="pointer-events-none absolute inset-0 rounded-full border-2 border-[#F4981D]/70 max-sm:animate-none md:animate-dseu-ping" />
-        )}
-        {showNotif && !open && (
-          <span className="absolute -top-0.5 -right-0.5 flex h-5 w-5 items-center justify-center rounded-full border-2 border-white bg-orange-500 text-[10px] font-bold text-white shadow-md">
-            1
-          </span>
-        )}
-        {open ? (
-          <svg
-            width="26"
-            height="26"
-            viewBox="0 0 24 24"
-            fill="white"
-            className="max-sm:h-6 max-sm:w-6"
+          <button
+            type="button"
+            onClick={handleOpen}
+            className="relative max-md:flex md:hidden min-w-0 flex-1 text-left"
+            aria-label={MOBILE_TAGLINE}
           >
-            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
-          </svg>
-        ) : (
-          <DseuLogo className="h-12 w-auto max-sm:h-11 md:h-[52px]" />
+            <span
+              className={`block rounded-2xl rounded-br-sm border-2 border-[#F4981D] px-3 py-2.5 shadow-[0_6px_22px_rgba(0,92,185,0.55)] ${GRADIENT}`}
+            >
+              <span className="block text-[13px] font-semibold leading-snug text-white">
+                <span className="text-[#FFE8C7]">{CHATBOT_NAME}</span>
+                <span className="font-normal text-white/95">
+                  {" "}
+                  · Ask about admissions, courses & fees
+                </span>
+              </span>
+            </span>
+            <span
+              className="absolute -right-1.5 top-1/2 h-3 w-3 -translate-y-1/2 rotate-45 border-r-2 border-b-2 border-[#F4981D] bg-[#0471B5]"
+              aria-hidden
+            />
+          </button>
         )}
-      </button>
+
+        <button
+          type="button"
+          className={`relative flex h-[4.5rem] w-[4.5rem] shrink-0 touch-manipulation items-center justify-center rounded-full border-[3px] transition-[transform,box-shadow] duration-300 md:h-[72px] md:w-[72px] ${
+            open
+              ? `max-md:pointer-events-none max-md:scale-90 max-md:opacity-0 md:scale-105 md:opacity-100 border-transparent shadow-[0_8px_32px_rgba(0,92,185,0.55),0_0_0_4px_rgba(255,255,255,0.9)] ${GRADIENT}`
+              : "border-[#005CB9] bg-white opacity-100 shadow-[0_10px_28px_rgba(0,92,185,0.45),0_4px_12px_rgba(244,152,29,0.35),0_0_0_4px_rgba(255,255,255,0.95)] md:hover:scale-105 md:animate-dseu-float md:hover:animate-none"
+          }`}
+          onClick={handleOpen}
+          aria-label={`Open ${CHATBOT_NAME} chat`}
+          aria-expanded={open}
+          tabIndex={open ? -1 : 0}
+        >
+          {!open && (
+            <span className="pointer-events-none absolute inset-0 rounded-full border-2 border-[#F4981D]/70 animate-dseu-ping" />
+          )}
+          {showNotif && !open && (
+            <span className="absolute -top-0.5 -right-0.5 flex h-5 w-5 items-center justify-center rounded-full border-2 border-white bg-orange-500 text-[10px] font-bold text-white shadow-md">
+              1
+            </span>
+          )}
+          {open ? (
+            <svg
+              width="26"
+              height="26"
+              viewBox="0 0 24 24"
+              fill="white"
+              className="max-sm:h-6 max-sm:w-6"
+            >
+              <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+            </svg>
+          ) : (
+            <HunarAvatar className="h-[3.25rem] w-[3.25rem] md:h-14 md:w-14" />
+          )}
+        </button>
+      </div>
 
       <div
         ref={panelRef}
@@ -451,7 +485,7 @@ export default function Chatbot({ apiUrl }) {
         role="dialog"
         aria-modal={open}
         aria-hidden={!open}
-        aria-label="DSEU Assistant chat"
+        aria-label={`${CHATBOT_NAME} chat`}
       >
         <div
           className="mx-auto mt-2 h-1 w-10 shrink-0 rounded-full bg-blue-200 md:hidden"
@@ -462,16 +496,16 @@ export default function Chatbot({ apiUrl }) {
           className={`flex shrink-0 items-center gap-3 px-4 py-3 max-md:pt-1 md:px-[18px] md:py-3.5 ${GRADIENT}`}
         >
           <div className="relative flex h-[42px] w-[42px] shrink-0 items-center justify-center overflow-hidden rounded-full border-2 border-white/50 bg-white p-1">
-            <DseuLogo emblemOnly className="h-full w-auto" />
+            <HunarAvatar className="h-full w-full" />
             <span className="absolute right-0 bottom-0 h-[11px] w-[11px] rounded-full border-2 border-[#005CB9] bg-green-400" />
           </div>
           <div className="min-w-0 flex-1">
             <div className="text-sm font-semibold leading-tight text-white">
-              DSEU Assistant
+              {CHATBOT_NAME}
             </div>
             <div className="mt-0.5 flex items-center gap-1.5 text-[11px] text-white/80">
               <span className="h-1.5 w-1.5 animate-dseu-float rounded-full bg-green-400" />
-              Online · AI-powered
+              DSEU · AI Assistant
             </div>
           </div>
           <button
@@ -518,7 +552,7 @@ export default function Chatbot({ apiUrl }) {
           {loading && (
             <div className="flex max-w-[86%] items-end gap-2 self-start max-sm:animate-none md:animate-dseu-msg-in">
               <div className="flex h-[30px] w-[30px] shrink-0 items-center justify-center overflow-hidden rounded-full border border-blue-200 bg-white">
-                <DseuLogo emblemOnly className="h-7 w-auto" />
+                <HunarAvatar className="h-7 w-7" />
               </div>
               <TypingDots />
             </div>
@@ -533,7 +567,7 @@ export default function Chatbot({ apiUrl }) {
             value={input}
             onChange={handleResize}
             onKeyDown={handleKey}
-            placeholder="Apna sawaal likhein..."
+            placeholder={`${CHATBOT_NAME} se apna sawaal likhein...`}
             rows={1}
             enterKeyHint="send"
             autoComplete="off"
